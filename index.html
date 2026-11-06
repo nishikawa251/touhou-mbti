@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>東方キャラ性格診断</title>
+<meta name="description" content="36問で16タイプ × 137キャラ。あなたにいちばん近い東方Projectのキャラクターを見つける非公式ファン診断。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#/" aria-label="トップへ">
+    <span class="brand-mark" aria-hidden="true">東</span>
+    <span class="brand-text">東方キャラ性格診断</span>
+  </a>
+  <nav class="top-nav">
+    <a href="#/zukan">キャラ図鑑</a>
+  </nav>
+</header>
+
+<main id="app" tabindex="-1"></main>
+
+<footer class="foot">
+  <p>
+    これは個人が作った非公式のファン診断です。東方Project は上海アリス幻樂団の作品であり、本診断は原作者・関係各社とは関係ありません。
+    また、正式な MBTI® 検査ではなく、16タイプの考え方を借りたお遊びです。
+  </p>
+  <p>
+    キャラクターイラスト:
+    <a href="https://www.pixiv.net/artworks/135821915" target="_blank" rel="noopener">粗茶「東方全キャラ早見表 ver2025」</a>
+    ／ 性格の参考:
+    <a href="https://dic.pixiv.net/a/%E6%9D%B1%E6%96%B9Project%E3%81%AE%E7%99%BB%E5%A0%B4%E4%BA%BA%E7%89%A9" target="_blank" rel="noopener">ピクシブ百科事典「東方Projectの登場人物」</a>
+    (紹介文は各記事をもとに書き起こした要約です)
+  </p>
+</footer>
+
+<dialog id="detail" class="detail" aria-label="キャラクター詳細"></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="logic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
