@@ -137,26 +137,90 @@
             <button type="button" class="btn ghost" data-act="copy">文章をコピー</button>
           </div>
           <img class="share-preview" id="share-preview" src="${shareImageSrc(c.id, '')}" alt="共有用の画像" loading="lazy">
-          <p class="note">リンクを貼ると、X・Discord・LINE などではシンプル版の画像つきカードが表示されます。詳細版は「画像を共有」か「画像を保存」で投稿に添えてください。</p>
+          <p class="note">リンクを貼ると、X・Discord・LINE などではシンプル版の画像つきカードが表示されます。詳細版は「画像を共有」か「画像を保存」で投稿に添えてください。${isQuickShare() ? 'ドパガキモードの結果なので、共有・保存する画像には「ドパガキモード判定」のスタンプが入ります(リンクのカード画像には入りません)。' : ''}</p>
         </div>
       </details>`;
   }
-  function setShareKind(kind) {
-    app.dataset.shareKind = kind;
+  // ドパガキモードの結果は、共有画像に「ドパガキモード判定」のスタンプを押す(ブラウザ上で合成)
+  const isQuickShare = () => app.dataset.shareQuick === '1';
+  const stampCache = new Map(); // `${id}${kind}` → { blob, url }
+  function drawStamp(ctx, W) {
+    // 右カラムの下の空き(タグの下、URL の上)に、右端を軸に少し傾けて置く
+    const lines = [['ドパガキモード判定', 30], ['5問で無理やり決めた。絶対間違うぞ！', 17]];
+    const pad = 14, gap = 6;
+    const boxW = 420, boxH = pad * 2 + lines[0][1] + gap + lines[1][1];
+    ctx.save();
+    ctx.translate(W - 56, 498);
+    ctx.rotate(-4 * Math.PI / 180);
+    ctx.shadowColor = 'rgba(0,0,0,.25)'; ctx.shadowBlur = 10; ctx.shadowOffsetY = 3;
+    ctx.fillStyle = '#c1121f';
+    ctx.beginPath(); ctx.roundRect(-boxW, 0, boxW, boxH, 14); ctx.fill();
+    ctx.shadowColor = 'transparent';
+    ctx.strokeStyle = '#ffe08a'; ctx.lineWidth = 3; ctx.setLineDash([10, 7]);
+    ctx.beginPath(); ctx.roundRect(-boxW + 7, 7, boxW - 14, boxH - 14, 9); ctx.stroke();
+    ctx.fillStyle = '#fff'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
+    let y = pad;
+    for (const [t, size] of lines) {
+      ctx.font = `700 ${size}px "Zen Maru Gothic", "Yu Gothic UI", "Meiryo", sans-serif`;
+      ctx.fillText(t, -boxW / 2, y);
+      y += size + gap;
+    }
+    ctx.restore();
+  }
+  async function stampedImage(id, kind) {
+    const key = `${id}${kind}`;
+    if (stampCache.has(key)) return stampCache.get(key);
+    const img = new Image();
+    img.src = shareImageSrc(id, kind);
+    await img.decode();
+    try { await document.fonts.load('700 30px "Zen Maru Gothic"'); } catch (e) { /* フォントが来なくても描く */ }
+    const canvas = document.createElement('canvas');
+    canvas.width = img.naturalWidth; canvas.height = img.naturalHeight;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, 0, 0);
+    drawStamp(ctx, canvas.width);
+    const blob = await new Promise((ok, ng) => canvas.toBlob(b => (b ? ok(b) : ng(new Error('toBlob'))), 'image/jpeg', 0.9));
+    const entry = { blob, url: URL.createObjectURL(blob) };
+    stampCache.set(key, entry);
+    return entry;
+  }
+  // 共有・保存に使う画像。ドパガキならスタンプ入り(合成できない環境では素の画像)
+  async function shareBlobAndUrl(id, kind) {
+    if (isQuickShare()) {
+      try { return await stampedImage(id, kind); } catch (e) { /* file:// などで合成できないときは素の画像 */ }
+    }
+    const blob = await (await fetch(shareImageSrc(id, kind))).blob();
+    return { blob, url: shareImageSrc(id, kind) };
+  }
+  const shareFileName = (id, kind) => `toho-${id}${kind}${isQuickShare() ? '-dopa' : ''}.jpg`;
+  async function refreshShareImage() {
     const id = app.dataset.shareId;
-    app.querySelectorAll('.share-kind .kind').forEach(b => { const on = b.dataset.kind === kind; b.classList.toggle('selected', on); b.setAttribute('aria-pressed', String(on)); });
+    const kind = shareKind();
     const img = document.getElementById('share-preview');
     const dl = document.getElementById('share-dl');
     if (img) img.src = shareImageSrc(id, kind);
-    if (dl) { dl.href = shareImageSrc(id, kind); dl.download = `toho-${id}${kind}.jpg`; }
+    if (dl) { dl.href = shareImageSrc(id, kind); dl.download = shareFileName(id, kind); }
+    if (!isQuickShare()) return;
+    try {
+      const { url } = await stampedImage(id, kind);
+      // 合成中に別のキャラ・種類へ切り替わっていたら捨てる
+      if (app.dataset.shareId !== id || shareKind() !== kind) return;
+      if (img) img.src = url;
+      if (dl) dl.href = url;
+    } catch (e) { /* 素の画像のまま */ }
+  }
+  function setShareKind(kind) {
+    app.dataset.shareKind = kind;
+    app.querySelectorAll('.share-kind .kind').forEach(b => { const on = b.dataset.kind === kind; b.classList.toggle('selected', on); b.setAttribute('aria-pressed', String(on)); });
+    refreshShareImage();
   }
   async function shareImage() {
     const id = app.dataset.shareId;
     const kind = shareKind();
     const text = app.dataset.copy || '';
     try {
-      const blob = await (await fetch(shareImageSrc(id, kind))).blob();
-      const file = new File([blob], `toho-${id}${kind}.jpg`, { type: 'image/jpeg' });
+      const { blob } = await shareBlobAndUrl(id, kind);
+      const file = new File([blob], shareFileName(id, kind), { type: 'image/jpeg' });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({ files: [file], text, url: shareUrl(id) });
         return;
@@ -285,6 +349,7 @@
     const near = r.others.slice(0, 4);
     const good = L.compat(user, CHARS, c.id).slice(0, 4);
     const text = shareText(c, r.type, sim, quick);
+    app.dataset.shareQuick = quick ? '1' : '';
     const diceLabels = dice.map(i => `${L.AXES[i].negLabel}/${L.AXES[i].posLabel}`);
     app.innerHTML = `
       ${quick ? `<p class="dopa-banner"><b>ドパガキモード判定</b>ランダムな5問で無理やり決めました。絶対間違うぞ！${diceLabels.length ? `<small>サイコロで決めた軸: ${diceLabels.join('、')}</small>` : ''}</p>` : ''}
@@ -336,6 +401,7 @@
     app.dataset.copy = text;
     app.dataset.shareId = c.id;
     app.dataset.shareKind = '';
+    refreshShareImage();
   }
 
   // ---------- 共有されたキャラのページ(#/c/<id>) ----------
