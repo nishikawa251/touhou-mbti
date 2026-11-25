@@ -148,8 +148,9 @@
 
   // ---------- ドパガキモード ----------
   // 36問は多いという人向けに、5問だけで無理やり決める。基本4軸は1問ずつ、サブ軸は1問だけ。
-  // 答えなかった軸と「どちらでもない」だった軸はサイコロで決めるので、当たらなくても文句は言えない。
-  const QUICK = [0, 1, 2, 3, 14];
+  // どの5問にするかは seed から毎回ランダムに選ぶ。答えなかった軸と「どちらでもない」だった軸は
+  // サイコロで決めるので、当たらなくても文句は言えない。
+  const QUICK_COUNT = 5;
 
   // seed から決まる疑似乱数(同じ seed なら同じ列を返す。結果ページを開き直しても同じ結果になるように)
   function rng(seed) {
@@ -163,11 +164,24 @@
     };
   }
 
-  // 5問の回答(QUICK の順に -2〜+2)と seed → { vec: 8軸スコア, dice: サイコロで決めた軸の番号 }
+  // seed → 今回の5問(QUESTIONS の添字)。基本4軸から1問ずつ、サブ4軸のどれかから1問
+  function quickPick(seed) {
+    const r = rng(seed ^ 0x5bd1e995);
+    const pickFrom = axis => {
+      const idx = QUESTIONS.map((q, i) => (q.axis === axis ? i : -1)).filter(i => i >= 0);
+      return idx[Math.floor(r() * idx.length)];
+    };
+    const picks = AXES.filter(a => a.main).map(a => pickFrom(a.key));
+    const subs = AXES.filter(a => !a.main);
+    picks.push(pickFrom(subs[Math.floor(r() * subs.length)].key));
+    return picks;
+  }
+
+  // 5問の回答(quickPick(seed) の順に -2〜+2)と seed → { vec: 8軸スコア, dice: サイコロで決めた軸の番号 }
   function quickScore(answers5, seed) {
     const r = rng(seed);
     const vec = AXES.map(() => 0);
-    QUICK.forEach((qi, k) => {
+    quickPick(seed).forEach((qi, k) => {
       const q = QUESTIONS[qi];
       const v = answers5[k];
       const i = AXES.findIndex(a => a.key === q.axis);
@@ -182,7 +196,7 @@
     return { vec, dice };
   }
 
-  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK, score, quickScore, typeOf, distance, similarity, match };
+  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK_COUNT, quickPick, score, quickScore, typeOf, distance, similarity, match };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TohoLogic = api;
 })(typeof window !== 'undefined' ? window : globalThis);

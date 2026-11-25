@@ -12,14 +12,16 @@
 
   // 診断モード。full = 36問、quick = ドパガキモード(5問)
   const MODES = {
-    full: { key: 'toho-seikaku-answers-v1', questions: L.QUESTIONS, quiz: '#/quiz', result: '#/result', label: '36問' },
-    quick: { key: 'toho-seikaku-quick-v1', questions: L.QUICK.map(i => L.QUESTIONS[i]), quiz: '#/quiz-quick', result: '#/result-quick', label: 'ドパガキモード(5問)' },
+    full: { key: 'toho-seikaku-answers-v1', count: L.QUESTIONS.length, quiz: '#/quiz', result: '#/result', label: '36問' },
+    quick: { key: 'toho-seikaku-quick-v1', count: L.QUICK_COUNT, quiz: '#/quiz-quick', result: '#/result-quick', label: 'ドパガキモード(5問)' },
   };
   let mode = 'full';
   let answers = new Array(L.QUESTIONS.length).fill(null);
   let seed = 0;
   let qIndex = 0;
   const M = () => MODES[mode];
+  // いま出す設問。ドパガキモードは seed から選んだ5問(seed が同じなら同じ5問)
+  const qsOf = () => (mode === 'quick' ? L.quickPick(seed).map(i => L.QUESTIONS[i]) : L.QUESTIONS);
 
   // ---------- 小物 ----------
   const esc = s => String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
@@ -34,7 +36,7 @@
     try {
       const raw = JSON.parse(localStorage.getItem(MODES[m].key) || 'null');
       const a = Array.isArray(raw) ? raw : raw && raw.a;
-      if (Array.isArray(a) && a.length === MODES[m].questions.length) return { a, seed: (raw && raw.seed) || 0 };
+      if (Array.isArray(a) && a.length === MODES[m].count) return { a, seed: (raw && raw.seed) || 0 };
     } catch (e) { /* 無視 */ }
     return null;
   }
@@ -165,7 +167,7 @@
         <div class="dopa">
           <div class="dopa-text">
             <b>ドパガキモード</b>
-            <span>36問は多い? なら5問で無理やり決める。足りない分はサイコロ。<strong>絶対間違うぞ！</strong></span>
+            <span>36問は多い? ならランダムな5問で無理やり決める。足りない分はサイコロ。<strong>絶対間違うぞ！</strong></span>
           </div>
           <div class="cta">
             <button type="button" class="btn dopa-btn" data-act="start-quick">5問で決める</button>
@@ -187,7 +189,7 @@
   // ---------- 設問 ----------
   function startQuiz(fresh, m = 'full') {
     mode = m;
-    if (fresh) { answers = new Array(M().questions.length).fill(null); seed = newSeed(); qIndex = 0; save(); }
+    if (fresh) { answers = new Array(M().count).fill(null); seed = newSeed(); qIndex = 0; save(); }
     else {
       const saved = load();
       if (saved) { answers = saved.a; seed = saved.seed; }
@@ -198,7 +200,7 @@
   }
 
   function viewQuiz() {
-    const qs = M().questions;
+    const qs = qsOf();
     const total = qs.length;
     if (answers.length !== total) { answers = new Array(total).fill(null); qIndex = 0; }
     const q = qs[qIndex];
@@ -206,7 +208,7 @@
     const quick = mode === 'quick';
     app.innerHTML = `
       <section class="quiz">
-        ${quick ? '<p class="dopa-banner"><b>ドパガキモード</b>5問で無理やり決めます。絶対間違うぞ！</p>' : ''}
+        ${quick ? '<p class="dopa-banner"><b>ドパガキモード</b>ランダムな5問で無理やり決めます。絶対間違うぞ！</p>' : ''}
         <div class="progress">
           <span class="progress-num">Q <b>${qIndex + 1}</b> / ${total}</span>
           <span class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}" aria-label="回答済み"><span style="width:${(done / total * 100).toFixed(1)}%"></span></span>
@@ -229,7 +231,7 @@
   function answer(value) {
     answers[qIndex] = value;
     save();
-    const total = M().questions.length;
+    const total = M().count;
     if (qIndex < total - 1) { qIndex += 1; viewQuiz(); }
     else if (isComplete(answers)) { location.hash = M().result; }
     else { qIndex = answers.findIndex(v => typeof v !== 'number'); viewQuiz(); }
@@ -254,7 +256,7 @@
     const text = shareText(c, r.type, sim, quick);
     const diceLabels = dice.map(i => `${L.AXES[i].negLabel}/${L.AXES[i].posLabel}`);
     app.innerHTML = `
-      ${quick ? `<p class="dopa-banner"><b>ドパガキモード判定</b>5問で無理やり決めました。絶対間違うぞ！${diceLabels.length ? `<small>サイコロで決めた軸: ${diceLabels.join('、')}</small>` : ''}</p>` : ''}
+      ${quick ? `<p class="dopa-banner"><b>ドパガキモード判定</b>ランダムな5問で無理やり決めました。絶対間違うぞ！${diceLabels.length ? `<small>サイコロで決めた軸: ${diceLabels.join('、')}</small>` : ''}</p>` : ''}
       <section class="result g-${t.group}">
         <p class="eyebrow">診断結果${quick ? '(雑)' : ''}</p>
         ${charHead(c, r.type, `
@@ -275,7 +277,7 @@
         <p class="legend"><span class="axis-dot user inline"></span>あなた <span class="axis-dot chara inline"></span>${esc(c.name)}</p>
         <div class="axes">${axisRows(user, c.v)}</div>
         <p class="subtype">あなたのサブタイプ ${subTags(user) || '<span class="tag">中庸</span>'}</p>
-        ${quick ? '<p class="note">ドパガキモードでは、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
+        ${quick ? '<p class="note">ドパガキモードでは、5問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
       </section>
 
       ${mates.length ? `
@@ -291,7 +293,7 @@
       </section>
 
       <div class="cta center">
-        ${quick ? '<button type="button" class="btn primary" data-act="start">ちゃんと診断する(36問)</button><button type="button" class="btn" data-act="start-quick">もう一回サイコロを振る</button>' : '<button type="button" class="btn" data-act="start">もう一度診断する</button><button type="button" class="btn" data-act="start-quick">ドパガキモードで遊ぶ</button>'}
+        ${quick ? '<button type="button" class="btn primary" data-act="start">ちゃんと診断する(36問)</button><button type="button" class="btn" data-act="start-quick">もう一回(質問も変わる)</button>' : '<button type="button" class="btn" data-act="start">もう一度診断する</button><button type="button" class="btn" data-act="start-quick">ドパガキモードで遊ぶ</button>'}
         <a class="btn ghost" href="#/zukan">キャラ図鑑を見る</a>
       </div>`;
     app.dataset.copy = text;
@@ -397,7 +399,7 @@
     if (dialog.open) dialog.close();
     if (h === '#/quiz' || h === '#/quiz-quick') {
       const m = h === '#/quiz' ? 'full' : 'quick';
-      if (mode !== m) { mode = m; const saved = load(); answers = saved ? saved.a : new Array(M().questions.length).fill(null); seed = saved ? saved.seed : newSeed(); const next = answers.findIndex(v => typeof v !== 'number'); qIndex = next === -1 ? 0 : next; }
+      if (mode !== m) { mode = m; const saved = load(); answers = saved ? saved.a : new Array(M().count).fill(null); seed = saved ? saved.seed : newSeed(); const next = answers.findIndex(v => typeof v !== 'number'); qIndex = next === -1 ? 0 : next; }
       viewQuiz();
     }
     else if (h === '#/result') viewResult('full');
@@ -420,7 +422,7 @@
       case 'start-quick': startQuiz(true, 'quick'); break;
       case 'resume': startQuiz(false, 'full'); break;
       case 'prev': if (qIndex > 0) { qIndex -= 1; viewQuiz(); } break;
-      case 'next': if (qIndex < M().questions.length - 1) { qIndex += 1; viewQuiz(); } break;
+      case 'next': if (qIndex < M().count - 1) { qIndex += 1; viewQuiz(); } break;
       case 'close': dialog.close(); break;
       case 'copy': copy(app.dataset.copy || '', '文章をコピーしました'); break;
       case 'copy-link': copy(shareUrl(app.dataset.shareId), 'リンクをコピーしました'); break;
@@ -443,6 +445,6 @@
     answers = saved.a; seed = saved.seed;
     const next = answers.findIndex(v => typeof v !== 'number');
     qIndex = next === -1 ? 0 : next;
-  } else { answers = new Array(M().questions.length).fill(null); seed = newSeed(); }
+  } else { answers = new Array(M().count).fill(null); seed = newSeed(); }
   route();
 })();
