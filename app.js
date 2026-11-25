@@ -101,6 +101,23 @@
     </button>`;
   }
 
+  // 折りたたみ(見出しボタン + 開閉アニメーションする中身)
+  function accordion(id, title, sub, body) {
+    return `
+      <section class="acc">
+        <button type="button" class="acc-head" data-toggle="${id}" aria-expanded="false" aria-controls="${id}">${esc(title)}<span class="acc-sub">${esc(sub)}</span><span class="acc-arrow" aria-hidden="true">▾</span></button>
+        <div class="collapse" id="${id}"><div class="collapse-inner acc-body">${body}</div></div>
+      </section>`;
+  }
+  function toggleCollapse(btn) {
+    const box = document.getElementById(btn.dataset.toggle);
+    if (!box) return;
+    const open = !box.classList.contains('open');
+    box.classList.toggle('open', open);
+    btn.classList.toggle('is-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+  }
+
   // キャラのカード(結果・共有ページ・詳細で共通)
   function charHead(c, mbti, extra = '', big = false) {
     return `
@@ -138,9 +155,9 @@
     const x = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent('東方キャラ性格診断')}`;
     const canFiles = !!(navigator.canShare && navigator.share);
     return `
-      <details class="share">
-        <summary class="btn primary share-toggle">結果をシェア <span class="dd-arrow" aria-hidden="true">▾</span></summary>
-        <div class="share-body">
+      <button type="button" class="btn primary share-toggle" data-toggle="share-body" aria-expanded="false" aria-controls="share-body">結果をシェア <span class="dd-arrow" aria-hidden="true">▾</span></button>
+      <div class="collapse share" id="share-body">
+        <div class="collapse-inner share-body">
           <div class="share-kind" role="radiogroup" aria-label="画像の種類">
             <button type="button" class="kind selected" data-kind="" aria-pressed="true">シンプル</button>
             <button type="button" class="kind" data-kind="-full" aria-pressed="false">詳細(説明文つき)</button>
@@ -155,7 +172,7 @@
           <img class="share-preview" id="share-preview" src="${shareImageSrc(c.id, '')}" alt="共有用の画像" loading="lazy">
           <p class="note">リンクを貼ると、X・Discord・LINE などではシンプル版の画像つきカードが表示されます。詳細版は「画像を共有」か「画像を保存」で投稿に添えてください。${isQuickShare() ? 'ドパガキモードの結果なので、共有・保存する画像には「ドパガキモード判定」のスタンプが入ります(リンクのカード画像には入りません)。' : ''}</p>
         </div>
-      </details>`;
+      </div>`;
   }
   // ドパガキモードの結果は、共有画像に「ドパガキモード判定」のスタンプを押す(ブラウザ上で合成)
   const isQuickShare = () => app.dataset.shareQuick === '1';
@@ -382,6 +399,18 @@
           ${garakutaLink(c)}
           ${sharePanel(c, text)}
         </div>
+        ${accordion('acc-more', 'このキャラをもっと知る', '登場作品・タイプの説明・百科事典', `
+          ${worksLine(c)}
+          <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
+          <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>`)}
+      </section>
+
+      <section class="panel">
+        <h2>あなたの8軸</h2>
+        <p class="legend"><span class="axis-dot user inline"></span>あなた <span class="axis-dot chara inline"></span>${esc(c.name)}</p>
+        <div class="axes">${axisRows(user, c.v)}</div>
+        <p class="subtype">あなたのサブタイプ ${subTags(user) || '<span class="tag">中庸</span>'}</p>
+        ${quick ? '<p class="note">ドパガキモードでは、5問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
       </section>
 
       <section class="panel compat">
@@ -408,34 +437,12 @@
         <div class="tiles small">${good.slice(1).map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・相性${L.similarity(mm.d)}%</span>`)).join('')}</div>
       </section>
 
-      <details class="acc">
-        <summary>このキャラをもっと知る<span class="acc-sub">登場作品・タイプの説明・百科事典</span><span class="acc-arrow" aria-hidden="true">▾</span></summary>
-        <div class="acc-body">
-          ${worksLine(c)}
-          <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
-          <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
-        </div>
-      </details>
-
-      <details class="acc">
-        <summary>あなたの8軸<span class="acc-sub">サブタイプ: ${subLabels(user) || '中庸'}</span><span class="acc-arrow" aria-hidden="true">▾</span></summary>
-        <div class="acc-body">
-          <p class="legend"><span class="axis-dot user inline"></span>あなた <span class="axis-dot chara inline"></span>${esc(c.name)}</p>
-          <div class="axes">${axisRows(user, c.v)}</div>
-          ${quick ? '<p class="note">ドパガキモードでは、5問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
-        </div>
-      </details>
-
-      <details class="acc">
-        <summary>ほかの近いキャラ<span class="acc-sub">同じタイプ(${r.type})の仲間・タイプ違いで近い人</span><span class="acc-arrow" aria-hidden="true">▾</span></summary>
-        <div class="acc-body">
+      ${accordion('acc-near', 'ほかの近いキャラ', `同じタイプ(${r.type})の仲間・タイプ違いで近い人`, `
           ${mates.length ? `
           <h3>同じタイプ(${r.type})の仲間</h3>
           <div class="tiles small">${mates.map(mm => charTile(mm.c, `<span class="tile-sim">${L.similarity(mm.d)}%</span>`)).join('')}</div>` : ''}
           <h3>タイプは違うけれど近いキャラ</h3>
-          <div class="tiles small">${near.map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・${L.similarity(mm.d)}%</span>`)).join('')}</div>
-        </div>
-      </details>
+          <div class="tiles small">${near.map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・${L.similarity(mm.d)}%</span>`)).join('')}</div>`)}
 
       <div class="cta center">
         ${quick ? '<button type="button" class="btn primary" data-act="start">ちゃんと診断する(36問)</button><button type="button" class="btn" data-act="start-quick">もう一回(質問も変わる)</button>' : '<button type="button" class="btn" data-act="start">もう一度診断する</button><button type="button" class="btn" data-act="start-quick">ドパガキモードで遊ぶ</button>'}
@@ -568,6 +575,8 @@
     if (tile) { openDetail(tile.dataset.char); return; }
     const kind = e.target.closest('.share-kind .kind');
     if (kind) { setShareKind(kind.dataset.kind); return; }
+    const tog = e.target.closest('[data-toggle]');
+    if (tog) { toggleCollapse(tog); return; }
     const act = e.target.closest('[data-act]');
     if (!act) { if (e.target === dialog) dialog.close(); return; }
     switch (act.dataset.act) {
