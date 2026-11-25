@@ -47,5 +47,7 @@ node tools/serve.mjs 4173
 結果ページの「結果をシェア」から、X への投稿・画像の共有/保存・リンクのコピーができます。
 
 - `s/<id>.html`: キャラごとの共有ページ。OGP タグ(`og:image` など)を持ち、開くと `#/c/<id>` に移動します。
-- `img/og/<id>.jpg`: 共有用の 1200×630 の画像。`img/og/site.jpg` はトップページ用です。
+- `img/og/<id>.jpg`: 共有用の 1200×630 の画像(シンプル版。OGP にも使う)。`img/og/<id>-full.jpg` は紹介文入りの 1200×900 の詳細版、`img/og/site.jpg` はトップページ用です。
 - 作り直すときは `node tools/build-share.mjs` のあと `powershell -ExecutionPolicy Bypass -File tools/og.ps1` を実行します(フォントは Zen Maru Gothic、なければ Yu Gothic UI)。
+
+結果ページには「あなたと相性のいいキャラ」も出します。直観/感覚だけが同じで、ほかの7軸が反対のキャラほど上に来ます(`logic.js` の `compat`)。

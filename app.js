@@ -103,30 +103,49 @@
     const t = L.TYPES[mbti];
     return `東方キャラ性格診断の結果は「${c.name}」(${mbti}・${t.name})でした。一致度 ${sim}%${quick ? '(ドパガキモード・5問で無理やり判定)' : ''} ― ${c.catch}`;
   }
+  // 画像の種類。'' = シンプル(1200x630)、'-full' = 説明文つきの詳細版(1200x900)
+  const shareKind = () => app.dataset.shareKind || '';
+  const shareImageSrc = (id, kind) => `img/og/${id}${kind}.jpg`;
   function sharePanel(c, text) {
     const url = shareUrl(c.id);
     const x = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent('東方キャラ性格診断')}`;
     const canFiles = !!(navigator.canShare && navigator.share);
     return `
-      <section class="panel share">
-        <h2>結果をシェア</h2>
-        <p class="note">リンクを貼ると、下の画像つきのカードが表示されます(X・Discord・LINE など OGP に対応したところ)。</p>
-        <div class="share-row">
-          <a class="btn primary" href="${x}" target="_blank" rel="noopener">Xに投稿</a>
-          ${canFiles ? '<button type="button" class="btn" data-act="share-image">画像を共有</button>' : ''}
-          <a class="btn" href="img/og/${c.id}.jpg" download="toho-${c.id}.jpg">画像を保存</a>
-          <button type="button" class="btn" data-act="copy-link">リンクをコピー</button>
-          <button type="button" class="btn ghost" data-act="copy">文章をコピー</button>
+      <details class="share">
+        <summary class="btn primary">結果をシェア <span class="dd-arrow" aria-hidden="true">▾</span></summary>
+        <div class="share-body">
+          <div class="share-kind" role="radiogroup" aria-label="画像の種類">
+            <button type="button" class="kind selected" data-kind="" aria-pressed="true">シンプル</button>
+            <button type="button" class="kind" data-kind="-full" aria-pressed="false">詳細(説明文つき)</button>
+          </div>
+          <div class="share-row">
+            <a class="btn primary" href="${x}" target="_blank" rel="noopener">Xに投稿</a>
+            ${canFiles ? '<button type="button" class="btn" data-act="share-image">画像を共有</button>' : ''}
+            <a class="btn" id="share-dl" href="${shareImageSrc(c.id, '')}" download="toho-${c.id}.jpg">画像を保存</a>
+            <button type="button" class="btn" data-act="copy-link">リンクをコピー</button>
+            <button type="button" class="btn ghost" data-act="copy">文章をコピー</button>
+          </div>
+          <img class="share-preview" id="share-preview" src="${shareImageSrc(c.id, '')}" alt="共有用の画像" loading="lazy">
+          <p class="note">リンクを貼ると、X・Discord・LINE などではシンプル版の画像つきカードが表示されます。詳細版は「画像を共有」か「画像を保存」で投稿に添えてください。</p>
         </div>
-        <img class="share-preview" src="img/og/${c.id}.jpg" alt="共有用の画像" width="1200" height="630" loading="lazy">
-      </section>`;
+      </details>`;
+  }
+  function setShareKind(kind) {
+    app.dataset.shareKind = kind;
+    const id = app.dataset.shareId;
+    app.querySelectorAll('.share-kind .kind').forEach(b => { const on = b.dataset.kind === kind; b.classList.toggle('selected', on); b.setAttribute('aria-pressed', String(on)); });
+    const img = document.getElementById('share-preview');
+    const dl = document.getElementById('share-dl');
+    if (img) img.src = shareImageSrc(id, kind);
+    if (dl) { dl.href = shareImageSrc(id, kind); dl.download = `toho-${id}${kind}.jpg`; }
   }
   async function shareImage() {
     const id = app.dataset.shareId;
+    const kind = shareKind();
     const text = app.dataset.copy || '';
     try {
-      const blob = await (await fetch(`img/og/${id}.jpg`)).blob();
-      const file = new File([blob], `toho-${id}.jpg`, { type: 'image/jpeg' });
+      const blob = await (await fetch(shareImageSrc(id, kind))).blob();
+      const file = new File([blob], `toho-${id}${kind}.jpg`, { type: 'image/jpeg' });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({ files: [file], text, url: shareUrl(id) });
         return;
@@ -253,6 +272,7 @@
     const sim = L.similarity(r.d);
     const mates = r.sameType.slice(0, 8);
     const near = r.others.slice(0, 4);
+    const good = L.compat(user, CHARS, c.id).slice(0, 4);
     const text = shareText(c, r.type, sim, quick);
     const diceLabels = dice.map(i => `${L.AXES[i].negLabel}/${L.AXES[i].posLabel}`);
     app.innerHTML = `
@@ -268,9 +288,8 @@
         <p class="desc">${esc(c.desc)}</p>
         <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
         <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
+        ${sharePanel(c, text)}
       </section>
-
-      ${sharePanel(c, text)}
 
       <section class="panel">
         <h2>あなたの8軸</h2>
@@ -278,6 +297,12 @@
         <div class="axes">${axisRows(user, c.v)}</div>
         <p class="subtype">あなたのサブタイプ ${subTags(user) || '<span class="tag">中庸</span>'}</p>
         ${quick ? '<p class="note">ドパガキモードでは、5問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
+      </section>
+
+      <section class="panel">
+        <h2>あなたと相性のいいキャラ</h2>
+        <p class="note">直観/感覚だけが同じで、外向/内向・思考/感情・計画/気ままとサブ4軸が反対のキャラほど上に来ます。似ている相手ではなく、足りないところを補い合う相手です。</p>
+        <div class="tiles">${good.map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・相性${L.similarity(mm.d)}%</span>`)).join('')}</div>
       </section>
 
       ${mates.length ? `
@@ -298,6 +323,7 @@
       </div>`;
     app.dataset.copy = text;
     app.dataset.shareId = c.id;
+    app.dataset.shareKind = '';
   }
 
   // ---------- 共有されたキャラのページ(#/c/<id>) ----------
@@ -415,6 +441,8 @@
     if (choice) { answer(Number(choice.dataset.value)); return; }
     const tile = e.target.closest('[data-char]');
     if (tile) { openDetail(tile.dataset.char); return; }
+    const kind = e.target.closest('.share-kind .kind');
+    if (kind) { setShareKind(kind.dataset.kind); return; }
     const act = e.target.closest('[data-act]');
     if (!act) { if (e.target === dialog) dialog.close(); return; }
     switch (act.dataset.act) {

@@ -64,7 +64,7 @@ for (const c of chars) {
 </html>
 `;
   fs.writeFileSync(path.join(outDir, `${c.id}.html`), html);
-  og.push({ id: c.id, name: c.name, mbti: c.mbti, typeName: t.name, catch: c.catch, traits: c.traits, color: COLORS[t.group].main, soft: COLORS[t.group].soft });
+  og.push({ id: c.id, name: c.name, mbti: c.mbti, typeName: t.name, catch: c.catch, traits: c.traits, desc: c.desc, typeBlurb: t.blurb, color: COLORS[t.group].main, soft: COLORS[t.group].soft });
 }
 // og.ps1 は ASCII だけで書いてあるので、画像に描く日本語はここから渡す
 const labels = {

@@ -1,5 +1,8 @@
-# Renders the OGP share images (1200x630 JPEG) for every character into img/og/<id>.jpg,
-# plus img/og/site.jpg for the top page. Run after: node tools/build-share.mjs
+# Renders the share images for every character:
+#   img/og/<id>.jpg       1200x630  simple card (used for OGP)
+#   img/og/<id>-full.jpg  1200x900  detailed card with the description text
+#   img/og/site.jpg       1200x630  top page card
+# Run after: node tools/build-share.mjs
 # Keep this file ASCII-only (PowerShell 5.1 misreads BOM-less UTF-8). Japanese text comes from og-data.json.
 param([string]$Root = (Split-Path -Parent $PSScriptRoot))
 
@@ -10,7 +13,7 @@ $dataPath = Join-Path $Root 'img/og/og-data.json'
 $json = Get-Content -LiteralPath $dataPath -Raw -Encoding UTF8 | ConvertFrom-Json
 $outDir = Join-Path $Root 'img/og'
 
-$W = 1200; $H = 630
+$W = 1200
 $fontName = 'Zen Maru Gothic'
 $fams = (New-Object System.Drawing.Text.InstalledFontCollection).Families | ForEach-Object { $_.Name }
 if ($fams -notcontains $fontName) { $fontName = 'Yu Gothic UI' }
@@ -44,8 +47,8 @@ function FitFont([System.Drawing.Graphics]$g, [string]$text, [single]$size, [sin
   }
   return (NewFont $minSize $bold)
 }
-function NewCanvas() {
-  $bmp = New-Object System.Drawing.Bitmap($W, $H)
+function NewCanvas([int]$w, [int]$h) {
+  $bmp = New-Object System.Drawing.Bitmap($w, $h)
   $g = [System.Drawing.Graphics]::FromImage($bmp)
   $g.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::AntiAlias
   $g.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::HighQualityBicubic
@@ -65,13 +68,13 @@ $fmtCenter.Alignment = [System.Drawing.StringAlignment]::Center
 $fmtCenter.LineAlignment = [System.Drawing.StringAlignment]::Center
 $fmtLeft = New-Object System.Drawing.StringFormat
 $fmtLeft.LineAlignment = [System.Drawing.StringAlignment]::Center
+$fmtWrap = New-Object System.Drawing.StringFormat
+$fmtWrap.Trimming = [System.Drawing.StringTrimming]::Word
 
-$n = 0
-foreach ($c in $json.chars) {
-  $pair = NewCanvas; $bmp = $pair[0]; $g = $pair[1]
+# Draws the character card. $H = 630 (simple) or 900 (with description).
+function DrawCard([System.Drawing.Graphics]$g, $c, [int]$H, [bool]$withDesc) {
   $main = Hex $c.color; $soft = Hex $c.soft
   $g.Clear($soft)
-  # thick top stripe in the group color
   $g.FillRectangle((New-Object System.Drawing.SolidBrush($main)), 0, 0, $W, 14)
 
   # portrait panel
@@ -83,16 +86,13 @@ foreach ($c in $json.chars) {
   $img.Dispose()
 
   $x = 540; $right = $W - 56; $maxW = $right - $x
-  # header
   $f = NewFont 26 $true
   $g.DrawString($json.labels.title, $f, (New-Object System.Drawing.SolidBrush($main)), $x, 54); $f.Dispose()
   $f = NewFont 28 $false
   $g.DrawString($json.labels.pre, $f, (New-Object System.Drawing.SolidBrush($ink2)), $x, 96); $f.Dispose()
-  # name
   $f = FitFont $g $c.name 72 $maxW 40 $true
   $g.DrawString($c.name, $f, (New-Object System.Drawing.SolidBrush($ink)), $x - 6, 136); $nameH = $g.MeasureString($c.name, $f).Height; $f.Dispose()
   $y = 136 + [Math]::Max($nameH, 90) + 10
-  # type badge: pill with code + type name
   $f = NewFont 30 $true
   $codeW = $g.MeasureString($c.mbti, $f).Width + 36
   $pill = RoundRect $x $y $codeW 50 25
@@ -101,10 +101,8 @@ foreach ($c in $json.chars) {
   $g.DrawString($c.typeName, $f, (New-Object System.Drawing.SolidBrush($main)), (New-Object System.Drawing.RectangleF(($x + $codeW + 14), $y, ($maxW - $codeW - 14), 50)), $fmtLeft)
   $f.Dispose()
   $y += 70
-  # catch copy
   $f = FitFont $g $c.catch 38 $maxW 26 $true
   $g.DrawString($c.catch, $f, (New-Object System.Drawing.SolidBrush($main)), $x - 3, $y); $y += $g.MeasureString($c.catch, $f).Height + 14; $f.Dispose()
-  # trait tags
   $f = NewFont 24 $true
   $tx = $x; $ty = $y
   foreach ($t in $c.traits) {
@@ -117,19 +115,41 @@ foreach ($c in $json.chars) {
     $tx += $tw + 10
   }
   $f.Dispose()
-  # footer
-  $f = NewFont 22 $false
-  $g.DrawString($siteLabel, $f, (New-Object System.Drawing.SolidBrush($ink2)), $x, 572); $f.Dispose()
-  $f = NewFont 20 $false
-  $g.DrawString($json.labels.credit, $f, (New-Object System.Drawing.SolidBrush($ink2)), 56, 592); $f.Dispose()
 
+  if ($withDesc) {
+    # description box under the portrait, full width
+    $box = RoundRect 56 612 ($W - 112) 230 22
+    $g.FillPath((New-Object System.Drawing.SolidBrush($white)), $box)
+    $g.DrawPath((New-Object System.Drawing.Pen($main, 2)), $box)
+    $f = NewFont 25 $false
+    $g.DrawString($c.desc, $f, (New-Object System.Drawing.SolidBrush($ink)), (New-Object System.Drawing.RectangleF(80, 628, ($W - 160), 150)), $fmtWrap); $f.Dispose()
+    $f = NewFont 21 $false
+    $blurb = $c.mbti + ' ' + $c.typeName + ': ' + $c.typeBlurb
+    $g.DrawString($blurb, $f, (New-Object System.Drawing.SolidBrush($ink2)), (New-Object System.Drawing.RectangleF(80, 790, ($W - 160), 44)), $fmtWrap); $f.Dispose()
+  }
+
+  $f = NewFont 22 $false
+  $g.DrawString($siteLabel, $f, (New-Object System.Drawing.SolidBrush($ink2)), (New-Object System.Drawing.RectangleF(0, ($H - 44), $W, 30)), $fmtCenter); $f.Dispose()
+  $f = NewFont 20 $false
+  $g.DrawString($json.labels.credit, $f, (New-Object System.Drawing.SolidBrush($ink2)), 56, ($H - 38)); $f.Dispose()
+}
+
+$n = 0
+foreach ($c in $json.chars) {
+  $pair = NewCanvas $W 630; $bmp = $pair[0]; $g = $pair[1]
+  DrawCard $g $c 630 $false
   SaveJpeg $bmp (Join-Path $outDir ($c.id + '.jpg'))
+  $g.Dispose(); $bmp.Dispose()
+
+  $pair = NewCanvas $W 900; $bmp = $pair[0]; $g = $pair[1]
+  DrawCard $g $c 900 $true
+  SaveJpeg $bmp (Join-Path $outDir ($c.id + '-full.jpg'))
   $g.Dispose(); $bmp.Dispose()
   $n++
 }
 
 # site image: title + a row of portraits
-$pair = NewCanvas; $bmp = $pair[0]; $g = $pair[1]
+$pair = NewCanvas $W 630; $bmp = $pair[0]; $g = $pair[1]
 $g.Clear((Hex '#fbf6ee'))
 $accent = Hex '#cf2f6b'
 $g.FillRectangle((New-Object System.Drawing.SolidBrush($accent)), 0, 0, $W, 14)
@@ -158,4 +178,4 @@ $g.DrawString($json.labels.credit, $f, (New-Object System.Drawing.SolidBrush($in
 SaveJpeg $bmp (Join-Path $outDir 'site.jpg')
 $g.Dispose(); $bmp.Dispose()
 
-Write-Output ("rendered " + $n + " character images + site.jpg into " + $outDir)
+Write-Output ("rendered " + $n + " characters (simple + full) and site.jpg into " + $outDir)

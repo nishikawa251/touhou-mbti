@@ -196,7 +196,19 @@
     return { vec, dice };
   }
 
-  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK_COUNT, quickPick, score, quickScore, typeOf, distance, similarity, match };
+  // ---------- 相性 ----------
+  // 直観/感覚だけ同じで、ほかの7軸は反対の相手を「足りないところを補い合う相性」とみなす
+  function partnerVec(u) { return u.map((v, i) => (i === 1 ? v : -v)); }
+  // 相性のいい順に並べたキャラ(exclude は結果に出たキャラなど外したい id)
+  function compat(userVec, chars, exclude) {
+    const p = partnerVec(userVec);
+    return chars
+      .filter(c => c.id !== exclude)
+      .map(c => ({ c, d: distance(p, c.v) }))
+      .sort((a, b) => a.d - b.d || (a.c.id < b.c.id ? -1 : 1));
+  }
+
+  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK_COUNT, quickPick, score, quickScore, typeOf, distance, similarity, match, partnerVec, compat };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TohoLogic = api;
 })(typeof window !== 'undefined' ? window : globalThis);
