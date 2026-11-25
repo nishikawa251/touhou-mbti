@@ -77,6 +77,10 @@
       </div>`).join('');
   }
 
+  // サブ軸の向きを「泰然・策士・…」の文字列で
+  function subLabels(vec) {
+    return L.AXES.slice(4).map((a, k) => { const v = vec[4 + k]; return v === 0 ? '' : (v > 0 ? a.posLabel : a.negLabel); }).filter(Boolean).join('・');
+  }
   function subTags(vec) {
     return L.AXES.slice(4).map((a, k) => {
       const v = vec[4 + k];
@@ -357,7 +361,7 @@
     const c = r.best;
     const t = L.TYPES[r.type];
     const sim = L.similarity(r.d);
-    const mates = r.sameType.slice(0, 8);
+    const mates = r.sameType.slice(0, 4);
     const near = r.others.slice(0, 4);
     const good = L.compat(user, CHARS, c.id).slice(0, 4);
     const text = shareText(c, r.type, sim, quick);
@@ -373,20 +377,11 @@
             <p class="catch">${esc(c.catch)}</p>
             <p class="sim"><span class="sim-num">${sim}</span><span class="sim-unit">%</span><span class="sim-label">一致度${quick ? '(たぶん)' : ''}</span></p>`, true)}
         <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}</div>
-        ${worksLine(c)}
         <p class="desc">${esc(c.desc)}</p>
-        <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
-        <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
-        ${garakutaLink(c)}
-        ${sharePanel(c, text)}
-      </section>
-
-      <section class="panel">
-        <h2>あなたの8軸</h2>
-        <p class="legend"><span class="axis-dot user inline"></span>あなた <span class="axis-dot chara inline"></span>${esc(c.name)}</p>
-        <div class="axes">${axisRows(user, c.v)}</div>
-        <p class="subtype">あなたのサブタイプ ${subTags(user) || '<span class="tag">中庸</span>'}</p>
-        ${quick ? '<p class="note">ドパガキモードでは、5問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
+        <div class="hero-actions">
+          ${garakutaLink(c)}
+          ${sharePanel(c, text)}
+        </div>
       </section>
 
       <section class="panel compat">
@@ -413,17 +408,34 @@
         <div class="tiles small">${good.slice(1).map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・相性${L.similarity(mm.d)}%</span>`)).join('')}</div>
       </section>
 
-      ${mates.length ? `
-      <section class="panel">
-        <h2>同じタイプ(${r.type})の仲間</h2>
-        <p class="note">同じタイプに分類されたキャラを、あなたに近い順に並べています。</p>
-        <div class="tiles">${mates.map(mm => charTile(mm.c, `<span class="tile-sim">${L.similarity(mm.d)}%</span>`)).join('')}</div>
-      </section>` : ''}
+      <details class="acc">
+        <summary>このキャラをもっと知る<span class="acc-sub">登場作品・タイプの説明・百科事典</span><span class="acc-arrow" aria-hidden="true">▾</span></summary>
+        <div class="acc-body">
+          ${worksLine(c)}
+          <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
+          <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
+        </div>
+      </details>
 
-      <section class="panel">
-        <h2>タイプは違うけれど近いキャラ</h2>
-        <div class="tiles">${near.map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・${L.similarity(mm.d)}%</span>`)).join('')}</div>
-      </section>
+      <details class="acc">
+        <summary>あなたの8軸<span class="acc-sub">サブタイプ: ${subLabels(user) || '中庸'}</span><span class="acc-arrow" aria-hidden="true">▾</span></summary>
+        <div class="acc-body">
+          <p class="legend"><span class="axis-dot user inline"></span>あなた <span class="axis-dot chara inline"></span>${esc(c.name)}</p>
+          <div class="axes">${axisRows(user, c.v)}</div>
+          ${quick ? '<p class="note">ドパガキモードでは、5問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
+        </div>
+      </details>
+
+      <details class="acc">
+        <summary>ほかの近いキャラ<span class="acc-sub">同じタイプ(${r.type})の仲間・タイプ違いで近い人</span><span class="acc-arrow" aria-hidden="true">▾</span></summary>
+        <div class="acc-body">
+          ${mates.length ? `
+          <h3>同じタイプ(${r.type})の仲間</h3>
+          <div class="tiles small">${mates.map(mm => charTile(mm.c, `<span class="tile-sim">${L.similarity(mm.d)}%</span>`)).join('')}</div>` : ''}
+          <h3>タイプは違うけれど近いキャラ</h3>
+          <div class="tiles small">${near.map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・${L.similarity(mm.d)}%</span>`)).join('')}</div>
+        </div>
+      </details>
 
       <div class="cta center">
         ${quick ? '<button type="button" class="btn primary" data-act="start">ちゃんと診断する(36問)</button><button type="button" class="btn" data-act="start-quick">もう一回(質問も変わる)</button>' : '<button type="button" class="btn" data-act="start">もう一度診断する</button><button type="button" class="btn" data-act="start-quick">ドパガキモードで遊ぶ</button>'}
