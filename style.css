@@ -366,3 +366,8 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
   .pair-heart { font-size: 28px; }
   .pair-score { font-size: 11px; padding: 1px 8px; }
 }
+
+/* ---- 設問のふりがな ---- */
+.question { display: block; line-height: 2; padding-top: .2em; }
+.question ruby { ruby-align: center; }
+.question rt { font-size: .48em; font-weight: 600; color: var(--ink-2); letter-spacing: 0; }

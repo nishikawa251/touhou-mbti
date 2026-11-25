@@ -27,6 +27,8 @@
   const esc = s => String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
   const portrait = (c, cls = '') => `<img class="portrait ${cls}" src="img/chars/${c.id}.png" alt="" width="200" height="250" loading="lazy">`;
   const newSeed = () => Math.floor(Math.random() * 0x7fffffff);
+  // {漢字|よみ} → <ruby>漢字<rt>よみ</rt></ruby>(エスケープ済みの文字列に対して行う)
+  const ruby = s => esc(s).replace(/\{([^|{}]+)\|([^}]+)\}/g, '<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>');
 
   function save() {
     try { localStorage.setItem(M().key, JSON.stringify({ a: answers, seed })); } catch (e) { /* 保存できなくても診断は続けられる */ }
@@ -307,7 +309,7 @@
           <span class="progress-num">Q <b>${qIndex + 1}</b> / ${total}</span>
           <span class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}" aria-label="回答済み"><span style="width:${(done / total * 100).toFixed(1)}%"></span></span>
         </div>
-        <h1 class="question" id="q-text">${esc(q.text)}</h1>
+        <h1 class="question" id="q-text" lang="ja">${ruby(q.text)}</h1>
         <div class="choices" role="radiogroup" aria-labelledby="q-text">
           ${L.CHOICES.map((c, i) => `
             <button type="button" class="choice${answers[qIndex] === c.value ? ' selected' : ''}" role="radio" aria-checked="${answers[qIndex] === c.value}" data-value="${c.value}">
@@ -510,9 +512,9 @@
           <p class="catch">${esc(c.catch)}</p>`)}
       <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}${subTags(c.v)}</div>
       <p class="desc">${esc(c.desc)}</p>
+      ${garakutaLink(c)}
       <div class="axes">${axisRows(null, c.v)}</div>
-      <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で読む</a> ／ <a href="#/c/${c.id}">このキャラのページ</a></p>
-      ${garakutaLink(c)}`;
+      <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で読む</a> ／ <a href="#/c/${c.id}">このキャラのページ</a></p>`;
     if (!dialog.open) dialog.showModal();
     dialog.scrollTop = 0;
   }
