@@ -24,8 +24,13 @@ window.TOHO_CHARS = [
   "desc": "喜怒哀楽がはっきりしていて、嘘も駆け引きも苦手な真っ直ぐな巫女。普段は縁側でお茶をすするぐうたら者で、努力や修行は好まない。誰に対しても特別扱いをせず距離は一定だが、なぜか人も妖怪も彼女の周りに集まってくる。いざ仕事となれば勘を頼りに突き進み、邪魔者には容赦しない。",
   "url": "https://dic.pixiv.net/a/%E5%8D%9A%E9%BA%97%E9%9C%8A%E5%A4%A2",
   "g": "https://touhougarakuta.com/article/chara-reimu/",
-  "kana": "",
-  "works": []
+  "kana": "はくれいれいむ",
+  "works": [
+   "東方靈異伝",
+   "東方紅魔郷",
+   "東方妖々夢",
+   "東方永夜抄"
+  ]
  },
  {
   "id": "marisa",
@@ -51,8 +56,13 @@ window.TOHO_CHARS = [
   "desc": "さばさばした物言いで平気で嘘もつくひねくれ者だが、根は真っ直ぐで面倒見がいい。力への憧れが強く自信満々に振る舞う一方、その裏では誰にも見せない地道な努力を重ねている。好奇心のままにあちこちへ顔を出し、迷惑がられながらもなぜか憎まれない。調べ物や搦め手で冷静に状況を打開する頭脳派でもある。",
   "url": "https://dic.pixiv.net/a/%E9%9C%A7%E9%9B%A8%E9%AD%94%E7%90%86%E6%B2%99",
   "g": "https://touhougarakuta.com/article/chara-marisa/",
-  "kana": "",
-  "works": []
+  "kana": "きりさめまりさ",
+  "works": [
+   "東方封魔録",
+   "東方紅魔郷",
+   "東方妖々夢",
+   "東方永夜抄"
+  ]
  },
  {
   "id": "rumia",
@@ -79,7 +89,10 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AB%E3%83%BC%E3%83%9F%E3%82%A2",
   "g": "https://touhougarakuta.com/article/chara-rumia-re/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方紅魔郷",
+   "東方三月精"
+  ]
  },
  {
   "id": "daiyousei",
@@ -105,8 +118,11 @@ window.TOHO_CHARS = [
   "desc": "妖精らしく陽気でいたずら好き。考え方は単純で、感情がすぐ顔に出る。難しいことは考えず、仲間と遊ぶ毎日を素直に楽しんでいる。ただし妖精の中ではやや控えめなほうで、怒っている友達をなだめる側に回ることもある。前に出て騒ぐより、仲良しのそばで一緒に笑っているタイプ。",
   "url": "https://dic.pixiv.net/a/%E5%A4%A7%E5%A6%96%E7%B2%BE",
   "g": "https://touhougarakuta.com/article/chara-great-fairy/",
-  "kana": "",
-  "works": []
+  "kana": "だいようせい",
+  "works": [
+   "東方紅魔郷",
+   "東方三月精"
+  ]
  },
  {
   "id": "cirno",
@@ -133,7 +149,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%81%E3%83%AB%E3%83%8E",
   "g": "https://touhougarakuta.com/article/chara-cirno/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方紅魔郷",
+   "東方花映塚",
+   "妖精大戦争",
+   "東方天空璋"
+  ]
  },
  {
   "id": "meiling",
@@ -159,8 +180,13 @@ window.TOHO_CHARS = [
   "desc": "穏やかで人当たりがよく、こちらから手を出さなければまず争いにならない門番。里の人間とも気軽に世間話をする親しみやすさがある。目上にはきちんと礼を尽くす律儀さを持つが、勤務中でも昼寝をしてしまう呑気さが抜けない。武術の腕は確かで、挑まれた試合には堂々と応じる。",
   "url": "https://dic.pixiv.net/a/%E7%B4%85%E7%BE%8E%E9%88%B4",
   "g": "https://touhougarakuta.com/article/chara-meiling/",
-  "kana": "",
-  "works": []
+  "kana": "ほんめいりん",
+  "works": [
+   "東方紅魔郷",
+   "東方緋想天",
+   "東方非想天則",
+   "東方三月精"
+  ]
  },
  {
   "id": "koakuma",
@@ -185,8 +211,10 @@ window.TOHO_CHARS = [
   "desc": "その時の気分で動く気まぐれな性格で、人をからかうようないたずらが大好き。結果がどうなるかを考える前に行動してしまうため、思いつきがそのまま騒ぎの種になる。悪気は薄く、深く企むというより面白そうだからやってみるという軽さが持ち味。じっと落ち着いているのは苦手なタイプ。",
   "url": "https://dic.pixiv.net/a/%E5%B0%8F%E6%82%AA%E9%AD%94(%E6%9D%B1%E6%96%B9Project)",
   "g": "https://touhougarakuta.com/article/chara-koakuma/",
-  "kana": "",
-  "works": []
+  "kana": "こあくま",
+  "works": [
+   "東方紅魔郷"
+  ]
  },
  {
   "id": "patchouli",
@@ -213,7 +241,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%91%E3%83%81%E3%83%A5%E3%83%AA%E3%83%BC%E3%83%BB%E3%83%8E%E3%83%BC%E3%83%AC%E3%83%83%E3%82%B8",
   "g": "https://touhougarakuta.com/article/chara-patchouli/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方紅魔郷",
+   "東方萃夢想",
+   "東方緋想天",
+   "東方非想天則"
+  ]
  },
  {
   "id": "sakuya",
@@ -239,8 +272,13 @@ window.TOHO_CHARS = [
   "desc": "仕事ぶりは完璧で気品があり、従者として非の打ちどころがない。その一方で考え方がどこかずれていて、脈絡のない発言や的外れな心配で周囲を呆れさせる天然でもある。人付き合いは控えめで、先のことより目の前の課題に集中しがち。常に余裕を崩さないが、戦いになると勝気で強引な顔を見せる。",
   "url": "https://dic.pixiv.net/a/%E5%8D%81%E5%85%AD%E5%A4%9C%E5%92%B2%E5%A4%9C",
   "g": "https://touhougarakuta.com/article/chara-sakuya/",
-  "kana": "",
-  "works": []
+  "kana": "いざよいさくや",
+  "works": [
+   "東方紅魔郷",
+   "東方妖々夢",
+   "東方永夜抄",
+   "東方萃夢想"
+  ]
  },
  {
   "id": "remilia",
@@ -267,7 +305,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AC%E3%83%9F%E3%83%AA%E3%82%A2%E3%83%BB%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%AC%E3%83%83%E3%83%88",
   "g": "https://touhougarakuta.com/article/chara-remilia/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方紅魔郷",
+   "東方萃夢想",
+   "東方緋想天",
+   "東方非想天則"
+  ]
  },
  {
   "id": "flandre",
@@ -294,7 +337,11 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%95%E3%83%A9%E3%83%B3%E3%83%89%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%AC%E3%83%83%E3%83%88",
   "g": "https://touhougarakuta.com/article/chara-frandre/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方紅魔郷",
+   "東方三月精",
+   "東方剛欲異聞"
+  ]
  },
  {
   "id": "letty",
@@ -321,7 +368,11 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AC%E3%83%86%E3%82%A3%E3%83%BB%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%83%AD%E3%83%83%E3%82%AF",
   "g": "https://touhougarakuta.com/article/chara-letty/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方妖々夢",
+   "東方文花帖",
+   "東方三月精"
+  ]
  },
  {
   "id": "chen",
@@ -347,8 +398,11 @@ window.TOHO_CHARS = [
   "desc": "元気がよくて落ち着きがなく、知恵も振る舞いも人間の子供くらいの化け猫。主に可愛がられてはいるが、言いつけを素直に聞くとは限らない気ままさがある。自分の言うことを聞く手下が欲しくて猫を集め、餌とマタタビで釣ろうと奮闘するものの、引っかかれてばかりで思いどおりにいかない。それでも自分の縄張りを得意げに自慢する。",
   "url": "https://dic.pixiv.net/a/%E6%A9%99(%E6%9D%B1%E6%96%B9Project)",
   "g": "https://touhougarakuta.com/article/chara-chen/",
-  "kana": "",
-  "works": []
+  "kana": "ちぇん",
+  "works": [
+   "東方妖々夢",
+   "東方文花帖"
+  ]
  },
  {
   "id": "alice",
@@ -375,7 +429,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%A2%E3%83%AA%E3%82%B9%E3%83%BB%E3%83%9E%E3%83%BC%E3%82%AC%E3%83%88%E3%83%AD%E3%82%A4%E3%83%89",
   "g": "https://touhougarakuta.com/article/chara-alice/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方怪綺談",
+   "東方妖々夢",
+   "東方永夜抄",
+   "東方萃夢想"
+  ]
  },
  {
   "id": "lilywhite",
@@ -401,7 +460,11 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AA%E3%83%AA%E3%83%BC%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88",
   "g": "https://touhougarakuta.com/article/chara-lilywhite/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方妖々夢",
+   "東方花映塚",
+   "東方三月精"
+  ]
  },
  {
   "id": "lunasa",
@@ -428,7 +491,10 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AB%E3%83%8A%E3%82%B5%E3%83%BB%E3%83%97%E3%83%AA%E3%82%BA%E3%83%A0%E3%83%AA%E3%83%90%E3%83%BC",
   "g": "https://touhougarakuta.com/article/chara-prismriver/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方妖々夢",
+   "東方花映塚"
+  ]
  },
  {
   "id": "merlin",
@@ -455,7 +521,10 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%A1%E3%83%AB%E3%83%A9%E3%83%B3%E3%83%BB%E3%83%97%E3%83%AA%E3%82%BA%E3%83%A0%E3%83%AA%E3%83%90%E3%83%BC",
   "g": "https://touhougarakuta.com/article/chara-prismriver/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方妖々夢",
+   "東方花映塚"
+  ]
  },
  {
   "id": "lyrica",
@@ -482,7 +551,10 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AA%E3%83%AA%E3%82%AB%E3%83%BB%E3%83%97%E3%83%AA%E3%82%BA%E3%83%A0%E3%83%AA%E3%83%90%E3%83%BC",
   "g": "https://touhougarakuta.com/article/chara-prismriver/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方妖々夢",
+   "東方花映塚"
+  ]
  },
  {
   "id": "youmu",
@@ -508,8 +580,13 @@ window.TOHO_CHARS = [
   "desc": "何事にも全力で取り組む真面目な従者だが、その頑張りが空回りしがち。あまりに真っ直ぐなので、癖の強い相手にはすぐからかわれてしまう。思い込んだら行く先々で斬りかかるような短絡さがあり、難しい話は聞き流してしまう天然でもある。お化けや怖い話が苦手という臆病さも抱えている。",
   "url": "https://dic.pixiv.net/a/%E9%AD%82%E9%AD%84%E5%A6%96%E5%A4%A2",
   "g": "https://touhougarakuta.com/article/chara-youmu/",
-  "kana": "",
-  "works": []
+  "kana": "こんぱくようむ",
+  "works": [
+   "東方妖々夢",
+   "東方永夜抄",
+   "東方萃夢想",
+   "東方緋想天"
+  ]
  },
  {
   "id": "yuyuko",
@@ -535,8 +612,13 @@ window.TOHO_CHARS = [
   "desc": "物腰は柔らかく、どこまでも自分のペースで話す飄々とした姫。ふわふわした言動のせいで本心が読めず、頭の切れる相手ですらいつの間にか彼女の調子に巻き込まれている。呑気に見えて物事の核心を一瞬で見抜く鋭さを持ち、それをわざわざ説明しない。和やかな雰囲気で懐かれやすい一方、手合わせを好む血の気の多さもある。",
   "url": "https://dic.pixiv.net/a/%E8%A5%BF%E8%A1%8C%E5%AF%BA%E5%B9%BD%E3%80%85%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-yuyuko/",
-  "kana": "",
-  "works": []
+  "kana": "さいぎょうじゆゆこ",
+  "works": [
+   "東方妖々夢",
+   "東方永夜抄",
+   "東方萃夢想",
+   "東方緋想天"
+  ]
  },
  {
   "id": "ran",
@@ -562,8 +644,12 @@ window.TOHO_CHARS = [
   "desc": "穏やかで礼儀正しく、主から任された仕事を黙々とこなす生真面目な式神。主を心から敬い、仕える立場であることを誇りにしている。計算や段取りは得意だが、自分から発想して動くことは少なく、言われたことの裏を読み切れない面もある。身内や取引相手には丁寧だが、それ以外にはやや上から接する気位の高さがある。",
   "url": "https://dic.pixiv.net/a/%E5%85%AB%E9%9B%B2%E8%97%8D",
   "g": "https://touhougarakuta.com/article/chara-ran/",
-  "kana": "",
-  "works": []
+  "kana": "やくもらん",
+  "works": [
+   "東方妖々夢",
+   "東方文花帖",
+   "東方獣王園"
+  ]
  },
  {
   "id": "yukari",
@@ -589,8 +675,13 @@ window.TOHO_CHARS = [
   "desc": "何を考えているのか読ませない、底の知れない古参の妖怪。意外と話好きであれこれ教えてくれるが、どこまで本当かわからず信用されにくい。常に冷静で、あらゆる方面に目を配り裏から手を回す。その根には幻想郷への深い愛着があり、それを踏みにじる相手には本気で怒る。普段は寝てばかりで、面倒事は式に任せきり。",
   "url": "https://dic.pixiv.net/a/%E5%85%AB%E9%9B%B2%E7%B4%AB",
   "g": "https://touhougarakuta.com/article/chara-yukari/",
-  "kana": "",
-  "works": []
+  "kana": "やくもゆかり",
+  "works": [
+   "東方妖々夢",
+   "東方永夜抄",
+   "東方萃夢想",
+   "東方緋想天"
+  ]
  },
  {
   "id": "renko",
@@ -616,8 +707,13 @@ window.TOHO_CHARS = [
   "desc": "思い立ったら即行動の、大雑把で度胸のあるサークルの牽引役。安全で退屈な道と危険で面白そうな道があれば迷わず後者を選び、相棒を巻き込むことも気にしない。得体の知れないものを前にしても、怖がるより先に理屈で分析を始める理系気質。相棒とは遠慮なく言い合える仲で、不思議への興味が尽きない。",
   "url": "https://dic.pixiv.net/a/%E5%AE%87%E4%BD%90%E8%A6%8B%E8%93%AE%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-secret-sealing-club/",
-  "kana": "",
-  "works": []
+  "kana": "うさみれんこ",
+  "works": [
+   "蓮台野夜行",
+   "夢違科学世紀",
+   "卯酉東海道",
+   "大空魔術"
+  ]
  },
  {
   "id": "maribel",
@@ -644,7 +740,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%9E%E3%82%A8%E3%83%AA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%BB%E3%83%8F%E3%83%BC%E3%83%B3",
   "g": "https://touhougarakuta.com/article/chara-secret-sealing-club/",
   "kana": "",
-  "works": []
+  "works": [
+   "蓮台野夜行",
+   "夢違科学世紀",
+   "卯酉東海道",
+   "大空魔術"
+  ]
  },
  {
   "id": "rinnosuke",
@@ -670,8 +771,13 @@ window.TOHO_CHARS = [
   "desc": "騒がしい場が苦手で、一人静かに物を考えているのが好きな温厚な店主。物事を深く掘り下げて独自の理屈を組み立てるのが趣味で、知識を披露したがるところがある。商売っ気は薄く、気に入った品は売らずに手元に置いてしまう。荒事は性に合わず、勝手に品を持ち出す常連にも文句を言いつつ受け入れている。",
   "url": "https://dic.pixiv.net/a/%E6%A3%AE%E8%BF%91%E9%9C%96%E4%B9%8B%E5%8A%A9",
   "g": "https://touhougarakuta.com/article/chara-rinnosuke/",
-  "kana": "",
-  "works": []
+  "kana": "もりちかりんのすけ",
+  "works": [
+   "東方香霖堂",
+   "東方三月精",
+   "東方儚月抄",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "tokiko",
@@ -697,8 +803,10 @@ window.TOHO_CHARS = [
   "desc": "道端でも夢中になって本を読みふける、名前も知られていない妖怪。大事な本を理不尽に奪われると、相手が誰であろうと居場所まで乗り込み、返せと真っ向から詰め寄る気の強さがある。不意を突いて一矢報いるくらいの実力と生意気さも持つが、策を練るより怒りのまま動くため、結局は追い払われてしまう。",
   "url": "https://dic.pixiv.net/a/%E5%90%8D%E7%84%A1%E3%81%97%E3%81%AE%E6%9C%AC%E8%AA%AD%E3%81%BF%E5%A6%96%E6%80%AA",
   "g": "",
-  "kana": "",
-  "works": []
+  "kana": "ななしのほんよみようかい",
+  "works": [
+   "東方香霖堂"
+  ]
  },
  {
   "id": "wriggle",
@@ -725,7 +833,11 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AA%E3%82%B0%E3%83%AB%E3%83%BB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%90%E3%82%B0",
   "g": "https://touhougarakuta.com/article/chara-wriggle/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方永夜抄",
+   "東方文花帖",
+   "東方儚月抄"
+  ]
  },
  {
   "id": "mystia",
@@ -752,7 +864,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%9F%E3%82%B9%E3%83%86%E3%82%A3%E3%82%A2%E3%83%BB%E3%83%AD%E3%83%BC%E3%83%AC%E3%83%A9%E3%82%A4",
   "g": "https://touhougarakuta.com/article/chara-mystia/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方永夜抄",
+   "東方花映塚",
+   "東方文花帖",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "keine",
@@ -778,8 +895,12 @@ window.TOHO_CHARS = [
   "desc": "困っている相手を放っておけない、世話焼きで生真面目な先生。守ると決めたもののためなら身を張ることもいとわない熱さがある。そのぶん思い込みが強く、相手を早合点で決めつけて先走ってしまうのが玉に瑕。人間に寄り添う姿勢は一貫しているが、普段の堅さに反して満月の夜は気が荒くなる。",
   "url": "https://dic.pixiv.net/a/%E4%B8%8A%E7%99%BD%E6%B2%A2%E6%85%A7%E9%9F%B3",
   "g": "https://touhougarakuta.com/article/chara-keine/",
-  "kana": "",
-  "works": []
+  "kana": "かみしらさわけいね",
+  "works": [
+   "東方永夜抄",
+   "東方文花帖",
+   "東方儚月抄"
+  ]
  },
  {
   "id": "tewi",
@@ -805,8 +926,13 @@ window.TOHO_CHARS = [
   "desc": "短気でお調子者、人を騙したりからかったりするのが生きがいの兎。小さな詐欺を繰り返しては仕返しを受けるが、まるで懲りる様子がない。詰めが甘くて痛い目を見ることも多い。一方で途方もなく長く生きてきた経験から、商売の才覚や大物相手にも臆さない貫禄をのぞかせ、兎たちをしっかり束ねている。",
   "url": "https://dic.pixiv.net/a/%E5%9B%A0%E5%B9%A1%E3%81%A6%E3%82%90",
   "g": "https://touhougarakuta.com/article/chara-tei/",
-  "kana": "",
-  "works": []
+  "kana": "いなばてゐ",
+  "works": [
+   "東方永夜抄",
+   "東方花映塚",
+   "東方文花帖",
+   "東方儚月抄"
+  ]
  },
  {
   "id": "reisen",
@@ -832,8 +958,13 @@ window.TOHO_CHARS = [
   "desc": "明るく好奇心があり、うまくいくとすぐ調子に乗ってしまう月の兎。根は誠実で善良、山のような雑用も文句を言いながらこなす働き者。怖くなると逃げ出す臆病さがある反面、思い立つと上の意向を待たずに飛び出す妙な行動力も持つ。戦いになると強気に変わり、内心では鬱憤も溜め込みがち。少しずつ成長を重ねている。",
   "url": "https://dic.pixiv.net/a/%E9%88%B4%E4%BB%99%E3%83%BB%E5%84%AA%E6%9B%87%E8%8F%AF%E9%99%A2%E3%83%BB%E3%82%A4%E3%83%8A%E3%83%90",
   "g": "https://touhougarakuta.com/article/chara-udonge/",
-  "kana": "",
-  "works": []
+  "kana": "れいせん・うどんげいん・いなば",
+  "works": [
+   "東方永夜抄",
+   "東方花映塚",
+   "東方儚月抄",
+   "東方紺珠伝"
+  ]
  },
  {
   "id": "eirin",
@@ -859,8 +990,12 @@ window.TOHO_CHARS = [
   "desc": "常に落ち着き払ったしっかり者で、膨大な知識と経験をもとに先を読んで手を打つ策士。必要と判断すれば非情な決断もためらわないが、身寄りのない者の面倒を見続ける情の深さも併せ持つ。勤勉で研究熱心な反面、世間の常識には疎く、わざと難しい言い方をして相手の反応を楽しむ癖がある。弟子いじりなど突飛な茶目っ気もある。",
   "url": "https://dic.pixiv.net/a/%E5%85%AB%E6%84%8F%E6%B0%B8%E7%90%B3",
   "g": "https://touhougarakuta.com/article/chara-eirin/",
-  "kana": "",
-  "works": []
+  "kana": "やごころえいりん",
+  "works": [
+   "東方永夜抄",
+   "東方儚月抄",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "kaguya",
@@ -886,8 +1021,12 @@ window.TOHO_CHARS = [
   "desc": "わがままに育った箱入りのお姫様で、世間知らずな天然発言が多い。人見知りをせず、面白そうなものにはすぐ食いつく好奇心の持ち主。逃亡中の身とは思えないほど呑気で、過去より今この時を楽しむことを大事にしている。身内や従者には優しく、受けた恩を忘れない。珍しい品を集めて見せびらかすのも好き。",
   "url": "https://dic.pixiv.net/a/%E8%93%AC%E8%8E%B1%E5%B1%B1%E8%BC%9D%E5%A4%9C",
   "g": "https://touhougarakuta.com/article/chara-kaguya/",
-  "kana": "",
-  "works": []
+  "kana": "ほうらいさんかぐや",
+  "works": [
+   "東方永夜抄",
+   "東方儚月抄",
+   "東方文花帖"
+  ]
  },
  {
   "id": "mokou",
@@ -913,8 +1052,13 @@ window.TOHO_CHARS = [
   "desc": "気が強く、どこかやさぐれた雰囲気をまとう不良っぽい少女。自分の境遇を皮肉り、わざと自分を粗末に扱うようなところがある。人付き合いは得意ではないが根は親切で、道に迷った者を黙って送り届け、他人の身の上話には喜んで耳を傾ける。普段は素っ気なくても、心が動いたときは誰よりも熱くなる。",
   "url": "https://dic.pixiv.net/a/%E8%97%A4%E5%8E%9F%E5%A6%B9%E7%B4%85",
   "g": "https://touhougarakuta.com/article/chara-mokou/",
-  "kana": "",
-  "works": []
+  "kana": "ふじわらのもこう",
+  "works": [
+   "東方永夜抄",
+   "東方深秘録",
+   "東方憑依華",
+   "東方儚月抄"
+  ]
  },
  {
   "id": "suika",
@@ -940,8 +1084,13 @@ window.TOHO_CHARS = [
   "desc": "いつも酔っぱらっている、宴会と力比べが大好きな陽気な鬼。思いついたら即やってみる衝動的なところがあり、自分で見物を決め込んだくせに退屈だと文句を言い出す身勝手さもある。人が集まって騒ぐ様子を眺めて面白がるのが好き。種族の誇りは強いが、仲間内では珍しく正直一辺倒ではない食えない性格をしている。",
   "url": "https://dic.pixiv.net/a/%E4%BC%8A%E5%90%B9%E8%90%83%E9%A6%99",
   "g": "https://touhougarakuta.com/article/chara-suika/",
-  "kana": "",
-  "works": []
+  "kana": "いぶきすいか",
+  "works": [
+   "東方萃夢想",
+   "東方緋想天",
+   "東方非想天則",
+   "東方三月精"
+  ]
  },
  {
   "id": "sunny",
@@ -968,7 +1117,10 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%B5%E3%83%8B%E3%83%BC%E3%83%9F%E3%83%AB%E3%82%AF",
   "g": "https://touhougarakuta.com/article/chara-three-fairies/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方三月精",
+   "妖精大戦争"
+  ]
  },
  {
   "id": "luna",
@@ -995,7 +1147,10 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AB%E3%83%8A%E3%83%81%E3%83%A3%E3%82%A4%E3%83%AB%E3%83%89",
   "g": "https://touhougarakuta.com/article/chara-three-fairies/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方三月精",
+   "妖精大戦争"
+  ]
  },
  {
   "id": "star",
@@ -1022,7 +1177,10 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%B5%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2",
   "g": "https://touhougarakuta.com/article/chara-three-fairies/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方三月精",
+   "妖精大戦争"
+  ]
  },
  {
   "id": "aya",
@@ -1048,8 +1206,13 @@ window.TOHO_CHARS = [
   "desc": "ネタを求めて幻想郷中を飛び回る新聞記者。取材相手には愛想よく丁寧に接するが、強い者には礼を尽くし弱い者には強く出る、天狗らしい計算高さを持つ。頭の回転が非常に速く、相手に合わせて本心を見せないため底が知れない。根は生真面目で組織の立場もわきまえており、予想外の反応で調子を崩されると案外もろい。",
   "url": "https://dic.pixiv.net/a/%E5%B0%84%E5%91%BD%E4%B8%B8%E6%96%87",
   "g": "https://touhougarakuta.com/article/chara-aya/",
-  "kana": "",
-  "works": []
+  "kana": "しゃめいまるあや",
+  "works": [
+   "東方花映塚",
+   "東方文花帖",
+   "東方風神録",
+   "東方心綺楼"
+  ]
  },
  {
   "id": "medicine",
@@ -1076,7 +1239,11 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%A1%E3%83%87%E3%82%A3%E3%82%B9%E3%83%B3%E3%83%BB%E3%83%A1%E3%83%A9%E3%83%B3%E3%82%B3%E3%83%AA%E3%83%BC",
   "g": "https://touhougarakuta.com/article/chara-medicine/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方花映塚",
+   "東方文花帖",
+   "東方求聞史紀"
+  ]
  },
  {
   "id": "yuuka",
@@ -1102,8 +1269,13 @@ window.TOHO_CHARS = [
   "desc": "季節の花を追って気ままに移り歩き、ひとりで過ごすのを好む妖怪。普段は笑顔を絶やさず物腰も丁寧で、通りすがりの者に忠告してやる親切さも見せる。ただし自分の領分を荒らす相手には容赦がなく、強い者を見つけると自分から勝負を挑みたがる。目的に縛られず、その日の気分で動く余裕たっぷりの実力者。",
   "url": "https://dic.pixiv.net/a/%E9%A2%A8%E8%A6%8B%E5%B9%BD%E9%A6%99",
   "g": "https://touhougarakuta.com/article/chara-yuuka/",
-  "kana": "",
-  "works": []
+  "kana": "かざみゆうか",
+  "works": [
+   "東方幻想郷",
+   "東方怪綺談",
+   "東方花映塚",
+   "東方文花帖"
+  ]
  },
  {
   "id": "komachi",
@@ -1129,8 +1301,13 @@ window.TOHO_CHARS = [
   "desc": "さっぱりした気性で、誰とでも気軽に言葉を交わす陽気な船頭。おしゃべりが大好きで、気づけば一方的に語り続け、つい説教めいた話になることもある。仕事を抜け出してのんびりするのが常で、上司に見つかっては叱られている。情にもろく、死神らしい非情さに徹しきれない人間くささが魅力。",
   "url": "https://dic.pixiv.net/a/%E5%B0%8F%E9%87%8E%E5%A1%9A%E5%B0%8F%E7%94%BA",
   "g": "https://touhougarakuta.com/article/chara-komachi/",
-  "kana": "",
-  "works": []
+  "kana": "おのづかこまち",
+  "works": [
+   "東方花映塚",
+   "東方緋想天",
+   "東方非想天則",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "eiki",
@@ -1156,8 +1333,12 @@ window.TOHO_CHARS = [
   "desc": "誰の意見にも流されず、迷いなく善悪を裁く筋の通った閻魔。職務にはとことん真剣で、怠ける部下を見つけるたびに叱りつける。空いた時間さえ自分から各地へ出向き、相手の行き過ぎた点を指摘して諭して回るほど熱心だ。決めつけを戒める公平さを持ち、堅物一辺倒ではなく、穏やかな表情や明るい笑顔を見せることもある。",
   "url": "https://dic.pixiv.net/a/%E5%9B%9B%E5%AD%A3%E6%98%A0%E5%A7%AB%E3%83%BB%E3%83%A4%E3%83%9E%E3%82%B6%E3%83%8A%E3%83%89%E3%82%A5",
   "g": "https://touhougarakuta.com/article/chara-eiki/",
-  "kana": "",
-  "works": []
+  "kana": "しきえいき・やまざなどぅ",
+  "works": [
+   "東方花映塚",
+   "東方文花帖",
+   "東方求聞史紀"
+  ]
  },
  {
   "id": "akyuu",
@@ -1183,8 +1364,12 @@ window.TOHO_CHARS = [
   "desc": "幻想郷の記録を残すことを生涯の務めとし、そのための取材や調べものには自分から飛び込んでいく行動派。伝統ある書物にも読みやすさのための新しい工夫を取り入れる柔軟さを持つ。親しい相手とは冗談を言って笑い合う明るい少女で、知識には自負があり、頼られれば惜しまず力を貸す。知らないことは知らないと言える率直さもある。",
   "url": "https://dic.pixiv.net/a/%E7%A8%97%E7%94%B0%E9%98%BF%E6%B1%82",
   "g": "",
-  "kana": "",
-  "works": []
+  "kana": "ひえだのあきゅう",
+  "works": [
+   "東方求聞史紀",
+   "東方求聞口授",
+   "東方鈴奈庵"
+  ]
  },
  {
   "id": "reisen2",
@@ -1211,7 +1396,9 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AC%E3%82%A4%E3%82%BB%E3%83%B3",
   "g": "https://touhougarakuta.com/article/chara-reisen/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方儚月抄"
+  ]
  },
  {
   "id": "yorihime",
@@ -1237,8 +1424,10 @@ window.TOHO_CHARS = [
   "desc": "何事にも真剣に取り組む、規律正しい月の守り手。誇り高いが相手を露骨に見下すことはなく、誰に対しても丁寧な言葉で接する。戦いでは余裕を保ちつつ決して気を抜かない。部下の訓練は厳しいと恐れられているものの、実際には大目に見ることも多い。敬愛する師からの便りには少女のように胸を躍らせる。",
   "url": "https://dic.pixiv.net/a/%E7%B6%BF%E6%9C%88%E4%BE%9D%E5%A7%AB",
   "g": "https://touhougarakuta.com/article/chara-watatsuki/",
-  "kana": "",
-  "works": []
+  "kana": "わたつきのよりひめ",
+  "works": [
+   "東方儚月抄"
+  ]
  },
  {
   "id": "toyohime",
@@ -1264,8 +1453,11 @@ window.TOHO_CHARS = [
   "desc": "食べたいときに食べ、思い立ったらすぐ動く、のびのびとした性格の姫。稽古には顔を出さず、散歩や読書をして過ごし、部下の兎たちをつい甘やかす。それでいて頭の回転は速く、いざというときも慌てず落ち着いて判断を下す。気負いがちな妹をさりげなく支え、地上の者にも寛容な態度を見せる懐の深さがある。",
   "url": "https://dic.pixiv.net/a/%E7%B6%BF%E6%9C%88%E8%B1%8A%E5%A7%AB",
   "g": "https://touhougarakuta.com/article/chara-watatsuki/",
-  "kana": "",
-  "works": []
+  "kana": "わたつきのとよひめ",
+  "works": [
+   "東方儚月抄",
+   "東方錦上京"
+  ]
  },
  {
   "id": "shizuha",
@@ -1291,8 +1483,11 @@ window.TOHO_CHARS = [
   "desc": "口数が少なく、物事の終わりや寂しさにばかり目が向く憂いがちな神。自分の手がける紅葉こそ秋の主役だと信じており、妹に見せつけては密かに満足している。そのくせ人気のある妹を内心うらやむ複雑さも抱える。感傷的な詩を大真面目に披露するなど、独特の美意識の世界に浸りやすい。秋が過ぎると一気に沈み込む。",
   "url": "https://dic.pixiv.net/a/%E7%A7%8B%E9%9D%99%E8%91%89",
   "g": "https://touhougarakuta.com/article/chara-aki/",
-  "kana": "",
-  "works": []
+  "kana": "あきしずは",
+  "works": [
+   "東方風神録",
+   "ダブルスポイラー"
+  ]
  },
  {
   "id": "minoriko",
@@ -1318,8 +1513,11 @@ window.TOHO_CHARS = [
   "desc": "飾り気がなく明るい、親しみやすい神様。神であることを鼻にかけず、気軽にあちこちを出歩いている。姉には張り合う気持ちが強く、実りの豊かさを誇ってみせるが、姉の美的感覚には内心憧れている。人間を気づかって危険を知らせる優しさがある半面、軽く扱われるとすぐ腹を立てる。寒い季節には元気をなくす。",
   "url": "https://dic.pixiv.net/a/%E7%A7%8B%E7%A9%A3%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-aki/",
-  "kana": "",
-  "works": []
+  "kana": "あきみのりこ",
+  "works": [
+   "東方風神録",
+   "ダブルスポイラー"
+  ]
  },
  {
   "id": "hina",
@@ -1345,8 +1543,12 @@ window.TOHO_CHARS = [
   "desc": "人々の不幸を一身に集め、それが再び人のもとへ戻らないよう見守り続ける献身的な存在。そばにいる者を不幸にしてしまうため避けられているが、本人に悪意はまったくなく、むしろ明るく人なつこい。危ない場所へ向かう人間を見かけると、無事に帰そうとして立ちはだかる。報われなくても役目を果たし続ける健気さがある。",
   "url": "https://dic.pixiv.net/a/%E9%8D%B5%E5%B1%B1%E9%9B%9B",
   "g": "https://touhougarakuta.com/article/chara-hina/",
-  "kana": "",
-  "works": []
+  "kana": "かぎやまひな",
+  "works": [
+   "東方風神録",
+   "ダブルスポイラー",
+   "東方求聞口授"
+  ]
  },
  {
   "id": "nitori",
@@ -1372,8 +1574,13 @@ window.TOHO_CHARS = [
   "desc": "機械いじりと新しい技術に目がないエンジニア気質の河童。人間を盟友と呼びつつも面と向かうと人見知りしてしまう。一方で儲け話となると遠慮がなく、怪しげな商売で稼ごうとするなど金勘定にはきわめてシビア。調子がよく口も悪いが、流行りごとを冷めた目で見ながら素直に楽しめない不器用さも抱えている。",
   "url": "https://dic.pixiv.net/a/%E6%B2%B3%E5%9F%8E%E3%81%AB%E3%81%A8%E3%82%8A",
   "g": "https://touhougarakuta.com/article/chara-nitori/",
-  "kana": "",
-  "works": []
+  "kana": "かわしろにとり",
+  "works": [
+   "東方風神録",
+   "東方地霊殿",
+   "東方非想天則",
+   "東方心綺楼"
+  ]
  },
  {
   "id": "momiji",
@@ -1399,8 +1606,12 @@ window.TOHO_CHARS = [
   "desc": "山への侵入者に目を光らせる、任務第一の哨戒役。取材にはぶっきらぼうで堅い受け答えをし、武人のような雰囲気を漂わせる。組織の下っ端として上役の目を気にしており、仕事への不満をこぼすこともある。相手によって言葉遣いを使い分ける律儀さを持ち、いざ勝負となれば勇ましく牙をむく。非番には将棋を楽しむ。",
   "url": "https://dic.pixiv.net/a/%E7%8A%AC%E8%B5%B0%E6%A4%9B",
   "g": "https://touhougarakuta.com/article/chara-momiji/",
-  "kana": "",
-  "works": []
+  "kana": "いぬばしりもみじ",
+  "works": [
+   "東方風神録",
+   "ダブルスポイラー",
+   "東方求聞口授"
+  ]
  },
  {
   "id": "sanae",
@@ -1426,8 +1637,13 @@ window.TOHO_CHARS = [
   "desc": "素直で責任感が強く、任されたことはきちんとやり遂げる真面目な少女。人当たりがよく社交的だが、周囲の影響を受けやすく、思い込むと一直線に突っ走る。外の世界育ちゆえに感覚が周りと少しずれており、とぼけた言動も多い。ロボットや宇宙の話になると目を輝かせ、妖怪退治の楽しさにも目覚めた自信家。",
   "url": "https://dic.pixiv.net/a/%E6%9D%B1%E9%A2%A8%E8%B0%B7%E6%97%A9%E8%8B%97",
   "g": "https://touhougarakuta.com/article/chara-sanae/",
-  "kana": "",
-  "works": []
+  "kana": "こちやさなえ",
+  "works": [
+   "東方風神録",
+   "東方星蓮船",
+   "東方非想天則",
+   "東方神霊廟"
+  ]
  },
  {
   "id": "kanako",
@@ -1453,8 +1669,13 @@ window.TOHO_CHARS = [
   "desc": "堂々とした風格を持ちながら、堅苦しさを嫌って誰とでも気さくに付き合う神様。祭りや宴会が好きで、妖怪たちともすぐ打ち解ける。新しい技術を取り入れた大がかりな計画を次々に進め、狙いの核心は周囲に明かさないことが多いが、その明るさゆえ陰険には見えない。身内の少女のこととなると心配性になる一面もある。",
   "url": "https://dic.pixiv.net/a/%E5%85%AB%E5%9D%82%E7%A5%9E%E5%A5%88%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-kanako/",
-  "kana": "",
-  "works": []
+  "kana": "やさかかなこ",
+  "works": [
+   "東方風神録",
+   "東方非想天則",
+   "東方求聞口授",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "suwako",
@@ -1480,8 +1701,13 @@ window.TOHO_CHARS = [
   "desc": "普段はのんびり穏やかで、気楽に日々を楽しんでいる神様。とぼけた受け答えが多く、本心がどこにあるのか周りにはつかみにくい。幼い見た目に反して、ふとした言葉に古い神らしい重みや物騒さがのぞく。思いついたことを勝手に進めてしまう奔放さがあり、相棒とは小さなことでよく言い合う。子孫には親のように世話を焼く。",
   "url": "https://dic.pixiv.net/a/%E6%B4%A9%E7%9F%A2%E8%AB%8F%E8%A8%AA%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-suwako/",
-  "kana": "",
-  "works": []
+  "kana": "もりやすわこ",
+  "works": [
+   "東方風神録",
+   "東方非想天則",
+   "東方求聞口授",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "iku",
@@ -1507,8 +1733,12 @@ window.TOHO_CHARS = [
   "desc": "どんな場でも前に出ようとせず、一歩引いた立場を保つ控えめな性格。のんびりしていて他人のすることにあまり関心がなく、余計な手間をかけるのを嫌う。言葉遣いは常に丁寧だが、どこか素っ気なく事務的で、地上の者をやや下に見た物言いをすることもある。用件だけを簡潔に告げて去るため、誤解を招きやすい。",
   "url": "https://dic.pixiv.net/a/%E6%B0%B8%E6%B1%9F%E8%A1%A3%E7%8E%96",
   "g": "https://touhougarakuta.com/article/chara-iku/",
-  "kana": "",
-  "works": []
+  "kana": "ながえいく",
+  "works": [
+   "東方緋想天",
+   "東方非想天則",
+   "ダブルスポイラー"
+  ]
  },
  {
   "id": "tenshi",
@@ -1534,8 +1764,13 @@ window.TOHO_CHARS = [
   "desc": "何不自由なく育ったため、思い通りにならないことが大嫌いな自己中心的なお嬢様。自分の力に絶対の自信があり、周囲を見下しては、些細なことで怒り出す子供っぽさがある。退屈を紛らわすためなら大騒動も平気で起こす。その一方で、従うふりをしながら裏で企みを進めるような抜け目のなさも備え、欠点の自覚もある。",
   "url": "https://dic.pixiv.net/a/%E6%AF%94%E9%82%A3%E5%90%8D%E5%B1%85%E5%A4%A9%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-tenshi/",
-  "kana": "",
-  "works": []
+  "kana": "ひななゐてんし",
+  "works": [
+   "東方緋想天",
+   "東方非想天則",
+   "東方憑依華",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "kisume",
@@ -1562,7 +1797,11 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%AD%E3%82%B9%E3%83%A1",
   "g": "https://touhougarakuta.com/article/chara-kisume/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方地霊殿",
+   "ダブルスポイラー",
+   "東方求聞口授"
+  ]
  },
  {
   "id": "yamame",
@@ -1588,8 +1827,12 @@ window.TOHO_CHARS = [
   "desc": "物騒な力を持つため初対面では警戒されがちだが、言葉を交わせばすぐ打ち解けられる朗らかな妖怪。危険な能力をむやみに振るうことはなく、顔なじみの仲間からは広く好かれている。珍しい来客も世話好きなおばさんのような口ぶりで歓迎する。少し喧嘩っ早く、派手な勝負ごとには乗り気になる。弱った相手を狙うちゃっかりした面も持つ。",
   "url": "https://dic.pixiv.net/a/%E9%BB%92%E8%B0%B7%E3%83%A4%E3%83%9E%E3%83%A1",
   "g": "https://touhougarakuta.com/article/chara-yamame/",
-  "kana": "",
-  "works": []
+  "kana": "くろだにやまめ",
+  "works": [
+   "東方地霊殿",
+   "ダブルスポイラー",
+   "東方求聞口授"
+  ]
  },
  {
   "id": "parsee",
@@ -1615,8 +1858,12 @@ window.TOHO_CHARS = [
   "desc": "他人の幸せや長所がどうしても目についてしまい、ねたまずにはいられない難儀な性格。自分を低く見ており、相手に羨む点がなければ不幸自慢を始める。面と向かって悪口を言うなど口は悪いが、通行人を見守る番人として危険を諭す親切さも持つ。憎まれ口をたたきながら友人に手を貸すような、根の優しさが隠れている。",
   "url": "https://dic.pixiv.net/a/%E6%B0%B4%E6%A9%8B%E3%83%91%E3%83%AB%E3%82%B9%E3%82%A3",
   "g": "https://touhougarakuta.com/article/chara-parsee/",
-  "kana": "",
-  "works": []
+  "kana": "みずはしぱるすぃ",
+  "works": [
+   "東方地霊殿",
+   "ダブルスポイラー",
+   "東方求聞口授"
+  ]
  },
  {
   "id": "yuugi",
@@ -1642,8 +1889,13 @@ window.TOHO_CHARS = [
   "desc": "細かいことにこだわらない豪放な気性で、地底での暮らしを心から楽しんでいる鬼。酒をこぼさないという条件を自分に課して戦うほど余裕があり、負けても平然と笑っている。嘘やごまかしを嫌い、真っ向から挑む相手を気に入る。街の顔役として揉めごとの始末や説得役も引き受ける、面倒見のよい親分肌である。",
   "url": "https://dic.pixiv.net/a/%E6%98%9F%E7%86%8A%E5%8B%87%E5%84%80",
   "g": "https://touhougarakuta.com/article/chara-yuugi/",
-  "kana": "",
-  "works": []
+  "kana": "ほしぐまゆうぎ",
+  "works": [
+   "東方地霊殿",
+   "ダブルスポイラー",
+   "東方求聞口授",
+   "東方剛欲異聞"
+  ]
  },
  {
   "id": "satori",
@@ -1669,8 +1921,13 @@ window.TOHO_CHARS = [
   "desc": "人と会うのを避けて館にこもり、静かに暮らす落ち着いた主。物腰は穏やかだが、会話をしようという気があまりなく、相手の考えを先回りして言い当ててしまうため敬遠されやすい。嫌われても動じない強い心と、自分の力への揺るぎない誇りを持つ。ペットや妹には母親のように深い愛情を注ぎ、管理者としての責任感も強い。",
   "url": "https://dic.pixiv.net/a/%E5%8F%A4%E6%98%8E%E5%9C%B0%E3%81%95%E3%81%A8%E3%82%8A",
   "g": "https://touhougarakuta.com/article/chara-satori/",
-  "kana": "",
-  "works": []
+  "kana": "こめいじさとり",
+  "works": [
+   "東方地霊殿",
+   "東方求聞口授",
+   "東方智霊奇伝",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "orin",
@@ -1696,8 +1953,13 @@ window.TOHO_CHARS = [
   "desc": "初対面の相手にも気軽に話しかける、にぎやかで人なつこい性格。友人のことを放っておけず、困りごとを何とかしようと自分から動き回る面倒見のよさがある。主人のことは親のように慕いつつ恐れてもいて、叱られそうなことは内緒で片づけようとする。一度決めると何度でも食い下がる粘り強さと、地道に力をつける勤勉さを持つ。",
   "url": "https://dic.pixiv.net/a/%E7%81%AB%E7%84%94%E7%8C%AB%E7%87%90",
   "g": "https://touhougarakuta.com/article/chara-rin/",
-  "kana": "",
-  "works": []
+  "kana": "かえんびょうりん",
+  "works": [
+   "東方地霊殿",
+   "東方求聞口授",
+   "東方智霊奇伝",
+   "東方獣王園"
+  ]
  },
  {
   "id": "okuu",
@@ -1723,8 +1985,12 @@ window.TOHO_CHARS = [
   "desc": "言われたことをそのまま信じてしまう、まっすぐで疑うことを知らない性格。与えられた仕事には真面目に取り組むが、大きな力を得るとすぐ有頂天になり、後先を考えずに突っ走ってしまう。物覚えが悪く細かいことはすぐ忘れるものの、主人や親友など大切な相手のことだけは決して忘れない。子供のように無邪気で裏表がない。",
   "url": "https://dic.pixiv.net/a/%E9%9C%8A%E7%83%8F%E8%B7%AF%E7%A9%BA",
   "g": "https://touhougarakuta.com/article/chara-utsuho/",
-  "kana": "",
-  "works": []
+  "kana": "れいうじうつほ",
+  "works": [
+   "東方地霊殿",
+   "東方非想天則",
+   "東方剛欲異聞"
+  ]
  },
  {
   "id": "koishi",
@@ -1750,8 +2016,13 @@ window.TOHO_CHARS = [
   "desc": "ひとところにじっとしていられず、興味の向くままふらふらと出歩く自由な少女。心を閉ざしているとは思えないほど明るく気楽で、言葉遣いは意外と丁寧。考えるより先に体が動き、何をするか誰にも予測できない。無邪気な笑顔のまま辛辣なことや物騒なことをさらりと口にする。その奥には、嫌われるのを恐れた繊細さが隠れている。",
   "url": "https://dic.pixiv.net/a/%E5%8F%A4%E6%98%8E%E5%9C%B0%E3%81%93%E3%81%84%E3%81%97",
   "g": "https://touhougarakuta.com/article/chara-koishi/",
-  "kana": "",
-  "works": []
+  "kana": "こめいじこいし",
+  "works": [
+   "東方地霊殿",
+   "東方心綺楼",
+   "東方深秘録",
+   "東方憑依華"
+  ]
  },
  {
   "id": "nazrin",
@@ -1778,7 +2049,11 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%8A%E3%82%BA%E3%83%BC%E3%83%AA%E3%83%B3",
   "g": "https://touhougarakuta.com/article/chara-nazrin/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方星蓮船",
+   "ダブルスポイラー",
+   "東方獣王園"
+  ]
  },
  {
   "id": "kogasa",
@@ -1804,8 +2079,13 @@ window.TOHO_CHARS = [
   "desc": "誰にでも気さくに近寄っていく、明るくにぎやかな妖怪。人を驚かせたい一心であれこれ工夫を重ねるが、思いついたらすぐ実行するので空回りが多い。言われたことをすぐ真に受ける素直さがあり、言動はどこか幼い。失敗しても翌日にはまた挑戦する頑張り屋だが、相手にされなかったときはひどくしょげ返る。",
   "url": "https://dic.pixiv.net/a/%E5%A4%9A%E3%80%85%E8%89%AF%E5%B0%8F%E5%82%98",
   "g": "https://touhougarakuta.com/article/chara-kogasa/",
-  "kana": "",
-  "works": []
+  "kana": "たたらこがさ",
+  "works": [
+   "東方星蓮船",
+   "東方神霊廟",
+   "東方剛欲異聞",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "ichirin",
@@ -1831,8 +2111,12 @@ window.TOHO_CHARS = [
   "desc": "言われなくても自分から役目を引き受ける、しっかり者の修行僧。真面目でありながら機転が利き、頑固な相棒をうまく扱う要領のよさを持つ。恐ろしい相手にも一人で立ち向かう肝の太さがあるが、相手の話を聞かずに突っかかる早合点も多く、他の教えには手厳しい。お酒の誘惑に弱く、意外とノリのよい面もある。",
   "url": "https://dic.pixiv.net/a/%E9%9B%B2%E5%B1%85%E4%B8%80%E8%BC%AA",
   "g": "https://touhougarakuta.com/article/chara-ichirin/",
-  "kana": "",
-  "works": []
+  "kana": "くもいいちりん",
+  "works": [
+   "東方星蓮船",
+   "東方心綺楼",
+   "東方深秘録"
+  ]
  },
  {
   "id": "murasa",
@@ -1858,8 +2142,12 @@ window.TOHO_CHARS = [
   "desc": "かつては荒れていたが、今では穏やかで明るく、人と話すのが上手な船長。乗り込んできた相手にも丁寧に応対し、勝負に負けても悔しさを表に出さない落ち着きがある。自分の非を認めればきちんと謝る礼儀正しさを持ち、船長という役割を意識して振る舞う。恩人を深く慕い、仲間とも信頼し合って暮らしている。",
   "url": "https://dic.pixiv.net/a/%E6%9D%91%E7%B4%97%E6%B0%B4%E8%9C%9C",
   "g": "https://touhougarakuta.com/article/chara-minamitsu/",
-  "kana": "",
-  "works": []
+  "kana": "むらさみなみつ",
+  "works": [
+   "東方星蓮船",
+   "ダブルスポイラー",
+   "東方剛欲異聞"
+  ]
  },
  {
   "id": "shou",
@@ -1885,8 +2173,11 @@ window.TOHO_CHARS = [
   "desc": "穏やかで落ち着いた態度を崩さず、任された務めを非の打ちどころなくこなす優等生。信仰を集める立場にふさわしくあろうと威厳を保っているが、気を許した仲間の前では感情が表に出やすく、ときに声を荒らげることもある。恩人を救えなかった過去を悔い続ける情の深さを持つ。大事な物をなくす抜けた面や、酒が入ると気が大きくなる面もある。",
   "url": "https://dic.pixiv.net/a/%E5%AF%85%E4%B8%B8%E6%98%9F",
   "g": "https://touhougarakuta.com/article/chara-shou/",
-  "kana": "",
-  "works": []
+  "kana": "とらまるしょう",
+  "works": [
+   "東方星蓮船",
+   "ダブルスポイラー"
+  ]
  },
  {
   "id": "byakuren",
@@ -1912,8 +2203,13 @@ window.TOHO_CHARS = [
   "desc": "人も妖怪も分け隔てなく救おうとする理想家で、物腰は柔らかく誰に対しても丁寧に接する。おっとりして滅多に怒らないが、信念に関わる場面では神仏相手でも堂々と持論をぶつける胆力がある。周りが気ままに暮らす中でも自分だけは戒律と日課を崩さない堅物でもあり、その真面目さゆえ酒席の輪には入りにくい。",
   "url": "https://dic.pixiv.net/a/%E8%81%96%E7%99%BD%E8%93%AE",
   "g": "https://touhougarakuta.com/article/chara-byakuren/",
-  "kana": "",
-  "works": []
+  "kana": "ひじりびゃくれん",
+  "works": [
+   "東方星蓮船",
+   "東方心綺楼",
+   "東方深秘録",
+   "東方憑依華"
+  ]
  },
  {
   "id": "nue",
@@ -1939,8 +2235,13 @@ window.TOHO_CHARS = [
   "desc": "人を怖がらせて反応を眺めるのが何よりの楽しみという筋金入りのいたずら者。深い考えもなく「失敗したら面白そう」程度のノリで他人の計画をかき回すが、間違いに気づけばきちんと悔やみ、受けた恩は返そうとする律儀さもある。ただし修行は続かず、ふらふら出歩いては人里で騒ぎを起こす気ままな妖怪らしさは変わらない。",
   "url": "https://dic.pixiv.net/a/%E5%B0%81%E7%8D%A3%E3%81%AC%E3%81%88",
   "g": "https://touhougarakuta.com/article/chara-nue/",
-  "kana": "",
-  "works": []
+  "kana": "ほうじゅうぬえ",
+  "works": [
+   "東方星蓮船",
+   "東方神霊廟",
+   "ダブルスポイラー",
+   "東方鈴奈庵"
+  ]
  },
  {
   "id": "hatate",
@@ -1966,8 +2267,12 @@ window.TOHO_CHARS = [
   "desc": "明るく軽い調子で、思ったことをそのまま口に出す裏表のない性格。良いと感じたものは手放しで褒めて取り入れ、気に食わないものは容赦なくこき下ろす。上司や恐れられる相手にも物怖じせず、新しい物事にも柔軟に興味を示す。一方で能力頼みで家にこもりがちなため顔は広くなく、話題はなにかと食べ物に流れやすい。",
   "url": "https://dic.pixiv.net/a/%E5%A7%AB%E6%B5%B7%E6%A3%A0%E3%81%AF%E3%81%9F%E3%81%A6",
   "g": "https://touhougarakuta.com/article/chara-hatate/",
-  "kana": "",
-  "works": []
+  "kana": "ひめかいどうはたて",
+  "works": [
+   "ダブルスポイラー",
+   "弾幕アマノジャク",
+   "東方文果真報"
+  ]
  },
  {
   "id": "kasen",
@@ -1993,8 +2298,13 @@ window.TOHO_CHARS = [
   "desc": "幻想郷の行く末を本気で案じ、だらけた相手を見ると放っておけず説教を始める世話焼き。冷静な指導者を装うものの、驚くとすぐ素が出て一喜一憂し、周囲にからかわれることも多い。その一方で目的のためには独断で強引な手も打ち、胸の内や素性は容易に明かさない。甘いものと酒には目がなく、食べている時は実に幸せそうである。",
   "url": "https://dic.pixiv.net/a/%E8%8C%A8%E6%9C%A8%E8%8F%AF%E6%89%87",
   "g": "https://touhougarakuta.com/article/chara-kasen/",
-  "kana": "",
-  "works": []
+  "kana": "いばらきかせん",
+  "works": [
+   "東方茨歌仙",
+   "東方深秘録",
+   "東方憑依華",
+   "東方鬼形獣"
+  ]
  },
  {
   "id": "kyouko",
@@ -2020,8 +2330,12 @@ window.TOHO_CHARS = [
   "desc": "誰にでも大きな声で挨拶する、明るくノリのいい働き者。掃除や炊事といった寺の朝の務めを毎日欠かさずこなす真面目さがあり、挨拶を返さない相手は叱りつける。自分の持ち味である大声をけなされると意地を見せて立ち向かうが、根は気が小さくおとなしいので、負けるとすぐ許しを乞うてしまう小動物のような一面もある。",
   "url": "https://dic.pixiv.net/a/%E5%B9%BD%E8%B0%B7%E9%9F%BF%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-kyouko/",
-  "kana": "",
-  "works": []
+  "kana": "かそだにきょうこ",
+  "works": [
+   "東方神霊廟",
+   "弾幕アマノジャク",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "yoshika",
@@ -2047,8 +2361,12 @@ window.TOHO_CHARS = [
   "desc": "与えられた命令を愚直に守り抜こうとする律儀な番人。いつも妙に威勢がよく、侵入者には堅苦しい口調で立ちはだかるが、気を抜くと途端にくだけた調子になる。物覚えが極端に悪く、守る理由や主人の名前さえ抜け落ちることがあり、会話もしばしば噛み合わない。それでいて匂いや肌の手入れを気にするなど、妙に身ぎれいな面もある。",
   "url": "https://dic.pixiv.net/a/%E5%AE%AE%E5%8F%A4%E8%8A%B3%E9%A6%99",
   "g": "https://touhougarakuta.com/article/chara-yoshika/",
-  "kana": "",
-  "works": []
+  "kana": "みやこよしか",
+  "works": [
+   "東方神霊廟",
+   "弾幕アマノジャク",
+   "東方智霊奇伝"
+  ]
  },
  {
   "id": "seiga",
@@ -2074,8 +2392,12 @@ window.TOHO_CHARS = [
   "desc": "いつも朗らかで物腰が柔らかく、話してみると気さくで感じのいい人物。しかしその中身は善悪に頓着せず、自分のやりたいことのためなら誰でも平然と言いくるめる根っからの自由人である。頭の回転が速く、相手の望みを見抜いて巧みに誘導する。力ある者にはすぐ惚れ込むが、興味が失せればあっさり離れていく。悪気がないのが一層たちが悪い。",
   "url": "https://dic.pixiv.net/a/%E9%9C%8D%E9%9D%92%E5%A8%A5",
   "g": "https://touhougarakuta.com/article/chara-seiga/",
-  "kana": "",
-  "works": []
+  "kana": "かくせいが",
+  "works": [
+   "東方神霊廟",
+   "弾幕アマノジャク",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "tojiko",
@@ -2101,8 +2423,11 @@ window.TOHO_CHARS = [
   "desc": "言葉遣いは荒っぽく、機嫌を損ねると文字どおり雷を落とす短気な亡霊。そのため迂闊に近寄るのは危ないとされるが、根は人情に弱く、仲間のことは「やれやれ」とぼやきながらも見捨てない姉御肌である。主君には門人として付き従い、因縁のある同僚に振り回されつつも結局はうまく付き合っている、面倒見のよい苦労人。",
   "url": "https://dic.pixiv.net/a/%E8%98%87%E6%88%91%E5%B1%A0%E8%87%AA%E5%8F%A4",
   "g": "https://touhougarakuta.com/article/chara-tojiko/",
-  "kana": "",
-  "works": []
+  "kana": "そがのとじこ",
+  "works": [
+   "東方神霊廟",
+   "弾幕アマノジャク"
+  ]
  },
  {
   "id": "futo",
@@ -2128,8 +2453,13 @@ window.TOHO_CHARS = [
   "desc": "自信たっぷりに振る舞うが、すぐ早合点しては的外れな結論に飛びつく憎めない人物。相手を疑うことを知らず、侵入者さえ好意的に解釈してしまうほど人が好い。間違いを指摘されればうろたえつつも素直に謝り、負けても相手を讃える潔さがある。反面、変化や未知のものには弱く、怖さのあまり極端な行動に出て騒ぎを起こしがち。",
   "url": "https://dic.pixiv.net/a/%E7%89%A9%E9%83%A8%E5%B8%83%E9%83%BD",
   "g": "https://touhougarakuta.com/article/chara-futo/",
-  "kana": "",
-  "works": []
+  "kana": "もののべのふと",
+  "works": [
+   "東方神霊廟",
+   "東方心綺楼",
+   "東方深秘録",
+   "東方憑依華"
+  ]
  },
  {
   "id": "miko",
@@ -2155,8 +2485,13 @@ window.TOHO_CHARS = [
   "desc": "丁寧で気さくな物腰の奥に、人の上に立つ者としての揺るぎない自負を持つ指導者。自分に端を発した問題は自分で片を付けようとする責任感が強く、周囲を自然と従わせる求心力がある。ただし相手の言い分を待たずに話をどんどん進めてしまう癖があり、調和を説きながら実は逆らうことを許さない、支配者気質の尊大さも隠さない。",
   "url": "https://dic.pixiv.net/a/%E8%B1%8A%E8%81%A1%E8%80%B3%E7%A5%9E%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-miko/",
-  "kana": "",
-  "works": []
+  "kana": "とよさとみみのみこ",
+  "works": [
+   "東方神霊廟",
+   "東方心綺楼",
+   "東方深秘録",
+   "東方憑依華"
+  ]
  },
  {
   "id": "mamizou",
@@ -2182,8 +2517,13 @@ window.TOHO_CHARS = [
   "desc": "困っている妖怪の相談に乗り、新参者には土地の決まりを教えてやる頼れる親分。人間社会にもするりと溶け込める柔軟さを持ち、どこへ行っても顔が利く。もっとも親切の裏では必ず自分の利になるよう立ち回っており、人を化かして驚かせるのも日常茶飯事という食えない古狸でもある。年寄りじみた口ぶりだが、老人扱いされると怒る。",
   "url": "https://dic.pixiv.net/a/%E4%BA%8C%E3%83%83%E5%B2%A9%E3%83%9E%E3%83%9F%E3%82%BE%E3%82%A6",
   "g": "https://touhougarakuta.com/article/chara-mamizou/",
-  "kana": "",
-  "works": []
+  "kana": "ふたついわまみぞう",
+  "works": [
+   "東方神霊廟",
+   "東方心綺楼",
+   "東方深秘録",
+   "東方鈴奈庵"
+  ]
  },
  {
   "id": "kosuzu",
@@ -2209,8 +2549,10 @@ window.TOHO_CHARS = [
   "desc": "禁じられるほど試したくなる、好奇心のかたまりのような少女。危ない本でも気軽に開いては痛い目に遭い、それでもまた手を出すため周囲をはらはらさせている。本に寄せる愛情は本物で、扱いは丁寧、子供たちへの読み聞かせにも熱心。興味のない物にはあっさりしているが、いざ本当に怖い目に遭うと気を失ってしまう脆さもある。",
   "url": "https://dic.pixiv.net/a/%E6%9C%AC%E5%B1%85%E5%B0%8F%E9%88%B4",
   "g": "https://touhougarakuta.com/article/chara-kosuzu/",
-  "kana": "",
-  "works": []
+  "kana": "もとおりこすず",
+  "works": [
+   "東方鈴奈庵"
+  ]
  },
  {
   "id": "kokoro",
@@ -2236,8 +2578,12 @@ window.TOHO_CHARS = [
   "desc": "顔つきは一切変わらないのに、台詞や仕草には喜怒哀楽がはっきり表れる付喪神。被る面しだいで口調も態度もころころ変わり、他人の言葉や噂話にすぐ感化されて突飛な行動に走る子供っぽさがある。本来は物静かで、自分が招いた騒ぎは自分で収めようとする律儀な面も持つ。感情を身につけようと各地を巡り、舞や決闘を心から楽しんでいる。",
   "url": "https://dic.pixiv.net/a/%E7%A7%A6%E3%81%93%E3%81%93%E3%82%8D",
   "g": "https://touhougarakuta.com/article/chara-kokoro/",
-  "kana": "",
-  "works": []
+  "kana": "はたのこころ",
+  "works": [
+   "東方心綺楼",
+   "東方深秘録",
+   "東方憑依華"
+  ]
  },
  {
   "id": "wakasagihime",
@@ -2263,8 +2609,12 @@ window.TOHO_CHARS = [
   "desc": "湖で歌を口ずさんだり石を集めたりして静かに暮らす、おっとりした淡水の人魚。気が弱くて虫一匹傷つけられないと友人に言われるほどで、人間に牙をむく気持ちもない。弱い妖怪同士のささやかな繋がりを大切にし、物騒な噂を聞いてもあまり深刻に受け止めないのんきさがある。暴れたのは魔力に当てられた一度きりで、本来は争いと無縁。",
   "url": "https://dic.pixiv.net/a/%E3%82%8F%E3%81%8B%E3%81%95%E3%81%8E%E5%A7%AB",
   "g": "https://touhougarakuta.com/article/chara-wakasagi-hime/",
-  "kana": "",
-  "works": []
+  "kana": "わかさぎひめ",
+  "works": [
+   "東方輝針城",
+   "弾幕アマノジャク",
+   "東方智霊奇伝"
+  ]
  },
  {
   "id": "sekibanki",
@@ -2290,8 +2640,12 @@ window.TOHO_CHARS = [
   "desc": "人間のふりをして里に紛れ、誰にも頼らず一人でひっそり暮らしているろくろ首。自尊心が強すぎて人間とも妖怪とも心を通わせられず、何事も一歩引いて冷ややかに眺める皮肉っぽいところがある。群れることを良しとせず、他人に気を許さないぶん素性は固く隠し通す。騒ぎを起こしたのは魔力に煽られた時だけで、普段は目立たずおとなしい。",
   "url": "https://dic.pixiv.net/a/%E8%B5%A4%E8%9B%AE%E5%A5%87",
   "g": "https://touhougarakuta.com/article/chara-banki/",
-  "kana": "",
-  "works": []
+  "kana": "せきばんき",
+  "works": [
+   "東方輝針城",
+   "弾幕アマノジャク",
+   "東方智霊奇伝"
+  ]
  },
  {
   "id": "kagerou",
@@ -2317,8 +2671,12 @@ window.TOHO_CHARS = [
   "desc": "狼女でありながら気性は穏やかで、変身しても我を忘れることのない落ち着いた性格。満月の晩に体毛が濃くなることを恥ずかしがり、肌を隠して人目を避けるように暮らすなど、見た目や匂いにはかなり神経を使う。自分から騒ぎを起こすたちではなく、暴れたのは外からの魔力に当てられた時だけ。懲らしめられた後はすっかりおとなしい。",
   "url": "https://dic.pixiv.net/a/%E4%BB%8A%E6%B3%89%E5%BD%B1%E7%8B%BC",
   "g": "https://touhougarakuta.com/article/chara-kagerou/",
-  "kana": "",
-  "works": []
+  "kana": "いまいずみかげろう",
+  "works": [
+   "東方輝針城",
+   "弾幕アマノジャク",
+   "東方智霊奇伝"
+  ]
  },
  {
   "id": "yatsuhashi",
@@ -2344,8 +2702,12 @@ window.TOHO_CHARS = [
   "desc": "明るく元気で、思い立ったら後先考えずに飛び出していく琴の付喪神。負けん気が強く、褒美が出ると聞けば一人でも喜んで手強い相手に挑みかかり、一度しくじっても仲間を連れてまた挑む懲りなさがある。自分は大丈夫と油断した途端に痛い目を見るなど詰めは甘い。姉の災難にも遠慮なく笑い転げる、屈託のない妹分である。",
   "url": "https://dic.pixiv.net/a/%E4%B9%9D%E5%8D%81%E4%B9%9D%E5%85%AB%E6%A9%8B",
   "g": "https://touhougarakuta.com/article/chara-tsukumo/",
-  "kana": "",
-  "works": []
+  "kana": "つくもやつはし",
+  "works": [
+   "東方輝針城",
+   "弾幕アマノジャク",
+   "東方智霊奇伝"
+  ]
  },
  {
   "id": "benben",
@@ -2371,8 +2733,12 @@ window.TOHO_CHARS = [
   "desc": "無邪気な妹分とは対照的に、落ち着き払った大人びた物腰の琵琶の付喪神。面倒見のよい姉貴分らしい話し方をするが、言葉選びはやや手厳しい。手に入れた力には自信を持ち、妹とも獲物を張り合う負けず嫌いだが、目先の勝ち負けより大きな目標を見失わない冷静さがあり、敗れれば潔く相手に道を示す。みっともない姿にされると本気で怒る。",
   "url": "https://dic.pixiv.net/a/%E4%B9%9D%E5%8D%81%E4%B9%9D%E5%BC%81%E3%80%85",
   "g": "https://touhougarakuta.com/article/chara-tsukumo/",
-  "kana": "",
-  "works": []
+  "kana": "つくもべんべん",
+  "works": [
+   "東方輝針城",
+   "弾幕アマノジャク",
+   "東方智霊奇伝"
+  ]
  },
  {
   "id": "seija",
@@ -2398,8 +2764,11 @@ window.TOHO_CHARS = [
   "desc": "人の嫌がることを進んでやり、感謝されると落ち込み、嫌われるほど機嫌がよくなる根っからのひねくれ者。指図には決して従わず、恩を受けても返さない。弁が立ち、何も知らない相手に作り話を吹き込んで利用し、用が済めば置き去りにする非情さがある。もっとも深い信念があるわけではなく、ただ逆らいたいだけの構ってほしがりな小悪党でもある。",
   "url": "https://dic.pixiv.net/a/%E9%AC%BC%E4%BA%BA%E6%AD%A3%E9%82%AA",
   "g": "https://touhougarakuta.com/article/chara-seija/",
-  "kana": "",
-  "works": []
+  "kana": "きじんせいじゃ",
+  "works": [
+   "東方輝針城",
+   "弾幕アマノジャク"
+  ]
  },
  {
   "id": "shinmyoumaru",
@@ -2425,8 +2794,12 @@ window.TOHO_CHARS = [
   "desc": "由緒ある一族の出であることを誇りにし、小さな体に似合わぬ大きな態度を取るお姫様。中身は見た目どおり幼く純真で、弱い立場の者に心から同情して手を差し伸べようとする。自分の行いが誤りだと分かれば素直に改める潔さもある。一方で相手を口汚く挑発したり、気まずい場面を力ずくで片付けようとしたりと、短絡的で子供じみた面も目立つ。",
   "url": "https://dic.pixiv.net/a/%E5%B0%91%E5%90%8D%E9%87%9D%E5%A6%99%E4%B8%B8",
   "g": "https://touhougarakuta.com/article/chara-shinmyoumaru/",
-  "kana": "",
-  "works": []
+  "kana": "すくなしんみょうまる",
+  "works": [
+   "東方輝針城",
+   "弾幕アマノジャク",
+   "東方鈴奈庵"
+  ]
  },
  {
   "id": "raiko",
@@ -2452,8 +2825,11 @@ window.TOHO_CHARS = [
   "desc": "自分を蝕む力の正体をいち早く見抜き、危険を承知で古い拠り所を捨てて独り立ちした決断力のある太鼓の付喪神。その方法を仲間の道具たちにも惜しまず教え、音楽仲間には粘り強く声をかけて一座を結成し、新入りながら自然にまとめ役を務める。話題づくりの仕掛けも打てる切れ者だが、口ぶりは意外なほど軽く、調子よく約束してしまう面もある。",
   "url": "https://dic.pixiv.net/a/%E5%A0%80%E5%B7%9D%E9%9B%B7%E9%BC%93",
   "g": "https://touhougarakuta.com/article/chara-raiko/",
-  "kana": "",
-  "works": []
+  "kana": "ほりかわらいこ",
+  "works": [
+   "東方輝針城",
+   "弾幕アマノジャク"
+  ]
  },
  {
   "id": "sumireko",
@@ -2479,8 +2855,13 @@ window.TOHO_CHARS = [
   "desc": "頭がよく特別な力もあるという自負から、周りの人間を冷めた目で見下してきた女子高生。友達づくりを群れる行為と切り捨て、近づく者をわざと遠ざけて一人を貫いていた。未知の世界への憧れは強烈で、秘密を暴くためなら大それた仕掛けも実行する。幻想郷で痛い目に遭ってからは人付き合いの楽しさに目覚め、持ち前の活力で周囲を振り回している。",
   "url": "https://dic.pixiv.net/a/%E5%AE%87%E4%BD%90%E8%A6%8B%E8%8F%AB%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-sumireko/",
-  "kana": "",
-  "works": []
+  "kana": "うさみすみれこ",
+  "works": [
+   "東方深秘録",
+   "東方憑依華",
+   "東方茨歌仙",
+   "秘封ナイトメアダイアリー"
+  ]
  },
  {
   "id": "seiran",
@@ -2506,8 +2887,11 @@ window.TOHO_CHARS = [
   "desc": "明るくて調子がよく、立場上は敵になった昔の仲間にも友達のような気安さで声をかける月の兎。そのくせ戦うとなれば遠慮なく撃ってくる割り切りのよさもある。負ければ味方の居場所をあっさり喋ってしまうなど仕事への執着は薄いが、兎仲間の中ではまだ真面目に働くほうで、損な役回りばかり引き受けてしまう苦労人でもある。",
   "url": "https://dic.pixiv.net/a/%E6%B8%85%E8%98%AD",
   "g": "https://touhougarakuta.com/article/chara-seiran/",
-  "kana": "",
-  "works": []
+  "kana": "せいらん",
+  "works": [
+   "東方紺珠伝",
+   "東方獣王園"
+  ]
  },
  {
   "id": "ringo",
@@ -2533,8 +2917,11 @@ window.TOHO_CHARS = [
   "desc": "相棒に比べると口調も態度も落ち着いていて、どこか気の抜けたのんびり屋。今の仕事には飽き飽きしており、うまい食べ物と自由のある暮らしに心を惹かれている。ぼんやりして見えても観察眼は鋭く、危ない事実に気づいても自分では動かず、他人をうまく使って確かめさせる抜け目のなさがある。団子へのこだわりは人一倍強い。",
   "url": "https://dic.pixiv.net/a/%E9%88%B4%E7%91%9A",
   "g": "https://touhougarakuta.com/article/chara-ringo/",
-  "kana": "",
-  "works": []
+  "kana": "りんご",
+  "works": [
+   "東方紺珠伝",
+   "秘封ナイトメアダイアリー"
+  ]
  },
  {
   "id": "doremy",
@@ -2561,7 +2948,11 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%89%E3%83%AC%E3%83%9F%E3%83%BC%E3%83%BB%E3%82%B9%E3%82%A4%E3%83%BC%E3%83%88",
   "g": "https://touhougarakuta.com/article/chara-doremy/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方紺珠伝",
+   "東方憑依華",
+   "秘封ナイトメアダイアリー"
+  ]
  },
  {
   "id": "sagume",
@@ -2587,8 +2978,11 @@ window.TOHO_CHARS = [
   "desc": "うかつに喋れば事態が覆ってしまうため、極端に口数を絞っている月の賢者。予想外の非常事態でも落ち着いて相手の狙いを読み取り、打つべき手を選べる聡明さを持つ。守るべき都のためなら地上の者の運命は二の次という割り切った考え方で、上から命を下すような態度を取る。その割に行動は大胆で、少し抜けたところもあるらしい。",
   "url": "https://dic.pixiv.net/a/%E7%A8%80%E7%A5%9E%E3%82%B5%E3%82%B0%E3%83%A1",
   "g": "https://touhougarakuta.com/article/chara-sagume/",
-  "kana": "",
-  "works": []
+  "kana": "きしんさぐめ",
+  "works": [
+   "東方紺珠伝",
+   "秘封ナイトメアダイアリー"
+  ]
  },
  {
   "id": "clownpiece",
@@ -2615,7 +3009,10 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9",
   "g": "https://touhougarakuta.com/article/chara-crownpiece/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方紺珠伝",
+   "東方三月精"
+  ]
  },
  {
   "id": "junko",
@@ -2641,8 +3038,11 @@ window.TOHO_CHARS = [
   "desc": "ただ一つの怨みだけを抱え続け、同じ相手を幾度も狙い続ける執念の人。物言いは飾り気がなく尊大で、自分のしたことを隠さず堂々と認める。高ぶれば激情をそのまま叫ぶほど感情に正直だが、負けは潔く受け入れ、無関係な者を巻き込むことは望まない筋の通し方をする。心を許した友とは対等に付き合い、家族への想いは誰よりも深い。",
   "url": "https://dic.pixiv.net/a/%E7%B4%94%E7%8B%90",
   "g": "https://touhougarakuta.com/article/chara-junko/",
-  "kana": "",
-  "works": []
+  "kana": "じゅんこ",
+  "works": [
+   "東方紺珠伝",
+   "秘封ナイトメアダイアリー"
+  ]
  },
  {
   "id": "hecatia",
@@ -2669,7 +3069,10 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%98%E3%82%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%82%A2%E3%83%BB%E3%83%A9%E3%83%94%E3%82%B9%E3%83%A9%E3%82%BA%E3%83%AA",
   "g": "https://touhougarakuta.com/article/chara-hecatia/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方紺珠伝",
+   "東方三月精"
+  ]
  },
  {
   "id": "larva",
@@ -2696,7 +3099,10 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%A8%E3%82%BF%E3%83%8B%E3%83%86%E3%82%A3%E3%83%A9%E3%83%AB%E3%83%90",
   "g": "https://touhougarakuta.com/article/chara-larva/",
   "kana": "",
-  "works": []
+  "works": [
+   "東方天空璋",
+   "東方三月精"
+  ]
  },
  {
   "id": "nemuno",
@@ -2722,8 +3128,11 @@ window.TOHO_CHARS = [
   "desc": "山奥の自分の領分で、誰とも群れずに昔ながらの暮らしを続ける山姥。よそ者が踏み込むと物騒な文句で追い払おうとするが、それはあくまで脅しで、気に入った相手にはあれこれ世話を焼く人のよさがある。組織や決まりごとに縛られるのを嫌い、外の出来事にはまるで関心がない。素朴な訛りで話し、怖さと優しさを自然に使い分ける。",
   "url": "https://dic.pixiv.net/a/%E5%9D%82%E7%94%B0%E3%83%8D%E3%83%A0%E3%83%8E",
   "g": "https://touhougarakuta.com/article/chara-nemuno/",
-  "kana": "",
-  "works": []
+  "kana": "さかたねむの",
+  "works": [
+   "東方天空璋",
+   "秘封ナイトメアダイアリー"
+  ]
  },
  {
   "id": "aunn",
@@ -2749,8 +3158,12 @@ window.TOHO_CHARS = [
   "desc": "信仰の集まりそうな場所を見つけると、頼まれもしないのに住みついて番をする天真爛漫な狛犬。腕っぷしは大したことがなく負けてばかりだが、懲りずに守り続ける健気さがある。掃除や売り子の手伝いもよくこなし、客の様子をよく見て商いの工夫まで考える気の利く働き者。妖精と遊ぶなど周囲にすっかり溶け込み、勘の鋭さも持ち合わせている。",
   "url": "https://dic.pixiv.net/a/%E9%AB%98%E9%BA%97%E9%87%8E%E3%81%82%E3%81%86%E3%82%93",
   "g": "https://touhougarakuta.com/article/chara-aun/",
-  "kana": "",
-  "works": []
+  "kana": "こまのあうん",
+  "works": [
+   "東方天空璋",
+   "東方茨歌仙",
+   "東方獣王園"
+  ]
  },
  {
   "id": "narumi",
@@ -2776,8 +3189,11 @@ window.TOHO_CHARS = [
   "desc": "森の中で一人静かに過ごすのが性に合っている、おとなしい元お地蔵さんの魔法使い。ただ、その内向きな性分を自分でも気にしていて、指摘されるとしょげてしまう。とはいえ気が小さいわけではなく、知り合いには遠慮なくきつい言葉を浴びせ、失礼な相手には嫌味でやり返す毒舌家。人々を救うという務めを自らに課す、真面目な使命感も持っている。",
   "url": "https://dic.pixiv.net/a/%E7%9F%A2%E7%94%B0%E5%AF%BA%E6%88%90%E7%BE%8E",
   "g": "https://touhougarakuta.com/article/chara-narumi/",
-  "kana": "",
-  "works": []
+  "kana": "やたでらなるみ",
+  "works": [
+   "東方天空璋",
+   "東方香霖堂"
+  ]
  },
  {
   "id": "satono",
@@ -2803,8 +3219,11 @@ window.TOHO_CHARS = [
   "desc": "おっとりした物腰で、何を考えているのか読みにくい飄々とした話し方をする童子。そそっかしい相方が先走るたびにたしなめる役回りで、物事には用心深く当たる。そのわりに自分の力はやや買いかぶり気味で、見込みのない相手や気に入らない相手には手厳しい言葉を返す。主の言いつけには疑問を挟まず従い、元来は軽い調子の持ち主でもある。",
   "url": "https://dic.pixiv.net/a/%E7%88%BE%E5%AD%90%E7%94%B0%E9%87%8C%E4%B9%83",
   "g": "https://touhougarakuta.com/article/chara-nidouji/",
-  "kana": "",
-  "works": []
+  "kana": "にしださとの",
+  "works": [
+   "東方天空璋",
+   "秘封ナイトメアダイアリー"
+  ]
  },
  {
   "id": "mai",
@@ -2830,8 +3249,11 @@ window.TOHO_CHARS = [
   "desc": "思い立ったらすぐ動く行動派で、竹を割ったようにさっぱりした気性の童子。勢いがあるぶん不注意も多く、うっかり後始末を忘れては相方にあきれられている。他人が争う様子を見て吹き出したり、叱られると聞いて露骨に嫌がったりと、反応は子供そのもの。思いがけない展開をむしろ面白がる楽天家で、主の命令には何の迷いもなく従う。",
   "url": "https://dic.pixiv.net/a/%E4%B8%81%E7%A4%BC%E7%94%B0%E8%88%9E",
   "g": "https://touhougarakuta.com/article/chara-nidouji/",
-  "kana": "",
-  "works": []
+  "kana": "ていれいだまい",
+  "works": [
+   "東方天空璋",
+   "秘封ナイトメアダイアリー"
+  ]
  },
  {
   "id": "okina",
@@ -2857,8 +3279,12 @@ window.TOHO_CHARS = [
   "desc": "普段は尊大にふるまう自信家で、神として目立ちたい気持ちも隠さない。けれど素顔は気さくで、子供じみた軽口も飛ばす。部下を道具扱いするような口ぶりの裏で情をかけ、弱い相手には手加減や後始末を欠かさない。守りたいもののためなら、あえて危機を演出する大胆な管理者でもある。",
   "url": "https://dic.pixiv.net/a/%E6%91%A9%E5%A4%9A%E7%BE%85%E9%9A%A0%E5%B2%90%E5%A5%88",
   "g": "https://touhougarakuta.com/article/chara-okina/",
-  "kana": "",
-  "works": []
+  "kana": "またらおきな",
+  "works": [
+   "東方天空璋",
+   "東方茨歌仙",
+   "東方三月精"
+  ]
  },
  {
   "id": "joon",
@@ -2884,8 +3310,12 @@ window.TOHO_CHARS = [
   "desc": "派手に着飾り、他人から巻き上げた富をすぐ使い果たす浪費家の疫病神。目的は俗っぽいのに手口は周到でずる賢く、殴って奪うような荒っぽさもある。心の奥には慎ましく暮らしたい気持ちがあり、寺で修行を志したこともあるが、飽きて投げ出してしまった。思い通りにいかないと地団駄を踏んで怒る。",
   "url": "https://dic.pixiv.net/a/%E4%BE%9D%E7%A5%9E%E5%A5%B3%E8%8B%91",
   "g": "https://touhougarakuta.com/article/chara-yorigami/",
-  "kana": "",
-  "works": []
+  "kana": "よりがみじょおん",
+  "works": [
+   "東方憑依華",
+   "東方剛欲異聞",
+   "東方香霖堂"
+  ]
  },
  {
   "id": "shion",
@@ -2911,8 +3341,12 @@ window.TOHO_CHARS = [
   "desc": "普段はおとなしく自信なさげで、何をしても不幸になるためすっかり無気力になった貧乏神。いつも腹を空かせて食べ物をねだり、粗末にされると怒る。馬鹿にされ続けると激昂して誰にでも啖呵を切り、周りを巻き込む怖さを見せる。羽振りがよくなるとすぐ有頂天になる単純さもある。",
   "url": "https://dic.pixiv.net/a/%E4%BE%9D%E7%A5%9E%E7%B4%AB%E8%8B%91",
   "g": "https://touhougarakuta.com/article/chara-yorigami/",
-  "kana": "",
-  "works": []
+  "kana": "よりがみしおん",
+  "works": [
+   "東方憑依華",
+   "東方剛欲異聞",
+   "東方茨歌仙"
+  ]
  },
  {
   "id": "eika",
@@ -2938,8 +3372,11 @@ window.TOHO_CHARS = [
   "desc": "いつも明るく、賽の河原で石を積む水子の霊たちを引っぱる人気者のリーダー。報われない単調な作業も、競技会などの催しを次々に考えて楽しい遊びに変えてしまう知恵がある。仲間に慕われるアイドルのような存在で、自分の腕前にも自信満々。落ち込むより工夫して楽しむ前向きな頑張り屋。",
   "url": "https://dic.pixiv.net/a/%E6%88%8E%E7%93%94%E8%8A%B1",
   "g": "https://touhougarakuta.com/article/chara-eika/",
-  "kana": "",
-  "works": []
+  "kana": "えびすえいか",
+  "works": [
+   "東方鬼形獣",
+   "バレットフィリア達の闇市場"
+  ]
  },
  {
   "id": "urumi",
@@ -2965,8 +3402,10 @@ window.TOHO_CHARS = [
   "desc": "三途の川で漁をして暮らす働き者の牛鬼。かつては人を沈めて襲う妖怪だったが、今は育てた巨大魚を売って生計を立て、迷い込んだ者を元の世界へ送り返すほど友好的。牙を抜かれたと蔑まれても意に介さず、今の暮らしに誇りを持つ。落ち着いた姉御肌の堅実な生活者。",
   "url": "https://dic.pixiv.net/a/%E7%89%9B%E5%B4%8E%E6%BD%A4%E7%BE%8E",
   "g": "https://touhougarakuta.com/article/chara-urumi/",
-  "kana": "",
-  "works": []
+  "kana": "うしざきうるみ",
+  "works": [
+   "東方鬼形獣"
+  ]
  },
  {
   "id": "kutaka",
@@ -2992,8 +3431,12 @@ window.TOHO_CHARS = [
   "desc": "理知的で礼儀正しく、分け隔てなく人のために動く真面目な番人。危ない場所へ行こうとする者を本気で止め、理不尽な目に遭っても丁寧な物腰をほとんど崩さない。損な役回りを背負いがちな苦労人だが、襲ってきた相手にまで避難を勧めるほど面倒見がよく、ささやかな遊び心も持つ。",
   "url": "https://dic.pixiv.net/a/%E5%BA%AD%E6%B8%A1%E4%B9%85%E4%BE%98%E6%AD%8C",
   "g": "https://touhougarakuta.com/article/chara-kutaka/",
-  "kana": "",
-  "works": []
+  "kana": "にわたりくたか",
+  "works": [
+   "東方鬼形獣",
+   "東方剛欲異聞",
+   "バレットフィリア達の闇市場"
+  ]
  },
  {
   "id": "yachie",
@@ -3019,8 +3462,11 @@ window.TOHO_CHARS = [
   "desc": "誰に対しても丁寧な物腰を崩さないが、内心では相手を下に見ている冷ややかな策略家。本心を悟らせず、人を動かして目的を果たす搦め手を好む。一方で想定外の事態には弱く、詰めの甘さも見せる。部下の稽古に付き合い、喧嘩相手の不調を気にかけるなど、意外に情のある一面も持つ。",
   "url": "https://dic.pixiv.net/a/%E5%90%89%E5%BC%94%E5%85%AB%E5%8D%83%E6%85%A7",
   "g": "https://touhougarakuta.com/article/chara-yachie/",
-  "kana": "",
-  "works": []
+  "kana": "きっちょうやちえ",
+  "works": [
+   "東方鬼形獣",
+   "東方獣王園"
+  ]
  },
  {
   "id": "mayumi",
@@ -3046,8 +3492,10 @@ window.TOHO_CHARS = [
   "desc": "造り主への忠誠がすべての埴輪の兵士長。命令には一切の迷いなく従い、主を守るためなら相手が誰でも立ちはだかる。生真面目で融通がきかず、冗談や駆け引きは通じにくい。恐れも私欲も持たないまっすぐさが強みで、敗れても役目を果たせなかったことを真っ先に悔やむ。",
   "url": "https://dic.pixiv.net/a/%E6%9D%96%E5%88%80%E5%81%B6%E7%A3%A8%E5%BC%93",
   "g": "https://touhougarakuta.com/article/chara-mayumi/",
-  "kana": "",
-  "works": []
+  "kana": "じょうとうぐうまゆみ",
+  "works": [
+   "東方鬼形獣"
+  ]
  },
  {
   "id": "keiki",
@@ -3073,8 +3521,11 @@ window.TOHO_CHARS = [
   "desc": "いつでも作業に入れる格好で過ごす、天才肌の造形の神。美しいものを生み出すことに情熱を注ぎ、腕前には揺るぎない自信がある。助けを求める弱い者を守り、相手が尊重するなら共存してもよいと考える話のわかる一面を持つ。ただ、守った相手から信仰を得て力にするしたたかさもある。",
   "url": "https://dic.pixiv.net/a/%E5%9F%B4%E5%AE%89%E7%A5%9E%E8%A2%BF%E5%A7%AB",
   "g": "https://touhougarakuta.com/article/chara-keiki/",
-  "kana": "",
-  "works": []
+  "kana": "はにやすしんけいき",
+  "works": [
+   "東方鬼形獣",
+   "東方錦上京"
+  ]
  },
  {
   "id": "saki",
@@ -3100,8 +3551,12 @@ window.TOHO_CHARS = [
   "desc": "思い立ったらすぐ動く行動派で、細かい作戦より力で押し切るのを好む武闘派の組長。自分の頭が足りないことを自覚していて部下の意見や手柄を大事にするため、下からよく慕われる。敵味方を問わず強い者には敬意を払い、覚悟を見せた相手は後押しする。誘いを断られるとしょげる繊細さもある。",
   "url": "https://dic.pixiv.net/a/%E9%A9%AA%E9%A7%92%E6%97%A9%E9%AC%BC",
   "g": "https://touhougarakuta.com/article/chara-saki/",
-  "kana": "",
-  "works": []
+  "kana": "くろこまさき",
+  "works": [
+   "東方鬼形獣",
+   "バレットフィリア達の闇市場",
+   "東方獣王園"
+  ]
  },
  {
   "id": "miyoi",
@@ -3127,8 +3582,10 @@ window.TOHO_CHARS = [
   "desc": "礼儀正しく、明るく人懐っこい居酒屋の看板娘。気前よく場を盛り上げ、酌をして回るもてなし上手で、料理の腕も確か。凄まれても笑顔で応対する肝の太さがある一方、退治されることには怯えている。酔った相手に悪夢を見せて眺めるなど、腹の底を見せない妖しさも併せ持つ。",
   "url": "https://dic.pixiv.net/a/%E5%A5%A5%E9%87%8E%E7%94%B0%E7%BE%8E%E5%AE%B5",
   "g": "https://touhougarakuta.com/article/chara-miyoi/",
-  "kana": "",
-  "works": []
+  "kana": "おくのだみよい",
+  "works": [
+   "東方酔蝶華"
+  ]
  },
  {
   "id": "mizuchi",
@@ -3154,8 +3611,10 @@ window.TOHO_CHARS = [
   "desc": "狡猾で用心深く、他人に取り憑いて姿を隠したまま周囲をかき乱す怨霊。陰気で何をするか読めない怖さがある反面、目立ちたい気持ちが強く、じっとしていられない。人を怖がらせることを楽しみ邪魔者には容赦しないが、自分の怨みに理がないことは自覚しており、非情になりきれない。",
   "url": "https://dic.pixiv.net/a/%E5%AE%AE%E5%87%BA%E5%8F%A3%E7%91%9E%E9%9C%8A",
   "g": "https://touhougarakuta.com/article/chara-mizuchi/",
-  "kana": "",
-  "works": []
+  "kana": "みやでぐちみずち",
+  "works": [
+   "東方智霊奇伝"
+  ]
  },
  {
   "id": "mike",
@@ -3181,8 +3640,10 @@ window.TOHO_CHARS = [
   "desc": "毛色を理由に仲間外れにされても「三毛で何が悪い」と開き直り、未練なく古巣を飛び出した芯の強い招き猫。今は山のふもとで気ままに暮らしつつ、商売の種を見つけては売り込みに励む。力ずくで奪おうとする相手には負けても譲らず、きちんと対価を払えと食ってかかる筋の通し方をする。",
   "url": "https://dic.pixiv.net/a/%E8%B1%AA%E5%BE%B3%E5%AF%BA%E3%83%9F%E3%82%B1",
   "g": "https://touhougarakuta.com/article/chara-mike/",
-  "kana": "",
-  "works": []
+  "kana": "ごうとくじみけ",
+  "works": [
+   "東方虹龍洞"
+  ]
  },
  {
   "id": "takane",
@@ -3208,8 +3669,11 @@ window.TOHO_CHARS = [
   "desc": "森暮らしの達人でありながら、経済の研究と商売に熱を上げるビジネス気質の山童。人間には友好的で、顔見知りを親しげに呼ぶ気さくさがある。河童とは悪口を言い合いつつ持ちつ持たれつの好敵手。儲け話のためなら裏の市場を仕切る抜け目なさもあり、邪魔者には強気に出る。",
   "url": "https://dic.pixiv.net/a/%E5%B1%B1%E5%9F%8E%E3%81%9F%E3%81%8B%E3%81%AD",
   "g": "https://touhougarakuta.com/article/chara-takane/",
-  "kana": "",
-  "works": []
+  "kana": "やましろたかね",
+  "works": [
+   "東方虹龍洞",
+   "バレットフィリア達の闇市場"
+  ]
  },
  {
   "id": "sannyo",
@@ -3235,8 +3699,11 @@ window.TOHO_CHARS = [
   "desc": "山の高みで賭場を開き、天狗や河童たちから太夫と呼ばれて親しまれる胴元。煙草の煙をうまく使って揉め事が起きる前に場を収め、賭場を品のよい社交の場に保つ。人間が紛れ込むのを心配して別の場所を用意したり、危ない洞窟の入口で見張りを買って出たりと、周りへの気配りが行き届いている。",
   "url": "https://dic.pixiv.net/a/%E9%A7%92%E8%8D%89%E5%B1%B1%E5%A6%82",
   "g": "https://touhougarakuta.com/article/chara-sannyo/",
-  "kana": "",
-  "works": []
+  "kana": "こまくささんにょ",
+  "works": [
+   "東方虹龍洞",
+   "東方酔蝶華"
+  ]
  },
  {
   "id": "misumaru",
@@ -3262,8 +3729,10 @@ window.TOHO_CHARS = [
   "desc": "勾玉づくりに打ち込む職人肌の神様で、落ち着いた物腰と面倒見のよさが持ち味。相手をフルネームに「くん」を付けて呼ぶ独特の癖がある。危険を見れば理由を説いて引き返させ、進むべき道も助言する。自ら現場へ足を運んで調べる堅実さがあり、後継者の成長を静かに喜ぶ。",
   "url": "https://dic.pixiv.net/a/%E7%8E%89%E9%80%A0%E9%AD%85%E9%A0%88%E4%B8%B8",
   "g": "https://touhougarakuta.com/article/chara-misumaru/",
-  "kana": "",
-  "works": []
+  "kana": "たまつくりみすまる",
+  "works": [
+   "東方虹龍洞"
+  ]
  },
  {
   "id": "tsukasa",
@@ -3289,8 +3758,12 @@ window.TOHO_CHARS = [
   "desc": "主人の右腕を装いながら、人の心の隙に囁きかけて騒ぎを起こす腹黒い管狐。嘘を吹き込んで他人をけしかけ、成り行きを面白がって眺めるのが好き。強く出られる相手には生意気だが、格上や本物の暴力の前では怖気づく小心さもある。大悪党というより、小ずるいいたずら者。",
   "url": "https://dic.pixiv.net/a/%E8%8F%85%E7%89%A7%E5%85%B8",
   "g": "https://touhougarakuta.com/article/chara-tsukasa/",
-  "kana": "",
-  "works": []
+  "kana": "くだまきつかさ",
+  "works": [
+   "東方虹龍洞",
+   "バレットフィリア達の闇市場",
+   "東方獣王園"
+  ]
  },
  {
   "id": "megumu",
@@ -3316,8 +3789,12 @@ window.TOHO_CHARS = [
   "desc": "天狗社会の重役として、利権を事業に変えようと先を読んで動く野心家。邪魔になった相手は自分の手を汚さず片づけようとするずる賢さがある。その一方で部下が傷つかないよう自ら前に出たり、嫌われ者とも親しく付き合ったりして人望は厚い。強いと認めた相手には敬意を払い、祭りごとも大好き。",
   "url": "https://dic.pixiv.net/a/%E9%A3%AF%E7%B6%B1%E4%B8%B8%E9%BE%8D",
   "g": "https://touhougarakuta.com/article/chara-megumu/",
-  "kana": "",
-  "works": []
+  "kana": "いいづなまるめぐむ",
+  "works": [
+   "東方虹龍洞",
+   "バレットフィリア達の闇市場",
+   "東方酔蝶華"
+  ]
  },
  {
   "id": "chimata",
@@ -3343,8 +3820,11 @@ window.TOHO_CHARS = [
   "desc": "市場を儲けの場ではなく神聖な祭事と考える、誇り高い市場の神。客には丁寧に、普段は柔らかく、敵には高圧的にと話しぶりを使い分ける。力を取り戻すにつれて増長し、協力者を見下して利権を抱え込む傲慢さも見せた。市場に横槍を入れられると激しく怒るが、状況を読んで混乱を収める頭の切れもある。",
   "url": "https://dic.pixiv.net/a/%E5%A4%A9%E5%BC%93%E5%8D%83%E4%BA%A6",
   "g": "https://touhougarakuta.com/article/chara-chimata/",
-  "kana": "",
-  "works": []
+  "kana": "てんきゅうちまた",
+  "works": [
+   "東方虹龍洞",
+   "バレットフィリア達の闇市場"
+  ]
  },
  {
   "id": "momoyo",
@@ -3370,8 +3850,10 @@ window.TOHO_CHARS = [
   "desc": "一人称が「俺」の男勝りな大蜈蚣で、細かい理屈より戦うこと自体を楽しむ戦闘狂。周囲から恐れられ誰も近寄らないことを気にもせず、黙々と洞窟を掘り進める。親友や信頼した相手の言葉はあっさり信じ込む単純さがあり、食べ飽きたら次の獲物へ向かう気ままさも目立つ。",
   "url": "https://dic.pixiv.net/a/%E5%A7%AB%E8%99%AB%E7%99%BE%E3%80%85%E4%B8%96",
   "g": "https://touhougarakuta.com/article/chara-momoyo/",
-  "kana": "",
-  "works": []
+  "kana": "ひめむしももよ",
+  "works": [
+   "東方虹龍洞"
+  ]
  },
  {
   "id": "yuuma",
@@ -3397,8 +3879,11 @@ window.TOHO_CHARS = [
   "desc": "底なしに貪欲で、欲しいものは独り占めしようとする同盟長。それでいて無駄な争いは避け、脅し・懐柔・協力・撤退を冷静に使い分けて大局で得を取る。漁夫の利を好む食えない性格で、周囲からは信用されにくい。部下に頼らず何でも自分でやりたがる、個人主義の一匹狼でもある。",
   "url": "https://dic.pixiv.net/a/%E9%A5%95%E9%A4%AE%E5%B0%A4%E9%AD%94",
   "g": "https://touhougarakuta.com/article/chara-toutetsu/",
-  "kana": "",
-  "works": []
+  "kana": "とうてつゆうま",
+  "works": [
+   "東方剛欲異聞",
+   "東方獣王園"
+  ]
  },
  {
   "id": "biten",
@@ -3424,8 +3909,11 @@ window.TOHO_CHARS = [
   "desc": "自分は孫悟空の生まれ変わりだと本気で信じている、元気でお調子者の猿神。吹き込まれた話を疑わない素直さと、腕試しを好む勝気さが同居する。密偵として送り込まれた身ながら、弱った上司を見捨てられず力になろうと残った情の厚さがある。人付き合いもよく、酒造りにも精を出す。",
   "url": "https://dic.pixiv.net/a/%E5%AD%AB%E7%BE%8E%E5%A4%A9",
   "g": "https://touhougarakuta.com/article/chara-biten/",
-  "kana": "",
-  "works": []
+  "kana": "そんびてん",
+  "works": [
+   "東方獣王園",
+   "東方酔蝶華"
+  ]
  },
  {
   "id": "enoko",
@@ -3451,8 +3939,11 @@ window.TOHO_CHARS = [
   "desc": "森の奥でひっそり暮らしてきた老いた山犬で、不死を与えてくれた恩人への忠義を何より重んじる。罠を仕掛けて獲物を待つ辛抱強い狩人気質で、縄張りを荒らす者には牙をむく。新しい主に仕えるふりで密命をこなす従順さの一方、森の住人を昔から見守ってきた年長者の顔も持つ。",
   "url": "https://dic.pixiv.net/a/%E4%B8%89%E9%A0%AD%E6%85%A7%E3%83%8E%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-enoko/",
-  "kana": "",
-  "works": []
+  "kana": "みつがしらえのこ",
+  "works": [
+   "東方獣王園",
+   "東方錦上京"
+  ]
  },
  {
   "id": "chiyari",
@@ -3478,8 +3969,10 @@ window.TOHO_CHARS = [
   "desc": "ゆるく間延びした話し方で、変なあだ名で呼ばれてもあっさり受け入れる、あくせくしない妖怪。居心地のいい血の池に長年こもる出不精だが、顔は広く会話のノリもよい。自分を人気者だと思える前向きさがある一方、胸の内には怨みを溜め込み、命令には素直に従わない面もある。",
   "url": "https://dic.pixiv.net/a/%E5%A4%A9%E7%81%AB%E4%BA%BA%E3%81%A1%E3%82%84%E3%82%8A",
   "g": "https://touhougarakuta.com/article/chara-chiyari/",
-  "kana": "",
-  "works": []
+  "kana": "てんかじんちやり",
+  "works": [
+   "東方獣王園"
+  ]
  },
  {
   "id": "hisami",
@@ -3505,8 +3998,10 @@ window.TOHO_CHARS = [
   "desc": "甘い言葉で人を誘い込み、逃げる相手はどこまでも追いかける地獄の客引き。分け前を約束して必要以上に亡者を呼び込むなど、決まりより自分の都合を優先する。慕う主への思いは一方的で重く、主と親しい相手に嫉妬し、叱ってもらいたくてわざと言いつけに背く困った甘えん坊でもある。",
   "url": "https://dic.pixiv.net/a/%E8%B1%AB%E6%AF%8D%E9%83%BD%E6%97%A5%E7%8B%AD%E7%BE%8E",
   "g": "https://touhougarakuta.com/article/chara-hisami/",
-  "kana": "",
-  "works": []
+  "kana": "よもつひさみ",
+  "works": [
+   "東方獣王園"
+  ]
  },
  {
   "id": "zanmu",
@@ -3532,8 +4027,11 @@ window.TOHO_CHARS = [
   "desc": "力ではなく対話と話術で周囲を従える、頭の切れる鬼。相手の欲を読んでそそのかし、用が済めば平然と切り捨てる非情さを持ちながら、不思議と慕われもする。何でも見通しているような風格の多くは自信満々のはったりで、思惑が外れると感情的になる一面もある。無益な争いは避けようとする。",
   "url": "https://dic.pixiv.net/a/%E6%97%A5%E7%99%BD%E6%AE%8B%E7%84%A1",
   "g": "https://touhougarakuta.com/article/chara-zanmu/",
-  "kana": "",
-  "works": []
+  "kana": "にっぱくざんむ",
+  "works": [
+   "東方獣王園",
+   "東方錦上京"
+  ]
  },
  {
   "id": "ubame",
@@ -3559,8 +4057,10 @@ window.TOHO_CHARS = [
   "desc": "聖域に暮らす山姥たちを束ねる長。物言いは荒っぽく、よそ者には遠慮なく強く出るが、ひどい訛りはなく話は通じる。俗世と距離を置いて自分たちの縄張りで暮らすことを大事にしており、異変で住処を追われて戻れなくなると苛立ちを隠さない。群れを背負う者らしい気の強さと頼もしさがある。",
   "url": "https://dic.pixiv.net/a/%E5%A1%B5%E5%A1%9A%E3%82%A6%E3%83%90%E3%83%A1",
   "g": "https://touhougarakuta.com/article/chara-ubame/",
-  "kana": "",
-  "works": []
+  "kana": "ちりづかうばめ",
+  "works": [
+   "東方錦上京"
+  ]
  },
  {
   "id": "chimi",
@@ -3586,8 +4086,10 @@ window.TOHO_CHARS = [
   "desc": "妖怪という言葉ができる前から人里離れた森や川に棲み続けてきた、古い物の怪。年寄りじみた古風な口ぶりで、近頃の若い者はとぼやくのが癖。得体の知れない地下の建造物を大昔から警戒し、見張り役を据えておく用心深さがある。訪れた者には知っていることを教え、調べるよう促す世話焼きな面も持つ。",
   "url": "https://dic.pixiv.net/a/%E5%B0%81%E7%8D%A3%E3%83%81%E3%83%9F",
   "g": "https://touhougarakuta.com/article/chara-chimi/",
-  "kana": "",
-  "works": []
+  "kana": "ほうじゅうちみ",
+  "works": [
+   "東方錦上京"
+  ]
  },
  {
   "id": "nareko",
@@ -3613,8 +4115,10 @@ window.TOHO_CHARS = [
   "desc": "古い建造物から何か出てこないか、気の遠くなるほど長く見張り続けてきた律儀な道祖神。何も起こらず退屈しきっていたため、誰かが訪ねてくると大喜びでなぞなぞを出して引き止める。出題の出来はお粗末でも本人は楽しそうで、人なつこく憎めない。騒ぎが収まっても持ち場を離れない真面目さがある。",
   "url": "https://dic.pixiv.net/a/%E9%81%93%E7%A5%9E%E9%A6%B4%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-nareko/",
-  "kana": "",
-  "works": []
+  "kana": "みちがみなれこ",
+  "works": [
+   "東方錦上京"
+  ]
  },
  {
   "id": "yuiman",
@@ -3640,8 +4144,10 @@ window.TOHO_CHARS = [
   "desc": "本来は野山で鹿を追って暮らしていた、気さくで人懐っこい王女。長く他者から切り離されていた反動もあって、本物の人間に会えると大喜びし、いきなり狩りに誘うほど距離が近い。目の前の相手を幻と決めつけて取り合わない頑固さも見せたが、友からは思慮深いと評されている。",
   "url": "https://dic.pixiv.net/a/%E3%83%A6%E3%82%A4%E3%83%9E%E3%83%B3%E3%83%BB%E6%B5%85%E9%96%93",
   "g": "https://touhougarakuta.com/article/chara-yuiman/",
-  "kana": "",
-  "works": []
+  "kana": "ゆいまん・あさま",
+  "works": [
+   "東方錦上京"
+  ]
  },
  {
   "id": "ariya",
@@ -3667,8 +4173,10 @@ window.TOHO_CHARS = [
   "desc": "変わらないことを司る神として、最後に一人残る定めも静かに受け入れてきた達観の持ち主。誘いを拒み続ける芯の強さがあり、大切な相手を救うためなら自分が敵役になることも厭わない。丁寧な言葉づかいで淡々と語るが、言葉遊びで切り返すような茶目っ気ものぞかせる。",
   "url": "https://dic.pixiv.net/a/%E7%A3%90%E6%B0%B8%E9%98%BF%E6%A2%A8%E5%A4%9C",
   "g": "https://touhougarakuta.com/article/chara-ariya/",
-  "kana": "",
-  "works": []
+  "kana": "いわながありや",
+  "works": [
+   "東方錦上京"
+  ]
  },
  {
   "id": "nina",
@@ -3694,7 +4202,9 @@ window.TOHO_CHARS = [
   "desc": "流れ着いた情報をまるごと信じ込み、「隠された真実」に目覚めたと声高に語る貝の妖怪。事実かどうかより、疑わずに熱中できることを大切にし、相手を旧人類と呼んで見下す。負けて信じたものを否定されると激しくうろたえるが、最後は自分の目で世界を確かめようと踏み出す素直さも持つ。",
   "url": "https://dic.pixiv.net/a/%E6%B8%A1%E9%87%8C%E3%83%8B%E3%83%8A",
   "g": "https://touhougarakuta.com/article/chara-nina/",
-  "kana": "",
-  "works": []
+  "kana": "わたりにな",
+  "works": [
+   "東方錦上京"
+  ]
  }
 ];
