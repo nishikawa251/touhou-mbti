@@ -28,12 +28,12 @@ node tools/serve.mjs 4173
 2. `node tools/build-data.mjs` で `data.js` を作り直す
 3. `node tools/test.mjs` で全キャラが結果に出うることを確認する
 
-キャラ画像は `tools/grid.ps1` と `tools/crop.ps1` で `img/chart.jpg` から切り出しています。
+キャラ画像は `tools/import-art.mjs` で素材フォルダから `img/chars/<id>.png` に取り込んでいます(対応表は `tools/art-map.json`)。
 
 ## クレジット
 
-- イラスト: 粗茶「東方全キャラ早見表 ver2025」 https://www.pixiv.net/artworks/135821915
+- イラスト: 粗茶「やおよろづ」シリーズ
 - 性格の参考: ピクシブ百科事典の各キャラクター記事 https://dic.pixiv.net/
 - 東方Project © 上海アリス幻樂団
 
-イラストは作者のキャプション(「自分用に、布教に、お使い下さい」)の範囲で使っています。このリポジトリを公開したり、サイトとして公開したりする場合は、事前に作者へ確認してください。
+イラストの著作権は作者に帰属します。無断での転載・再配布はしないでください。

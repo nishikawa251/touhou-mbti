@@ -15,7 +15,7 @@
   // ---------- 小物 ----------
   const esc = s => String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
   const groupOf = mbti => L.TYPES[mbti].group;
-  const portrait = (c, cls = '') => `<img class="portrait ${cls}" src="img/chars/${c.id}.jpg" alt="" width="107" height="116" loading="lazy">`;
+  const portrait = (c, cls = '') => `<img class="portrait ${cls}" src="img/chars/${c.id}.png" alt="" width="200" height="250" loading="lazy">`;
 
   function save() {
     try { localStorage.setItem(STORE_KEY, JSON.stringify(answers)); } catch (e) { /* 保存できなくても診断は続けられる */ }
@@ -164,7 +164,7 @@
       <section class="result g-${t.group}">
         <p class="eyebrow">診断結果</p>
         <div class="result-head">
-          <img class="card-img" src="img/cards/${c.id}.jpg" alt="${esc(c.name)}のイラスト" width="170" height="182">
+          <img class="card-img" src="img/chars/${c.id}.png" alt="${esc(c.name)}のイラスト" width="200" height="250">
           <div class="result-main">
             ${typeBadge(r.type, true)}
             <p class="result-pre">あなたにいちばん近いのは</p>
@@ -258,7 +258,7 @@
     dialog.innerHTML = `
       <button type="button" class="close" data-act="close" aria-label="閉じる">×</button>
       <div class="result-head">
-        <img class="card-img" src="img/cards/${c.id}.jpg" alt="${esc(c.name)}のイラスト" width="170" height="182">
+        <img class="card-img" src="img/chars/${c.id}.png" alt="${esc(c.name)}のイラスト" width="200" height="250">
         <div class="result-main">
           ${typeBadge(c.mbti)}
           <h2>${esc(c.name)}</h2>
