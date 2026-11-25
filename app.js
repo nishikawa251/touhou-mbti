@@ -376,15 +376,33 @@
         ${quick ? '<p class="note">ドパガキモードでは、5問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
       </section>
 
-      <section class="panel">
+      <section class="panel compat">
         <h2>あなたと相性のいいキャラ</h2>
-        <p class="note">直観/感覚だけが同じで、外向/内向・思考/感情・計画/気ままとサブ4軸が反対のキャラほど上に来ます。似ている相手ではなく、足りないところを補い合う相手です。</p>
-        <div class="tiles">${good.map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・相性${L.similarity(mm.d)}%</span>`)).join('')}</div>
+        <div class="pair">
+          <button type="button" class="pair-side" data-char="${c.id}">
+            ${portrait(c)}
+            <span class="pair-name">${esc(c.name)}</span>
+            <span class="pair-role">あなた</span>
+          </button>
+          <div class="pair-link" aria-label="相性 ${L.similarity(good[0].d)}%">
+            <svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path class="thread" d="M0,42 C30,10 50,72 80,44 S120,10 140,40 S175,70 200,38"/></svg>
+            <span class="pair-heart" aria-hidden="true">♥</span>
+            <span class="pair-score">相性 ${L.similarity(good[0].d)}%</span>
+          </div>
+          <button type="button" class="pair-side" data-char="${good[0].c.id}">
+            ${portrait(good[0].c)}
+            <span class="pair-name">${esc(good[0].c.name)}</span>
+            <span class="pair-role">${good[0].c.mbti}・${esc(L.TYPES[good[0].c.mbti].name)}</span>
+          </button>
+        </div>
+        <p class="note">直観/感覚だけが同じで、外向/内向・思考/感情・計画/気ままとサブ4軸が反対のキャラほど相性が高くなります。似ている相手ではなく、足りないところを補い合う相手です。</p>
+        <p class="sub-head">ほかに相性のいいキャラ</p>
+        <div class="tiles small">${good.slice(1).map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・相性${L.similarity(mm.d)}%</span>`)).join('')}</div>
       </section>
 
       ${mates.length ? `
       <section class="panel">
-        <h2>同じ ${r.type} の仲間</h2>
+        <h2>同じタイプ(${r.type})の仲間</h2>
         <p class="note">同じタイプに分類されたキャラを、あなたに近い順に並べています。</p>
         <div class="tiles">${mates.map(mm => charTile(mm.c, `<span class="tile-sim">${L.similarity(mm.d)}%</span>`)).join('')}</div>
       </section>` : ''}
@@ -426,7 +444,7 @@
       </section>
       ${mates.length ? `
       <section class="panel">
-        <h2>同じ ${c.mbti} の仲間</h2>
+        <h2>同じタイプ(${c.mbti})の仲間</h2>
         <div class="tiles">${mates.map(x => charTile(x)).join('')}</div>
       </section>` : ''}
       <div class="cta center">
