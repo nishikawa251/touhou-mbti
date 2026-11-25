@@ -97,6 +97,17 @@
       </div>`;
   }
 
+  // 東方我楽多叢誌「週刊東方キャラクター」へのボタン。記事がないキャラは連載の一覧へ
+  const GARAKUTA_INDEX = 'https://touhougarakuta.com/index_interview/weekly_tohochara/';
+  function garakutaLink(c) {
+    const has = !!c.g;
+    return `
+      <a class="btn garakuta" href="${has ? c.g : GARAKUTA_INDEX}" target="_blank" rel="noopener">
+        <span class="garakuta-eyebrow">${has ? `${esc(c.name)}の二次創作はここから！` : '二次創作を探すならここから！'}</span>
+        <span class="garakuta-title">東方我楽多叢誌「週刊東方キャラクター」${has ? 'のページへ' : 'の一覧へ'}</span>
+      </a>`;
+  }
+
   // ---------- 共有 ----------
   const shareUrl = id => `${SITE}s/${id}.html`;
   function shareText(c, mbti, sim, quick) {
@@ -288,6 +299,7 @@
         <p class="desc">${esc(c.desc)}</p>
         <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
         <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
+        ${garakutaLink(c)}
         ${sharePanel(c, text)}
       </section>
 
@@ -344,6 +356,7 @@
         <p class="type-blurb"><b>${c.mbti}「${t.name}」</b> ${t.blurb}</p>
         <div class="axes">${axisRows(null, c.v)}</div>
         <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
+        ${garakutaLink(c)}
       </section>
       ${mates.length ? `
       <section class="panel">
@@ -414,7 +427,8 @@
       <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}${subTags(c.v)}</div>
       <p class="desc">${esc(c.desc)}</p>
       <div class="axes">${axisRows(null, c.v)}</div>
-      <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で読む</a> ／ <a href="#/c/${c.id}">このキャラのページ</a></p>`;
+      <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で読む</a> ／ <a href="#/c/${c.id}">このキャラのページ</a></p>
+      ${garakutaLink(c)}`;
     if (!dialog.open) dialog.showModal();
     dialog.scrollTop = 0;
   }

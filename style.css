@@ -313,3 +313,14 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
 }
 .share-kind .kind.selected { background: var(--g); color: var(--surface); }
 .share .share-preview { margin-top: 0; }
+
+/* ---- 週刊東方キャラクターへのボタン ---- */
+.btn.garakuta {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; margin-top: 14px; padding: 12px 16px;
+  text-align: left; border: 2px solid var(--g); background: var(--g-soft); color: var(--ink);
+}
+.btn.garakuta:hover { background: var(--g); color: var(--surface); }
+.garakuta-eyebrow { font-size: 13px; color: var(--g); }
+.btn.garakuta:hover .garakuta-eyebrow { color: inherit; }
+.garakuta-title { font-size: 15px; }
+.garakuta-title::after { content: " →"; }

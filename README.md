@@ -28,6 +28,8 @@ node tools/serve.mjs 4173
 2. `node tools/build-data.mjs` で `data.js` を作り直す
 3. `node tools/test.mjs` で全キャラが結果に出うることを確認する
 
+結果と図鑑の詳細には、東方我楽多叢誌「週刊東方キャラクター」のキャラ記事へのボタンを出します(対応表は `tools/garakuta.json`。記事がない名無しの本読み妖怪と稗田阿求は連載の一覧へ)。
+
 キャラ画像は `tools/import-art.mjs` で素材フォルダから `img/chars/<id>.png` に取り込んでいます(対応表は `tools/art-map.json`)。
 
 ## クレジット

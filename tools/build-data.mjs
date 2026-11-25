@@ -11,6 +11,7 @@ const profiles = new Map();
 for (const f of fs.readdirSync(path.join(root, 'research/profiles')).filter(f => /^part\d+\.json$/.test(f)).sort()) {
   for (const p of read('research/profiles/' + f)) profiles.set(p.id, p);
 }
+const garakuta = read('tools/garakuta.json');
 const ovPath = path.join(root, 'tools/overrides.json');
 const overrides = fs.existsSync(ovPath) ? read('tools/overrides.json') : {};
 
@@ -34,6 +35,8 @@ const out = chars.map(c => {
     traits: p.traits || [],
     desc: p.desc || '',
     url: 'https://dic.pixiv.net/a/' + encodeURIComponent(c.article || c.name),
+    // 東方我楽多叢誌「週刊東方キャラクター」のキャラ記事(記事がないキャラは空)
+    g: garakuta[c.id] || '',
   };
 });
 
