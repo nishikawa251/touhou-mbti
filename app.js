@@ -32,8 +32,12 @@
   // キャラ名(読みがあればふりがな付き)
   const nameRuby = c => (c.kana ? `<ruby>${esc(c.name)}<rp>(</rp><rt>${esc(c.kana)}</rt><rp>)</rp></ruby>` : esc(c.name));
   // 主な登場作品
+  const WORK_URLS = window.TOHO_WORK_URLS || {};
+  const workChip = w => (WORK_URLS[w]
+    ? `<a class="work link" href="${esc(WORK_URLS[w])}" target="_blank" rel="noopener" title="${/steampowered/.test(WORK_URLS[w]) ? 'Steam のページへ' : 'アキバホビーの販売ページへ'}">${esc(w)}</a>`
+    : `<span class="work">${esc(w)}</span>`);
   const worksLine = c => (c.works && c.works.length
-    ? `<p class="works"><span class="works-label">主な登場作品</span>${c.works.map(w => `<span class="work">${esc(w)}</span>`).join('')}</p>`
+    ? `<p class="works"><span class="works-label">主な登場作品</span>${c.works.map(workChip).join('')}</p>`
     : '');
 
   function save() {

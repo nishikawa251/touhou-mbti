@@ -54,7 +54,9 @@ for (const c of out) {
 
 fs.writeFileSync(path.join(root, 'data.js'),
   '// tools/build-data.mjs が生成。手で編集せず、research/profiles か tools/overrides.json を直して再生成する。\n' +
-  'window.TOHO_CHARS = ' + JSON.stringify(out, null, 1) + ';\n', 'utf8');
+  'window.TOHO_CHARS = ' + JSON.stringify(out, null, 1) + ';\n' +
+  // 登場作品 → 販売ページ(Steam / アキバホビー)。tools/works.json
+  'window.TOHO_WORK_URLS = ' + JSON.stringify(Object.fromEntries(Object.entries(read('tools/works.json')).filter(([k]) => !k.startsWith('_')))) + ';\n', 'utf8');
 
 const byType = {};
 for (const c of out) (byType[c.mbti] ||= []).push(c.name);
