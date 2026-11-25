@@ -131,7 +131,7 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
 .progress-num b { color: var(--accent); font-size: 20px; }
 .progress-bar { flex: 1; height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
 .progress-bar span { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width .25s ease; }
-.question { display: block; font-size: clamp(20px, 4.6vw, 26px); font-weight: 700; line-height: 2; margin: 28px 0 24px; padding-top: .2em; min-height: 4.1em; }
+.question { display: block; font-size: clamp(20px, 4.6vw, 26px); font-weight: 700; line-height: 2; margin: 28px 0 24px; padding-top: .2em; min-height: 4.1em; text-wrap: wrap; line-break: strict; }
 .choices { display: grid; gap: 10px; }
 .choice {
   display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
@@ -301,7 +301,7 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
 .share-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .share-preview { display: block; width: 100%; max-width: 480px; height: auto; margin-top: 14px; border-radius: 12px; border: 1px solid var(--line); }
 .share { margin-top: 18px; padding-top: 16px; border-top: 1px dashed var(--line); }
-.share > summary { list-style: none; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
+.share > summary { list-style: none; display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; padding: 16px 20px; font-size: 18px; border-radius: 16px; cursor: pointer; }
 .share > summary::-webkit-details-marker { display: none; }
 .share .dd-arrow { display: inline-block; transition: transform .15s ease; }
 .share[open] .dd-arrow { transform: rotate(180deg); }
@@ -316,7 +316,7 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
 
 /* ---- 週刊東方キャラクターへのボタン ---- */
 .btn.garakuta {
-  display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; margin-top: 14px; padding: 12px 16px;
+  display: flex; flex-direction: column; align-items: flex-start; gap: 2px; width: 100%; margin-top: 16px; padding: 12px 16px;
   text-align: left; border: 2px solid var(--g); background: var(--g-soft); color: var(--ink);
 }
 .btn.garakuta:hover { background: var(--g); color: var(--surface); }
@@ -370,3 +370,10 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
 /* ---- 設問のふりがな ---- */
 .question ruby { ruby-align: center; }
 .question rt { font-size: .48em; font-weight: 600; color: var(--ink-2); letter-spacing: 0; }
+
+/* ---- キャラ名のふりがなと主な登場作品 ---- */
+.result-main h1 rt, .result-main h2 rt { font-size: .38em; font-weight: 700; color: var(--ink-2); letter-spacing: .04em; }
+.result-main h1, .result-main h2 { line-height: 1.5; }
+.works { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: -4px 0 12px; font-size: 13px; }
+.works-label { font-family: var(--font-display); font-weight: 700; color: var(--ink-2); margin-right: 2px; }
+.work { padding: 2px 10px; border-radius: 999px; background: var(--surface-2); color: var(--ink); font-weight: 600; }

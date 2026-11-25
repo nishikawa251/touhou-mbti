@@ -29,6 +29,12 @@
   const newSeed = () => Math.floor(Math.random() * 0x7fffffff);
   // {漢字|よみ} → <ruby>漢字<rt>よみ</rt></ruby>(エスケープ済みの文字列に対して行う)
   const ruby = s => esc(s).replace(/\{([^|{}]+)\|([^}]+)\}/g, '<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>');
+  // キャラ名(読みがあればふりがな付き)
+  const nameRuby = c => (c.kana ? `<ruby>${esc(c.name)}<rp>(</rp><rt>${esc(c.kana)}</rt><rp>)</rp></ruby>` : esc(c.name));
+  // 主な登場作品
+  const worksLine = c => (c.works && c.works.length
+    ? `<p class="works"><span class="works-label">主な登場作品</span>${c.works.map(w => `<span class="work">${esc(w)}</span>`).join('')}</p>`
+    : '');
 
   function save() {
     try { localStorage.setItem(M().key, JSON.stringify({ a: answers, seed })); } catch (e) { /* 保存できなくても診断は続けられる */ }
@@ -105,8 +111,8 @@
     const has = !!c.g;
     return `
       <a class="btn garakuta" href="${has ? c.g : GARAKUTA_INDEX}" target="_blank" rel="noopener">
-        <span class="garakuta-eyebrow">${has ? `${esc(c.name)}の二次創作はここから！` : '二次創作を探すならここから！'}</span>
-        <span class="garakuta-title">東方我楽多叢誌「週刊東方キャラクター」${has ? 'のページへ' : 'の一覧へ'}</span>
+        <span class="garakuta-eyebrow">このキャラの作品を知るならこちらから！</span>
+        <span class="garakuta-title">東方我楽多叢誌「週刊東方キャラクター」${has ? `の${esc(c.name)}のページへ` : 'の一覧へ'}</span>
       </a>`;
   }
 
@@ -125,7 +131,7 @@
     const canFiles = !!(navigator.canShare && navigator.share);
     return `
       <details class="share">
-        <summary class="btn primary">結果をシェア <span class="dd-arrow" aria-hidden="true">▾</span></summary>
+        <summary class="btn primary share-toggle">結果をシェア <span class="dd-arrow" aria-hidden="true">▾</span></summary>
         <div class="share-body">
           <div class="share-kind" role="radiogroup" aria-label="画像の種類">
             <button type="button" class="kind selected" data-kind="" aria-pressed="true">シンプル</button>
@@ -359,15 +365,16 @@
         <p class="eyebrow">診断結果${quick ? '(雑)' : ''}</p>
         ${charHead(c, r.type, `
             <p class="result-pre">あなたにいちばん近いのは</p>
-            <h1>${esc(c.name)}</h1>
+            <h1>${nameRuby(c)}</h1>
             <p class="catch">${esc(c.catch)}</p>
             <p class="sim"><span class="sim-num">${sim}</span><span class="sim-unit">%</span><span class="sim-label">一致度${quick ? '(たぶん)' : ''}</span></p>`, true)}
         <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}</div>
+        ${worksLine(c)}
         <p class="desc">${esc(c.desc)}</p>
         <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
         <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
-        ${garakutaLink(c)}
         ${sharePanel(c, text)}
+        ${garakutaLink(c)}
       </section>
 
       <section class="panel">
@@ -435,9 +442,10 @@
         <p class="eyebrow">シェアされた診断結果</p>
         ${charHead(c, c.mbti, `
             <p class="result-pre">診断した人にいちばん近いのは</p>
-            <h1>${esc(c.name)}</h1>
+            <h1>${nameRuby(c)}</h1>
             <p class="catch">${esc(c.catch)}</p>`, true)}
         <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}${subTags(c.v)}</div>
+        ${worksLine(c)}
         <p class="desc">${esc(c.desc)}</p>
         <p class="type-blurb"><b>${c.mbti}「${t.name}」</b> ${t.blurb}</p>
         <div class="axes">${axisRows(null, c.v)}</div>
@@ -508,13 +516,14 @@
     dialog.innerHTML = `
       <button type="button" class="close" data-act="close" aria-label="閉じる">×</button>
       ${charHead(c, c.mbti, `
-          <h2>${esc(c.name)}</h2>
+          <h2>${nameRuby(c)}</h2>
           <p class="catch">${esc(c.catch)}</p>`)}
       <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}${subTags(c.v)}</div>
+      ${worksLine(c)}
       <p class="desc">${esc(c.desc)}</p>
-      ${garakutaLink(c)}
       <div class="axes">${axisRows(null, c.v)}</div>
-      <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で読む</a> ／ <a href="#/c/${c.id}">このキャラのページ</a></p>`;
+      <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で読む</a> ／ <a href="#/c/${c.id}">このキャラのページ</a></p>
+      ${garakutaLink(c)}`;
     if (!dialog.open) dialog.showModal();
     dialog.scrollTop = 0;
   }
