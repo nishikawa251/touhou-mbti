@@ -7,23 +7,34 @@
   const app = document.getElementById('app');
   const dialog = document.getElementById('detail');
   const toastEl = document.getElementById('toast');
-  const STORE_KEY = 'toho-seikaku-answers-v1';
+  // 共有用の絶対 URL(ローカルで開いたときも公開サイトの URL を共有する)
+  const SITE = 'https://nishikawa251.github.io/touhou-mbti/';
 
+  // 診断モード。full = 36問、quick = ドパガキモード(5問)
+  const MODES = {
+    full: { key: 'toho-seikaku-answers-v1', questions: L.QUESTIONS, quiz: '#/quiz', result: '#/result', label: '36問' },
+    quick: { key: 'toho-seikaku-quick-v1', questions: L.QUICK.map(i => L.QUESTIONS[i]), quiz: '#/quiz-quick', result: '#/result-quick', label: 'ドパガキモード(5問)' },
+  };
+  let mode = 'full';
   let answers = new Array(L.QUESTIONS.length).fill(null);
+  let seed = 0;
   let qIndex = 0;
+  const M = () => MODES[mode];
 
   // ---------- 小物 ----------
   const esc = s => String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
-  const groupOf = mbti => L.TYPES[mbti].group;
   const portrait = (c, cls = '') => `<img class="portrait ${cls}" src="img/chars/${c.id}.png" alt="" width="200" height="250" loading="lazy">`;
+  const newSeed = () => Math.floor(Math.random() * 0x7fffffff);
 
   function save() {
-    try { localStorage.setItem(STORE_KEY, JSON.stringify(answers)); } catch (e) { /* 保存できなくても診断は続けられる */ }
+    try { localStorage.setItem(M().key, JSON.stringify({ a: answers, seed })); } catch (e) { /* 保存できなくても診断は続けられる */ }
   }
-  function load() {
+  // 保存した回答。古い形式(配列だけ)も読める
+  function load(m = mode) {
     try {
-      const a = JSON.parse(localStorage.getItem(STORE_KEY) || 'null');
-      if (Array.isArray(a) && a.length === L.QUESTIONS.length) return a;
+      const raw = JSON.parse(localStorage.getItem(MODES[m].key) || 'null');
+      const a = Array.isArray(raw) ? raw : raw && raw.a;
+      if (Array.isArray(a) && a.length === MODES[m].questions.length) return { a, seed: (raw && raw.seed) || 0 };
     } catch (e) { /* 無視 */ }
     return null;
   }
@@ -72,11 +83,72 @@
     </button>`;
   }
 
+  // キャラのカード(結果・共有ページ・詳細で共通)
+  function charHead(c, mbti, extra = '', big = false) {
+    return `
+      <div class="result-head">
+        <img class="card-img" src="img/chars/${c.id}.png" alt="${esc(c.name)}のイラスト" width="200" height="250">
+        <div class="result-main">
+          ${typeBadge(mbti, big)}
+          ${extra}
+        </div>
+      </div>`;
+  }
+
+  // ---------- 共有 ----------
+  const shareUrl = id => `${SITE}s/${id}.html`;
+  function shareText(c, mbti, sim, quick) {
+    const t = L.TYPES[mbti];
+    return `東方キャラ性格診断の結果は「${c.name}」(${mbti}・${t.name})でした。一致度 ${sim}%${quick ? '(ドパガキモード・5問で無理やり判定)' : ''} ― ${c.catch}`;
+  }
+  function sharePanel(c, text) {
+    const url = shareUrl(c.id);
+    const x = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent('東方キャラ性格診断')}`;
+    const canFiles = !!(navigator.canShare && navigator.share);
+    return `
+      <section class="panel share">
+        <h2>結果をシェア</h2>
+        <p class="note">リンクを貼ると、下の画像つきのカードが表示されます(X・Discord・LINE など OGP に対応したところ)。</p>
+        <div class="share-row">
+          <a class="btn primary" href="${x}" target="_blank" rel="noopener">Xに投稿</a>
+          ${canFiles ? '<button type="button" class="btn" data-act="share-image">画像を共有</button>' : ''}
+          <a class="btn" href="img/og/${c.id}.jpg" download="toho-${c.id}.jpg">画像を保存</a>
+          <button type="button" class="btn" data-act="copy-link">リンクをコピー</button>
+          <button type="button" class="btn ghost" data-act="copy">文章をコピー</button>
+        </div>
+        <img class="share-preview" src="img/og/${c.id}.jpg" alt="共有用の画像" width="1200" height="630" loading="lazy">
+      </section>`;
+  }
+  async function shareImage() {
+    const id = app.dataset.shareId;
+    const text = app.dataset.copy || '';
+    try {
+      const blob = await (await fetch(`img/og/${id}.jpg`)).blob();
+      const file = new File([blob], `toho-${id}.jpg`, { type: 'image/jpeg' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], text, url: shareUrl(id) });
+        return;
+      }
+      await navigator.share({ text, url: shareUrl(id) });
+    } catch (e) {
+      if (e && e.name === 'AbortError') return;
+      toast('この環境では共有できないので、画像を保存してください');
+    }
+  }
+  function copy(text, okMsg) {
+    const ok = () => toast(okMsg);
+    const ng = () => toast('コピーできませんでした');
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, ng);
+    else ng();
+  }
+
   // ---------- トップ ----------
   function viewHome() {
-    const saved = load();
-    const hasResult = saved && isComplete(saved);
-    const inProgress = saved && !hasResult && saved.some(v => typeof v === 'number');
+    const saved = load('full');
+    const hasResult = saved && isComplete(saved.a);
+    const inProgress = saved && !hasResult && saved.a.some(v => typeof v === 'number');
+    const quickSaved = load('quick');
+    const hasQuick = quickSaved && isComplete(quickSaved.a);
     const picks = CHARS.slice().sort(() => Math.random() - 0.5).slice(0, 18);
     app.innerHTML = `
       <section class="hero">
@@ -90,6 +162,16 @@
           <a class="btn ghost" href="#/zukan">キャラ図鑑を見る</a>
         </div>
         <p class="hint">所要時間は5分ほど。深く考えず、直感で答えるのがおすすめです。</p>
+        <div class="dopa">
+          <div class="dopa-text">
+            <b>ドパガキモード</b>
+            <span>36問は多い? なら5問で無理やり決める。足りない分はサイコロ。<strong>絶対間違うぞ！</strong></span>
+          </div>
+          <div class="cta">
+            <button type="button" class="btn dopa-btn" data-act="start-quick">5問で決める</button>
+            ${hasQuick ? '<a class="btn ghost" href="#/result-quick">前回のドパガキ結果</a>' : ''}
+          </div>
+        </div>
       </section>
       <div class="wall" aria-hidden="true">${picks.map(c => portrait(c)).join('')}</div>
       <section class="how">
@@ -103,23 +185,28 @@
   }
 
   // ---------- 設問 ----------
-  function startQuiz(fresh) {
-    if (fresh) { answers = new Array(L.QUESTIONS.length).fill(null); qIndex = 0; save(); }
+  function startQuiz(fresh, m = 'full') {
+    mode = m;
+    if (fresh) { answers = new Array(M().questions.length).fill(null); seed = newSeed(); qIndex = 0; save(); }
     else {
       const saved = load();
-      if (saved) answers = saved;
+      if (saved) { answers = saved.a; seed = saved.seed; }
       const next = answers.findIndex(v => typeof v !== 'number');
       qIndex = next === -1 ? 0 : next;
     }
-    if (location.hash !== '#/quiz') location.hash = '#/quiz'; else viewQuiz();
+    if (location.hash !== M().quiz) location.hash = M().quiz; else viewQuiz();
   }
 
   function viewQuiz() {
-    const total = L.QUESTIONS.length;
-    const q = L.QUESTIONS[qIndex];
+    const qs = M().questions;
+    const total = qs.length;
+    if (answers.length !== total) { answers = new Array(total).fill(null); qIndex = 0; }
+    const q = qs[qIndex];
     const done = answers.filter(v => typeof v === 'number').length;
+    const quick = mode === 'quick';
     app.innerHTML = `
       <section class="quiz">
+        ${quick ? '<p class="dopa-banner"><b>ドパガキモード</b>5問で無理やり決めます。絶対間違うぞ！</p>' : ''}
         <div class="progress">
           <span class="progress-num">Q <b>${qIndex + 1}</b> / ${total}</span>
           <span class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}" aria-label="回答済み"><span style="width:${(done / total * 100).toFixed(1)}%"></span></span>
@@ -134,7 +221,7 @@
         <div class="quiz-nav">
           <button type="button" class="btn ghost" data-act="prev" ${qIndex === 0 ? 'disabled' : ''}>← 前の質問</button>
           ${typeof answers[qIndex] === 'number' && qIndex < total - 1 ? '<button type="button" class="btn ghost" data-act="next">次へ →</button>' : ''}
-          ${isComplete(answers) ? '<a class="btn primary" href="#/result">結果を見る</a>' : ''}
+          ${isComplete(answers) ? `<a class="btn primary" href="${M().result}">結果を見る</a>` : ''}
         </div>
       </section>`;
   }
@@ -142,68 +229,104 @@
   function answer(value) {
     answers[qIndex] = value;
     save();
-    const total = L.QUESTIONS.length;
+    const total = M().questions.length;
     if (qIndex < total - 1) { qIndex += 1; viewQuiz(); }
-    else if (isComplete(answers)) { location.hash = '#/result'; }
+    else if (isComplete(answers)) { location.hash = M().result; }
     else { qIndex = answers.findIndex(v => typeof v !== 'number'); viewQuiz(); }
   }
 
   // ---------- 結果 ----------
-  function viewResult() {
+  function viewResult(m) {
+    mode = m;
     const saved = load();
-    if (!saved || !isComplete(saved)) { location.hash = '#/'; return; }
-    answers = saved;
-    const user = L.score(answers);
+    if (!saved || !isComplete(saved.a)) { location.hash = '#/'; return; }
+    answers = saved.a; seed = saved.seed;
+    const quick = mode === 'quick';
+    let user, dice = [];
+    if (quick) { const qs = L.quickScore(answers, seed); user = qs.vec; dice = qs.dice; }
+    else user = L.score(answers);
     const r = L.match(user, CHARS);
     const c = r.best;
     const t = L.TYPES[r.type];
     const sim = L.similarity(r.d);
     const mates = r.sameType.slice(0, 8);
     const near = r.others.slice(0, 4);
+    const text = shareText(c, r.type, sim, quick);
+    const diceLabels = dice.map(i => `${L.AXES[i].negLabel}/${L.AXES[i].posLabel}`);
     app.innerHTML = `
+      ${quick ? `<p class="dopa-banner"><b>ドパガキモード判定</b>5問で無理やり決めました。絶対間違うぞ！${diceLabels.length ? `<small>サイコロで決めた軸: ${diceLabels.join('、')}</small>` : ''}</p>` : ''}
       <section class="result g-${t.group}">
-        <p class="eyebrow">診断結果</p>
-        <div class="result-head">
-          <img class="card-img" src="img/chars/${c.id}.png" alt="${esc(c.name)}のイラスト" width="200" height="250">
-          <div class="result-main">
-            ${typeBadge(r.type, true)}
+        <p class="eyebrow">診断結果${quick ? '(雑)' : ''}</p>
+        ${charHead(c, r.type, `
             <p class="result-pre">あなたにいちばん近いのは</p>
             <h1>${esc(c.name)}</h1>
             <p class="catch">${esc(c.catch)}</p>
-            <p class="sim"><span class="sim-num">${sim}</span><span class="sim-unit">%</span><span class="sim-label">一致度</span></p>
-          </div>
-        </div>
+            <p class="sim"><span class="sim-num">${sim}</span><span class="sim-unit">%</span><span class="sim-label">一致度${quick ? '(たぶん)' : ''}</span></p>`, true)}
         <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}</div>
         <p class="desc">${esc(c.desc)}</p>
         <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
         <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
       </section>
 
+      ${sharePanel(c, text)}
+
       <section class="panel">
         <h2>あなたの8軸</h2>
         <p class="legend"><span class="axis-dot user inline"></span>あなた <span class="axis-dot chara inline"></span>${esc(c.name)}</p>
         <div class="axes">${axisRows(user, c.v)}</div>
         <p class="subtype">あなたのサブタイプ ${subTags(user) || '<span class="tag">中庸</span>'}</p>
+        ${quick ? '<p class="note">ドパガキモードでは、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
       </section>
 
       ${mates.length ? `
       <section class="panel">
         <h2>同じ ${r.type} の仲間</h2>
         <p class="note">同じタイプに分類されたキャラを、あなたに近い順に並べています。</p>
-        <div class="tiles">${mates.map(m => charTile(m.c, `<span class="tile-sim">${L.similarity(m.d)}%</span>`)).join('')}</div>
+        <div class="tiles">${mates.map(mm => charTile(mm.c, `<span class="tile-sim">${L.similarity(mm.d)}%</span>`)).join('')}</div>
       </section>` : ''}
 
       <section class="panel">
         <h2>タイプは違うけれど近いキャラ</h2>
-        <div class="tiles">${near.map(m => charTile(m.c, `<span class="tile-sim">${m.c.mbti}・${L.similarity(m.d)}%</span>`)).join('')}</div>
+        <div class="tiles">${near.map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・${L.similarity(mm.d)}%</span>`)).join('')}</div>
       </section>
 
       <div class="cta center">
-        <button type="button" class="btn primary" data-act="copy">結果をコピー</button>
-        <button type="button" class="btn" data-act="start">もう一度診断する</button>
+        ${quick ? '<button type="button" class="btn primary" data-act="start">ちゃんと診断する(36問)</button><button type="button" class="btn" data-act="start-quick">もう一回サイコロを振る</button>' : '<button type="button" class="btn" data-act="start">もう一度診断する</button><button type="button" class="btn" data-act="start-quick">ドパガキモードで遊ぶ</button>'}
         <a class="btn ghost" href="#/zukan">キャラ図鑑を見る</a>
       </div>`;
-    app.dataset.copy = `東方キャラ性格診断の結果は「${c.name}」(${r.type}・${t.name})でした。一致度 ${sim}% ― ${c.catch}`;
+    app.dataset.copy = text;
+    app.dataset.shareId = c.id;
+  }
+
+  // ---------- 共有されたキャラのページ(#/c/<id>) ----------
+  function viewShared(id) {
+    const c = BY_ID.get(id);
+    if (!c) { location.hash = '#/'; return; }
+    const t = L.TYPES[c.mbti];
+    const mates = CHARS.filter(x => x.mbti === c.mbti && x.id !== c.id).slice(0, 8);
+    app.innerHTML = `
+      <section class="result g-${t.group}">
+        <p class="eyebrow">シェアされた診断結果</p>
+        ${charHead(c, c.mbti, `
+            <p class="result-pre">診断した人にいちばん近いのは</p>
+            <h1>${esc(c.name)}</h1>
+            <p class="catch">${esc(c.catch)}</p>`, true)}
+        <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}${subTags(c.v)}</div>
+        <p class="desc">${esc(c.desc)}</p>
+        <p class="type-blurb"><b>${c.mbti}「${t.name}」</b> ${t.blurb}</p>
+        <div class="axes">${axisRows(null, c.v)}</div>
+        <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
+      </section>
+      ${mates.length ? `
+      <section class="panel">
+        <h2>同じ ${c.mbti} の仲間</h2>
+        <div class="tiles">${mates.map(x => charTile(x)).join('')}</div>
+      </section>` : ''}
+      <div class="cta center">
+        <button type="button" class="btn primary" data-act="start">自分も診断してみる(36問)</button>
+        <button type="button" class="btn" data-act="start-quick">ドパガキモード(5問)</button>
+        <a class="btn ghost" href="#/zukan">キャラ図鑑を見る</a>
+      </div>`;
   }
 
   // ---------- 図鑑 ----------
@@ -257,18 +380,13 @@
     dialog.className = `detail g-${t.group}`;
     dialog.innerHTML = `
       <button type="button" class="close" data-act="close" aria-label="閉じる">×</button>
-      <div class="result-head">
-        <img class="card-img" src="img/chars/${c.id}.png" alt="${esc(c.name)}のイラスト" width="200" height="250">
-        <div class="result-main">
-          ${typeBadge(c.mbti)}
+      ${charHead(c, c.mbti, `
           <h2>${esc(c.name)}</h2>
-          <p class="catch">${esc(c.catch)}</p>
-        </div>
-      </div>
+          <p class="catch">${esc(c.catch)}</p>`)}
       <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}${subTags(c.v)}</div>
       <p class="desc">${esc(c.desc)}</p>
       <div class="axes">${axisRows(null, c.v)}</div>
-      <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で読む</a></p>`;
+      <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で読む</a> ／ <a href="#/c/${c.id}">このキャラのページ</a></p>`;
     if (!dialog.open) dialog.showModal();
     dialog.scrollTop = 0;
   }
@@ -277,9 +395,15 @@
   function route() {
     const h = location.hash || '#/';
     if (dialog.open) dialog.close();
-    if (h === '#/quiz') viewQuiz();
-    else if (h === '#/result') viewResult();
+    if (h === '#/quiz' || h === '#/quiz-quick') {
+      const m = h === '#/quiz' ? 'full' : 'quick';
+      if (mode !== m) { mode = m; const saved = load(); answers = saved ? saved.a : new Array(M().questions.length).fill(null); seed = saved ? saved.seed : newSeed(); const next = answers.findIndex(v => typeof v !== 'number'); qIndex = next === -1 ? 0 : next; }
+      viewQuiz();
+    }
+    else if (h === '#/result') viewResult('full');
+    else if (h === '#/result-quick') viewResult('quick');
     else if (h === '#/zukan') viewZukan();
+    else if (h.startsWith('#/c/')) viewShared(decodeURIComponent(h.slice(4)));
     else viewHome();
     window.scrollTo(0, 0);
   }
@@ -292,24 +416,20 @@
     const act = e.target.closest('[data-act]');
     if (!act) { if (e.target === dialog) dialog.close(); return; }
     switch (act.dataset.act) {
-      case 'start': startQuiz(true); break;
-      case 'resume': startQuiz(false); break;
+      case 'start': startQuiz(true, 'full'); break;
+      case 'start-quick': startQuiz(true, 'quick'); break;
+      case 'resume': startQuiz(false, 'full'); break;
       case 'prev': if (qIndex > 0) { qIndex -= 1; viewQuiz(); } break;
-      case 'next': if (qIndex < L.QUESTIONS.length - 1) { qIndex += 1; viewQuiz(); } break;
+      case 'next': if (qIndex < M().questions.length - 1) { qIndex += 1; viewQuiz(); } break;
       case 'close': dialog.close(); break;
-      case 'copy': {
-        const text = app.dataset.copy || '';
-        const ok = () => toast('結果をコピーしました');
-        const ng = () => toast('コピーできませんでした');
-        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(ok, ng);
-        else ng();
-        break;
-      }
+      case 'copy': copy(app.dataset.copy || '', '文章をコピーしました'); break;
+      case 'copy-link': copy(shareUrl(app.dataset.shareId), 'リンクをコピーしました'); break;
+      case 'share-image': shareImage(); break;
     }
   });
 
   document.addEventListener('keydown', e => {
-    if (location.hash !== '#/quiz' || dialog.open || e.ctrlKey || e.metaKey || e.altKey) return;
+    if ((location.hash !== '#/quiz' && location.hash !== '#/quiz-quick') || dialog.open || e.ctrlKey || e.metaKey || e.altKey) return;
     if (e.key >= '1' && e.key <= '5') { answer(L.CHOICES[Number(e.key) - 1].value); e.preventDefault(); }
     else if (e.key === 'ArrowLeft' && qIndex > 0) { qIndex -= 1; viewQuiz(); }
   });
@@ -317,11 +437,12 @@
   window.addEventListener('hashchange', route);
 
   // 途中の回答があれば引き継ぐ(設問画面を直接開いたとき用)
+  mode = location.hash === '#/quiz-quick' || location.hash === '#/result-quick' ? 'quick' : 'full';
   const saved = load();
   if (saved) {
-    answers = saved;
+    answers = saved.a; seed = saved.seed;
     const next = answers.findIndex(v => typeof v !== 'number');
     qIndex = next === -1 ? 0 : next;
-  }
+  } else { answers = new Array(M().questions.length).fill(null); seed = newSeed(); }
   route();
 })();

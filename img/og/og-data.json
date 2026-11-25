@@ -1,0 +1,2066 @@
+{
+  "site": "https://nishikawa251.github.io/touhou-mbti/",
+  "labels": {
+    "title": "東方キャラ性格診断",
+    "pre": "あなたにいちばん近いのは",
+    "siteEyebrow": "非公式ファン診断",
+    "siteTitle": "あなたは幻想郷の誰に似ている?",
+    "siteSub": "36問で16タイプ × 137キャラ。東方キャラ性格診断",
+    "credit": "イラスト: 粗茶"
+  },
+  "chars": [
+    {
+      "id": "reimu",
+      "name": "博麗霊夢",
+      "mbti": "ISTP",
+      "typeName": "一匹狼の職人",
+      "catch": "裏表なき暢気な巫女",
+      "traits": [
+        "マイペース",
+        "裏表がない",
+        "勘が鋭い",
+        "容赦なし"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "marisa",
+      "name": "霧雨魔理沙",
+      "mbti": "ENTP",
+      "typeName": "型破りの仕掛け人",
+      "catch": "努力を隠す負けず嫌い",
+      "traits": [
+        "負けず嫌い",
+        "努力家",
+        "ひねくれ者",
+        "面倒見が良い"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "rumia",
+      "name": "ルーミア",
+      "mbti": "ISFP",
+      "typeName": "気ままな風流人",
+      "catch": "あてもなく漂う能天気",
+      "traits": [
+        "能天気",
+        "単純",
+        "物臭",
+        "掴みどころなし"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "daiyousei",
+      "name": "大妖精",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "陽気でちょっと控えめ",
+      "traits": [
+        "陽気",
+        "いたずら好き",
+        "表情豊か",
+        "控えめ"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "cirno",
+      "name": "チルノ",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "自信満々の最強妖精",
+      "traits": [
+        "自信家",
+        "単純",
+        "好戦的",
+        "いたずら好き"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "meiling",
+      "name": "紅美鈴",
+      "mbti": "ESFJ",
+      "typeName": "世話焼きの人気者",
+      "catch": "のんびり温厚な門番",
+      "traits": [
+        "温厚",
+        "呑気",
+        "礼儀正しい",
+        "親しみやすい"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "koakuma",
+      "name": "小悪魔",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "後先考えない気まぐれ屋",
+      "traits": [
+        "気まぐれ",
+        "いたずら好き",
+        "衝動的"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "patchouli",
+      "name": "パチュリー・ノーレッジ",
+      "mbti": "INTP",
+      "typeName": "探究する書斎派",
+      "catch": "本さえあれば幸せな魔女",
+      "traits": [
+        "冷静沈着",
+        "理屈っぽい",
+        "引きこもり",
+        "知識欲"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "sakuya",
+      "name": "十六夜咲夜",
+      "mbti": "ISTJ",
+      "typeName": "実直な番人",
+      "catch": "完璧なのにどこか天然",
+      "traits": [
+        "完璧主義",
+        "天然",
+        "マイペース",
+        "忠誠心"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "remilia",
+      "name": "レミリア・スカーレット",
+      "mbti": "ENTP",
+      "typeName": "型破りの仕掛け人",
+      "catch": "わがままで寛大なお嬢様",
+      "traits": [
+        "尊大",
+        "気まぐれ",
+        "誇り高い",
+        "面倒見が良い"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "flandre",
+      "name": "フランドール・スカーレット",
+      "mbti": "INTP",
+      "typeName": "探究する書斎派",
+      "catch": "理知と狂気の箱入り娘",
+      "traits": [
+        "情緒不安定",
+        "知的",
+        "好戦的",
+        "引きこもり"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "letty",
+      "name": "レティ・ホワイトロック",
+      "mbti": "ISFP",
+      "typeName": "気ままな風流人",
+      "catch": "冬を楽しむおっとり妖怪",
+      "traits": [
+        "おっとり",
+        "マイペース",
+        "さっぱり",
+        "冗談好き"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "chen",
+      "name": "橙",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "元気いっぱいの化け猫",
+      "traits": [
+        "元気",
+        "いたずら好き",
+        "素直",
+        "子供っぽい"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "alice",
+      "name": "アリス・マーガトロイド",
+      "mbti": "INTJ",
+      "typeName": "孤高の策謀家",
+      "catch": "クールで親切な都会派",
+      "traits": [
+        "さっぱり",
+        "インドア派",
+        "常識的",
+        "実は臆病"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "lilywhite",
+      "name": "リリーホワイト",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "春を告げる天真爛漫",
+      "traits": [
+        "天真爛漫",
+        "笑顔",
+        "興奮しやすい"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "lunasa",
+      "name": "ルナサ・プリズムリバー",
+      "mbti": "ISTJ",
+      "typeName": "実直な番人",
+      "catch": "生真面目で物静かな長女",
+      "traits": [
+        "生真面目",
+        "物静か",
+        "悲観的",
+        "妹想い"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "merlin",
+      "name": "メルラン・プリズムリバー",
+      "mbti": "ENFP",
+      "typeName": "天真爛漫な自由人",
+      "catch": "落ち込みを知らない陽気",
+      "traits": [
+        "陽気",
+        "ハイテンション",
+        "前向き",
+        "余裕"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "lyrica",
+      "name": "リリカ・プリズムリバー",
+      "mbti": "ESTP",
+      "typeName": "豪快な勝負師",
+      "catch": "計算高い世渡り上手",
+      "traits": [
+        "狡猾",
+        "お調子者",
+        "世渡り上手",
+        "自画自賛"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "youmu",
+      "name": "魂魄妖夢",
+      "mbti": "ISFJ",
+      "typeName": "献身的な支え手",
+      "catch": "真っ直ぐすぎる半人前",
+      "traits": [
+        "真面目",
+        "一生懸命",
+        "からかわれ役",
+        "怖がり"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "yuyuko",
+      "name": "西行寺幽々子",
+      "mbti": "ENFP",
+      "typeName": "天真爛漫な自由人",
+      "catch": "ふんわり掴めない切れ者",
+      "traits": [
+        "飄々",
+        "マイペース",
+        "切れ者",
+        "真意不明"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "ran",
+      "name": "八雲藍",
+      "mbti": "ISTJ",
+      "typeName": "実直な番人",
+      "catch": "忠実で誇り高い式神",
+      "traits": [
+        "真面目",
+        "忠実",
+        "礼儀正しい",
+        "プライド高い"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "yukari",
+      "name": "八雲紫",
+      "mbti": "ENTJ",
+      "typeName": "堂々たる統率者",
+      "catch": "胡散臭さ満点の賢者",
+      "traits": [
+        "胡散臭い",
+        "神出鬼没",
+        "話好き",
+        "郷土愛"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "renko",
+      "name": "宇佐見蓮子",
+      "mbti": "ENTP",
+      "typeName": "型破りの仕掛け人",
+      "catch": "面白い方へ突き進む部長",
+      "traits": [
+        "行動派",
+        "無鉄砲",
+        "好奇心旺盛",
+        "理屈屋"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "maribel",
+      "name": "マエリベリー・ハーン",
+      "mbti": "INFP",
+      "typeName": "夢見る幻想家",
+      "catch": "夢と現をさまよう相棒",
+      "traits": [
+        "慎重",
+        "受け身",
+        "夢見がち",
+        "怖がり"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "rinnosuke",
+      "name": "森近霖之助",
+      "mbti": "INTP",
+      "typeName": "探究する書斎派",
+      "catch": "蘊蓄好きの動かない店主",
+      "traits": [
+        "思索家",
+        "蘊蓄好き",
+        "一人好き",
+        "趣味人"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "tokiko",
+      "name": "名無しの本読み妖怪",
+      "mbti": "INFP",
+      "typeName": "夢見る幻想家",
+      "catch": "本を愛する名もなき妖怪",
+      "traits": [
+        "本好き",
+        "一途",
+        "気が強い",
+        "向こう見ず"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "wriggle",
+      "name": "リグル・ナイトバグ",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "虫たちを束ねる強がり",
+      "traits": [
+        "勝気",
+        "強がり",
+        "仲間思い",
+        "単純"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "mystia",
+      "name": "ミスティア・ローレライ",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "歌って騒ぐ陽気な夜雀",
+      "traits": [
+        "お気楽",
+        "歌好き",
+        "忘れっぽい",
+        "ちゃっかり"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "keine",
+      "name": "上白沢慧音",
+      "mbti": "ESFJ",
+      "typeName": "世話焼きの人気者",
+      "catch": "世話焼きで熱い先生",
+      "traits": [
+        "生真面目",
+        "面倒見が良い",
+        "熱血",
+        "思い込み"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "tewi",
+      "name": "因幡てゐ",
+      "mbti": "ESTP",
+      "typeName": "豪快な勝負師",
+      "catch": "懲りない老獪ないたずら兎",
+      "traits": [
+        "嘘つき",
+        "いたずら好き",
+        "お調子者",
+        "老獪"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "reisen",
+      "name": "鈴仙・優曇華院・イナバ",
+      "mbti": "ESFJ",
+      "typeName": "世話焼きの人気者",
+      "catch": "臆病だけど頑張る月兎",
+      "traits": [
+        "誠実",
+        "調子に乗る",
+        "臆病",
+        "行動力"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "eirin",
+      "name": "八意永琳",
+      "mbti": "INTJ",
+      "typeName": "孤高の策謀家",
+      "catch": "冷徹で慈悲深い天才",
+      "traits": [
+        "冷静沈着",
+        "策士",
+        "博識",
+        "お茶目"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "kaguya",
+      "name": "蓬莱山輝夜",
+      "mbti": "ENFP",
+      "typeName": "天真爛漫な自由人",
+      "catch": "今を楽しむ天然お姫様",
+      "traits": [
+        "天真爛漫",
+        "好奇心旺盛",
+        "世間知らず",
+        "身内に優しい"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "mokou",
+      "name": "藤原妹紅",
+      "mbti": "ISFP",
+      "typeName": "気ままな風流人",
+      "catch": "やさぐれた熱いお人好し",
+      "traits": [
+        "気が強い",
+        "不器用",
+        "お人好し",
+        "自嘲的"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "suika",
+      "name": "伊吹萃香",
+      "mbti": "ESTP",
+      "typeName": "豪快な勝負師",
+      "catch": "酔いどれ陽気な勝負好き",
+      "traits": [
+        "陽気",
+        "酒好き",
+        "勝負好き",
+        "気まぐれ"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "sunny",
+      "name": "サニーミルク",
+      "mbti": "ENFP",
+      "typeName": "天真爛漫な自由人",
+      "catch": "元気いっぱいの悪戯リーダー",
+      "traits": [
+        "元気",
+        "悪戯好き",
+        "リーダー格",
+        "発案者"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "luna",
+      "name": "ルナチャイルド",
+      "mbti": "INTP",
+      "typeName": "探究する書斎派",
+      "catch": "慎重で本好きな月の妖精",
+      "traits": [
+        "慎重",
+        "知的好奇心",
+        "ツッコミ役",
+        "ドジ"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "star",
+      "name": "スターサファイア",
+      "mbti": "ISTP",
+      "typeName": "一匹狼の職人",
+      "catch": "ちゃっかり者の星の妖精",
+      "traits": [
+        "したたか",
+        "機転が利く",
+        "マイペース",
+        "ちゃっかり"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "aya",
+      "name": "射命丸文",
+      "mbti": "ENTJ",
+      "typeName": "堂々たる統率者",
+      "catch": "清く正しい(自称)敏腕記者",
+      "traits": [
+        "頭脳明晰",
+        "狡猾",
+        "飄々",
+        "取材熱心"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "medicine",
+      "name": "メディスン・メランコリー",
+      "mbti": "INFP",
+      "typeName": "夢見る幻想家",
+      "catch": "世間知らずの毒人形",
+      "traits": [
+        "世間知らず",
+        "衝動的",
+        "純真",
+        "人間嫌い"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "yuuka",
+      "name": "風見幽香",
+      "mbti": "ISTP",
+      "typeName": "一匹狼の職人",
+      "catch": "笑顔で花を愛でる最強格",
+      "traits": [
+        "マイペース",
+        "気分屋",
+        "礼儀正しい",
+        "苛烈"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "komachi",
+      "name": "小野塚小町",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "サボり上手な江戸っ子死神",
+      "traits": [
+        "陽気",
+        "話し好き",
+        "サボり魔",
+        "情に厚い"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "eiki",
+      "name": "四季映姫・ヤマザナドゥ",
+      "mbti": "ESTJ",
+      "typeName": "規律の仕切り役",
+      "catch": "白黒つける説教好きの閻魔",
+      "traits": [
+        "生真面目",
+        "説教好き",
+        "公正",
+        "厳格"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "akyuu",
+      "name": "稗田阿求",
+      "mbti": "ENFJ",
+      "typeName": "慈愛の旗振り役",
+      "catch": "記録に情熱を注ぐ才女",
+      "traits": [
+        "勉強熱心",
+        "行動的",
+        "表情豊か",
+        "誇り高い"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "reisen2",
+      "name": "レイセン",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "お調子者の臆病な月兎",
+      "traits": [
+        "臆病",
+        "お調子者",
+        "素直",
+        "ドジ"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "yorihime",
+      "name": "綿月依姫",
+      "mbti": "ISTJ",
+      "typeName": "実直な番人",
+      "catch": "油断なき生真面目な月の姫",
+      "traits": [
+        "生真面目",
+        "誇り高い",
+        "油断しない",
+        "師匠思い"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "toyohime",
+      "name": "綿月豊姫",
+      "mbti": "ENFP",
+      "typeName": "天真爛漫な自由人",
+      "catch": "桃を愛する天真爛漫な姉姫",
+      "traits": [
+        "天真爛漫",
+        "自由奔放",
+        "お転婆",
+        "寛大"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "shizuha",
+      "name": "秋静葉",
+      "mbti": "INFP",
+      "typeName": "夢見る幻想家",
+      "catch": "終わりを想う物静かな神",
+      "traits": [
+        "物静か",
+        "悲観的",
+        "詩人肌",
+        "嫉妬"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "minoriko",
+      "name": "秋穣子",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "素朴で能天気な豊穣の神",
+      "traits": [
+        "素朴",
+        "能天気",
+        "負けず嫌い",
+        "短気"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "hina",
+      "name": "鍵山雛",
+      "mbti": "ESFJ",
+      "typeName": "世話焼きの人気者",
+      "catch": "厄を引き受ける優しい神",
+      "traits": [
+        "人懐っこい",
+        "献身的",
+        "明るい",
+        "お人好し"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "nitori",
+      "name": "河城にとり",
+      "mbti": "INTP",
+      "typeName": "探究する書斎派",
+      "catch": "人見知りで強かな技術屋",
+      "traits": [
+        "技術好き",
+        "人見知り",
+        "守銭奴",
+        "口が悪い"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "momiji",
+      "name": "犬走椛",
+      "mbti": "ISTJ",
+      "typeName": "実直な番人",
+      "catch": "実直な山の見張り番",
+      "traits": [
+        "実直",
+        "堅物",
+        "職務に忠実",
+        "勇ましい"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "sanae",
+      "name": "東風谷早苗",
+      "mbti": "ENFJ",
+      "typeName": "慈愛の旗振り役",
+      "catch": "真面目で少しズレた現人神",
+      "traits": [
+        "素直",
+        "真面目",
+        "自信家",
+        "天然"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "kanako",
+      "name": "八坂神奈子",
+      "mbti": "ENTJ",
+      "typeName": "堂々たる統率者",
+      "catch": "フランクで野心的な山の神",
+      "traits": [
+        "フランク",
+        "野心家",
+        "革新好き",
+        "親バカ"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "suwako",
+      "name": "洩矢諏訪子",
+      "mbti": "ENTP",
+      "typeName": "型破りの仕掛け人",
+      "catch": "お気楽で底知れない土着神",
+      "traits": [
+        "お気楽",
+        "とぼけ上手",
+        "自分勝手",
+        "腹黒"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "iku",
+      "name": "永江衣玖",
+      "mbti": "ISTP",
+      "typeName": "一匹狼の職人",
+      "catch": "空気を読むクールな使い",
+      "traits": [
+        "控えめ",
+        "面倒くさがり",
+        "事務的",
+        "慇懃無礼"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "tenshi",
+      "name": "比那名居天子",
+      "mbti": "ESTP",
+      "typeName": "豪快な勝負師",
+      "catch": "退屈嫌いのわがまま天人",
+      "traits": [
+        "わがまま",
+        "自信家",
+        "短気",
+        "したたか"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "kisume",
+      "name": "キスメ",
+      "mbti": "ISFP",
+      "typeName": "気ままな風流人",
+      "catch": "内気で凶暴な桶入り娘",
+      "traits": [
+        "内気",
+        "狭い所好き",
+        "凶暴",
+        "無口"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "yamame",
+      "name": "黒谷ヤマメ",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "明るく気さくな地底の人気者",
+      "traits": [
+        "明るい",
+        "気さく",
+        "人気者",
+        "やや好戦的"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "parsee",
+      "name": "水橋パルスィ",
+      "mbti": "ISFJ",
+      "typeName": "献身的な支え手",
+      "catch": "嫉妬に揺れる根は優しい番人",
+      "traits": [
+        "嫉妬深い",
+        "卑屈",
+        "毒舌",
+        "友達想い"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "yuugi",
+      "name": "星熊勇儀",
+      "mbti": "ESTP",
+      "typeName": "豪快な勝負師",
+      "catch": "豪快で余裕たっぷりの親分鬼",
+      "traits": [
+        "豪快",
+        "正直",
+        "勝負好き",
+        "親分肌"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "satori",
+      "name": "古明地さとり",
+      "mbti": "INFJ",
+      "typeName": "静かな導き手",
+      "catch": "心を見通す物静かな館の主",
+      "traits": [
+        "物静か",
+        "自信家",
+        "図太い",
+        "愛情深い"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "orin",
+      "name": "火焔猫燐",
+      "mbti": "ESFJ",
+      "typeName": "世話焼きの人気者",
+      "catch": "陽気で世話焼きな猫",
+      "traits": [
+        "陽気",
+        "人懐っこい",
+        "世話焼き",
+        "努力家"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "okuu",
+      "name": "霊烏路空",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "純粋で調子に乗る地底の太陽",
+      "traits": [
+        "素直",
+        "お調子者",
+        "純粋",
+        "忘れっぽい"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "koishi",
+      "name": "古明地こいし",
+      "mbti": "ENFP",
+      "typeName": "天真爛漫な自由人",
+      "catch": "無意識にさまよう不思議っ子",
+      "traits": [
+        "無邪気",
+        "好奇心旺盛",
+        "放浪癖",
+        "不思議ちゃん"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "nazrin",
+      "name": "ナズーリン",
+      "mbti": "ISTJ",
+      "typeName": "実直な番人",
+      "catch": "賢く抜け目ない小さな賢将",
+      "traits": [
+        "賢い",
+        "忠実",
+        "高圧的",
+        "小心者"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "kogasa",
+      "name": "多々良小傘",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "めげない驚かせたがり",
+      "traits": [
+        "人懐っこい",
+        "素直",
+        "猪突猛進",
+        "努力家"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "ichirin",
+      "name": "雲居一輪",
+      "mbti": "ESTJ",
+      "typeName": "規律の仕切り役",
+      "catch": "度胸満点のしっかり者尼僧",
+      "traits": [
+        "真面目",
+        "要領が良い",
+        "度胸がある",
+        "早とちり"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "murasa",
+      "name": "村紗水蜜",
+      "mbti": "ESFJ",
+      "typeName": "世話焼きの人気者",
+      "catch": "物腰柔らかな話し上手の船長",
+      "traits": [
+        "明るい",
+        "話し上手",
+        "礼儀正しい",
+        "落ち着き"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "shou",
+      "name": "寅丸星",
+      "mbti": "ISFJ",
+      "typeName": "献身的な支え手",
+      "catch": "威厳の裏で感情豊かな代理",
+      "traits": [
+        "温厚",
+        "優秀",
+        "感情的",
+        "うっかり"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "byakuren",
+      "name": "聖白蓮",
+      "mbti": "ENFJ",
+      "typeName": "慈愛の旗振り役",
+      "catch": "誰にも分け隔てない博愛の住職",
+      "traits": [
+        "博愛主義",
+        "礼儀正しい",
+        "生真面目",
+        "芯が強い"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "nue",
+      "name": "封獣ぬえ",
+      "mbti": "ENTP",
+      "typeName": "型破りの仕掛け人",
+      "catch": "正体不明のいたずら愉快犯",
+      "traits": [
+        "悪戯好き",
+        "気まぐれ",
+        "愉快犯",
+        "根は素直"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "hatate",
+      "name": "姫海棠はたて",
+      "mbti": "ISFP",
+      "typeName": "気ままな風流人",
+      "catch": "裏表ゼロの今どき念写記者",
+      "traits": [
+        "素直",
+        "軽いノリ",
+        "遠慮がない",
+        "食いしん坊"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "kasen",
+      "name": "茨木華扇",
+      "mbti": "ENFJ",
+      "typeName": "慈愛の旗振り役",
+      "catch": "説教好きで世話焼きな仙人",
+      "traits": [
+        "生真面目",
+        "説教好き",
+        "感情豊か",
+        "甘党"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "kyouko",
+      "name": "幽谷響子",
+      "mbti": "ESFJ",
+      "typeName": "世話焼きの人気者",
+      "catch": "大声で挨拶する元気な門前小僧",
+      "traits": [
+        "元気",
+        "真面目",
+        "ノリがいい",
+        "実は臆病"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "yoshika",
+      "name": "宮古芳香",
+      "mbti": "ESFJ",
+      "typeName": "世話焼きの人気者",
+      "catch": "忠実だけど物忘れの激しい番人",
+      "traits": [
+        "忠実",
+        "律儀",
+        "ハイテンション",
+        "間が抜けている"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "seiga",
+      "name": "霍青娥",
+      "mbti": "ENTP",
+      "typeName": "型破りの仕掛け人",
+      "catch": "欲望に正直な食えない邪仙",
+      "traits": [
+        "自由奔放",
+        "口が上手い",
+        "自己中心的",
+        "人当たり良し"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "tojiko",
+      "name": "蘇我屠自古",
+      "mbti": "ISFJ",
+      "typeName": "献身的な支え手",
+      "catch": "口は悪いが情にもろい姐御",
+      "traits": [
+        "ガラが悪い",
+        "情にもろい",
+        "短気",
+        "姉御肌"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "futo",
+      "name": "物部布都",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "思い込みで突っ走るお人好し",
+      "traits": [
+        "素直",
+        "勘違い屋",
+        "見栄っ張り",
+        "お人好し"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "miko",
+      "name": "豊聡耳神子",
+      "mbti": "ENTJ",
+      "typeName": "堂々たる統率者",
+      "catch": "天道を掲げるカリスマ為政者",
+      "traits": [
+        "カリスマ",
+        "責任感",
+        "尊大",
+        "礼儀正しい"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "mamizou",
+      "name": "二ッ岩マミゾウ",
+      "mbti": "ESTP",
+      "typeName": "豪快な勝負師",
+      "catch": "面倒見がよく抜け目ない親分",
+      "traits": [
+        "親分肌",
+        "面倒見がいい",
+        "食えない",
+        "世渡り上手"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "kosuzu",
+      "name": "本居小鈴",
+      "mbti": "ENFP",
+      "typeName": "天真爛漫な自由人",
+      "catch": "懲りない好奇心の本の虫",
+      "traits": [
+        "好奇心旺盛",
+        "本の虫",
+        "懲りない",
+        "怖がり"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "kokoro",
+      "name": "秦こころ",
+      "mbti": "INFP",
+      "typeName": "夢見る幻想家",
+      "catch": "感情を学ぶ無表情の面霊気",
+      "traits": [
+        "無表情",
+        "影響されやすい",
+        "子供っぽい",
+        "直情的"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "wakasagihime",
+      "name": "わかさぎ姫",
+      "mbti": "ISFP",
+      "typeName": "気ままな風流人",
+      "catch": "湖で歌うおとなしい人魚姫",
+      "traits": [
+        "おとなしい",
+        "気弱",
+        "おっとり",
+        "のんき"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "sekibanki",
+      "name": "赤蛮奇",
+      "mbti": "ISTP",
+      "typeName": "一匹狼の職人",
+      "catch": "人里に潜む誇り高き一匹狼",
+      "traits": [
+        "孤高",
+        "プライド高い",
+        "斜に構える",
+        "ひっそり"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "kagerou",
+      "name": "今泉影狼",
+      "mbti": "ISFJ",
+      "typeName": "献身的な支え手",
+      "catch": "身だしなみを気にする物静かな狼",
+      "traits": [
+        "落ち着き",
+        "物静か",
+        "気にしい",
+        "慎み深い"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "yatsuhashi",
+      "name": "九十九八橋",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "勝ち気で無鉄砲な琴の妹分",
+      "traits": [
+        "勝ち気",
+        "無鉄砲",
+        "無邪気",
+        "脇が甘い"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "benben",
+      "name": "九十九弁々",
+      "mbti": "INTJ",
+      "typeName": "孤高の策謀家",
+      "catch": "冷静で少し口のきつい琵琶の姉",
+      "traits": [
+        "冷静",
+        "大人びた",
+        "姉御肌",
+        "口がきつい"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "seija",
+      "name": "鬼人正邪",
+      "mbti": "ENTP",
+      "typeName": "型破りの仕掛け人",
+      "catch": "何でもひっくり返す反逆者",
+      "traits": [
+        "ひねくれ者",
+        "嘘つき",
+        "反抗的",
+        "孤立上等"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "shinmyoumaru",
+      "name": "少名針妙丸",
+      "mbti": "ENFP",
+      "typeName": "天真爛漫な自由人",
+      "catch": "誇り高くて純真な小さな姫",
+      "traits": [
+        "純粋",
+        "誇り高い",
+        "情け深い",
+        "子供っぽい"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "raiko",
+      "name": "堀川雷鼓",
+      "mbti": "ENTJ",
+      "typeName": "堂々たる統率者",
+      "catch": "自力で道を拓く姉御ドラマー",
+      "traits": [
+        "聡明",
+        "リーダー気質",
+        "ノリが軽い",
+        "決断力"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "sumireko",
+      "name": "宇佐見菫子",
+      "mbti": "INTP",
+      "typeName": "探究する書斎派",
+      "catch": "自信過剰な女子高生エスパー",
+      "traits": [
+        "自信家",
+        "好奇心旺盛",
+        "孤高気取り",
+        "バイタリティ"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "seiran",
+      "name": "清蘭",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "ノリは軽いが不憫な鉄砲玉",
+      "traits": [
+        "陽気",
+        "ノリが軽い",
+        "ドライ",
+        "不憫"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "ringo",
+      "name": "鈴瑚",
+      "mbti": "ISTP",
+      "typeName": "一匹狼の職人",
+      "catch": "団子片手に状況を読む観察者",
+      "traits": [
+        "のんびり",
+        "冷静",
+        "機転が利く",
+        "食いしん坊"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "doremy",
+      "name": "ドレミー・スイート",
+      "mbti": "INTJ",
+      "typeName": "孤高の策謀家",
+      "catch": "飄々として実は真面目な夢の番人",
+      "traits": [
+        "飄々",
+        "皮肉屋",
+        "生真面目",
+        "面倒見がいい"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "sagume",
+      "name": "稀神サグメ",
+      "mbti": "INTJ",
+      "typeName": "孤高の策謀家",
+      "catch": "言葉を選び抜く寡黙な賢者",
+      "traits": [
+        "寡黙",
+        "聡明",
+        "大局重視",
+        "高慢"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "clownpiece",
+      "name": "クラウンピース",
+      "mbti": "ENFP",
+      "typeName": "天真爛漫な自由人",
+      "catch": "地獄育ちのはしゃぎ屋妖精",
+      "traits": [
+        "いたずら好き",
+        "好奇心旺盛",
+        "お調子者",
+        "仲間思い"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "junko",
+      "name": "純狐",
+      "mbti": "INFJ",
+      "typeName": "静かな導き手",
+      "catch": "怨みだけを研ぎ澄ませた仙霊",
+      "traits": [
+        "執念深い",
+        "率直",
+        "尊大",
+        "情が深い"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "hecatia",
+      "name": "ヘカーティア・ラピスラズリ",
+      "mbti": "ENFP",
+      "typeName": "天真爛漫な自由人",
+      "catch": "気さくで懐の深い地獄の女神",
+      "traits": [
+        "気さく",
+        "器が大きい",
+        "友人思い",
+        "自由人"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "larva",
+      "name": "エタニティラルバ",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "陽だまりを愛する温厚な蝶の妖精",
+      "traits": [
+        "温厚",
+        "優しい",
+        "陽気",
+        "寒がり"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "nemuno",
+      "name": "坂田ネムノ",
+      "mbti": "ISFP",
+      "typeName": "気ままな風流人",
+      "catch": "縄張りを守る情け深い山姥",
+      "traits": [
+        "排他的",
+        "実は親切",
+        "マイペース",
+        "肝が据わる"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "aunn",
+      "name": "高麗野あうん",
+      "mbti": "ESFJ",
+      "typeName": "世話焼きの人気者",
+      "catch": "頼まれずとも守る忠犬狛犬",
+      "traits": [
+        "天真爛漫",
+        "忠実",
+        "働き者",
+        "勘がいい"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "narumi",
+      "name": "矢田寺成美",
+      "mbti": "INTJ",
+      "typeName": "孤高の策謀家",
+      "catch": "一人が好きな毒舌お地蔵さん",
+      "traits": [
+        "大人しい",
+        "一人好き",
+        "毒舌",
+        "気にしい"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "satono",
+      "name": "爾子田里乃",
+      "mbti": "ISTJ",
+      "typeName": "実直な番人",
+      "catch": "おっとり慎重な踊る童子",
+      "traits": [
+        "おっとり",
+        "慎重",
+        "飄々",
+        "自信過剰"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "mai",
+      "name": "丁礼田舞",
+      "mbti": "ESTP",
+      "typeName": "豪快な勝負師",
+      "catch": "考える前に動くおっちょこちょい",
+      "traits": [
+        "行動派",
+        "おっちょこちょい",
+        "子供っぽい",
+        "さっぱり"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "okina",
+      "name": "摩多羅隠岐奈",
+      "mbti": "ENTJ",
+      "typeName": "堂々たる統率者",
+      "catch": "尊大で面倒見のよい絶対秘神",
+      "traits": [
+        "尊大",
+        "自信家",
+        "黒幕気質",
+        "実は慈悲深い"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "joon",
+      "name": "依神女苑",
+      "mbti": "ESTP",
+      "typeName": "豪快な勝負師",
+      "catch": "懲りない浪費家の疫病神",
+      "traits": [
+        "派手好き",
+        "浪費家",
+        "狡猾",
+        "飽きっぽい"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "shion",
+      "name": "依神紫苑",
+      "mbti": "ISFP",
+      "typeName": "気ままな風流人",
+      "catch": "無気力だがキレると怖い貧乏神",
+      "traits": [
+        "無気力",
+        "自信がない",
+        "腹ぺこ",
+        "キレると怖い"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "eika",
+      "name": "戎瓔花",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "石積みを楽しむ河原の人気者",
+      "traits": [
+        "明るい",
+        "前向き",
+        "企画上手",
+        "人気者"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "urumi",
+      "name": "牛崎潤美",
+      "mbti": "ESFJ",
+      "typeName": "世話焼きの人気者",
+      "catch": "今の暮らしに誇りを持つ姉御",
+      "traits": [
+        "働き者",
+        "友好的",
+        "姉御肌",
+        "地に足がつく"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "kutaka",
+      "name": "庭渡久侘歌",
+      "mbti": "ISFJ",
+      "typeName": "献身的な支え手",
+      "catch": "礼儀正しく公正な苦労人",
+      "traits": [
+        "礼儀正しい",
+        "公正",
+        "利他的",
+        "苦労人"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "yachie",
+      "name": "吉弔八千慧",
+      "mbti": "INTJ",
+      "typeName": "孤高の策謀家",
+      "catch": "慇懃な仮面の冷徹な策略家",
+      "traits": [
+        "冷徹",
+        "狡猾",
+        "慇懃無礼",
+        "詰めが甘い"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "mayumi",
+      "name": "杖刀偶磨弓",
+      "mbti": "ISTJ",
+      "typeName": "実直な番人",
+      "catch": "忠義一筋の生真面目な兵士長",
+      "traits": [
+        "忠誠心",
+        "生真面目",
+        "融通がきかない",
+        "実直"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "keiki",
+      "name": "埴安神袿姫",
+      "mbti": "INTJ",
+      "typeName": "孤高の策謀家",
+      "catch": "美を追い求める天才造形神",
+      "traits": [
+        "創作意欲",
+        "天才肌",
+        "物わかりがいい",
+        "美の探求者"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "saki",
+      "name": "驪駒早鬼",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "即断即行の慕われる武闘派組長",
+      "traits": [
+        "行動派",
+        "力自慢",
+        "部下思い",
+        "裏表がない"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "miyoi",
+      "name": "奥野田美宵",
+      "mbti": "ESFJ",
+      "typeName": "世話焼きの人気者",
+      "catch": "愛想よく底の見えない看板娘",
+      "traits": [
+        "人懐っこい",
+        "もてなし上手",
+        "陽気",
+        "真意不明"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "mizuchi",
+      "name": "宮出口瑞霊",
+      "mbti": "INTJ",
+      "typeName": "孤高の策謀家",
+      "catch": "陰に潜む狡猾な反獄の怨霊",
+      "traits": [
+        "狡猾",
+        "慎重",
+        "根暗",
+        "目立ちたがり"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "mike",
+      "name": "豪徳寺ミケ",
+      "mbti": "ESTP",
+      "typeName": "豪快な勝負師",
+      "catch": "理不尽に屈しない三毛の招き猫",
+      "traits": [
+        "芯が強い",
+        "開き直り",
+        "商売っ気",
+        "悠々自適"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "takane",
+      "name": "山城たかね",
+      "mbti": "ESTJ",
+      "typeName": "規律の仕切り役",
+      "catch": "商魂たくましいビジネス山童",
+      "traits": [
+        "商売上手",
+        "友好的",
+        "抜け目ない",
+        "実務派"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "sannyo",
+      "name": "駒草山如",
+      "mbti": "ESTJ",
+      "typeName": "規律の仕切り役",
+      "catch": "賭場を仕切る面倒見のよい胴元",
+      "traits": [
+        "泰然",
+        "面倒見がいい",
+        "場を仕切る",
+        "世慣れた"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "misumaru",
+      "name": "玉造魅須丸",
+      "mbti": "ISTJ",
+      "typeName": "実直な番人",
+      "catch": "落ち着いた職人肌の勾玉神",
+      "traits": [
+        "職人気質",
+        "面倒見がいい",
+        "堅実",
+        "博識"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "tsukasa",
+      "name": "菅牧典",
+      "mbti": "ENTP",
+      "typeName": "型破りの仕掛け人",
+      "catch": "耳元で囁く小ずるい白狐",
+      "traits": [
+        "腹黒",
+        "狡猾",
+        "愉快犯",
+        "小生意気"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "megumu",
+      "name": "飯綱丸龍",
+      "mbti": "ENTJ",
+      "typeName": "堂々たる統率者",
+      "catch": "野心と人望を併せ持つ大天狗",
+      "traits": [
+        "野心家",
+        "狡猾",
+        "人望が厚い",
+        "大胆不敵"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "chimata",
+      "name": "天弓千亦",
+      "mbti": "ENTJ",
+      "typeName": "堂々たる統率者",
+      "catch": "誇り高く口調を使い分ける市場神",
+      "traits": [
+        "誇り高い",
+        "高圧的",
+        "頭が切れる",
+        "理念的"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "momoyo",
+      "name": "姫虫百々世",
+      "mbti": "ESTP",
+      "typeName": "豪快な勝負師",
+      "catch": "戦いを楽しむ俺っ娘大蜈蚣",
+      "traits": [
+        "戦闘狂",
+        "男勝り",
+        "単純",
+        "豪胆"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "yuuma",
+      "name": "饕餮尤魔",
+      "mbti": "INTP",
+      "typeName": "探究する書斎派",
+      "catch": "漁夫の利を狙う貪欲な一匹狼",
+      "traits": [
+        "貪欲",
+        "合理的",
+        "食えない",
+        "個人主義"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "biten",
+      "name": "孫美天",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "大聖を名乗るお調子者の猿神",
+      "traits": [
+        "お調子者",
+        "信じやすい",
+        "勝気",
+        "情に厚い"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "enoko",
+      "name": "三頭慧ノ子",
+      "mbti": "ISFJ",
+      "typeName": "献身的な支え手",
+      "catch": "恩義に生きる森の老番犬",
+      "traits": [
+        "忠義者",
+        "辛抱強い",
+        "縄張り意識",
+        "古株"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "chiyari",
+      "name": "天火人ちやり",
+      "mbti": "ISFP",
+      "typeName": "気ままな風流人",
+      "catch": "前向きでゆるい引きこもり",
+      "traits": [
+        "ダウナー",
+        "ポジティブ",
+        "出不精",
+        "ノリがいい"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "hisami",
+      "name": "豫母都日狭美",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "笑顔で追いすがる地獄の案内人",
+      "traits": [
+        "執念深い",
+        "一途すぎる",
+        "甘言上手",
+        "構われたがり"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "zanmu",
+      "name": "日白残無",
+      "mbti": "INTJ",
+      "typeName": "孤高の策謀家",
+      "catch": "すべてを掌に乗せる虚無の策士",
+      "traits": [
+        "老獪",
+        "話術巧み",
+        "はったり上手",
+        "達観"
+      ],
+      "color": "#5a48b5",
+      "soft": "#ebe7fa"
+    },
+    {
+      "id": "ubame",
+      "name": "塵塚ウバメ",
+      "mbti": "ISTJ",
+      "typeName": "実直な番人",
+      "catch": "口は荒いが頼れる山姥の長",
+      "traits": [
+        "荒っぽい",
+        "気が強い",
+        "縄張り意識",
+        "長の風格"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "chimi",
+      "name": "封獣チミ",
+      "mbti": "ISTJ",
+      "typeName": "実直な番人",
+      "catch": "若者にぼやく太古の物の怪",
+      "traits": [
+        "古風",
+        "用心深い",
+        "小言が多い",
+        "長老格"
+      ],
+      "color": "#2c6aa6",
+      "soft": "#e1eef9"
+    },
+    {
+      "id": "nareko",
+      "name": "道神馴子",
+      "mbti": "ENFJ",
+      "typeName": "慈愛の旗振り役",
+      "catch": "謎かけ好きの律儀な見張り番",
+      "traits": [
+        "律儀",
+        "人恋しい",
+        "謎かけ好き",
+        "退屈しがち"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "yuiman",
+      "name": "ユイマン・浅間",
+      "mbti": "ESFP",
+      "typeName": "宴の主役",
+      "catch": "鹿狩りに誘う気さくな王女",
+      "traits": [
+        "気さく",
+        "人恋しい",
+        "牧歌的",
+        "思慮深い"
+      ],
+      "color": "#b96a0c",
+      "soft": "#fbecd2"
+    },
+    {
+      "id": "ariya",
+      "name": "磐永阿梨夜",
+      "mbti": "INFJ",
+      "typeName": "静かな導き手",
+      "catch": "孤独を受け入れた不変の女神",
+      "traits": [
+        "達観",
+        "芯が強い",
+        "献身的",
+        "物静か"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    },
+    {
+      "id": "nina",
+      "name": "渡里ニナ",
+      "mbti": "ENFP",
+      "typeName": "天真爛漫な自由人",
+      "catch": "真実に目覚めた陰謀論の貝",
+      "traits": [
+        "思い込み",
+        "熱中型",
+        "信じやすい",
+        "高圧的"
+      ],
+      "color": "#c22f6c",
+      "soft": "#fbe3ec"
+    }
+  ]
+}

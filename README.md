@@ -37,3 +37,15 @@ node tools/serve.mjs 4173
 - 東方Project © 上海アリス幻樂団
 
 イラストの著作権は作者に帰属します。無断での転載・再配布はしないでください。
+
+## ドパガキモード
+
+36問が多い人向けに、5問だけで無理やり決めるモードです(`logic.js` の `QUICK` と `quickScore`)。基本4軸は1問ずつ、サブ軸は1問だけ答え、残りの軸と「どちらでもない」だった軸はサイコロで決めるので、結果は当たりません。
+
+## 共有(SNS・OGP)
+
+結果ページの「結果をシェア」から、X への投稿・画像の共有/保存・リンクのコピーができます。
+
+- `s/<id>.html`: キャラごとの共有ページ。OGP タグ(`og:image` など)を持ち、開くと `#/c/<id>` に移動します。
+- `img/og/<id>.jpg`: 共有用の 1200×630 の画像。`img/og/site.jpg` はトップページ用です。
+- 作り直すときは `node tools/build-share.mjs` のあと `powershell -ExecutionPolicy Bypass -File tools/og.ps1` を実行します(フォントは Zen Maru Gothic、なければ Yu Gothic UI)。

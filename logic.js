@@ -146,7 +146,43 @@
     return { best, d: ranked[0].d, type: best.mbti, relaxed, sameType, others };
   }
 
-  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, score, typeOf, distance, similarity, match };
+  // ---------- ドパガキモード ----------
+  // 36問は多いという人向けに、5問だけで無理やり決める。基本4軸は1問ずつ、サブ軸は1問だけ。
+  // 答えなかった軸と「どちらでもない」だった軸はサイコロで決めるので、当たらなくても文句は言えない。
+  const QUICK = [0, 1, 2, 3, 14];
+
+  // seed から決まる疑似乱数(同じ seed なら同じ列を返す。結果ページを開き直しても同じ結果になるように)
+  function rng(seed) {
+    let a = seed >>> 0;
+    return function () {
+      a = (a + 0x6D2B79F5) >>> 0;
+      let t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  // 5問の回答(QUICK の順に -2〜+2)と seed → { vec: 8軸スコア, dice: サイコロで決めた軸の番号 }
+  function quickScore(answers5, seed) {
+    const r = rng(seed);
+    const vec = AXES.map(() => 0);
+    QUICK.forEach((qi, k) => {
+      const q = QUESTIONS[qi];
+      const v = answers5[k];
+      const i = AXES.findIndex(a => a.key === q.axis);
+      vec[i] = (typeof v === 'number' ? v * q.dir : 0) / 2;
+    });
+    const dice = [];
+    AXES.forEach((a, i) => {
+      if (vec[i] !== 0) return;
+      vec[i] = (r() < 0.5 ? -1 : 1) * (1 + Math.floor(r() * 3)) / 3;
+      dice.push(i);
+    });
+    return { vec, dice };
+  }
+
+  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK, score, quickScore, typeOf, distance, similarity, match };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TohoLogic = api;
 })(typeof window !== 'undefined' ? window : globalThis);

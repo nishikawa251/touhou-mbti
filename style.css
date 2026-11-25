@@ -275,3 +275,28 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+/* ---- ドパガキモード ---- */
+.dopa {
+  margin-top: 22px; padding: 14px 16px; border-radius: var(--radius);
+  background: var(--dopa-bg, #fff3c4); border: 2px dashed var(--dopa-line, #e0a200); color: var(--dopa-ink, #5a4200);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px;
+}
+.dopa .cta { margin-top: 0; }
+.dopa-text { flex: 1 1 260px; display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.6; }
+.dopa-text b { font-family: var(--font-display); font-size: 18px; }
+.dopa-text strong { font-family: var(--font-display); color: var(--dopa-strong, #c1121f); }
+.btn.dopa-btn { background: var(--dopa-strong, #c1121f); border-color: var(--dopa-strong, #c1121f); color: #fff; }
+.dopa-banner {
+  margin: 12px 0 14px; padding: 10px 14px; border-radius: 14px; font-family: var(--font-display); font-weight: 700; font-size: 14px; line-height: 1.6;
+  background: var(--dopa-bg, #fff3c4); border: 2px dashed var(--dopa-line, #e0a200); color: var(--dopa-ink, #5a4200);
+}
+.dopa-banner b { display: inline-block; margin-right: 8px; padding: 1px 10px; border-radius: 999px; background: var(--dopa-strong, #c1121f); color: #fff; font-size: 13px; transform: rotate(-2deg); }
+.dopa-banner small { display: block; font-weight: 600; font-size: 12px; opacity: .8; }
+@media (prefers-color-scheme: dark) {
+  :root { --dopa-bg: #3b3010; --dopa-line: #c79a2a; --dopa-ink: #ffe08a; --dopa-strong: #ff6b6b; }
+}
+
+/* ---- 共有 ---- */
+.share-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.share-preview { display: block; width: 100%; max-width: 480px; height: auto; margin-top: 14px; border-radius: 12px; border: 1px solid var(--line); }
