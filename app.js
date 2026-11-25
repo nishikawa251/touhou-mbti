@@ -373,8 +373,8 @@
         <p class="desc">${esc(c.desc)}</p>
         <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
         <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
-        ${sharePanel(c, text)}
         ${garakutaLink(c)}
+        ${sharePanel(c, text)}
       </section>
 
       <section class="panel">
