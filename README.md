@@ -53,3 +53,5 @@ node tools/serve.mjs 4173
 - 作り直すときは `node tools/build-share.mjs` のあと `powershell -ExecutionPolicy Bypass -File tools/og.ps1` を実行します(フォントは Zen Maru Gothic、なければ Yu Gothic UI)。
 
 結果ページには「あなたと相性のいいキャラ」も出します。直観/感覚だけが同じで、ほかの7軸が反対のキャラほど上に来ます(`logic.js` の `compat`)。
+
+`index.html` が読み込む CSS/JS には `?v=日時` を付けています。GitHub Pages は10分キャッシュするので、見た目や動きを変えたときはこの値を更新してください(更新しないと、しばらく古い CSS/JS で表示されます)。

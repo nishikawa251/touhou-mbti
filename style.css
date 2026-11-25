@@ -131,7 +131,7 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
 .progress-num b { color: var(--accent); font-size: 20px; }
 .progress-bar { flex: 1; height: 8px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
 .progress-bar span { display: block; height: 100%; background: var(--accent); border-radius: 999px; transition: width .25s ease; }
-.question { font-size: clamp(20px, 4.6vw, 26px); font-weight: 700; margin: 28px 0 24px; min-height: 4.1em; display: flex; align-items: center; }
+.question { display: block; font-size: clamp(20px, 4.6vw, 26px); font-weight: 700; line-height: 2; margin: 28px 0 24px; padding-top: .2em; min-height: 4.1em; }
 .choices { display: grid; gap: 10px; }
 .choice {
   display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
@@ -368,6 +368,5 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
 }
 
 /* ---- 設問のふりがな ---- */
-.question { display: block; line-height: 2; padding-top: .2em; }
 .question ruby { ruby-align: center; }
 .question rt { font-size: .48em; font-weight: 600; color: var(--ink-2); letter-spacing: 0; }
