@@ -44,6 +44,7 @@
     : /kadokawa\.co\.jp/.test(u) ? 'KADOKAWA の紹介ページへ'
     : /bookwalker\.jp/.test(u) ? 'BOOK☆WALKER のページへ'
     : /hakurei-sukeikai/.test(u) ? '東方やおよろず商店のページへ'
+    : /ichijinsha\.co\.jp/.test(u) ? '一迅社の紹介ページへ'
     : '販売ページへ');
   const workChip = w => (WORK_URLS[w]
     ? `<a class="work link" href="${esc(WORK_URLS[w])}" target="_blank" rel="noopener" title="${workLinkTitle(WORK_URLS[w])}">${esc(w)}</a>`
