@@ -107,8 +107,8 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
 .cta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
 
 /* ---- トップ ---- */
-.hero { padding: 32px 0 8px; }
-.hero h1 { font-size: clamp(32px, 7vw, 52px); font-weight: 900; margin: 6px 0 16px; letter-spacing: .01em; }
+.hero { padding: 12px 0 8px; }
+.hero h1 { font-size: clamp(32px, 7vw, 52px); font-weight: 900; margin: 0 0 16px; letter-spacing: .01em; }
 .hero .hint { margin-top: 14px; }
 .wall {
   display: grid; grid-template-columns: repeat(9, 1fr); gap: 8px; margin: 32px 0;
@@ -305,7 +305,7 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
 .dopa .cta { margin-top: 0; }
 .dopa-text { flex: 1 1 260px; display: flex; flex-direction: column; gap: 2px; font-size: 14px; line-height: 1.6; }
 .dopa-text b { font-family: var(--font-display); font-size: 18px; }
-.dopa-text strong { font-family: var(--font-display); color: var(--dopa-strong, #c1121f); }
+.dopa-text strong { font-family: var(--font-display); color: var(--dopa-strong, #c1121f); white-space: nowrap; } /* 「結果は絶対間違ってるぞ！！」は途中で割らない */
 .btn.dopa-btn { background: var(--dopa-strong, #c1121f); border-color: var(--dopa-strong, #c1121f); color: #fff; }
 .dopa-banner {
   margin: 12px 0 14px; padding: 10px 14px; border-radius: 14px; font-family: var(--font-display); font-weight: 700; font-size: 14px; line-height: 1.6;
