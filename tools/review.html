@@ -9,17 +9,23 @@
   全キャラの表示テキストを一覧で読み、気になる点を自動で拾うためのページ(サイトからはリンクしていない)。
   ../data.js と ../logic.js をそのまま読むので、node tools/build-data.mjs のあと開き直せば最新になる。
   開き方: node tools/serve.mjs 4173 → http://localhost:4173/tools/review.html (公開サイトでは /tools/review.html)
+
+  編集モード: キャッチ・主属性・紹介文をその場で書き換えられる。直した内容はこのブラウザに一時保存され、
+  「変更を書き出す」で tools/overrides.json(いまの中身＋直した分)を作れる。そのファイルで tools/overrides.json を
+  置き換えて node tools/build-data.mjs を実行すると data.js に反映される。
 -->
 <style>
 :root {
   --bg: #fbf6ee; --surface: #fff; --surface-2: #f4ecdf; --ink: #2a3050; --ink-2: #5d6482; --line: #e4d9c6;
-  --accent: #cf2f6b; --warn: #b45309; --warn-soft: #fef3c7; --err: #c1121f; --err-soft: #fde2e4; --ok: #2f7d4f;
+  --accent: #cf2f6b; --accent-ink: #fff; --warn: #b45309; --warn-soft: #fef3c7; --err: #c1121f; --err-soft: #fde2e4;
+  --edit: #2c6aa6; --edit-soft: #e1eef9;
   --nt: #5a48b5; --nf: #c22f6c; --sj: #2c6aa6; --sp: #b96a0c;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #171a2b; --surface: #212540; --surface-2: #2a2f4f; --ink: #eef0fa; --ink-2: #a9aecb; --line: #363c62;
-    --accent: #ff6f9f; --warn: #f2b354; --warn-soft: #47351a; --err: #ff7e8a; --err-soft: #4a1f27; --ok: #7ad19c;
+    --accent: #ff6f9f; --accent-ink: #2a0b18; --warn: #f2b354; --warn-soft: #47351a; --err: #ff7e8a; --err-soft: #4a1f27;
+    --edit: #7db9ee; --edit-soft: #1f3a56;
     --nt: #a99bff; --nf: #ff7eaa; --sj: #7db9ee; --sp: #f2b354;
   }
 }
@@ -31,6 +37,12 @@ h1 { font-size: 18px; margin: 0 0 8px; }
 .controls input[type=search], .controls select { font: inherit; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); }
 .controls input[type=search] { flex: 1 1 220px; min-width: 0; }
 .controls label { display: inline-flex; align-items: center; gap: 4px; white-space: nowrap; }
+.btn { font: inherit; font-size: 13px; font-weight: 700; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 8px; padding: 5px 12px; cursor: pointer; }
+.btn:hover { border-color: var(--ink-2); }
+.btn.primary { background: var(--edit); border-color: var(--edit); color: var(--surface); }
+.btn[disabled] { opacity: .45; cursor: default; }
+.editbar { display: none; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px; padding: 6px 10px; border-radius: 8px; background: var(--edit-soft); color: var(--edit); font-size: 13px; font-weight: 700; }
+body.editing .editbar { display: flex; }
 .summary { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .summary button { font: inherit; font-size: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 2px 10px; cursor: pointer; }
 .summary button.on { border-color: var(--accent); color: var(--accent); font-weight: 700; }
@@ -40,6 +52,7 @@ main { padding: 16px; display: grid; grid-template-columns: repeat(auto-fill, mi
 @media (max-width: 480px) { main { grid-template-columns: 1fr; padding: 12px; } header { position: static; } } /* スマホでは上の検索欄を固定しない(画面が狭くなるので) */
 .card { background: var(--surface); border: 1px solid var(--line); border-left: 5px solid var(--g, var(--line)); border-radius: 10px; padding: 12px 14px; display: grid; grid-template-columns: 72px 1fr; gap: 4px 12px; min-width: 0; }
 .card.NT { --g: var(--nt); } .card.NF { --g: var(--nf); } .card.SJ { --g: var(--sj); } .card.SP { --g: var(--sp); }
+.card.changed { box-shadow: 0 0 0 2px var(--edit); }
 .card img { width: 72px; height: 90px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); background: #fff; grid-row: span 3; }
 .head { min-width: 0; }
 .name { font-size: 18px; font-weight: 700; line-height: 1.6; }
@@ -51,7 +64,7 @@ main { padding: 16px; display: grid; grid-template-columns: repeat(auto-fill, mi
 .links { font-size: 12px; display: flex; flex-wrap: wrap; gap: 4px 10px; }
 .links a { color: var(--accent); }
 .links .none { color: var(--ink-2); }
-.row { grid-column: 1 / -1; }
+.row { grid-column: 1 / -1; min-width: 0; }
 .lbl { display: inline-block; min-width: 4.5em; font-size: 11px; font-weight: 700; color: var(--ink-2); }
 .n { font-size: 11px; color: var(--ink-2); margin-left: 6px; font-variant-numeric: tabular-nums; }
 .catch { font-weight: 700; color: var(--g); }
@@ -63,11 +76,31 @@ main { padding: 16px; display: grid; grid-template-columns: repeat(auto-fill, mi
 .axes { font: 12px ui-monospace, Menlo, monospace; color: var(--ink-2); display: flex; flex-wrap: wrap; gap: 2px 10px; }
 .axes span b { color: var(--ink); }
 .issues { grid-column: 1 / -1; margin: 0 0 4px; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px; }
+.issues:empty { display: none; }
 .issues li { font-size: 12px; border-radius: 6px; padding: 1px 8px; }
 .issues .err { background: var(--err-soft); color: var(--err); font-weight: 700; }
 .issues .warn { background: var(--warn-soft); color: var(--warn); }
+.issues .chg { background: var(--edit-soft); color: var(--edit); font-weight: 700; }
+.revert { font: inherit; font-size: 12px; border: 0; background: none; color: var(--edit); text-decoration: underline; cursor: pointer; padding: 0 4px; }
 mark { background: #ffe08a; color: #2a3050; border-radius: 2px; }
 .empty { grid-column: 1 / -1; text-align: center; color: var(--ink-2); padding: 40px 0; }
+/* 編集欄 */
+.ed { font: inherit; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 3px 8px; }
+.ed:focus { outline: 2px solid var(--edit); outline-offset: 0; border-color: var(--edit); }
+.ed.dirty { background: var(--edit-soft); }
+.ed-catch { width: calc(100% - 9em); font-weight: 700; color: var(--g); }
+.ed-traits { display: inline-flex; flex-wrap: wrap; gap: 4px; vertical-align: middle; max-width: calc(100% - 5em); }
+.ed-trait { width: 8.5em; font-size: 13px; }
+.ed-desc { display: block; width: 100%; margin-top: 2px; min-height: 7.5em; resize: vertical; line-height: 1.7; }
+/* 書き出し */
+dialog { width: min(760px, calc(100% - 32px)); border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--ink); padding: 16px; }
+dialog::backdrop { background: rgba(0, 0, 0, .45); }
+dialog h2 { font-size: 16px; margin: 0 0 6px; }
+dialog p { margin: 0 0 8px; font-size: 13px; color: var(--ink-2); }
+dialog textarea { width: 100%; height: 50vh; font: 12px/1.5 ui-monospace, Menlo, monospace; color: var(--ink); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+dialog .acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; justify-content: flex-end; }
+.toast { position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 6px 14px; border-radius: 8px; font-size: 13px; opacity: 0; transition: opacity .2s; pointer-events: none; }
+.toast.show { opacity: 1; }
 </style>
 </head>
 <body>
@@ -77,21 +110,66 @@ mark { background: #ffe08a; color: #2a3050; border-radius: 2px; }
     <input type="search" id="q" placeholder="名前・ID・キャッチ・主属性・紹介文・登場原作で探す" autocomplete="off">
     <select id="type"><option value="">すべてのタイプ</option></select>
     <label><input type="checkbox" id="only"> 注意があるキャラだけ</label>
+    <label><input type="checkbox" id="edit"> 編集モード</label>
     <span class="count" id="count"></span>
+  </div>
+  <div class="editbar">
+    <span id="editinfo"></span>
+    <label><input type="checkbox" id="onlychg"> 変更したキャラだけ</label>
+    <button type="button" class="btn primary" id="export">変更を書き出す</button>
+    <button type="button" class="btn" id="clear">変更をすべて消す</button>
   </div>
   <div class="summary" id="summary"></div>
 </header>
-<main id="list"></main>
+<main id="list"><p class="empty">読み込み中…</p></main>
 
-<script src="../data.js"></script>
-<script src="../logic.js"></script>
+<dialog id="out">
+  <h2>tools/overrides.json</h2>
+  <p id="outnote"></p>
+  <textarea id="outtext" readonly></textarea>
+  <div class="acts">
+    <button type="button" class="btn" id="copy">コピー</button>
+    <button type="button" class="btn primary" id="download">overrides.json をダウンロード</button>
+    <button type="button" class="btn" id="close">閉じる</button>
+  </div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
+// data.js と logic.js は毎回読み直す(公開サイトは10分キャッシュするので、作り直した直後でも最新を見られるように)
 (function () {
+  const load = src => new Promise((ok, ng) => { const s = document.createElement('script'); s.src = `${src}?t=${Date.now()}`; s.onload = ok; s.onerror = ng; document.head.appendChild(s); });
+  load('../data.js').then(() => load('../logic.js')).then(main, () => { document.getElementById('list').innerHTML = '<p class="empty">data.js を読めませんでした。tools/serve.mjs などで開いてください。</p>'; });
+})();
+
+function main() {
   'use strict';
   const L = window.TohoLogic;
   const CHARS = window.TOHO_CHARS || [];
+  const BY_ID = new Map(CHARS.map(c => [c.id, c]));
   const WORK_URLS = window.TOHO_WORK_URLS || {};
   const esc = s => String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
+  const $ = id => document.getElementById(id);
+
+  // ---------- 編集した内容(このブラウザの localStorage に一時保存) ----------
+  // edits = { id: { catch?, traits?, desc? } }。元の data.js と違う項目だけを持つ
+  const STORE = 'toho-review-edits-v1';
+  const FIELDS = ['catch', 'traits', 'desc'];
+  let edits = {};
+  try { edits = JSON.parse(localStorage.getItem(STORE) || '{}') || {}; } catch (e) { edits = {}; }
+  for (const id of Object.keys(edits)) if (!BY_ID.has(id)) delete edits[id];
+  const saveEdits = () => { try { localStorage.setItem(STORE, JSON.stringify(edits)); } catch (e) { /* 保存できなくても編集は続けられる */ } };
+  const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  // いまの値(編集があればそちら)
+  const cur = c => ({ ...c, ...(edits[c.id] || {}) });
+  function setEdit(id, field, value) {
+    const orig = BY_ID.get(id)[field];
+    const e = edits[id] || {};
+    if (same(value, orig)) delete e[field]; else e[field] = value;
+    if (Object.keys(e).length) edits[id] = e; else delete edits[id];
+    saveEdits();
+  }
+  const isChanged = id => !!edits[id];
 
   // ---------- チェックの中身(目安は今の全キャラの分布から決めたもの。変えたいときはここを直す) ----------
   // level: 'err' は直したほうがいいもの、'warn' は確認だけでよいもの
@@ -109,16 +187,15 @@ mark { background: #ffe08a; color: #2a3050; border-radius: 2px; }
     { key: 'space', level: 'warn', label: '余計な空白がある', test: c => [c.catch, c.desc, ...c.traits].some(s => s !== s.trim() || /[ 　]{2,}/.test(s)) },
     { key: 'workNoLink', level: 'warn', label: '登場原作にリンクなし', test: c => c.works.some(w => !WORK_URLS[w]) },
     { key: 'garakuta', level: 'warn', label: '週刊東方キャラクターの記事なし', test: c => !c.g },
-    { key: 'dupCatch', level: 'warn', label: 'ほかのキャラとキャッチが同じ', test: c => CHARS.some(x => x.id !== c.id && x.catch === c.catch) },
+    { key: 'dupCatch', level: 'warn', label: 'ほかのキャラとキャッチが同じ', test: c => CHARS.some(x => x.id !== c.id && cur(x).catch === c.catch) },
   ];
-  const issuesOf = c => CHECKS.filter(k => k.test(c));
-  const ISSUES = new Map(CHARS.map(c => [c.id, issuesOf(c)]));
+  const issuesOf = c => CHECKS.filter(k => k.test(cur(c)));
 
   const subList = v => L.AXES.slice(4).map((a, k) => (v[4 + k] === 0 ? '' : (v[4 + k] > 0 ? a.posLabel : a.negLabel))).filter(Boolean);
   const nameRuby = c => (c.ruby
     ? c.ruby.map(([s, r]) => (r ? `<ruby>${esc(s)}<rt>${esc(r)}</rt></ruby>` : esc(s))).join('')
     : (c.kana ? `<ruby>${esc(c.name)}<rt>${esc(c.kana)}</rt></ruby>` : esc(c.name)));
-  // 検索語を黄色く
+  // 検索語を黄色く(読むときだけ。編集欄の中は塗れない)
   let query = '';
   const hl = s => {
     const e = esc(s);
@@ -126,20 +203,30 @@ mark { background: #ffe08a; color: #2a3050; border-radius: 2px; }
     const q = esc(query).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     return e.replace(new RegExp(q, 'gi'), m => `<mark>${m}</mark>`);
   };
-  // 8軸の値(-3〜+3)。正の向きの文字・名前を出す
+  // 8軸の値(-3〜+3)
   const axes = c => L.AXES.map((a, i) => {
     const n = Math.round(c.v[i] * 3);
     const side = n > 0 ? (a.pos || a.posLabel) : n < 0 ? (a.neg || a.negLabel) : '±';
     return `<span title="${esc(a.negLabel)} ← → ${esc(a.posLabel)}">${esc(a.negLabel)}/${esc(a.posLabel)} <b>${n > 0 ? '+' + n : n}</b>${a.main ? `(${side})` : ''}</span>`;
   }).join('');
 
-  function card(c) {
+  const issuesHtml = c => {
+    const iss = issuesOf(c);
+    return (isChanged(c.id) ? `<li class="chg">変更あり<button type="button" class="revert" data-revert="${c.id}">元に戻す</button></li>` : '')
+      + iss.map(k => `<li class="${k.level}">${esc(k.label)}</li>`).join('');
+  };
+  const TRAIT_SLOTS = 5; // 主属性の入力欄の数(空欄は無視)
+
+  function card(c0, editing) {
+    const c = cur(c0);
     const t = L.TYPES[c.mbti];
-    const iss = ISSUES.get(c.id);
     const subs = subList(c.v);
+    const dirty = f => (edits[c.id] && f in edits[c.id] ? ' dirty' : '');
+    const traitInputs = Array.from({ length: Math.max(TRAIT_SLOTS, c.traits.length + 1) }, (_, i) =>
+      `<input class="ed ed-trait${dirty('traits')}" data-id="${c.id}" data-field="traits" value="${esc(c.traits[i] || '')}" placeholder="${i < 4 ? '主属性' : '(追加)'}">`).join('');
     return `
-    <article class="card ${t.group}" id="${c.id}">
-      ${iss.length ? `<ul class="issues">${iss.map(k => `<li class="${k.level}">${esc(k.label)}</li>`).join('')}</ul>` : ''}
+    <article class="card ${t.group}${isChanged(c.id) ? ' changed' : ''}" id="${c.id}">
+      <ul class="issues">${issuesHtml(c0)}</ul>
       <img src="../img/chars/${c.id}.png" alt="" loading="lazy">
       <div class="head">
         <div class="name">${nameRuby(c)}<span class="id">${esc(c.id)}</span></div>
@@ -151,60 +238,158 @@ mark { background: #ffe08a; color: #2a3050; border-radius: 2px; }
         ${c.g ? `<a href="${esc(c.g)}" target="_blank" rel="noopener">週刊東方キャラクター</a>` : '<span class="none">週刊東方キャラクター: 記事なし(一覧へ)</span>'}
       </div>
       <div class="axes">${axes(c)}</div>
+      ${editing ? `
+      <div class="row"><span class="lbl">キャッチ</span><input class="ed ed-catch${dirty('catch')}" data-id="${c.id}" data-field="catch" value="${esc(c.catch)}"><span class="n" data-n="catch">${c.catch.length}字</span></div>
+      <div class="row"><span class="lbl">主属性</span><span class="ed-traits">${traitInputs}</span></div>
+      <div class="row"><span class="lbl">紹介文</span><span class="n" data-n="desc">${c.desc.length}字</span><textarea class="ed ed-desc${dirty('desc')}" data-id="${c.id}" data-field="desc">${esc(c.desc)}</textarea></div>` : `
       <div class="row"><span class="lbl">キャッチ</span><span class="catch">${hl(c.catch)}</span><span class="n">${c.catch.length}字</span></div>
       <div class="row"><span class="lbl">主属性</span>${c.traits.map(x => `<span class="tag">${hl(x)}</span>`).join('')}</div>
-      <div class="row"><span class="lbl">紹介文</span><span class="n">${c.desc.length}字</span><p class="desc">${hl(c.desc)}</p></div>
+      <div class="row"><span class="lbl">紹介文</span><span class="n">${c.desc.length}字</span><p class="desc">${hl(c.desc)}</p></div>`}
       <div class="row"><span class="lbl">登場原作</span>${c.works.map(w => (WORK_URLS[w]
         ? `<span class="work"><a href="${esc(WORK_URLS[w])}" target="_blank" rel="noopener">${hl(w)} ↗</a></span>`
         : `<span class="work nolink" title="リンクなし">${hl(w)}</span>`)).join('') || '<span class="n">なし</span>'}</div>
     </article>`;
   }
 
-  // ---------- 絞り込み ----------
-  const $ = id => document.getElementById(id);
+  // ---------- 絞り込みと表示 ----------
   let onlyKey = '';
   L.TYPE_ORDER.forEach(t => {
     const n = CHARS.filter(c => c.mbti === t).length;
     $('type').insertAdjacentHTML('beforeend', `<option value="${t}">${t} ${esc(L.TYPES[t].name)}(${n})</option>`);
   });
   function renderSummary() {
+    const all = new Map(CHARS.map(c => [c.id, issuesOf(c)]));
     $('summary').innerHTML = CHECKS.map(k => {
-      const n = CHARS.filter(c => ISSUES.get(c.id).includes(k)).length;
+      const n = CHARS.filter(c => all.get(c.id).includes(k)).length;
       return n ? `<button type="button" data-key="${k.key}" class="${onlyKey === k.key ? 'on' : ''}"><span class="${k.level}">●</span> ${esc(k.label)} ${n}</button>` : '';
     }).join('') || '<span class="n">気になる点は見つかりませんでした</span>';
+    const warned = CHARS.filter(c => all.get(c.id).length).length;
+    const nChg = Object.keys(edits).length;
+    $('editinfo').textContent = nChg ? `変更したキャラ ${nChg}人(このブラウザに一時保存中)` : 'まだ変更はありません';
+    $('export').disabled = !nChg;
+    $('clear').disabled = !nChg;
+    return warned;
   }
   function render() {
     query = $('q').value.trim();
     const type = $('type').value;
     const only = $('only').checked;
+    const onlyChg = $('onlychg').checked;
+    const editing = $('edit').checked;
+    document.body.classList.toggle('editing', editing);
     const ql = query.toLowerCase();
-    const list = CHARS.filter(c => {
+    const list = CHARS.filter(c0 => {
+      const c = cur(c0);
       if (type && c.mbti !== type) return false;
-      const iss = ISSUES.get(c.id);
+      const iss = issuesOf(c0);
       if (only && !iss.length) return false;
       if (onlyKey && !iss.some(k => k.key === onlyKey)) return false;
+      if (editing && onlyChg && !isChanged(c.id)) return false;
       if (ql) {
         const hay = [c.name, c.kana, c.id, c.catch, c.desc, ...c.traits, ...c.works].join('\n').toLowerCase();
         if (!hay.includes(ql)) return false;
       }
       return true;
     });
-    $('list').innerHTML = list.map(card).join('') || '<p class="empty">該当するキャラはいません</p>';
-    const warned = CHARS.filter(c => ISSUES.get(c.id).length).length;
+    $('list').innerHTML = list.map(c => card(c, editing)).join('') || '<p class="empty">該当するキャラはいません</p>';
+    const warned = renderSummary();
     $('count').textContent = `${list.length} / ${CHARS.length}人を表示(注意あり ${warned}人)`;
-    renderSummary();
+    document.querySelectorAll('.ed-desc').forEach(fit);
   }
+  // 紹介文の欄は中身に合わせて高さを伸ばす
+  const fit = ta => { ta.style.height = 'auto'; ta.style.height = (ta.scrollHeight + 2) + 'px'; };
+
+  // 入力のたびに、その1枚のカードだけ更新する(全体を描き直すと入力中の欄が消えるので)
+  function onEdit(el) {
+    const id = el.dataset.id;
+    const field = el.dataset.field;
+    const art = document.getElementById(id);
+    let value;
+    if (field === 'traits') value = [...art.querySelectorAll('.ed-trait')].map(i => i.value.trim()).filter(Boolean);
+    else value = el.value;
+    setEdit(id, field, value);
+    const c = cur(BY_ID.get(id));
+    const n = art.querySelector(`[data-n="${field}"]`);
+    if (n) n.textContent = `${c[field].length}字`;
+    if (field === 'desc') fit(el);
+    const isDirty = !!(edits[id] && field in edits[id]);
+    art.querySelectorAll(`[data-field="${field}"]`).forEach(i => i.classList.toggle('dirty', isDirty));
+    art.classList.toggle('changed', isChanged(id));
+    art.querySelector('.issues').innerHTML = issuesHtml(BY_ID.get(id));
+    const warned = renderSummary();
+    $('count').textContent = $('count').textContent.replace(/注意あり \d+人/, `注意あり ${warned}人`);
+  }
+
+  // ---------- 書き出し: いまの tools/overrides.json に、直した分を足したもの ----------
+  let outJson = '';
+  async function exportEdits() {
+    let base = {};
+    let note;
+    try {
+      const res = await fetch(`overrides.json?t=${Date.now()}`);
+      if (!res.ok) throw new Error(res.status);
+      base = await res.json();
+      note = 'いまの tools/overrides.json に、このページで直した分を足したものです。このファイルで tools/overrides.json を置き換えて node tools/build-data.mjs を実行するか、中身をチャットに貼ってください。';
+    } catch (e) {
+      note = 'tools/overrides.json を読めなかったので、このページで直した分だけです。tools/overrides.json の中身に足してください(同じキャラがあれば項目ごとに上書き)。';
+    }
+    const merged = { ...base };
+    for (const [id, e] of Object.entries(edits)) merged[id] = { ...(merged[id] || {}), ...e };
+    // 元のファイルと同じく、1キャラ1行で
+    const ids = Object.keys(merged);
+    outJson = '{\n' + ids.map((id, i) => `  ${JSON.stringify(id)}: ${JSON.stringify(merged[id])}${i < ids.length - 1 ? ',' : ''}`).join('\n') + '\n}\n';
+    $('outnote').textContent = note;
+    $('outtext').value = outJson;
+    $('out').showModal();
+  }
+  let toastTimer = 0;
+  const toast = msg => { const t = $('toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2000); };
+
+  // ---------- イベント ----------
   $('q').addEventListener('input', render);
   $('type').addEventListener('change', render);
   $('only').addEventListener('change', render);
+  $('edit').addEventListener('change', render);
+  $('onlychg').addEventListener('change', render);
   $('summary').addEventListener('click', e => {
     const b = e.target.closest('button[data-key]');
     if (!b) return;
     onlyKey = onlyKey === b.dataset.key ? '' : b.dataset.key;
     render();
   });
+  $('list').addEventListener('input', e => { if (e.target.matches('.ed')) onEdit(e.target); });
+  $('list').addEventListener('click', e => {
+    const b = e.target.closest('[data-revert]');
+    if (!b) return;
+    delete edits[b.dataset.revert];
+    saveEdits();
+    const art = document.getElementById(b.dataset.revert);
+    art.outerHTML = card(BY_ID.get(b.dataset.revert), $('edit').checked);
+    const ta = document.querySelector(`#${b.dataset.revert} .ed-desc`);
+    if (ta) fit(ta);
+    renderSummary();
+  });
+  $('export').addEventListener('click', exportEdits);
+  $('clear').addEventListener('click', () => {
+    if (!confirm(`変更したキャラ ${Object.keys(edits).length}人分の変更をすべて消します。よろしいですか?`)) return;
+    edits = {};
+    saveEdits();
+    render();
+  });
+  $('copy').addEventListener('click', () => {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(outJson).then(() => toast('コピーしました'), () => toast('コピーできませんでした'));
+    else { $('outtext').select(); toast('選択したのでコピーしてください'); }
+  });
+  $('download').addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([outJson], { type: 'application/json' }));
+    a.download = 'overrides.json';
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  });
+  $('close').addEventListener('click', () => $('out').close());
   render();
-})();
+}
 </script>
 </body>
 </html>
