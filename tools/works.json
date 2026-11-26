@@ -1,5 +1,5 @@
 {
-  "_comment": "主な登場原作のリンク先。ゲームは Steam にあれば Steam、Steam にないもの(妖々夢・永夜抄・格闘作品・音楽CD)は東方やおよろず商店。書籍・漫画は単行本1巻(シリーズ最初の巻)の紹介ページで、KADOKAWA か BOOK☆WALKER。ここにない作品はリンクなし",
+  "_comment": "主な登場原作のリンク先。ゲームは Steam にあれば Steam、Steam にないもの(妖々夢・永夜抄・格闘作品・音楽CD)は東方やおよろず商店。書籍・漫画は単行本1巻(シリーズ最初の巻)の紹介ページで、KADOKAWA か BOOK☆WALKER、どちらにもない一迅社の本は一迅社の書誌ページ(data.ichijinsha.co.jp/detail/ + ISBN の 7580 から検査数字の前まで)。ここにない作品はリンクなし",
   "東方紅魔郷": "https://store.steampowered.com/app/4659620/",
   "東方妖々夢": "https://shop.hakurei-sukeikai.com/detail/id/00000119995",
   "東方永夜抄": "https://shop.hakurei-sukeikai.com/detail/id/00000120016",
@@ -39,5 +39,7 @@
   "夢違科学世紀": "https://shop.hakurei-sukeikai.com/detail/id/00000119997",
   "大空魔術": "https://shop.hakurei-sukeikai.com/detail/id/00000120002",
   "東方茨歌仙": "https://bookwalker.jp/de80032b92-085c-497c-a02f-fc85605b244b/",
-  "東方酔蝶華": "https://bookwalker.jp/de9a467859-f089-41f0-940b-f3a497f24918/"
+  "東方酔蝶華": "https://bookwalker.jp/de9a467859-f089-41f0-940b-f3a497f24918/",
+  "東方求聞史紀": "https://data.ichijinsha.co.jp/detail/75801063",
+  "東方求聞口授": "https://data.ichijinsha.co.jp/detail/75801231"
 }

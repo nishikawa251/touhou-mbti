@@ -58,7 +58,7 @@ for (const c of out) {
 fs.writeFileSync(path.join(root, 'data.js'),
   '// tools/build-data.mjs が生成。手で編集せず、research/profiles か tools/overrides.json を直して再生成する。\n' +
   'window.TOHO_CHARS = ' + JSON.stringify(out, null, 1) + ';\n' +
-  // 登場原作 → 販売・紹介ページ(Steam / 東方やおよろず商店 / KADOKAWA / BOOK☆WALKER)。tools/works.json
+  // 登場原作 → 販売・紹介ページ(Steam / 東方やおよろず商店 / KADOKAWA / BOOK☆WALKER / 一迅社)。tools/works.json
   'window.TOHO_WORK_URLS = ' + JSON.stringify(Object.fromEntries(Object.entries(read('tools/works.json')).filter(([k]) => !k.startsWith('_')))) + ';\n', 'utf8');
 
 const byType = {};
