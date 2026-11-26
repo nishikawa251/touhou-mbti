@@ -43,7 +43,8 @@
   const workLinkTitle = u => (/steampowered/.test(u) ? 'Steam のページへ'
     : /kadokawa\.co\.jp/.test(u) ? 'KADOKAWA の紹介ページへ'
     : /bookwalker\.jp/.test(u) ? 'BOOK☆WALKER のページへ'
-    : 'アキバホビーの販売ページへ');
+    : /hakurei-sukeikai/.test(u) ? '東方やおよろず商店のページへ'
+    : '販売ページへ');
   const workChip = w => (WORK_URLS[w]
     ? `<a class="work link" href="${esc(WORK_URLS[w])}" target="_blank" rel="noopener" title="${workLinkTitle(WORK_URLS[w])}">${esc(w)}</a>`
     : `<span class="work">${esc(w)}</span>`);
