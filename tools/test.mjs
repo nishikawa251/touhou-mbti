@@ -62,3 +62,21 @@ console.log('   多い順:', sorted.slice(0, 8).map(([id, n]) => `${name(id)} ${
 console.log('   少ない順:', sorted.slice(-8).map(([id, n]) => `${name(id)} ${(n / N * 100).toFixed(2)}%`).join(' / '));
 console.log('   タイプ別:', L.TYPE_ORDER.map(t => `${t} ${((typeHit[t] || 0) / N * 100).toFixed(1)}%`).join(' '));
 if (fail) process.exitCode = 1;
+
+// (3) 英語版: 表示する文の英訳がそろっているか(en/data.js と logic.js の en)
+const enWin = {};
+new Function('window', fs.readFileSync(path.join(root, 'en/data.js'), 'utf8'))(enWin);
+const enMissing = [];
+for (const c of chars) {
+  const e = enWin.TOHO_CHARS_EN[c.id];
+  if (!e || !e.name || !e.catch || !e.desc || !e.wiki || !Array.isArray(e.traits) || e.traits.length !== c.traits.length) enMissing.push(`キャラ ${c.id}`);
+  for (const w of c.works) if (!enWin.TOHO_WORKS_EN[w]) enMissing.push(`作品 ${w}`);
+  if (fs.existsSync(path.join(root, 'img/og/en')) && !fs.existsSync(path.join(root, `img/og/en/${c.id}.jpg`))) enMissing.push(`共有画像 img/og/en/${c.id}.jpg`);
+}
+L.QUESTIONS.forEach((q, i) => { if (!q.en) enMissing.push(`設問 ${i + 1}`); });
+L.CHOICES.forEach(c => { if (!c.en) enMissing.push(`選択肢 ${c.label}`); });
+L.AXES.forEach(a => { if (!a.en || !a.en.posLabel || !a.en.negLabel) enMissing.push(`軸 ${a.key}`); });
+Object.entries(L.TYPES).forEach(([k, t]) => { if (!t.en || !t.en.name || !t.en.blurb) enMissing.push(`タイプ ${k}`); });
+Object.entries(L.GROUPS).forEach(([k, g]) => { if (!g.en || !g.en.name || !g.en.sign) enMissing.push(`グループ ${k}`); });
+console.log(`(3) 英語版の英訳: ${enMissing.length ? '足りない ' + enMissing.join(', ') : 'すべてそろっている'}`);
+if (enMissing.length) process.exitCode = 1;

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Touhou Character Personality Quiz</title>
+<meta name="description" content="36 questions, 16 types, 137 characters. An unofficial fan quiz that finds the Touhou Project character most like you.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Touhou Character Personality Quiz">
+<meta property="og:title" content="Touhou Character Personality Quiz: Who in Gensokyo are you most like?">
+<meta property="og:description" content="36 questions, 16 types, 137 characters. An unofficial fan quiz that finds the Touhou Project character most like you. There's also a 6-question Brainrot Mode.">
+<meta property="og:image" content="https://nishikawa251.github.io/touhou-mbti/img/og/en/site.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://nishikawa251.github.io/touhou-mbti/en/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" hreflang="ja" href="https://nishikawa251.github.io/touhou-mbti/">
+<link rel="alternate" hreflang="en" href="https://nishikawa251.github.io/touhou-mbti/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css?v=202611270122">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#/" aria-label="Home">
+    <span class="brand-mark" aria-hidden="true">東</span>
+    <span class="brand-text">Touhou Personality Quiz</span>
+  </a>
+  <nav class="top-nav">
+    <a href="#/zukan">Characters</a>
+    <a class="lang-switch" id="lang-switch" href="../" hreflang="ja" lang="ja">日本語</a>
+  </nav>
+</header>
+
+<main id="app" tabindex="-1"></main>
+
+<footer class="foot">
+  <p>
+    This is an unofficial fan quiz made by an individual. Touhou Project is a work of Team Shanghai Alice, and this quiz is not affiliated with the creator or any related company.
+    It is also not an official MBTI® assessment, just a bit of fun borrowing the idea of 16 types.
+  </p>
+  <p>
+    Character illustrations:
+    粗茶 / Socha ("Yaoyorozu" series)
+    / Personality references:
+    <a href="https://dic.pixiv.net/a/%E6%9D%B1%E6%96%B9Project%E3%81%AE%E7%99%BB%E5%A0%B4%E4%BA%BA%E7%89%A9" target="_blank" rel="noopener">Pixiv Encyclopedia, "Characters of Touhou Project"</a> (Japanese)
+    (the character descriptions are summaries written from each article and translated into English)
+  </p>
+</footer>
+
+<dialog id="detail" class="detail" aria-label="Character details"></dialog>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>window.TOHO_LANG = 'en';</script>
+<script src="../data.js?v=202611270122"></script>
+<script src="data.js?v=202611270122"></script>
+<script src="../logic.js?v=202611270122"></script>
+<script src="../app.js?v=202611270122"></script>
+</body>
+</html>

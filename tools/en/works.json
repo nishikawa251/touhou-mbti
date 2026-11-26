@@ -1,0 +1,143 @@
+{
+  "_comment": "英語版で使う登場原作の英題。url があるものは英語版の作品ページへ、ないものは tools/works.json の日本語版のリンクを使う",
+  "東方靈異伝": {
+    "title": "Highly Responsive to Prayers"
+  },
+  "東方封魔録": {
+    "title": "Story of Eastern Wonderland"
+  },
+  "東方幻想郷": {
+    "title": "Lotus Land Story"
+  },
+  "東方怪綺談": {
+    "title": "Mystic Square"
+  },
+  "東方紅魔郷": {
+    "title": "Embodiment of Scarlet Devil"
+  },
+  "東方妖々夢": {
+    "title": "Perfect Cherry Blossom"
+  },
+  "東方永夜抄": {
+    "title": "Imperishable Night"
+  },
+  "東方萃夢想": {
+    "title": "Immaterial and Missing Power"
+  },
+  "東方花映塚": {
+    "title": "Phantasmagoria of Flower View"
+  },
+  "東方文花帖": {
+    "title": "Shoot the Bullet"
+  },
+  "東方風神録": {
+    "title": "Mountain of Faith"
+  },
+  "東方緋想天": {
+    "title": "Scarlet Weather Rhapsody"
+  },
+  "東方地霊殿": {
+    "title": "Subterranean Animism"
+  },
+  "東方非想天則": {
+    "title": "Hisoutensoku"
+  },
+  "東方星蓮船": {
+    "title": "Undefined Fantastic Object"
+  },
+  "ダブルスポイラー": {
+    "title": "Double Spoiler"
+  },
+  "妖精大戦争": {
+    "title": "Great Fairy Wars"
+  },
+  "東方神霊廟": {
+    "title": "Ten Desires"
+  },
+  "東方心綺楼": {
+    "title": "Hopeless Masquerade"
+  },
+  "東方輝針城": {
+    "title": "Double Dealing Character"
+  },
+  "弾幕アマノジャク": {
+    "title": "Impossible Spell Card"
+  },
+  "東方深秘録": {
+    "title": "Urban Legend in Limbo"
+  },
+  "東方紺珠伝": {
+    "title": "Legacy of Lunatic Kingdom"
+  },
+  "東方憑依華": {
+    "title": "Antinomy of Common Flowers"
+  },
+  "東方天空璋": {
+    "title": "Hidden Star in Four Seasons"
+  },
+  "秘封ナイトメアダイアリー": {
+    "title": "Violet Detector"
+  },
+  "東方鬼形獣": {
+    "title": "Wily Beast and Weakest Creature"
+  },
+  "東方剛欲異聞": {
+    "title": "Sunken Fossil World"
+  },
+  "東方虹龍洞": {
+    "title": "Unconnected Marketeers"
+  },
+  "バレットフィリア達の闇市場": {
+    "title": "100th Black Market"
+  },
+  "東方獣王園": {
+    "title": "Unfinished Dream of All Living Ghost"
+  },
+  "東方錦上京": {
+    "title": "Fossilized Wonders"
+  },
+  "蓮台野夜行": {
+    "title": "Ghostly Field Club"
+  },
+  "夢違科学世紀": {
+    "title": "Changeability of Strange Dream"
+  },
+  "卯酉東海道": {
+    "title": "Retrospective 53 minutes"
+  },
+  "大空魔術": {
+    "title": "Magical Astronomy"
+  },
+  "東方求聞史紀": {
+    "title": "Perfect Memento in Strict Sense"
+  },
+  "東方求聞口授": {
+    "title": "Symposium of Post-mysticism"
+  },
+  "東方文果真報": {
+    "title": "Alternative Facts in Eastern Utopia"
+  },
+  "東方香霖堂": {
+    "title": "Curiosities of Lotus Asia"
+  },
+  "東方儚月抄": {
+    "title": "Silent Sinner in Blue"
+  },
+  "東方三月精": {
+    "title": "Fairies of the Three Moons"
+  },
+  "東方茨歌仙": {
+    "title": "Wild and Horned Hermit"
+  },
+  "東方鈴奈庵": {
+    "title": "Forbidden Scrollery",
+    "url": "https://global.bookwalker.jp/de5e8889e5-28aa-4e67-86a4-28eeb408a1b7/forbidden-scrollery-vol-1/"
+  },
+  "東方酔蝶華": {
+    "title": "The Lotus Eaters",
+    "url": "https://global.bookwalker.jp/de9c77dda1-ad7f-4ec4-b38b-237e48c5a5dd/"
+  },
+  "東方智霊奇伝": {
+    "title": "Cheating Detective Satori"
+  }
+}

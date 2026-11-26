@@ -54,10 +54,20 @@ node tools/serve.mjs 4173
 
 結果ページには「あなたと相性のいいキャラ」も出します。直観/感覚だけが同じで、ほかの7軸が反対のキャラほど上に来ます(`logic.js` の `compat`)。
 
-`index.html` が読み込む CSS/JS には `?v=日時` を付けています。GitHub Pages は10分キャッシュするので、見た目や動きを変えたときはこの値を更新してください(更新しないと、しばらく古い CSS/JS で表示されます)。
+`index.html` と `en/index.html` が読み込む CSS/JS には `?v=日時` を付けています。GitHub Pages は10分キャッシュするので、見た目や動きを変えたときはこの値を更新してください(更新しないと、しばらく古い CSS/JS で表示されます)。
 
 キャラ名の読みと主な登場原作は `tools/meta.json` にあります(読みは漢字を含む名前だけ。作品は初登場を先頭に2〜4件)。直したら `node tools/build-data.mjs` で `data.js` に反映されます。
 
 登場原作のリンク先は `tools/works.json` にあります。ゲームと音楽CDは Steam(なければ東方やおよろず商店)、書籍・漫画は単行本1巻(シリーズ最初の巻)の KADOKAWA か BOOK☆WALKER の紹介ページ、どちらにもない一迅社の本(求聞史紀・求聞口授)は一迅社の書誌ページです。
 
 姓と名で分けたふりがなは `tools/ruby.json` にあります(`[["博麗","はくれい"],["霊夢","れいむ"]]` の形。読みのない部分は `null`)。
+
+## 英語版
+
+`en/index.html` が英語版です(https://nishikawa251.github.io/touhou-mbti/en/)。ヘッダーの「English / 日本語」で、見ている画面のまま切り替わります。
+
+- 日本語版と同じ `app.js`・`logic.js`・`data.js` を使い、`window.TOHO_LANG = 'en'` のときは表示する文だけを英語にします。8軸の数値とタイプは共通なので、途中の回答や結果も両方の版で引き継がれます。
+- 画面の文言は `app.js` の `T('日本語', 'English')`、設問・選択肢・軸・タイプ・グループの英語は `logic.js` の各項目の `en` にあります。
+- キャラの英訳は `tools/en/chars.json`(`name` は英語版 Touhou Wiki の記事名、`wiki` はその記事の URL)、登場原作の英題は `tools/en/works.json`(英語版の作品ページがあるものは `url`。ないものは日本語版と同じリンク)。直したら `node tools/build-data.mjs` で `en/data.js` を作り直します。
+- 共有ページ `en/s/<id>.html` は `node tools/build-share.mjs` で、共有画像 `img/og/en/` はそのあと `node tools/og-en.mjs` で作ります。`og-en.mjs` は Playwright で `og.ps1` と同じレイアウトを描きます(フォントは `tools/fonts` の Zen Maru Gothic、SIL Open Font License)。
+- ドパガキモードは英語版では Brainrot Mode、百科事典のリンクはピクシブ百科事典の代わりに Touhou Wiki です。

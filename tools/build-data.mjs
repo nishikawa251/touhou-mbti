@@ -61,6 +61,27 @@ fs.writeFileSync(path.join(root, 'data.js'),
   // 登場原作 → 販売・紹介ページ(Steam / 東方やおよろず商店 / KADOKAWA / BOOK☆WALKER / 一迅社)。tools/works.json
   'window.TOHO_WORK_URLS = ' + JSON.stringify(Object.fromEntries(Object.entries(read('tools/works.json')).filter(([k]) => !k.startsWith('_')))) + ';\n', 'utf8');
 
+// 英語版(en/index.html)用: tools/en/chars.json(キャラの英訳)と tools/en/works.json(作品の英題)→ en/data.js
+// 診断の数値(8軸・タイプ)は data.js を共有し、ここには表示する文だけを入れる
+const enChars = read('tools/en/chars.json');
+const enWorks = Object.fromEntries(Object.entries(read('tools/en/works.json')).filter(([k]) => !k.startsWith('_')));
+for (const c of out) {
+  const e = enChars[c.id];
+  if (!e) { problems.push(`${c.id}: 英訳なし(tools/en/chars.json)`); continue; }
+  for (const k of ['name', 'wiki', 'catch', 'desc']) if (!e[k]) problems.push(`${c.id}: 英訳の ${k} なし`);
+  if (!Array.isArray(e.traits) || e.traits.length !== c.traits.length) problems.push(`${c.id}: 英訳の traits の数が日本語と違う`);
+  for (const w of c.works) if (!enWorks[w]) problems.push(`${c.id}: 作品「${w}」の英題なし(tools/en/works.json)`);
+}
+for (const id of Object.keys(enChars)) if (!out.some(c => c.id === id)) problems.push(`tools/en/chars.json: 不明な id ${id}`);
+fs.mkdirSync(path.join(root, 'en'), { recursive: true });
+fs.writeFileSync(path.join(root, 'en/data.js'),
+  '// tools/build-data.mjs が生成。手で編集せず、tools/en/chars.json と tools/en/works.json を直して再生成する。\n' +
+  'window.TOHO_CHARS_EN = ' + JSON.stringify(Object.fromEntries(out.map(c => {
+    const e = enChars[c.id] || {};
+    return [c.id, { name: e.name, catch: e.catch, traits: e.traits, desc: e.desc, wiki: e.wiki }];
+  })), null, 1) + ';\n' +
+  'window.TOHO_WORKS_EN = ' + JSON.stringify(enWorks) + ';\n', 'utf8');
+
 const byType = {};
 for (const c of out) (byType[c.mbti] ||= []).push(c.name);
 for (const t of Object.keys(byType).sort()) console.log(t, byType[t].length, byType[t].join('、'));
