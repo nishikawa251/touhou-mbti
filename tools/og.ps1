@@ -159,7 +159,7 @@ $f = NewFont 76 $true
 $g.DrawString($json.labels.siteTitle, $f, (New-Object System.Drawing.SolidBrush($ink)), (New-Object System.Drawing.RectangleF(0, 96, $W, 100)), $fmtCenter); $f.Dispose()
 $f = NewFont 30 $false
 $g.DrawString($json.labels.siteSub, $f, (New-Object System.Drawing.SolidBrush($ink2)), (New-Object System.Drawing.RectangleF(0, 206, $W, 44)), $fmtCenter); $f.Dispose()
-$ids = @('reimu', 'marisa', 'sakuya', 'youmu', 'sanae', 'koishi', 'nue', 'junko')
+$ids = @('reimu', 'marisa', 'sakuya', 'youmu', 'sanae', 'koishi', 'nue', 'flandre')
 $pw = 128; $ph = 160; $gap = 10
 $startX = [int](($W - ($ids.Count * $pw + ($ids.Count - 1) * $gap)) / 2)
 for ($i = 0; $i -lt $ids.Count; $i++) {
