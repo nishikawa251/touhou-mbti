@@ -94,12 +94,9 @@
   function subLabels(vec) {
     return L.AXES.slice(4).map((a, k) => { const v = vec[4 + k]; return v === 0 ? '' : (v > 0 ? a.posLabel : a.negLabel); }).filter(Boolean).join('・');
   }
-  function subTags(vec) {
-    return L.AXES.slice(4).map((a, k) => {
-      const v = vec[4 + k];
-      if (v === 0) return '';
-      return `<span class="tag">${v > 0 ? a.posLabel : a.negLabel}</span>`;
-    }).join('');
+  // メインタイプの横に添えるサブタイプ。押せる部品と紛れないよう、枠のない文字で出す
+  function subtypeInline(vec) {
+    return `<span class="subtype-inline"><span class="subtype-label">サブ</span>${esc(subLabels(vec) || '中庸')}</span>`;
   }
 
   function typeBadge(mbti, big) {
@@ -132,7 +129,7 @@
   function accordion(id, title, sub, body, cls = '', open = false) {
     return `
       <section class="acc ${cls}">
-        <button type="button" class="acc-head${open ? ' is-open' : ''}" data-toggle="${id}" aria-expanded="${open}" aria-controls="${id}">${esc(title)}<span class="acc-sub">${esc(sub)}</span><span class="acc-arrow" aria-hidden="true">▾</span></button>
+        <button type="button" class="acc-head${open ? ' is-open' : ''}" data-toggle="${id}" aria-expanded="${open}" aria-controls="${id}"><span class="acc-title">${esc(title)}<span class="acc-arrow" aria-hidden="true">▾</span></span><span class="acc-sub">${esc(sub)}</span></button>
         <div class="collapse${open ? ' open' : ''}" id="${id}"><div class="collapse-inner acc-body">${body}</div></div>
       </section>`;
   }
@@ -217,7 +214,7 @@
       <div class="result-head">
         <img class="card-img" src="img/chars/${c.id}.png" alt="${esc(c.name)}のイラスト" width="200" height="250">
         <div class="result-main">
-          ${typeBadge(mbti, big)}
+          <div class="type-line">${typeBadge(mbti, big)}${subtypeInline(c.v)}</div>
           ${extra}
         </div>
       </div>`;
@@ -395,7 +392,7 @@
           </div>
         </div>
       </section>
-      <div class="wall" aria-hidden="true">${picks.map(c => portrait(c)).join('')}</div>
+      <div class="wall">${picks.map(c => `<button type="button" class="wall-item" data-char="${c.id}" aria-label="${esc(c.name)}">${portrait(c)}</button>`).join('')}</div>
       <section class="how">
         <h2>診断のしくみ</h2>
         <ol class="steps">
@@ -480,7 +477,7 @@
     app.innerHTML = `
       ${quick ? `<p class="dopa-banner"><b>ドパガキモード判定</b>ランダムな6問で無理やり決めました。絶対間違うぞ！${diceLabels.length ? `<small>サイコロで決めた軸: ${diceLabels.join('、')}</small>` : ''}</p>` : ''}
       <section class="result spell-card g-${t.group}" data-type="${r.type}">
-        <p class="spell">${spellName(r.type)}<small>${r.type}</small></p>
+        <p class="spell">${spellName(r.type)}<small>${r.type}</small>${subtypeInline(user)}</p>
         <div class="result-head">
           <img class="card-img" src="img/chars/${c.id}.png" alt="${esc(c.name)}のイラスト" width="200" height="250">
           <div class="result-main">
@@ -506,7 +503,6 @@
         <h2>あなたの8軸</h2>
         <p class="legend"><span class="axis-dot user inline"></span>あなた <span class="axis-dot chara inline"></span>${esc(c.name)}</p>
         <div class="axes">${axisRows(user, c.v)}</div>
-        <p class="subtype">あなたのサブタイプ ${subTags(user) || '<span class="tag">中庸</span>'}</p>
         ${quick ? '<p class="note">ドパガキモードでは、6問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
       </section>
 
@@ -565,7 +561,7 @@
             <p class="result-pre">診断した人にいちばん近いのは</p>
             <h1>${nameRuby(c)}</h1>
             <p class="catch">${esc(c.catch)}</p>`, true)}
-        <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}${subTags(c.v)}</div>
+        <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}</div>
         ${worksLine(c)}
         <p class="desc">${esc(c.desc)}</p>
         <p class="type-blurb"><b>${c.mbti}「${t.name}」</b> ${t.blurb}</p>
@@ -639,7 +635,7 @@
       ${charHead(c, c.mbti, `
           <h2>${nameRuby(c)}</h2>
           <p class="catch">${esc(c.catch)}</p>`)}
-      <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}${subTags(c.v)}</div>
+      <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}</div>
       ${worksLine(c)}
       <p class="desc">${esc(c.desc)}</p>
       <div class="axes">${axisRows(null, c.v)}</div>
