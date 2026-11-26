@@ -122,11 +122,11 @@
   }
 
   // 折りたたみ(見出しボタン + 開閉アニメーションする中身)
-  function accordion(id, title, sub, body, cls = '') {
+  function accordion(id, title, sub, body, cls = '', open = false) {
     return `
       <section class="acc ${cls}">
-        <button type="button" class="acc-head" data-toggle="${id}" aria-expanded="false" aria-controls="${id}">${esc(title)}<span class="acc-sub">${esc(sub)}</span><span class="acc-arrow" aria-hidden="true">▾</span></button>
-        <div class="collapse" id="${id}"><div class="collapse-inner acc-body">${body}</div></div>
+        <button type="button" class="acc-head${open ? ' is-open' : ''}" data-toggle="${id}" aria-expanded="${open}" aria-controls="${id}">${esc(title)}<span class="acc-sub">${esc(sub)}</span><span class="acc-arrow" aria-hidden="true">▾</span></button>
+        <div class="collapse${open ? ' open' : ''}" id="${id}"><div class="collapse-inner acc-body">${body}</div></div>
       </section>`;
   }
   function toggleCollapse(btn) {
@@ -492,7 +492,7 @@
         ${accordion('acc-more', 'このキャラをもっと知る', '登場作品・タイプの説明・百科事典', `
           ${worksLine(c)}
           <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
-          <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>`)}
+          <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>`, '', true)}
       </section>
 
       <section class="panel plain">
