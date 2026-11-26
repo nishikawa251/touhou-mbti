@@ -76,27 +76,39 @@
   }
 
   // 軸バー。user / chara は -1〜+1(どちらか片方だけでもよい)
-  function axisRows(user, chara) {
+  // サイコロの印(3の目)。ドパガキモードでサイコロで決めた軸の「あなた」の位置に使う
+  const DICE_SVG = '<svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="6" cy="6" r="1.9"/><circle cx="10" cy="10" r="1.9"/><circle cx="14" cy="14" r="1.9"/></svg>';
+  // dice: ドパガキモードでサイコロで決めた軸の番号。その軸は「あなた」の印をサイコロにする
+  function axisRows(user, chara, dice = []) {
     const pct = v => (50 + v * 50).toFixed(1) + '%';
     return L.AXES.map((a, i) => `
       <div class="axis${a.main ? '' : ' axis-sub'}">
         <span class="axis-label neg${(user ? user[i] : chara[i]) < 0 ? ' on' : ''}">${a.neg ? `<b>${a.neg}</b> ` : ''}${a.negLabel}</span>
-        <span class="axis-track" role="img" aria-label="${a.negLabel}と${a.posLabel}の間。${user ? 'あなたは' + Math.round(user[i] * 100) : ''}${user && chara ? '、' : ''}${chara ? 'キャラは' + Math.round(chara[i] * 100) : ''}">
+        <span class="axis-track" role="img" aria-label="${a.negLabel}と${a.posLabel}の間。${user ? 'あなたは' + Math.round(user[i] * 100) + (dice.includes(i) ? '(サイコロで決定)' : '') : ''}${user && chara ? '、' : ''}${chara ? 'キャラは' + Math.round(chara[i] * 100) : ''}">
           <span class="axis-mid"></span>
           ${chara ? `<span class="axis-dot chara" style="left:${pct(chara[i])}"></span>` : ''}
-          ${user ? `<span class="axis-dot user" style="left:${pct(user[i])}"></span>` : ''}
+          ${user ? (dice.includes(i)
+            ? `<span class="axis-dot user dice" style="left:${pct(user[i])}">${DICE_SVG}</span>`
+            : `<span class="axis-dot user" style="left:${pct(user[i])}"></span>`) : ''}
         </span>
         <span class="axis-label pos${(user ? user[i] : chara[i]) > 0 ? ' on' : ''}">${a.posLabel}${a.pos ? ` <b>${a.pos}</b>` : ''}</span>
       </div>`).join('');
   }
 
   // サブ軸の向きを「泰然・策士・…」の文字列で
-  function subLabels(vec) {
-    return L.AXES.slice(4).map((a, k) => { const v = vec[4 + k]; return v === 0 ? '' : (v > 0 ? a.posLabel : a.negLabel); }).filter(Boolean).join('・');
+  function subList(vec) {
+    return L.AXES.slice(4).map((a, k) => { const v = vec[4 + k]; return v === 0 ? '' : (v > 0 ? a.posLabel : a.negLabel); }).filter(Boolean);
   }
-  // メインタイプの横に添えるサブタイプ。押せる部品と紛れないよう、枠のない文字で出す
-  function subtypeInline(vec) {
-    return `<span class="subtype-inline"><span class="subtype-label">サブ</span>${esc(subLabels(vec) || '中庸')}</span>`;
+  function subLabels(vec) {
+    return subList(vec).join('・');
+  }
+  // サブタイプの札。主属性より一段控えめな、線だけの札
+  const subTags = vec => subList(vec).map(x => `<span class="tag sub">${esc(x)}</span>`).join('');
+  // キャラの属性の列(共有ページ・詳細)。主属性のあとにサブタイプを並べる
+  function traitTags(c) {
+    const subs = subTags(c.v);
+    return `<div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}${subs
+      ? `<span class="tags-sub"><span class="tags-sub-label">サブ</span>${subs}</span>` : ''}</div>`;
   }
 
   function typeBadge(mbti, big) {
@@ -214,7 +226,7 @@
       <div class="result-head">
         <img class="card-img" src="img/chars/${c.id}.png" alt="${esc(c.name)}のイラスト" width="200" height="250">
         <div class="result-main">
-          <div class="type-line">${typeBadge(mbti, big)}${subtypeInline(c.v)}</div>
+          ${typeBadge(mbti, big)}
           ${extra}
         </div>
       </div>`;
@@ -477,7 +489,7 @@
     app.innerHTML = `
       ${quick ? `<p class="dopa-banner"><b>ドパガキモード判定</b>ランダムな6問で無理やり決めました。絶対間違うぞ！${diceLabels.length ? `<small>サイコロで決めた軸: ${diceLabels.join('、')}</small>` : ''}</p>` : ''}
       <section class="result spell-card g-${t.group}" data-type="${r.type}">
-        <p class="spell">${spellName(r.type)}<small>${r.type}</small>${subtypeInline(user)}</p>
+        <p class="spell">${spellName(r.type)}<small>${r.type}</small></p>
         <div class="result-head">
           <img class="card-img" src="img/chars/${c.id}.png" alt="${esc(c.name)}のイラスト" width="200" height="250">
           <div class="result-main">
@@ -501,8 +513,9 @@
 
       <section class="panel plain">
         <h2>あなたの8軸</h2>
-        <p class="legend"><span class="axis-dot user inline"></span>あなた <span class="axis-dot chara inline"></span>${esc(c.name)}</p>
-        <div class="axes">${axisRows(user, c.v)}</div>
+        <p class="legend"><span class="axis-dot user inline"></span>あなた <span class="axis-dot chara inline"></span>${esc(c.name)}${dice.length ? ` <span class="axis-dot user dice inline">${DICE_SVG}</span>サイコロで決めた軸` : ''}</p>
+        <div class="axes">${axisRows(user, c.v, dice)}</div>
+        <p class="subtype">あなたのサブタイプ ${subTags(user) || '<span class="tag sub">中庸</span>'}</p>
         ${quick ? '<p class="note">ドパガキモードでは、6問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
       </section>
 
@@ -561,7 +574,7 @@
             <p class="result-pre">診断した人にいちばん近いのは</p>
             <h1>${nameRuby(c)}</h1>
             <p class="catch">${esc(c.catch)}</p>`, true)}
-        <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}</div>
+        ${traitTags(c)}
         ${worksLine(c)}
         <p class="desc">${esc(c.desc)}</p>
         <p class="type-blurb"><b>${c.mbti}「${t.name}」</b> ${t.blurb}</p>
@@ -635,7 +648,7 @@
       ${charHead(c, c.mbti, `
           <h2>${nameRuby(c)}</h2>
           <p class="catch">${esc(c.catch)}</p>`)}
-      <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}</div>
+      ${traitTags(c)}
       ${worksLine(c)}
       <p class="desc">${esc(c.desc)}</p>
       <div class="axes">${axisRows(null, c.v)}</div>
