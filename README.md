@@ -56,6 +56,8 @@ node tools/serve.mjs 4173
 
 `index.html` が読み込む CSS/JS には `?v=日時` を付けています。GitHub Pages は10分キャッシュするので、見た目や動きを変えたときはこの値を更新してください(更新しないと、しばらく古い CSS/JS で表示されます)。
 
-キャラ名の読みと主な登場作品は `tools/meta.json` にあります(読みは漢字を含む名前だけ。作品は初登場を先頭に2〜4件)。直したら `node tools/build-data.mjs` で `data.js` に反映されます。
+キャラ名の読みと主な登場原作は `tools/meta.json` にあります(読みは漢字を含む名前だけ。作品は初登場を先頭に2〜4件)。直したら `node tools/build-data.mjs` で `data.js` に反映されます。
+
+登場原作のリンク先は `tools/works.json` にあります。ゲームは Steam(なければアキバホビー公式通販)、書籍・漫画は単行本1巻(シリーズ最初の巻)の紹介ページで、KADOKAWA から出ているものは KADOKAWA、それ以外は BOOK☆WALKER です。
 
 姓と名で分けたふりがなは `tools/ruby.json` にあります(`[["博麗","はくれい"],["霊夢","れいむ"]]` の形。読みのない部分は `null`)。

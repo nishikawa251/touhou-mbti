@@ -12,7 +12,7 @@ for (const f of fs.readdirSync(path.join(root, 'research/profiles')).filter(f =>
   for (const p of read('research/profiles/' + f)) profiles.set(p.id, p);
 }
 const garakuta = read('tools/garakuta.json');
-// 名前の読みと主な登場作品(tools/meta.json。なければ空)
+// 名前の読みと主な登場原作(tools/meta.json。なければ空)
 const meta = fs.existsSync(path.join(root, 'tools/meta.json')) ? read('tools/meta.json') : {};
 // 名前のふりがな(姓・名ごとの区切り。tools/ruby.json)
 const rubyMap = fs.existsSync(path.join(root, 'tools/ruby.json')) ? read('tools/ruby.json') : {};
@@ -58,7 +58,7 @@ for (const c of out) {
 fs.writeFileSync(path.join(root, 'data.js'),
   '// tools/build-data.mjs が生成。手で編集せず、research/profiles か tools/overrides.json を直して再生成する。\n' +
   'window.TOHO_CHARS = ' + JSON.stringify(out, null, 1) + ';\n' +
-  // 登場作品 → 販売ページ(Steam / アキバホビー)。tools/works.json
+  // 登場原作 → 販売・紹介ページ(Steam / アキバホビー / KADOKAWA / BOOK☆WALKER)。tools/works.json
   'window.TOHO_WORK_URLS = ' + JSON.stringify(Object.fromEntries(Object.entries(read('tools/works.json')).filter(([k]) => !k.startsWith('_')))) + ';\n', 'utf8');
 
 const byType = {};

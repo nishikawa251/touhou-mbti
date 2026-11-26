@@ -37,13 +37,18 @@
     if (c.ruby) return c.ruby.map(([s, r]) => (r ? `<ruby>${esc(s)}<rp>(</rp><rt>${esc(r)}</rt><rp>)</rp></ruby>` : esc(s))).join('');
     return c.kana ? `<ruby>${esc(c.name)}<rp>(</rp><rt>${esc(c.kana)}</rt><rp>)</rp></ruby>` : esc(c.name);
   };
-  // 主な登場作品
+  // 主な登場原作
   const WORK_URLS = window.TOHO_WORK_URLS || {};
+  // リンク先ごとのツールチップ
+  const workLinkTitle = u => (/steampowered/.test(u) ? 'Steam のページへ'
+    : /kadokawa\.co\.jp/.test(u) ? 'KADOKAWA の紹介ページへ'
+    : /bookwalker\.jp/.test(u) ? 'BOOK☆WALKER のページへ'
+    : 'アキバホビーの販売ページへ');
   const workChip = w => (WORK_URLS[w]
-    ? `<a class="work link" href="${esc(WORK_URLS[w])}" target="_blank" rel="noopener" title="${/steampowered/.test(WORK_URLS[w]) ? 'Steam のページへ' : 'アキバホビーの販売ページへ'}">${esc(w)}</a>`
+    ? `<a class="work link" href="${esc(WORK_URLS[w])}" target="_blank" rel="noopener" title="${workLinkTitle(WORK_URLS[w])}">${esc(w)}</a>`
     : `<span class="work">${esc(w)}</span>`);
   const worksLine = c => (c.works && c.works.length
-    ? `<p class="works"><span class="works-label">主な登場作品</span>${c.works.map(workChip).join('')}</p>`
+    ? `<p class="works"><span class="works-label">主な登場原作</span>${c.works.map(workChip).join('')}</p>`
     : '');
 
   function save() {
@@ -222,7 +227,7 @@
     const has = !!c.g;
     return `
       <a class="btn garakuta" href="${has ? c.g : GARAKUTA_INDEX}" target="_blank" rel="noopener">
-        <span class="garakuta-eyebrow">このキャラの作品を知るならこちらから！</span>
+        <span class="garakuta-eyebrow">このキャラが登場する創作を見てみよう！</span>
         <span class="garakuta-title">東方我楽多叢誌「週刊東方キャラクター」${has ? `の${esc(c.name)}のページへ` : 'の一覧へ'}</span>
       </a>`;
   }
@@ -488,7 +493,7 @@
         <div class="hero-actions">
           ${sharePanel(c, text)}
         </div>
-        ${accordion('acc-more', 'このキャラをもっと知る', '登場作品・タイプの説明・百科事典・週刊東方キャラクター', `
+        ${accordion('acc-more', 'このキャラをもっと知る', '登場原作・タイプの説明・百科事典・週刊東方キャラクター', `
           ${worksLine(c)}
           <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
           <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
