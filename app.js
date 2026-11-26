@@ -121,43 +121,62 @@
   }
 
   // ---------- 結果発表の演出 ----------
-  // 暗い画面でスポットライトが回り、シルエットが次々に入れ替わったあと、結果のキャラが照らし出される
+  // 暗い画面でスポットライトが回るなか、黒いかたまりがむにょむにょ動いて、だんだん結果のキャラの形に
+  // 固まっていき、最後に照らし出される。SVG の feTurbulence + feDisplacementMap で絵をゆがめ、
+  // ゆがみの強さを 16fps のコマ送りで弱めていく。
+  const REVEAL_FPS = 16;
+  function morphFrame(turb, disp, frame, p) {
+    // p: 0(かたまり) → 1(本人の形)。種を毎コマ変えてむにょむにょさせる
+    const ease = (1 - p) ** 1.6;
+    disp.setAttribute('scale', String(Math.round(150 * ease + 8 * (1 - p))));
+    turb.setAttribute('seed', String(frame));
+    turb.setAttribute('baseFrequency', (0.006 + 0.016 * (1 - p)).toFixed(4) + ' ' + (0.010 + 0.018 * (1 - p)).toFixed(4));
+  }
   function playReveal(c) {
     const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce) return;
-    const others = CHARS.filter(x => x.id !== c.id).sort(() => Math.random() - 0.5).slice(0, 14);
     const el = document.createElement('div');
     el.className = 'reveal';
     el.innerHTML = `
+      <svg class="reveal-defs" width="0" height="0" aria-hidden="true">
+        <filter id="munyo" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+          <feTurbulence type="fractalNoise" baseFrequency="0.02 0.03" numOctaves="2" seed="1" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="150" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+      </svg>
       <div class="spot a"></div><div class="spot b"></div>
       <div class="reveal-stage">
-        <img class="reveal-img" src="img/chars/${others[0].id}.png" alt="" width="200" height="250">
+        <img class="reveal-img morph" src="img/chars/${c.id}.png" alt="" width="200" height="250">
         <p class="reveal-text">あなたのキャラクターは<span class="dots"><i>.</i><i>.</i><i>.</i></span>？</p>
         <p class="reveal-name"></p>
       </div>
       <button type="button" class="reveal-skip">スキップ</button>`;
     document.body.appendChild(el);
     document.body.classList.add('no-scroll');
-    const img = el.querySelector('.reveal-img');
+    const turb = el.querySelector('feTurbulence');
+    const disp = el.querySelector('feDisplacementMap');
     const timers = [];
-    let done = false;
+    let raf = 0, done = false;
     const finish = () => {
       if (done) return; done = true;
       timers.forEach(clearTimeout);
+      clearInterval(raf);
       el.classList.add('out');
       document.body.classList.remove('no-scroll');
       setTimeout(() => el.remove(), 450);
     };
-    // 0〜2.2秒: シルエットが入れ替わる(だんだんゆっくりに)
-    let t = 150, i = 1;
-    const step = () => {
-      img.src = `img/chars/${others[i % others.length].id}.png`;
-      i += 1; t = Math.min(t * 1.18, 420);
-      if (t < 420) timers.push(setTimeout(step, t));
-    };
-    timers.push(setTimeout(step, t));
-    // 2.4秒: 本人のシルエット → 3.0秒: 照らし出す → 4.4秒: 閉じる
-    timers.push(setTimeout(() => { img.src = `img/chars/${c.id}.png`; el.classList.add('lock'); }, 2400));
+    // 0〜2.4秒: むにょむにょ → 本人の形へ(16fps)
+    const MORPH_MS = 2400;
+    const t0 = performance.now();
+    let frame = 0;
+    morphFrame(turb, disp, frame, 0);
+    raf = setInterval(() => {
+      frame += 1;
+      const p = Math.min(1, (performance.now() - t0) / MORPH_MS);
+      morphFrame(turb, disp, frame, p);
+      if (p >= 1) { clearInterval(raf); el.classList.add('lock'); el.querySelector('.reveal-img').classList.remove('morph'); }
+    }, 1000 / REVEAL_FPS);
+    // 3.0秒: 照らし出す → 4.6秒: 閉じる
     timers.push(setTimeout(() => {
       el.classList.add('shine');
       el.querySelector('.reveal-name').textContent = c.name;
