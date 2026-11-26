@@ -28,6 +28,8 @@ node tools/serve.mjs 4173
 2. `node tools/build-data.mjs` で `data.js` を作り直す
 3. `node tools/test.mjs` で全キャラが結果に出うることを確認する
 
+全キャラの表示テキスト(名前・読み・タイプ・サブタイプ・キャッチ・主属性・紹介文・登場原作・8軸の値・各リンク)は `tools/review.html` で一覧できます(`node tools/serve.mjs 4173` のあと http://localhost:4173/tools/review.html 。公開サイトでも /tools/review.html で開けます)。字数や読みの抜け、リンクのない登場原作などの気になる点には自動で印が付き、検索・タイプ別・「注意があるキャラだけ」で絞り込めます。チェックの目安はファイル内の `CHECKS` で変えられます。
+
 結果と図鑑の詳細には、東方我楽多叢誌「週刊東方キャラクター」のキャラ記事へのボタンを出します(対応表は `tools/garakuta.json`。記事がない名無しの本読み妖怪と稗田阿求は連載の一覧へ)。
 
 キャラ画像は `tools/import-art.mjs` で素材フォルダから `img/chars/<id>.png` に取り込んでいます(対応表は `tools/art-map.json`)。
