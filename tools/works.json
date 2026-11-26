@@ -1,5 +1,5 @@
 {
-  "_comment": "主な登場作品のリンク先。Steam にある作品は Steam、妖々夢・永夜抄と Steam にない一部はアキバホビー公式通販。ここにない作品はリンクなし",
+  "_comment": "主な登場原作のリンク先。ゲームは Steam にあれば Steam、妖々夢・永夜抄と Steam にない一部はアキバホビー公式通販。書籍・漫画は単行本1巻(シリーズ最初の巻)の紹介ページで、KADOKAWA から出ているものは KADOKAWA、それ以外は BOOK☆WALKER。ここにない作品はリンクなし",
   "東方紅魔郷": "https://store.steampowered.com/app/4659620/",
   "東方妖々夢": "https://shop.akbh.jp/products/2100000000036",
   "東方永夜抄": "https://shop.akbh.jp/products/2100000051922",
@@ -26,5 +26,11 @@
   "東方萃夢想": "https://shop.akbh.jp/products/2100000000067",
   "東方緋想天": "https://shop.akbh.jp/products/2100000051939",
   "蓮台野夜行": "https://shop.akbh.jp/products/2100000000043",
-  "卯酉東海道": "https://shop.akbh.jp/products/2100000000111"
+  "卯酉東海道": "https://shop.akbh.jp/products/2100000000111",
+  "東方鈴奈庵": "https://www.kadokawa.co.jp/product/301410000497/",
+  "東方三月精": "https://www.kadokawa.co.jp/product/301507000818/",
+  "東方儚月抄": "https://bookwalker.jp/de312ed8ca-6cc1-415d-922c-a1639e1307ab/",
+  "東方香霖堂": "https://www.kadokawa.co.jp/product/201007000662/",
+  "東方文果真報": "https://www.kadokawa.co.jp/product/321701000213/",
+  "東方智霊奇伝": "https://www.kadokawa.co.jp/product/322004000447/"
 }
