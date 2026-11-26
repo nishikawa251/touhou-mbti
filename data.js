@@ -25,6 +25,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%8D%9A%E9%BA%97%E9%9C%8A%E5%A4%A2",
   "g": "https://touhougarakuta.com/article/chara-reimu/",
   "kana": "はくれいれいむ",
+  "ruby": [
+   [
+    "博麗",
+    "はくれい"
+   ],
+   [
+    "霊夢",
+    "れいむ"
+   ]
+  ],
   "works": [
    "東方靈異伝",
    "東方紅魔郷",
@@ -57,6 +67,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%9C%A7%E9%9B%A8%E9%AD%94%E7%90%86%E6%B2%99",
   "g": "https://touhougarakuta.com/article/chara-marisa/",
   "kana": "きりさめまりさ",
+  "ruby": [
+   [
+    "霧雨",
+    "きりさめ"
+   ],
+   [
+    "魔理沙",
+    "まりさ"
+   ]
+  ],
   "works": [
    "東方封魔録",
    "東方紅魔郷",
@@ -89,6 +109,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AB%E3%83%BC%E3%83%9F%E3%82%A2",
   "g": "https://touhougarakuta.com/article/chara-rumia-re/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方紅魔郷",
    "東方三月精"
@@ -119,6 +140,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%A4%A7%E5%A6%96%E7%B2%BE",
   "g": "https://touhougarakuta.com/article/chara-great-fairy/",
   "kana": "だいようせい",
+  "ruby": [
+   [
+    "大妖精",
+    "だいようせい"
+   ]
+  ],
   "works": [
    "東方紅魔郷",
    "東方三月精"
@@ -149,6 +176,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%81%E3%83%AB%E3%83%8E",
   "g": "https://touhougarakuta.com/article/chara-cirno/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方紅魔郷",
    "東方花映塚",
@@ -181,6 +209,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%B4%85%E7%BE%8E%E9%88%B4",
   "g": "https://touhougarakuta.com/article/chara-meiling/",
   "kana": "ほんめいりん",
+  "ruby": [
+   [
+    "紅",
+    "ほん"
+   ],
+   [
+    "美鈴",
+    "めいりん"
+   ]
+  ],
   "works": [
    "東方紅魔郷",
    "東方緋想天",
@@ -212,6 +250,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%B0%8F%E6%82%AA%E9%AD%94(%E6%9D%B1%E6%96%B9Project)",
   "g": "https://touhougarakuta.com/article/chara-koakuma/",
   "kana": "こあくま",
+  "ruby": [
+   [
+    "小悪魔",
+    "こあくま"
+   ]
+  ],
   "works": [
    "東方紅魔郷"
   ]
@@ -241,6 +285,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%91%E3%83%81%E3%83%A5%E3%83%AA%E3%83%BC%E3%83%BB%E3%83%8E%E3%83%BC%E3%83%AC%E3%83%83%E3%82%B8",
   "g": "https://touhougarakuta.com/article/chara-patchouli/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方紅魔郷",
    "東方萃夢想",
@@ -273,6 +318,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%8D%81%E5%85%AD%E5%A4%9C%E5%92%B2%E5%A4%9C",
   "g": "https://touhougarakuta.com/article/chara-sakuya/",
   "kana": "いざよいさくや",
+  "ruby": [
+   [
+    "十六夜",
+    "いざよい"
+   ],
+   [
+    "咲夜",
+    "さくや"
+   ]
+  ],
   "works": [
    "東方紅魔郷",
    "東方妖々夢",
@@ -305,6 +360,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AC%E3%83%9F%E3%83%AA%E3%82%A2%E3%83%BB%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%AC%E3%83%83%E3%83%88",
   "g": "https://touhougarakuta.com/article/chara-remilia/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方紅魔郷",
    "東方萃夢想",
@@ -337,6 +393,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%95%E3%83%A9%E3%83%B3%E3%83%89%E3%83%BC%E3%83%AB%E3%83%BB%E3%82%B9%E3%82%AB%E3%83%BC%E3%83%AC%E3%83%83%E3%83%88",
   "g": "https://touhougarakuta.com/article/chara-frandre/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方紅魔郷",
    "東方三月精",
@@ -368,6 +425,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AC%E3%83%86%E3%82%A3%E3%83%BB%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88%E3%83%AD%E3%83%83%E3%82%AF",
   "g": "https://touhougarakuta.com/article/chara-letty/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方妖々夢",
    "東方文花帖",
@@ -399,6 +457,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%A9%99(%E6%9D%B1%E6%96%B9Project)",
   "g": "https://touhougarakuta.com/article/chara-chen/",
   "kana": "ちぇん",
+  "ruby": [
+   [
+    "橙",
+    "ちぇん"
+   ]
+  ],
   "works": [
    "東方妖々夢",
    "東方文花帖"
@@ -429,6 +493,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%A2%E3%83%AA%E3%82%B9%E3%83%BB%E3%83%9E%E3%83%BC%E3%82%AC%E3%83%88%E3%83%AD%E3%82%A4%E3%83%89",
   "g": "https://touhougarakuta.com/article/chara-alice/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方怪綺談",
    "東方妖々夢",
@@ -460,6 +525,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AA%E3%83%AA%E3%83%BC%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88",
   "g": "https://touhougarakuta.com/article/chara-lilywhite/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方妖々夢",
    "東方花映塚",
@@ -491,6 +557,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AB%E3%83%8A%E3%82%B5%E3%83%BB%E3%83%97%E3%83%AA%E3%82%BA%E3%83%A0%E3%83%AA%E3%83%90%E3%83%BC",
   "g": "https://touhougarakuta.com/article/chara-prismriver/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方妖々夢",
    "東方花映塚"
@@ -521,6 +588,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%A1%E3%83%AB%E3%83%A9%E3%83%B3%E3%83%BB%E3%83%97%E3%83%AA%E3%82%BA%E3%83%A0%E3%83%AA%E3%83%90%E3%83%BC",
   "g": "https://touhougarakuta.com/article/chara-prismriver/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方妖々夢",
    "東方花映塚"
@@ -551,6 +619,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AA%E3%83%AA%E3%82%AB%E3%83%BB%E3%83%97%E3%83%AA%E3%82%BA%E3%83%A0%E3%83%AA%E3%83%90%E3%83%BC",
   "g": "https://touhougarakuta.com/article/chara-prismriver/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方妖々夢",
    "東方花映塚"
@@ -581,6 +650,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%AD%82%E9%AD%84%E5%A6%96%E5%A4%A2",
   "g": "https://touhougarakuta.com/article/chara-youmu/",
   "kana": "こんぱくようむ",
+  "ruby": [
+   [
+    "魂魄",
+    "こんぱく"
+   ],
+   [
+    "妖夢",
+    "ようむ"
+   ]
+  ],
   "works": [
    "東方妖々夢",
    "東方永夜抄",
@@ -613,6 +692,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E8%A5%BF%E8%A1%8C%E5%AF%BA%E5%B9%BD%E3%80%85%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-yuyuko/",
   "kana": "さいぎょうじゆゆこ",
+  "ruby": [
+   [
+    "西行寺",
+    "さいぎょうじ"
+   ],
+   [
+    "幽々子",
+    "ゆゆこ"
+   ]
+  ],
   "works": [
    "東方妖々夢",
    "東方永夜抄",
@@ -645,6 +734,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%85%AB%E9%9B%B2%E8%97%8D",
   "g": "https://touhougarakuta.com/article/chara-ran/",
   "kana": "やくもらん",
+  "ruby": [
+   [
+    "八雲",
+    "やくも"
+   ],
+   [
+    "藍",
+    "らん"
+   ]
+  ],
   "works": [
    "東方妖々夢",
    "東方文花帖",
@@ -676,6 +775,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%85%AB%E9%9B%B2%E7%B4%AB",
   "g": "https://touhougarakuta.com/article/chara-yukari/",
   "kana": "やくもゆかり",
+  "ruby": [
+   [
+    "八雲",
+    "やくも"
+   ],
+   [
+    "紫",
+    "ゆかり"
+   ]
+  ],
   "works": [
    "東方妖々夢",
    "東方永夜抄",
@@ -708,6 +817,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%AE%87%E4%BD%90%E8%A6%8B%E8%93%AE%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-secret-sealing-club/",
   "kana": "うさみれんこ",
+  "ruby": [
+   [
+    "宇佐見",
+    "うさみ"
+   ],
+   [
+    "蓮子",
+    "れんこ"
+   ]
+  ],
   "works": [
    "蓮台野夜行",
    "夢違科学世紀",
@@ -740,6 +859,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%9E%E3%82%A8%E3%83%AA%E3%83%99%E3%83%AA%E3%83%BC%E3%83%BB%E3%83%8F%E3%83%BC%E3%83%B3",
   "g": "https://touhougarakuta.com/article/chara-secret-sealing-club/",
   "kana": "",
+  "ruby": null,
   "works": [
    "蓮台野夜行",
    "夢違科学世紀",
@@ -772,6 +892,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%A3%AE%E8%BF%91%E9%9C%96%E4%B9%8B%E5%8A%A9",
   "g": "https://touhougarakuta.com/article/chara-rinnosuke/",
   "kana": "もりちかりんのすけ",
+  "ruby": [
+   [
+    "森近",
+    "もりちか"
+   ],
+   [
+    "霖之助",
+    "りんのすけ"
+   ]
+  ],
   "works": [
    "東方香霖堂",
    "東方三月精",
@@ -804,6 +934,32 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%90%8D%E7%84%A1%E3%81%97%E3%81%AE%E6%9C%AC%E8%AA%AD%E3%81%BF%E5%A6%96%E6%80%AA",
   "g": "",
   "kana": "ななしのほんよみようかい",
+  "ruby": [
+   [
+    "名無",
+    "なな"
+   ],
+   [
+    "し",
+    null
+   ],
+   [
+    "の",
+    null
+   ],
+   [
+    "本読",
+    "ほんよ"
+   ],
+   [
+    "み",
+    null
+   ],
+   [
+    "妖怪",
+    "ようかい"
+   ]
+  ],
   "works": [
    "東方香霖堂"
   ]
@@ -833,6 +989,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AA%E3%82%B0%E3%83%AB%E3%83%BB%E3%83%8A%E3%82%A4%E3%83%88%E3%83%90%E3%82%B0",
   "g": "https://touhougarakuta.com/article/chara-wriggle/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方永夜抄",
    "東方文花帖",
@@ -864,6 +1021,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%9F%E3%82%B9%E3%83%86%E3%82%A3%E3%82%A2%E3%83%BB%E3%83%AD%E3%83%BC%E3%83%AC%E3%83%A9%E3%82%A4",
   "g": "https://touhougarakuta.com/article/chara-mystia/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方永夜抄",
    "東方花映塚",
@@ -896,6 +1054,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E4%B8%8A%E7%99%BD%E6%B2%A2%E6%85%A7%E9%9F%B3",
   "g": "https://touhougarakuta.com/article/chara-keine/",
   "kana": "かみしらさわけいね",
+  "ruby": [
+   [
+    "上白沢",
+    "かみしらさわ"
+   ],
+   [
+    "慧音",
+    "けいね"
+   ]
+  ],
   "works": [
    "東方永夜抄",
    "東方文花帖",
@@ -927,6 +1095,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%9B%A0%E5%B9%A1%E3%81%A6%E3%82%90",
   "g": "https://touhougarakuta.com/article/chara-tei/",
   "kana": "いなばてゐ",
+  "ruby": [
+   [
+    "因幡",
+    "いなば"
+   ],
+   [
+    "てゐ",
+    null
+   ]
+  ],
   "works": [
    "東方永夜抄",
    "東方花映塚",
@@ -959,6 +1137,28 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%88%B4%E4%BB%99%E3%83%BB%E5%84%AA%E6%9B%87%E8%8F%AF%E9%99%A2%E3%83%BB%E3%82%A4%E3%83%8A%E3%83%90",
   "g": "https://touhougarakuta.com/article/chara-udonge/",
   "kana": "れいせん・うどんげいん・いなば",
+  "ruby": [
+   [
+    "鈴仙",
+    "れいせん"
+   ],
+   [
+    "・",
+    null
+   ],
+   [
+    "優曇華院",
+    "うどんげいん"
+   ],
+   [
+    "・",
+    null
+   ],
+   [
+    "イナバ",
+    null
+   ]
+  ],
   "works": [
    "東方永夜抄",
    "東方花映塚",
@@ -991,6 +1191,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%85%AB%E6%84%8F%E6%B0%B8%E7%90%B3",
   "g": "https://touhougarakuta.com/article/chara-eirin/",
   "kana": "やごころえいりん",
+  "ruby": [
+   [
+    "八意",
+    "やごころ"
+   ],
+   [
+    "永琳",
+    "えいりん"
+   ]
+  ],
   "works": [
    "東方永夜抄",
    "東方儚月抄",
@@ -1022,6 +1232,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E8%93%AC%E8%8E%B1%E5%B1%B1%E8%BC%9D%E5%A4%9C",
   "g": "https://touhougarakuta.com/article/chara-kaguya/",
   "kana": "ほうらいさんかぐや",
+  "ruby": [
+   [
+    "蓬莱山",
+    "ほうらいさん"
+   ],
+   [
+    "輝夜",
+    "かぐや"
+   ]
+  ],
   "works": [
    "東方永夜抄",
    "東方儚月抄",
@@ -1053,6 +1273,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E8%97%A4%E5%8E%9F%E5%A6%B9%E7%B4%85",
   "g": "https://touhougarakuta.com/article/chara-mokou/",
   "kana": "ふじわらのもこう",
+  "ruby": [
+   [
+    "藤原",
+    "ふじわらの"
+   ],
+   [
+    "妹紅",
+    "もこう"
+   ]
+  ],
   "works": [
    "東方永夜抄",
    "東方深秘録",
@@ -1085,6 +1315,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E4%BC%8A%E5%90%B9%E8%90%83%E9%A6%99",
   "g": "https://touhougarakuta.com/article/chara-suika/",
   "kana": "いぶきすいか",
+  "ruby": [
+   [
+    "伊吹",
+    "いぶき"
+   ],
+   [
+    "萃香",
+    "すいか"
+   ]
+  ],
   "works": [
    "東方萃夢想",
    "東方緋想天",
@@ -1117,6 +1357,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%B5%E3%83%8B%E3%83%BC%E3%83%9F%E3%83%AB%E3%82%AF",
   "g": "https://touhougarakuta.com/article/chara-three-fairies/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方三月精",
    "妖精大戦争"
@@ -1147,6 +1388,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AB%E3%83%8A%E3%83%81%E3%83%A3%E3%82%A4%E3%83%AB%E3%83%89",
   "g": "https://touhougarakuta.com/article/chara-three-fairies/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方三月精",
    "妖精大戦争"
@@ -1177,6 +1419,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%B9%E3%82%BF%E3%83%BC%E3%82%B5%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2",
   "g": "https://touhougarakuta.com/article/chara-three-fairies/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方三月精",
    "妖精大戦争"
@@ -1207,6 +1450,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%B0%84%E5%91%BD%E4%B8%B8%E6%96%87",
   "g": "https://touhougarakuta.com/article/chara-aya/",
   "kana": "しゃめいまるあや",
+  "ruby": [
+   [
+    "射命丸",
+    "しゃめいまる"
+   ],
+   [
+    "文",
+    "あや"
+   ]
+  ],
   "works": [
    "東方花映塚",
    "東方文花帖",
@@ -1239,6 +1492,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%A1%E3%83%87%E3%82%A3%E3%82%B9%E3%83%B3%E3%83%BB%E3%83%A1%E3%83%A9%E3%83%B3%E3%82%B3%E3%83%AA%E3%83%BC",
   "g": "https://touhougarakuta.com/article/chara-medicine/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方花映塚",
    "東方文花帖",
@@ -1270,6 +1524,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%A2%A8%E8%A6%8B%E5%B9%BD%E9%A6%99",
   "g": "https://touhougarakuta.com/article/chara-yuuka/",
   "kana": "かざみゆうか",
+  "ruby": [
+   [
+    "風見",
+    "かざみ"
+   ],
+   [
+    "幽香",
+    "ゆうか"
+   ]
+  ],
   "works": [
    "東方幻想郷",
    "東方怪綺談",
@@ -1302,6 +1566,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%B0%8F%E9%87%8E%E5%A1%9A%E5%B0%8F%E7%94%BA",
   "g": "https://touhougarakuta.com/article/chara-komachi/",
   "kana": "おのづかこまち",
+  "ruby": [
+   [
+    "小野塚",
+    "おのづか"
+   ],
+   [
+    "小町",
+    "こまち"
+   ]
+  ],
   "works": [
    "東方花映塚",
    "東方緋想天",
@@ -1334,6 +1608,24 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%9B%9B%E5%AD%A3%E6%98%A0%E5%A7%AB%E3%83%BB%E3%83%A4%E3%83%9E%E3%82%B6%E3%83%8A%E3%83%89%E3%82%A5",
   "g": "https://touhougarakuta.com/article/chara-eiki/",
   "kana": "しきえいき・やまざなどぅ",
+  "ruby": [
+   [
+    "四季",
+    "しき"
+   ],
+   [
+    "映姫",
+    "えいき"
+   ],
+   [
+    "・",
+    null
+   ],
+   [
+    "ヤマザナドゥ",
+    null
+   ]
+  ],
   "works": [
    "東方花映塚",
    "東方文花帖",
@@ -1365,6 +1657,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%A8%97%E7%94%B0%E9%98%BF%E6%B1%82",
   "g": "",
   "kana": "ひえだのあきゅう",
+  "ruby": [
+   [
+    "稗田",
+    "ひえだの"
+   ],
+   [
+    "阿求",
+    "あきゅう"
+   ]
+  ],
   "works": [
    "東方求聞史紀",
    "東方求聞口授",
@@ -1396,6 +1698,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%AC%E3%82%A4%E3%82%BB%E3%83%B3",
   "g": "https://touhougarakuta.com/article/chara-reisen/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方儚月抄"
   ]
@@ -1425,6 +1728,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%B6%BF%E6%9C%88%E4%BE%9D%E5%A7%AB",
   "g": "https://touhougarakuta.com/article/chara-watatsuki/",
   "kana": "わたつきのよりひめ",
+  "ruby": [
+   [
+    "綿月",
+    "わたつきの"
+   ],
+   [
+    "依姫",
+    "よりひめ"
+   ]
+  ],
   "works": [
    "東方儚月抄"
   ]
@@ -1454,6 +1767,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%B6%BF%E6%9C%88%E8%B1%8A%E5%A7%AB",
   "g": "https://touhougarakuta.com/article/chara-watatsuki/",
   "kana": "わたつきのとよひめ",
+  "ruby": [
+   [
+    "綿月",
+    "わたつきの"
+   ],
+   [
+    "豊姫",
+    "とよひめ"
+   ]
+  ],
   "works": [
    "東方儚月抄",
    "東方錦上京"
@@ -1484,6 +1807,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%A7%8B%E9%9D%99%E8%91%89",
   "g": "https://touhougarakuta.com/article/chara-aki/",
   "kana": "あきしずは",
+  "ruby": [
+   [
+    "秋",
+    "あき"
+   ],
+   [
+    "静葉",
+    "しずは"
+   ]
+  ],
   "works": [
    "東方風神録",
    "ダブルスポイラー"
@@ -1514,6 +1847,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%A7%8B%E7%A9%A3%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-aki/",
   "kana": "あきみのりこ",
+  "ruby": [
+   [
+    "秋",
+    "あき"
+   ],
+   [
+    "穣子",
+    "みのりこ"
+   ]
+  ],
   "works": [
    "東方風神録",
    "ダブルスポイラー"
@@ -1544,6 +1887,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%8D%B5%E5%B1%B1%E9%9B%9B",
   "g": "https://touhougarakuta.com/article/chara-hina/",
   "kana": "かぎやまひな",
+  "ruby": [
+   [
+    "鍵山",
+    "かぎやま"
+   ],
+   [
+    "雛",
+    "ひな"
+   ]
+  ],
   "works": [
    "東方風神録",
    "ダブルスポイラー",
@@ -1575,6 +1928,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%B2%B3%E5%9F%8E%E3%81%AB%E3%81%A8%E3%82%8A",
   "g": "https://touhougarakuta.com/article/chara-nitori/",
   "kana": "かわしろにとり",
+  "ruby": [
+   [
+    "河城",
+    "かわしろ"
+   ],
+   [
+    "にとり",
+    null
+   ]
+  ],
   "works": [
    "東方風神録",
    "東方地霊殿",
@@ -1607,6 +1970,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%8A%AC%E8%B5%B0%E6%A4%9B",
   "g": "https://touhougarakuta.com/article/chara-momiji/",
   "kana": "いぬばしりもみじ",
+  "ruby": [
+   [
+    "犬走",
+    "いぬばしり"
+   ],
+   [
+    "椛",
+    "もみじ"
+   ]
+  ],
   "works": [
    "東方風神録",
    "ダブルスポイラー",
@@ -1638,6 +2011,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%9D%B1%E9%A2%A8%E8%B0%B7%E6%97%A9%E8%8B%97",
   "g": "https://touhougarakuta.com/article/chara-sanae/",
   "kana": "こちやさなえ",
+  "ruby": [
+   [
+    "東風谷",
+    "こちや"
+   ],
+   [
+    "早苗",
+    "さなえ"
+   ]
+  ],
   "works": [
    "東方風神録",
    "東方星蓮船",
@@ -1670,6 +2053,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%85%AB%E5%9D%82%E7%A5%9E%E5%A5%88%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-kanako/",
   "kana": "やさかかなこ",
+  "ruby": [
+   [
+    "八坂",
+    "やさか"
+   ],
+   [
+    "神奈子",
+    "かなこ"
+   ]
+  ],
   "works": [
    "東方風神録",
    "東方非想天則",
@@ -1702,6 +2095,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%B4%A9%E7%9F%A2%E8%AB%8F%E8%A8%AA%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-suwako/",
   "kana": "もりやすわこ",
+  "ruby": [
+   [
+    "洩矢",
+    "もりや"
+   ],
+   [
+    "諏訪子",
+    "すわこ"
+   ]
+  ],
   "works": [
    "東方風神録",
    "東方非想天則",
@@ -1734,6 +2137,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%B0%B8%E6%B1%9F%E8%A1%A3%E7%8E%96",
   "g": "https://touhougarakuta.com/article/chara-iku/",
   "kana": "ながえいく",
+  "ruby": [
+   [
+    "永江",
+    "ながえ"
+   ],
+   [
+    "衣玖",
+    "いく"
+   ]
+  ],
   "works": [
    "東方緋想天",
    "東方非想天則",
@@ -1765,6 +2178,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%AF%94%E9%82%A3%E5%90%8D%E5%B1%85%E5%A4%A9%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-tenshi/",
   "kana": "ひななゐてんし",
+  "ruby": [
+   [
+    "比那名居",
+    "ひななゐ"
+   ],
+   [
+    "天子",
+    "てんし"
+   ]
+  ],
   "works": [
    "東方緋想天",
    "東方非想天則",
@@ -1797,6 +2220,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%AD%E3%82%B9%E3%83%A1",
   "g": "https://touhougarakuta.com/article/chara-kisume/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方地霊殿",
    "ダブルスポイラー",
@@ -1828,6 +2252,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%BB%92%E8%B0%B7%E3%83%A4%E3%83%9E%E3%83%A1",
   "g": "https://touhougarakuta.com/article/chara-yamame/",
   "kana": "くろだにやまめ",
+  "ruby": [
+   [
+    "黒谷",
+    "くろだに"
+   ],
+   [
+    "ヤマメ",
+    null
+   ]
+  ],
   "works": [
    "東方地霊殿",
    "ダブルスポイラー",
@@ -1859,6 +2293,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%B0%B4%E6%A9%8B%E3%83%91%E3%83%AB%E3%82%B9%E3%82%A3",
   "g": "https://touhougarakuta.com/article/chara-parsee/",
   "kana": "みずはしぱるすぃ",
+  "ruby": [
+   [
+    "水橋",
+    "みずはし"
+   ],
+   [
+    "パルスィ",
+    null
+   ]
+  ],
   "works": [
    "東方地霊殿",
    "ダブルスポイラー",
@@ -1890,6 +2334,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%98%9F%E7%86%8A%E5%8B%87%E5%84%80",
   "g": "https://touhougarakuta.com/article/chara-yuugi/",
   "kana": "ほしぐまゆうぎ",
+  "ruby": [
+   [
+    "星熊",
+    "ほしぐま"
+   ],
+   [
+    "勇儀",
+    "ゆうぎ"
+   ]
+  ],
   "works": [
    "東方地霊殿",
    "ダブルスポイラー",
@@ -1922,6 +2376,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%8F%A4%E6%98%8E%E5%9C%B0%E3%81%95%E3%81%A8%E3%82%8A",
   "g": "https://touhougarakuta.com/article/chara-satori/",
   "kana": "こめいじさとり",
+  "ruby": [
+   [
+    "古明地",
+    "こめいじ"
+   ],
+   [
+    "さとり",
+    null
+   ]
+  ],
   "works": [
    "東方地霊殿",
    "東方求聞口授",
@@ -1954,6 +2418,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%81%AB%E7%84%94%E7%8C%AB%E7%87%90",
   "g": "https://touhougarakuta.com/article/chara-rin/",
   "kana": "かえんびょうりん",
+  "ruby": [
+   [
+    "火焔猫",
+    "かえんびょう"
+   ],
+   [
+    "燐",
+    "りん"
+   ]
+  ],
   "works": [
    "東方地霊殿",
    "東方求聞口授",
@@ -1986,6 +2460,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%9C%8A%E7%83%8F%E8%B7%AF%E7%A9%BA",
   "g": "https://touhougarakuta.com/article/chara-utsuho/",
   "kana": "れいうじうつほ",
+  "ruby": [
+   [
+    "霊烏路",
+    "れいうじ"
+   ],
+   [
+    "空",
+    "うつほ"
+   ]
+  ],
   "works": [
    "東方地霊殿",
    "東方非想天則",
@@ -2017,6 +2501,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%8F%A4%E6%98%8E%E5%9C%B0%E3%81%93%E3%81%84%E3%81%97",
   "g": "https://touhougarakuta.com/article/chara-koishi/",
   "kana": "こめいじこいし",
+  "ruby": [
+   [
+    "古明地",
+    "こめいじ"
+   ],
+   [
+    "こいし",
+    null
+   ]
+  ],
   "works": [
    "東方地霊殿",
    "東方心綺楼",
@@ -2049,6 +2543,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%8A%E3%82%BA%E3%83%BC%E3%83%AA%E3%83%B3",
   "g": "https://touhougarakuta.com/article/chara-nazrin/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方星蓮船",
    "ダブルスポイラー",
@@ -2080,6 +2575,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%A4%9A%E3%80%85%E8%89%AF%E5%B0%8F%E5%82%98",
   "g": "https://touhougarakuta.com/article/chara-kogasa/",
   "kana": "たたらこがさ",
+  "ruby": [
+   [
+    "多々良",
+    "たたら"
+   ],
+   [
+    "小傘",
+    "こがさ"
+   ]
+  ],
   "works": [
    "東方星蓮船",
    "東方神霊廟",
@@ -2112,6 +2617,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%9B%B2%E5%B1%85%E4%B8%80%E8%BC%AA",
   "g": "https://touhougarakuta.com/article/chara-ichirin/",
   "kana": "くもいいちりん",
+  "ruby": [
+   [
+    "雲居",
+    "くもい"
+   ],
+   [
+    "一輪",
+    "いちりん"
+   ]
+  ],
   "works": [
    "東方星蓮船",
    "東方心綺楼",
@@ -2143,6 +2658,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%9D%91%E7%B4%97%E6%B0%B4%E8%9C%9C",
   "g": "https://touhougarakuta.com/article/chara-minamitsu/",
   "kana": "むらさみなみつ",
+  "ruby": [
+   [
+    "村紗",
+    "むらさ"
+   ],
+   [
+    "水蜜",
+    "みなみつ"
+   ]
+  ],
   "works": [
    "東方星蓮船",
    "ダブルスポイラー",
@@ -2174,6 +2699,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%AF%85%E4%B8%B8%E6%98%9F",
   "g": "https://touhougarakuta.com/article/chara-shou/",
   "kana": "とらまるしょう",
+  "ruby": [
+   [
+    "寅丸",
+    "とらまる"
+   ],
+   [
+    "星",
+    "しょう"
+   ]
+  ],
   "works": [
    "東方星蓮船",
    "ダブルスポイラー"
@@ -2204,6 +2739,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E8%81%96%E7%99%BD%E8%93%AE",
   "g": "https://touhougarakuta.com/article/chara-byakuren/",
   "kana": "ひじりびゃくれん",
+  "ruby": [
+   [
+    "聖",
+    "ひじり"
+   ],
+   [
+    "白蓮",
+    "びゃくれん"
+   ]
+  ],
   "works": [
    "東方星蓮船",
    "東方心綺楼",
@@ -2236,6 +2781,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%B0%81%E7%8D%A3%E3%81%AC%E3%81%88",
   "g": "https://touhougarakuta.com/article/chara-nue/",
   "kana": "ほうじゅうぬえ",
+  "ruby": [
+   [
+    "封獣",
+    "ほうじゅう"
+   ],
+   [
+    "ぬえ",
+    null
+   ]
+  ],
   "works": [
    "東方星蓮船",
    "東方神霊廟",
@@ -2268,6 +2823,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%A7%AB%E6%B5%B7%E6%A3%A0%E3%81%AF%E3%81%9F%E3%81%A6",
   "g": "https://touhougarakuta.com/article/chara-hatate/",
   "kana": "ひめかいどうはたて",
+  "ruby": [
+   [
+    "姫海棠",
+    "ひめかいどう"
+   ],
+   [
+    "はたて",
+    null
+   ]
+  ],
   "works": [
    "ダブルスポイラー",
    "弾幕アマノジャク",
@@ -2299,6 +2864,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E8%8C%A8%E6%9C%A8%E8%8F%AF%E6%89%87",
   "g": "https://touhougarakuta.com/article/chara-kasen/",
   "kana": "いばらきかせん",
+  "ruby": [
+   [
+    "茨木",
+    "いばらき"
+   ],
+   [
+    "華扇",
+    "かせん"
+   ]
+  ],
   "works": [
    "東方茨歌仙",
    "東方深秘録",
@@ -2331,6 +2906,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%B9%BD%E8%B0%B7%E9%9F%BF%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-kyouko/",
   "kana": "かそだにきょうこ",
+  "ruby": [
+   [
+    "幽谷",
+    "かそだに"
+   ],
+   [
+    "響子",
+    "きょうこ"
+   ]
+  ],
   "works": [
    "東方神霊廟",
    "弾幕アマノジャク",
@@ -2362,6 +2947,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%AE%AE%E5%8F%A4%E8%8A%B3%E9%A6%99",
   "g": "https://touhougarakuta.com/article/chara-yoshika/",
   "kana": "みやこよしか",
+  "ruby": [
+   [
+    "宮古",
+    "みやこ"
+   ],
+   [
+    "芳香",
+    "よしか"
+   ]
+  ],
   "works": [
    "東方神霊廟",
    "弾幕アマノジャク",
@@ -2393,6 +2988,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%9C%8D%E9%9D%92%E5%A8%A5",
   "g": "https://touhougarakuta.com/article/chara-seiga/",
   "kana": "かくせいが",
+  "ruby": [
+   [
+    "霍",
+    "かく"
+   ],
+   [
+    "青娥",
+    "せいが"
+   ]
+  ],
   "works": [
    "東方神霊廟",
    "弾幕アマノジャク",
@@ -2424,6 +3029,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E8%98%87%E6%88%91%E5%B1%A0%E8%87%AA%E5%8F%A4",
   "g": "https://touhougarakuta.com/article/chara-tojiko/",
   "kana": "そがのとじこ",
+  "ruby": [
+   [
+    "蘇我",
+    "そがの"
+   ],
+   [
+    "屠自古",
+    "とじこ"
+   ]
+  ],
   "works": [
    "東方神霊廟",
    "弾幕アマノジャク"
@@ -2454,6 +3069,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%89%A9%E9%83%A8%E5%B8%83%E9%83%BD",
   "g": "https://touhougarakuta.com/article/chara-futo/",
   "kana": "もののべのふと",
+  "ruby": [
+   [
+    "物部",
+    "もののべの"
+   ],
+   [
+    "布都",
+    "ふと"
+   ]
+  ],
   "works": [
    "東方神霊廟",
    "東方心綺楼",
@@ -2486,6 +3111,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E8%B1%8A%E8%81%A1%E8%80%B3%E7%A5%9E%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-miko/",
   "kana": "とよさとみみのみこ",
+  "ruby": [
+   [
+    "豊聡耳",
+    "とよさとみみの"
+   ],
+   [
+    "神子",
+    "みこ"
+   ]
+  ],
   "works": [
    "東方神霊廟",
    "東方心綺楼",
@@ -2518,6 +3153,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E4%BA%8C%E3%83%83%E5%B2%A9%E3%83%9E%E3%83%9F%E3%82%BE%E3%82%A6",
   "g": "https://touhougarakuta.com/article/chara-mamizou/",
   "kana": "ふたついわまみぞう",
+  "ruby": [
+   [
+    "二ッ岩",
+    "ふたついわ"
+   ],
+   [
+    "マミゾウ",
+    null
+   ]
+  ],
   "works": [
    "東方神霊廟",
    "東方心綺楼",
@@ -2550,6 +3195,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%9C%AC%E5%B1%85%E5%B0%8F%E9%88%B4",
   "g": "https://touhougarakuta.com/article/chara-kosuzu/",
   "kana": "もとおりこすず",
+  "ruby": [
+   [
+    "本居",
+    "もとおり"
+   ],
+   [
+    "小鈴",
+    "こすず"
+   ]
+  ],
   "works": [
    "東方鈴奈庵"
   ]
@@ -2579,6 +3234,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%A7%A6%E3%81%93%E3%81%93%E3%82%8D",
   "g": "https://touhougarakuta.com/article/chara-kokoro/",
   "kana": "はたのこころ",
+  "ruby": [
+   [
+    "秦",
+    "はたの"
+   ],
+   [
+    "こころ",
+    null
+   ]
+  ],
   "works": [
    "東方心綺楼",
    "東方深秘録",
@@ -2610,6 +3275,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%8F%E3%81%8B%E3%81%95%E3%81%8E%E5%A7%AB",
   "g": "https://touhougarakuta.com/article/chara-wakasagi-hime/",
   "kana": "わかさぎひめ",
+  "ruby": [
+   [
+    "わかさぎ",
+    null
+   ],
+   [
+    "姫",
+    "ひめ"
+   ]
+  ],
   "works": [
    "東方輝針城",
    "弾幕アマノジャク",
@@ -2641,6 +3316,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E8%B5%A4%E8%9B%AE%E5%A5%87",
   "g": "https://touhougarakuta.com/article/chara-banki/",
   "kana": "せきばんき",
+  "ruby": [
+   [
+    "赤",
+    "せき"
+   ],
+   [
+    "蛮奇",
+    "ばんき"
+   ]
+  ],
   "works": [
    "東方輝針城",
    "弾幕アマノジャク",
@@ -2672,6 +3357,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E4%BB%8A%E6%B3%89%E5%BD%B1%E7%8B%BC",
   "g": "https://touhougarakuta.com/article/chara-kagerou/",
   "kana": "いまいずみかげろう",
+  "ruby": [
+   [
+    "今泉",
+    "いまいずみ"
+   ],
+   [
+    "影狼",
+    "かげろう"
+   ]
+  ],
   "works": [
    "東方輝針城",
    "弾幕アマノジャク",
@@ -2703,6 +3398,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E4%B9%9D%E5%8D%81%E4%B9%9D%E5%85%AB%E6%A9%8B",
   "g": "https://touhougarakuta.com/article/chara-tsukumo/",
   "kana": "つくもやつはし",
+  "ruby": [
+   [
+    "九十九",
+    "つくも"
+   ],
+   [
+    "八橋",
+    "やつはし"
+   ]
+  ],
   "works": [
    "東方輝針城",
    "弾幕アマノジャク",
@@ -2734,6 +3439,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E4%B9%9D%E5%8D%81%E4%B9%9D%E5%BC%81%E3%80%85",
   "g": "https://touhougarakuta.com/article/chara-tsukumo/",
   "kana": "つくもべんべん",
+  "ruby": [
+   [
+    "九十九",
+    "つくも"
+   ],
+   [
+    "弁々",
+    "べんべん"
+   ]
+  ],
   "works": [
    "東方輝針城",
    "弾幕アマノジャク",
@@ -2765,6 +3480,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%AC%BC%E4%BA%BA%E6%AD%A3%E9%82%AA",
   "g": "https://touhougarakuta.com/article/chara-seija/",
   "kana": "きじんせいじゃ",
+  "ruby": [
+   [
+    "鬼人",
+    "きじん"
+   ],
+   [
+    "正邪",
+    "せいじゃ"
+   ]
+  ],
   "works": [
    "東方輝針城",
    "弾幕アマノジャク"
@@ -2795,6 +3520,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%B0%91%E5%90%8D%E9%87%9D%E5%A6%99%E4%B8%B8",
   "g": "https://touhougarakuta.com/article/chara-shinmyoumaru/",
   "kana": "すくなしんみょうまる",
+  "ruby": [
+   [
+    "少名",
+    "すくな"
+   ],
+   [
+    "針妙丸",
+    "しんみょうまる"
+   ]
+  ],
   "works": [
    "東方輝針城",
    "弾幕アマノジャク",
@@ -2826,6 +3561,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%A0%80%E5%B7%9D%E9%9B%B7%E9%BC%93",
   "g": "https://touhougarakuta.com/article/chara-raiko/",
   "kana": "ほりかわらいこ",
+  "ruby": [
+   [
+    "堀川",
+    "ほりかわ"
+   ],
+   [
+    "雷鼓",
+    "らいこ"
+   ]
+  ],
   "works": [
    "東方輝針城",
    "弾幕アマノジャク"
@@ -2856,6 +3601,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%AE%87%E4%BD%90%E8%A6%8B%E8%8F%AB%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-sumireko/",
   "kana": "うさみすみれこ",
+  "ruby": [
+   [
+    "宇佐見",
+    "うさみ"
+   ],
+   [
+    "菫子",
+    "すみれこ"
+   ]
+  ],
   "works": [
    "東方深秘録",
    "東方憑依華",
@@ -2888,6 +3643,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%B8%85%E8%98%AD",
   "g": "https://touhougarakuta.com/article/chara-seiran/",
   "kana": "せいらん",
+  "ruby": [
+   [
+    "清蘭",
+    "せいらん"
+   ]
+  ],
   "works": [
    "東方紺珠伝",
    "東方獣王園"
@@ -2918,6 +3679,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%88%B4%E7%91%9A",
   "g": "https://touhougarakuta.com/article/chara-ringo/",
   "kana": "りんご",
+  "ruby": [
+   [
+    "鈴瑚",
+    "りんご"
+   ]
+  ],
   "works": [
    "東方紺珠伝",
    "秘封ナイトメアダイアリー"
@@ -2948,6 +3715,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%89%E3%83%AC%E3%83%9F%E3%83%BC%E3%83%BB%E3%82%B9%E3%82%A4%E3%83%BC%E3%83%88",
   "g": "https://touhougarakuta.com/article/chara-doremy/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方紺珠伝",
    "東方憑依華",
@@ -2979,6 +3747,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%A8%80%E7%A5%9E%E3%82%B5%E3%82%B0%E3%83%A1",
   "g": "https://touhougarakuta.com/article/chara-sagume/",
   "kana": "きしんさぐめ",
+  "ruby": [
+   [
+    "稀神",
+    "きしん"
+   ],
+   [
+    "サグメ",
+    null
+   ]
+  ],
   "works": [
    "東方紺珠伝",
    "秘封ナイトメアダイアリー"
@@ -3009,6 +3787,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%B3%E3%83%94%E3%83%BC%E3%82%B9",
   "g": "https://touhougarakuta.com/article/chara-crownpiece/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方紺珠伝",
    "東方三月精"
@@ -3039,6 +3818,12 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%B4%94%E7%8B%90",
   "g": "https://touhougarakuta.com/article/chara-junko/",
   "kana": "じゅんこ",
+  "ruby": [
+   [
+    "純狐",
+    "じゅんこ"
+   ]
+  ],
   "works": [
    "東方紺珠伝",
    "秘封ナイトメアダイアリー"
@@ -3069,6 +3854,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%98%E3%82%AB%E3%83%BC%E3%83%86%E3%82%A3%E3%82%A2%E3%83%BB%E3%83%A9%E3%83%94%E3%82%B9%E3%83%A9%E3%82%BA%E3%83%AA",
   "g": "https://touhougarakuta.com/article/chara-hecatia/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方紺珠伝",
    "東方三月精"
@@ -3099,6 +3885,7 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%82%A8%E3%82%BF%E3%83%8B%E3%83%86%E3%82%A3%E3%83%A9%E3%83%AB%E3%83%90",
   "g": "https://touhougarakuta.com/article/chara-larva/",
   "kana": "",
+  "ruby": null,
   "works": [
    "東方天空璋",
    "東方三月精"
@@ -3129,6 +3916,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%9D%82%E7%94%B0%E3%83%8D%E3%83%A0%E3%83%8E",
   "g": "https://touhougarakuta.com/article/chara-nemuno/",
   "kana": "さかたねむの",
+  "ruby": [
+   [
+    "坂田",
+    "さかた"
+   ],
+   [
+    "ネムノ",
+    null
+   ]
+  ],
   "works": [
    "東方天空璋",
    "秘封ナイトメアダイアリー"
@@ -3159,6 +3956,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%AB%98%E9%BA%97%E9%87%8E%E3%81%82%E3%81%86%E3%82%93",
   "g": "https://touhougarakuta.com/article/chara-aun/",
   "kana": "こまのあうん",
+  "ruby": [
+   [
+    "高麗野",
+    "こまの"
+   ],
+   [
+    "あうん",
+    null
+   ]
+  ],
   "works": [
    "東方天空璋",
    "東方茨歌仙",
@@ -3190,6 +3997,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%9F%A2%E7%94%B0%E5%AF%BA%E6%88%90%E7%BE%8E",
   "g": "https://touhougarakuta.com/article/chara-narumi/",
   "kana": "やたでらなるみ",
+  "ruby": [
+   [
+    "矢田寺",
+    "やたでら"
+   ],
+   [
+    "成美",
+    "なるみ"
+   ]
+  ],
   "works": [
    "東方天空璋",
    "東方香霖堂"
@@ -3220,6 +4037,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%88%BE%E5%AD%90%E7%94%B0%E9%87%8C%E4%B9%83",
   "g": "https://touhougarakuta.com/article/chara-nidouji/",
   "kana": "にしださとの",
+  "ruby": [
+   [
+    "爾子田",
+    "にしだ"
+   ],
+   [
+    "里乃",
+    "さとの"
+   ]
+  ],
   "works": [
    "東方天空璋",
    "秘封ナイトメアダイアリー"
@@ -3250,6 +4077,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E4%B8%81%E7%A4%BC%E7%94%B0%E8%88%9E",
   "g": "https://touhougarakuta.com/article/chara-nidouji/",
   "kana": "ていれいだまい",
+  "ruby": [
+   [
+    "丁礼田",
+    "ていれいだ"
+   ],
+   [
+    "舞",
+    "まい"
+   ]
+  ],
   "works": [
    "東方天空璋",
    "秘封ナイトメアダイアリー"
@@ -3280,6 +4117,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%91%A9%E5%A4%9A%E7%BE%85%E9%9A%A0%E5%B2%90%E5%A5%88",
   "g": "https://touhougarakuta.com/article/chara-okina/",
   "kana": "またらおきな",
+  "ruby": [
+   [
+    "摩多羅",
+    "またら"
+   ],
+   [
+    "隠岐奈",
+    "おきな"
+   ]
+  ],
   "works": [
    "東方天空璋",
    "東方茨歌仙",
@@ -3311,6 +4158,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E4%BE%9D%E7%A5%9E%E5%A5%B3%E8%8B%91",
   "g": "https://touhougarakuta.com/article/chara-yorigami/",
   "kana": "よりがみじょおん",
+  "ruby": [
+   [
+    "依神",
+    "よりがみ"
+   ],
+   [
+    "女苑",
+    "じょおん"
+   ]
+  ],
   "works": [
    "東方憑依華",
    "東方剛欲異聞",
@@ -3342,6 +4199,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E4%BE%9D%E7%A5%9E%E7%B4%AB%E8%8B%91",
   "g": "https://touhougarakuta.com/article/chara-yorigami/",
   "kana": "よりがみしおん",
+  "ruby": [
+   [
+    "依神",
+    "よりがみ"
+   ],
+   [
+    "紫苑",
+    "しおん"
+   ]
+  ],
   "works": [
    "東方憑依華",
    "東方剛欲異聞",
@@ -3373,6 +4240,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%88%8E%E7%93%94%E8%8A%B1",
   "g": "https://touhougarakuta.com/article/chara-eika/",
   "kana": "えびすえいか",
+  "ruby": [
+   [
+    "戎",
+    "えびす"
+   ],
+   [
+    "瓔花",
+    "えいか"
+   ]
+  ],
   "works": [
    "東方鬼形獣",
    "バレットフィリア達の闇市場"
@@ -3403,6 +4280,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%89%9B%E5%B4%8E%E6%BD%A4%E7%BE%8E",
   "g": "https://touhougarakuta.com/article/chara-urumi/",
   "kana": "うしざきうるみ",
+  "ruby": [
+   [
+    "牛崎",
+    "うしざき"
+   ],
+   [
+    "潤美",
+    "うるみ"
+   ]
+  ],
   "works": [
    "東方鬼形獣"
   ]
@@ -3432,6 +4319,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%BA%AD%E6%B8%A1%E4%B9%85%E4%BE%98%E6%AD%8C",
   "g": "https://touhougarakuta.com/article/chara-kutaka/",
   "kana": "にわたりくたか",
+  "ruby": [
+   [
+    "庭渡",
+    "にわたり"
+   ],
+   [
+    "久侘歌",
+    "くたか"
+   ]
+  ],
   "works": [
    "東方鬼形獣",
    "東方剛欲異聞",
@@ -3463,6 +4360,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%90%89%E5%BC%94%E5%85%AB%E5%8D%83%E6%85%A7",
   "g": "https://touhougarakuta.com/article/chara-yachie/",
   "kana": "きっちょうやちえ",
+  "ruby": [
+   [
+    "吉弔",
+    "きっちょう"
+   ],
+   [
+    "八千慧",
+    "やちえ"
+   ]
+  ],
   "works": [
    "東方鬼形獣",
    "東方獣王園"
@@ -3493,6 +4400,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%9D%96%E5%88%80%E5%81%B6%E7%A3%A8%E5%BC%93",
   "g": "https://touhougarakuta.com/article/chara-mayumi/",
   "kana": "じょうとうぐうまゆみ",
+  "ruby": [
+   [
+    "杖刀偶",
+    "じょうとうぐう"
+   ],
+   [
+    "磨弓",
+    "まゆみ"
+   ]
+  ],
   "works": [
    "東方鬼形獣"
   ]
@@ -3522,6 +4439,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%9F%B4%E5%AE%89%E7%A5%9E%E8%A2%BF%E5%A7%AB",
   "g": "https://touhougarakuta.com/article/chara-keiki/",
   "kana": "はにやすしんけいき",
+  "ruby": [
+   [
+    "埴安神",
+    "はにやすしん"
+   ],
+   [
+    "袿姫",
+    "けいき"
+   ]
+  ],
   "works": [
    "東方鬼形獣",
    "東方錦上京"
@@ -3552,6 +4479,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%A9%AA%E9%A7%92%E6%97%A9%E9%AC%BC",
   "g": "https://touhougarakuta.com/article/chara-saki/",
   "kana": "くろこまさき",
+  "ruby": [
+   [
+    "驪駒",
+    "くろこま"
+   ],
+   [
+    "早鬼",
+    "さき"
+   ]
+  ],
   "works": [
    "東方鬼形獣",
    "バレットフィリア達の闇市場",
@@ -3583,6 +4520,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%A5%A5%E9%87%8E%E7%94%B0%E7%BE%8E%E5%AE%B5",
   "g": "https://touhougarakuta.com/article/chara-miyoi/",
   "kana": "おくのだみよい",
+  "ruby": [
+   [
+    "奥野田",
+    "おくのだ"
+   ],
+   [
+    "美宵",
+    "みよい"
+   ]
+  ],
   "works": [
    "東方酔蝶華"
   ]
@@ -3612,6 +4559,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%AE%AE%E5%87%BA%E5%8F%A3%E7%91%9E%E9%9C%8A",
   "g": "https://touhougarakuta.com/article/chara-mizuchi/",
   "kana": "みやでぐちみずち",
+  "ruby": [
+   [
+    "宮出口",
+    "みやでぐち"
+   ],
+   [
+    "瑞霊",
+    "みずち"
+   ]
+  ],
   "works": [
    "東方智霊奇伝"
   ]
@@ -3641,6 +4598,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E8%B1%AA%E5%BE%B3%E5%AF%BA%E3%83%9F%E3%82%B1",
   "g": "https://touhougarakuta.com/article/chara-mike/",
   "kana": "ごうとくじみけ",
+  "ruby": [
+   [
+    "豪徳寺",
+    "ごうとくじ"
+   ],
+   [
+    "ミケ",
+    null
+   ]
+  ],
   "works": [
    "東方虹龍洞"
   ]
@@ -3670,6 +4637,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%B1%B1%E5%9F%8E%E3%81%9F%E3%81%8B%E3%81%AD",
   "g": "https://touhougarakuta.com/article/chara-takane/",
   "kana": "やましろたかね",
+  "ruby": [
+   [
+    "山城",
+    "やましろ"
+   ],
+   [
+    "たかね",
+    null
+   ]
+  ],
   "works": [
    "東方虹龍洞",
    "バレットフィリア達の闇市場"
@@ -3700,6 +4677,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%A7%92%E8%8D%89%E5%B1%B1%E5%A6%82",
   "g": "https://touhougarakuta.com/article/chara-sannyo/",
   "kana": "こまくささんにょ",
+  "ruby": [
+   [
+    "駒草",
+    "こまくさ"
+   ],
+   [
+    "山如",
+    "さんにょ"
+   ]
+  ],
   "works": [
    "東方虹龍洞",
    "東方酔蝶華"
@@ -3730,6 +4717,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%8E%89%E9%80%A0%E9%AD%85%E9%A0%88%E4%B8%B8",
   "g": "https://touhougarakuta.com/article/chara-misumaru/",
   "kana": "たまつくりみすまる",
+  "ruby": [
+   [
+    "玉造",
+    "たまつくり"
+   ],
+   [
+    "魅須丸",
+    "みすまる"
+   ]
+  ],
   "works": [
    "東方虹龍洞"
   ]
@@ -3759,6 +4756,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E8%8F%85%E7%89%A7%E5%85%B8",
   "g": "https://touhougarakuta.com/article/chara-tsukasa/",
   "kana": "くだまきつかさ",
+  "ruby": [
+   [
+    "菅牧",
+    "くだまき"
+   ],
+   [
+    "典",
+    "つかさ"
+   ]
+  ],
   "works": [
    "東方虹龍洞",
    "バレットフィリア達の闇市場",
@@ -3790,6 +4797,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%A3%AF%E7%B6%B1%E4%B8%B8%E9%BE%8D",
   "g": "https://touhougarakuta.com/article/chara-megumu/",
   "kana": "いいづなまるめぐむ",
+  "ruby": [
+   [
+    "飯綱丸",
+    "いいづなまる"
+   ],
+   [
+    "龍",
+    "めぐむ"
+   ]
+  ],
   "works": [
    "東方虹龍洞",
    "バレットフィリア達の闇市場",
@@ -3821,6 +4838,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%A4%A9%E5%BC%93%E5%8D%83%E4%BA%A6",
   "g": "https://touhougarakuta.com/article/chara-chimata/",
   "kana": "てんきゅうちまた",
+  "ruby": [
+   [
+    "天弓",
+    "てんきゅう"
+   ],
+   [
+    "千亦",
+    "ちまた"
+   ]
+  ],
   "works": [
    "東方虹龍洞",
    "バレットフィリア達の闇市場"
@@ -3851,6 +4878,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%A7%AB%E8%99%AB%E7%99%BE%E3%80%85%E4%B8%96",
   "g": "https://touhougarakuta.com/article/chara-momoyo/",
   "kana": "ひめむしももよ",
+  "ruby": [
+   [
+    "姫虫",
+    "ひめむし"
+   ],
+   [
+    "百々世",
+    "ももよ"
+   ]
+  ],
   "works": [
    "東方虹龍洞"
   ]
@@ -3880,6 +4917,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%A5%95%E9%A4%AE%E5%B0%A4%E9%AD%94",
   "g": "https://touhougarakuta.com/article/chara-toutetsu/",
   "kana": "とうてつゆうま",
+  "ruby": [
+   [
+    "饕餮",
+    "とうてつ"
+   ],
+   [
+    "尤魔",
+    "ゆうま"
+   ]
+  ],
   "works": [
    "東方剛欲異聞",
    "東方獣王園"
@@ -3910,6 +4957,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%AD%AB%E7%BE%8E%E5%A4%A9",
   "g": "https://touhougarakuta.com/article/chara-biten/",
   "kana": "そんびてん",
+  "ruby": [
+   [
+    "孫",
+    "そん"
+   ],
+   [
+    "美天",
+    "びてん"
+   ]
+  ],
   "works": [
    "東方獣王園",
    "東方酔蝶華"
@@ -3940,6 +4997,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E4%B8%89%E9%A0%AD%E6%85%A7%E3%83%8E%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-enoko/",
   "kana": "みつがしらえのこ",
+  "ruby": [
+   [
+    "三頭",
+    "みつがしら"
+   ],
+   [
+    "慧ノ子",
+    "えのこ"
+   ]
+  ],
   "works": [
    "東方獣王園",
    "東方錦上京"
@@ -3970,6 +5037,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%A4%A9%E7%81%AB%E4%BA%BA%E3%81%A1%E3%82%84%E3%82%8A",
   "g": "https://touhougarakuta.com/article/chara-chiyari/",
   "kana": "てんかじんちやり",
+  "ruby": [
+   [
+    "天火人",
+    "てんかじん"
+   ],
+   [
+    "ちやり",
+    null
+   ]
+  ],
   "works": [
    "東方獣王園"
   ]
@@ -3999,6 +5076,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E8%B1%AB%E6%AF%8D%E9%83%BD%E6%97%A5%E7%8B%AD%E7%BE%8E",
   "g": "https://touhougarakuta.com/article/chara-hisami/",
   "kana": "よもつひさみ",
+  "ruby": [
+   [
+    "豫母都",
+    "よもつ"
+   ],
+   [
+    "日狭美",
+    "ひさみ"
+   ]
+  ],
   "works": [
    "東方獣王園"
   ]
@@ -4028,6 +5115,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%97%A5%E7%99%BD%E6%AE%8B%E7%84%A1",
   "g": "https://touhougarakuta.com/article/chara-zanmu/",
   "kana": "にっぱくざんむ",
+  "ruby": [
+   [
+    "日白",
+    "にっぱく"
+   ],
+   [
+    "残無",
+    "ざんむ"
+   ]
+  ],
   "works": [
    "東方獣王園",
    "東方錦上京"
@@ -4058,6 +5155,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%A1%B5%E5%A1%9A%E3%82%A6%E3%83%90%E3%83%A1",
   "g": "https://touhougarakuta.com/article/chara-ubame/",
   "kana": "ちりづかうばめ",
+  "ruby": [
+   [
+    "塵塚",
+    "ちりづか"
+   ],
+   [
+    "ウバメ",
+    null
+   ]
+  ],
   "works": [
    "東方錦上京"
   ]
@@ -4087,6 +5194,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E5%B0%81%E7%8D%A3%E3%83%81%E3%83%9F",
   "g": "https://touhougarakuta.com/article/chara-chimi/",
   "kana": "ほうじゅうちみ",
+  "ruby": [
+   [
+    "封獣",
+    "ほうじゅう"
+   ],
+   [
+    "チミ",
+    null
+   ]
+  ],
   "works": [
    "東方錦上京"
   ]
@@ -4116,6 +5233,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E9%81%93%E7%A5%9E%E9%A6%B4%E5%AD%90",
   "g": "https://touhougarakuta.com/article/chara-nareko/",
   "kana": "みちがみなれこ",
+  "ruby": [
+   [
+    "道神",
+    "みちがみ"
+   ],
+   [
+    "馴子",
+    "なれこ"
+   ]
+  ],
   "works": [
    "東方錦上京"
   ]
@@ -4145,6 +5272,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E3%83%A6%E3%82%A4%E3%83%9E%E3%83%B3%E3%83%BB%E6%B5%85%E9%96%93",
   "g": "https://touhougarakuta.com/article/chara-yuiman/",
   "kana": "ゆいまん・あさま",
+  "ruby": [
+   [
+    "ユイマン・",
+    null
+   ],
+   [
+    "浅間",
+    "あさま"
+   ]
+  ],
   "works": [
    "東方錦上京"
   ]
@@ -4174,6 +5311,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E7%A3%90%E6%B0%B8%E9%98%BF%E6%A2%A8%E5%A4%9C",
   "g": "https://touhougarakuta.com/article/chara-ariya/",
   "kana": "いわながありや",
+  "ruby": [
+   [
+    "磐永",
+    "いわなが"
+   ],
+   [
+    "阿梨夜",
+    "ありや"
+   ]
+  ],
   "works": [
    "東方錦上京"
   ]
@@ -4203,6 +5350,16 @@ window.TOHO_CHARS = [
   "url": "https://dic.pixiv.net/a/%E6%B8%A1%E9%87%8C%E3%83%8B%E3%83%8A",
   "g": "https://touhougarakuta.com/article/chara-nina/",
   "kana": "わたりにな",
+  "ruby": [
+   [
+    "渡里",
+    "わたり"
+   ],
+   [
+    "ニナ",
+    null
+   ]
+  ],
   "works": [
    "東方錦上京"
   ]

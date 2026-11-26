@@ -14,6 +14,8 @@ for (const f of fs.readdirSync(path.join(root, 'research/profiles')).filter(f =>
 const garakuta = read('tools/garakuta.json');
 // 名前の読みと主な登場作品(tools/meta.json。なければ空)
 const meta = fs.existsSync(path.join(root, 'tools/meta.json')) ? read('tools/meta.json') : {};
+// 名前のふりがな(姓・名ごとの区切り。tools/ruby.json)
+const rubyMap = fs.existsSync(path.join(root, 'tools/ruby.json')) ? read('tools/ruby.json') : {};
 const ovPath = path.join(root, 'tools/overrides.json');
 const overrides = fs.existsSync(ovPath) ? read('tools/overrides.json') : {};
 
@@ -40,6 +42,7 @@ const out = chars.map(c => {
     // 東方我楽多叢誌「週刊東方キャラクター」のキャラ記事(記事がないキャラは空)
     g: garakuta[c.id] || '',
     kana: (meta[c.id] && meta[c.id].kana) || '',
+    ruby: rubyMap[c.id] || null,
     works: (meta[c.id] && meta[c.id].works) || [],
   };
 });

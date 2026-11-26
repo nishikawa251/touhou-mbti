@@ -32,7 +32,11 @@
   // {漢字|よみ} → <ruby>漢字<rt>よみ</rt></ruby>(エスケープ済みの文字列に対して行う)
   const ruby = s => esc(s).replace(/\{([^|{}]+)\|([^}]+)\}/g, '<ruby>$1<rp>(</rp><rt>$2</rt><rp>)</rp></ruby>');
   // キャラ名(読みがあればふりがな付き)
-  const nameRuby = c => (c.kana ? `<ruby>${esc(c.name)}<rp>(</rp><rt>${esc(c.kana)}</rt><rp>)</rp></ruby>` : esc(c.name));
+  // 姓・名ごとに読みを乗せる(c.ruby = [[文字, 読み|null], ...])。区切りがなければ全体に1つ
+  const nameRuby = c => {
+    if (c.ruby) return c.ruby.map(([s, r]) => (r ? `<ruby>${esc(s)}<rp>(</rp><rt>${esc(r)}</rt><rp>)</rp></ruby>` : esc(s))).join('');
+    return c.kana ? `<ruby>${esc(c.name)}<rp>(</rp><rt>${esc(c.kana)}</rt><rp>)</rp></ruby>` : esc(c.name);
+  };
   // 主な登場作品
   const WORK_URLS = window.TOHO_WORK_URLS || {};
   const workChip = w => (WORK_URLS[w]
@@ -103,10 +107,24 @@
     </button>`;
   }
 
+  // スペルカード風のタイプ名。グループ名(知略の者たち → 知略)を冠にして 知略「型破りの仕掛け人」
+  function spellName(mbti) {
+    const t = L.TYPES[mbti];
+    const g = L.GROUPS[t.group].name.replace(/の者たち$/, '');
+    return `${esc(g)}「${esc(t.name)}」`;
+  }
+  // 一致度を10発の弾で。満タン=100%
+  function matchBullets(sim, quick) {
+    const full = Math.floor(sim / 10);
+    const half = sim % 10 >= 5 ? 1 : 0;
+    const dots = Array.from({ length: 10 }, (_, i) => `<i class="${i < full ? 'on' : (i === full && half ? 'half' : '')}"></i>`).join('');
+    return `<p class="match" aria-label="一致度 ${sim}%"><span class="bullets" aria-hidden="true">${dots}</span><b>${sim}%</b><span>一致${quick ? '(たぶん)' : ''}</span></p>`;
+  }
+
   // 折りたたみ(見出しボタン + 開閉アニメーションする中身)
-  function accordion(id, title, sub, body) {
+  function accordion(id, title, sub, body, cls = '') {
     return `
-      <section class="acc">
+      <section class="acc ${cls}">
         <button type="button" class="acc-head" data-toggle="${id}" aria-expanded="false" aria-controls="${id}">${esc(title)}<span class="acc-sub">${esc(sub)}</span><span class="acc-arrow" aria-hidden="true">▾</span></button>
         <div class="collapse" id="${id}"><div class="collapse-inner acc-body">${body}</div></div>
       </section>`;
@@ -454,13 +472,17 @@
     const diceLabels = dice.map(i => `${L.AXES[i].negLabel}/${L.AXES[i].posLabel}`);
     app.innerHTML = `
       ${quick ? `<p class="dopa-banner"><b>ドパガキモード判定</b>ランダムな6問で無理やり決めました。絶対間違うぞ！${diceLabels.length ? `<small>サイコロで決めた軸: ${diceLabels.join('、')}</small>` : ''}</p>` : ''}
-      <section class="result g-${t.group}">
-        <p class="eyebrow">診断結果${quick ? '(雑)' : ''}</p>
-        ${charHead(c, r.type, `
+      <section class="result spell-card g-${t.group}" data-type="${r.type}">
+        <p class="spell">${spellName(r.type)}<small>${r.type}</small></p>
+        <div class="result-head">
+          <img class="card-img" src="img/chars/${c.id}.png" alt="${esc(c.name)}のイラスト" width="200" height="250">
+          <div class="result-main">
             <p class="result-pre">あなたにいちばん近いのは</p>
             <h1>${nameRuby(c)}</h1>
             <p class="catch">${esc(c.catch)}</p>
-            <p class="sim"><span class="sim-num">${sim}</span><span class="sim-unit">%</span><span class="sim-label">一致度${quick ? '(たぶん)' : ''}</span></p>`, true)}
+            ${matchBullets(sim, quick)}
+          </div>
+        </div>
         <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}</div>
         <p class="desc">${esc(c.desc)}</p>
         <div class="hero-actions">
@@ -473,7 +495,7 @@
           <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>`)}
       </section>
 
-      <section class="panel">
+      <section class="panel plain">
         <h2>あなたの8軸</h2>
         <p class="legend"><span class="axis-dot user inline"></span>あなた <span class="axis-dot chara inline"></span>${esc(c.name)}</p>
         <div class="axes">${axisRows(user, c.v)}</div>
@@ -481,7 +503,7 @@
         ${quick ? '<p class="note">ドパガキモードでは、6問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
       </section>
 
-      <section class="panel compat">
+      <section class="panel plain compat">
         <h2>あなたと相性のいいキャラ</h2>
         <div class="pair">
           <button type="button" class="pair-side" data-char="${c.id}">
@@ -510,7 +532,7 @@
           <h3>同じタイプ(${r.type})の仲間</h3>
           <div class="tiles small">${mates.map(mm => charTile(mm.c, `<span class="tile-sim">${L.similarity(mm.d)}%</span>`)).join('')}</div>` : ''}
           <h3>タイプは違うけれど近いキャラ</h3>
-          <div class="tiles small">${near.map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・${L.similarity(mm.d)}%</span>`)).join('')}</div>`)}
+          <div class="tiles small">${near.map(mm => charTile(mm.c, `<span class="tile-sim">${mm.c.mbti}・${L.similarity(mm.d)}%</span>`)).join('')}</div>`, 'plain-acc')}
 
       <div class="cta center">
         ${quick ? '<button type="button" class="btn primary" data-act="start">ちゃんと診断する(36問)</button><button type="button" class="btn" data-act="start-quick">もう一回(質問も変わる)</button>' : '<button type="button" class="btn" data-act="start">もう一度診断する</button><button type="button" class="btn" data-act="start-quick">ドパガキモードで遊ぶ</button>'}

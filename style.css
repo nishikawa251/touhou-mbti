@@ -454,3 +454,59 @@ body.no-scroll { overflow: hidden; }
 .reveal.shine::after { content: ""; position: absolute; inset: 0; background: #fff; animation: flash .5s steps(8) forwards; pointer-events: none; }
 @keyframes flash { from { opacity: .9; } to { opacity: 0; } }
 .reveal-skip { position: absolute; right: 16px; bottom: 16px; z-index: 2; background: rgba(255, 255, 255, .12); color: #fff; border: 1px solid rgba(255, 255, 255, .35); border-radius: 999px; padding: 8px 16px; font-family: var(--font-display); font-weight: 700; cursor: pointer; }
+
+/* ---- リザルト: スペルカード ----
+   結果カードだけを「札」にし、ほかの節は箱をやめて余白と札色の短い罫で区切る */
+.result.spell-card {
+  position: relative; overflow: hidden; border-radius: 10px; border: 1px solid var(--line); border-top: 0;
+  border-left: 12px solid var(--g); padding: 26px 28px 26px 26px;
+}
+.result.spell-card::before {
+  content: attr(data-type); position: absolute; right: -8px; top: -22px; z-index: 0;
+  font-family: var(--font-display); font-weight: 900; font-size: 168px; line-height: 1; letter-spacing: -.02em;
+  color: transparent; -webkit-text-stroke: 2px var(--g); opacity: .13; pointer-events: none; user-select: none;
+}
+.result.spell-card > * { position: relative; z-index: 1; }
+.spell { font-family: var(--font-display); font-weight: 700; color: var(--g); font-size: 16px; letter-spacing: .02em; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.spell small { font-size: 12px; font-weight: 700; color: var(--ink-2); letter-spacing: .12em; }
+.spell-card .result-head { align-items: flex-start; margin: 14px 0 14px; gap: 24px; }
+.spell-card .card-img { width: 190px; border-radius: 8px; border: 1px solid var(--line); }
+.spell-card .result-pre { margin: 2px 0 14px; }
+.spell-card .result-main h1 { font-size: clamp(34px, 7vw, 50px); line-height: 1.3; letter-spacing: .01em; margin-top: 0; }
+.spell-card .result-main h1 rt { font-size: .34em; }
+.spell-card .catch { color: var(--ink); font-size: 17px; margin-top: 4px; }
+.match { display: flex; align-items: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+.bullets { display: inline-flex; gap: 5px; }
+.bullets i { width: 13px; height: 13px; border-radius: 50%; border: 2px solid var(--g); background: transparent; box-sizing: border-box; }
+.bullets i.on { background: var(--g); }
+.bullets i.half { background: linear-gradient(90deg, var(--g) 50%, transparent 50%); }
+.match b { font-family: var(--font-display); font-weight: 900; font-size: 20px; color: var(--ink); font-variant-numeric: tabular-nums; }
+.match span { font-size: 13px; color: var(--ink-2); font-weight: 600; }
+.spell-card .tags { gap: 8px; margin: 2px 0 14px; }
+.spell-card .tag.strong { border-radius: 3px; border-left: 3px solid var(--g); background: var(--surface-2); color: var(--ink); padding: 3px 10px 3px 9px; }
+.spell-card .desc { max-width: 40em; }
+.spell-card .hero-actions { margin-top: 20px; }
+.spell-card .hero-actions .btn.garakuta { border-radius: 10px; background: transparent; }
+.spell-card .hero-actions .share-toggle { border-radius: 10px; }
+.spell-card .acc { background: transparent; border: 0; border-top: 1px dashed var(--line); border-radius: 0; margin-top: 16px; }
+.spell-card .acc-head { padding: 14px 4px 4px; border-radius: 0; }
+.spell-card .acc-head:hover { background: transparent; color: var(--g); }
+.panel.plain { background: transparent; border: 0; box-shadow: none; border-radius: 0; padding: 26px 4px 6px; margin-top: 6px; }
+.panel.plain h2 { font-size: 19px; display: flex; align-items: center; gap: 12px; }
+.panel.plain h2::before { content: ""; width: 14px; height: 4px; border-radius: 2px; background: var(--g); }
+.panel.plain .legend { margin-top: 8px; }
+.acc.plain-acc { background: transparent; border: 0; border-top: 1px solid var(--line); border-radius: 0; margin-top: 10px; }
+.acc.plain-acc .acc-head { padding: 18px 4px; border-radius: 0; font-size: 19px; }
+.acc.plain-acc .acc-head::before { content: ""; width: 14px; height: 4px; border-radius: 2px; background: var(--g); margin-right: -2px; }
+.acc.plain-acc .acc-head:hover { background: transparent; }
+@media (max-width: 640px) {
+  .result.spell-card { padding: 20px 16px; border-left-width: 8px; }
+  .result.spell-card::before { font-size: 112px; top: -12px; right: -6px; }
+  .spell-card .result-head { gap: 14px; }
+  .spell-card .card-img { width: 128px; }
+  .match { gap: 8px; }
+  .bullets { gap: 4px; }
+  .bullets i { width: 11px; height: 11px; }
+}
+.spell-card .result-main h1 ruby { ruby-align: center; }
+.spell-card .result-main h1 rt { letter-spacing: .04em; }
