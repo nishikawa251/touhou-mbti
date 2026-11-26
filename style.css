@@ -69,11 +69,14 @@ button { font: inherit; color: inherit; }
   padding: 12px 16px; max-width: 880px; width: 100%; margin: 0 auto;
 }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-family: var(--font-display); font-weight: 700; }
+/* 狭い画面で折り返すときは「東方キャラ / 性格診断」の切れ目(<wbr>)だけで折る */
+.brand-text { word-break: keep-all; line-height: 1.25; }
 .brand-mark {
   display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px;
   background: var(--accent); color: var(--accent-ink); font-weight: 900; font-size: 18px;
 }
-.top-nav a { color: var(--ink-2); text-decoration: none; font-weight: 600; font-size: 14px; padding: 8px 12px; border-radius: 999px; }
+.top-nav { display: flex; align-items: center; flex: none; }
+.top-nav a { color: var(--ink-2); text-decoration: none; font-weight: 600; font-size: 14px; padding: 8px 12px; border-radius: 999px; white-space: nowrap; }
 .top-nav a:hover { background: var(--surface-2); color: var(--ink); }
 main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px 48px; outline: none; }
 .foot { max-width: 880px; width: 100%; margin: 0 auto; padding: 20px 16px 36px; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 12px; line-height: 1.8; }
@@ -271,6 +274,9 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
   .axis { grid-template-columns: 4.6em 1fr 4.6em; gap: 8px; }
   .axis-label { font-size: 12px; }
   .brand-text { font-size: 15px; }
+  .brand { gap: 8px; }
+  .top { gap: 8px; }
+  .top-nav a { padding: 8px 8px; }
   .tiles { grid-template-columns: repeat(auto-fill, minmax(82px, 1fr)); gap: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
