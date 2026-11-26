@@ -71,7 +71,7 @@ const labels = {
   title: '東方キャラ性格診断',
   pre: 'あなたにいちばん近いのは',
   siteEyebrow: '非公式ファン診断',
-  siteTitle: 'あなたは幻想郷の誰に似ている?',
+  siteTitle: 'あなたは幻想郷の誰に似てる？',
   siteSub: `36問で16タイプ × ${chars.length}キャラ。東方キャラ性格診断`,
   credit: 'イラスト: 粗茶',
 };
