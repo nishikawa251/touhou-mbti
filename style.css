@@ -510,3 +510,5 @@ body.no-scroll { overflow: hidden; }
 }
 .spell-card .result-main h1 ruby { ruby-align: center; }
 .spell-card .result-main h1 rt { letter-spacing: .04em; }
+.spell-card .hero-actions { grid-template-columns: 1fr; }
+.spell-card .acc-body .btn.garakuta { margin-top: 16px; border-radius: 10px; background: transparent; }

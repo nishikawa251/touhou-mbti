@@ -486,13 +486,13 @@
         <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}</div>
         <p class="desc">${esc(c.desc)}</p>
         <div class="hero-actions">
-          ${garakutaLink(c)}
           ${sharePanel(c, text)}
         </div>
-        ${accordion('acc-more', 'このキャラをもっと知る', '登場作品・タイプの説明・百科事典', `
+        ${accordion('acc-more', 'このキャラをもっと知る', '登場作品・タイプの説明・百科事典・週刊東方キャラクター', `
           ${worksLine(c)}
           <p class="type-blurb"><b>${r.type}「${t.name}」</b> ${t.blurb}</p>
-          <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>`, '', true)}
+          <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で「${esc(c.name)}」を読む</a></p>
+          ${garakutaLink(c)}`, '', true)}
       </section>
 
       <section class="panel plain">
