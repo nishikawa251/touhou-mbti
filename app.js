@@ -10,17 +10,19 @@
   // 共有用の絶対 URL(ローカルで開いたときも公開サイトの URL を共有する)
   const SITE = 'https://nishikawa251.github.io/touhou-mbti/';
 
-  // 診断モード。full = 36問、quick = ドパガキモード(5問)
+  // 診断モード。full = 36問、quick = ドパガキモード(6問)
   const MODES = {
     full: { key: 'toho-seikaku-answers-v1', count: L.QUESTIONS.length, quiz: '#/quiz', result: '#/result', label: '36問' },
-    quick: { key: 'toho-seikaku-quick-v1', count: L.QUICK_COUNT, quiz: '#/quiz-quick', result: '#/result-quick', label: 'ドパガキモード(5問)' },
+    quick: { key: 'toho-seikaku-quick-v1', count: L.QUICK_COUNT, quiz: '#/quiz-quick', result: '#/result-quick', label: 'ドパガキモード(6問)' },
   };
   let mode = 'full';
   let answers = new Array(L.QUESTIONS.length).fill(null);
   let seed = 0;
   let qIndex = 0;
+  // 最後の質問に答えた直後だけ、結果の前に「あなたのキャラクターは……？」の演出を入れる
+  let pendingReveal = false;
   const M = () => MODES[mode];
-  // いま出す設問。ドパガキモードは seed から選んだ5問(seed が同じなら同じ5問)
+  // いま出す設問。ドパガキモードは seed から選んだ6問(seed が同じなら同じ6問)
   const qsOf = () => (mode === 'quick' ? L.quickPick(seed).map(i => L.QUESTIONS[i]) : L.QUESTIONS);
 
   // ---------- 小物 ----------
@@ -118,6 +120,53 @@
     btn.setAttribute('aria-expanded', String(open));
   }
 
+  // ---------- 結果発表の演出 ----------
+  // 暗い画面でスポットライトが回り、シルエットが次々に入れ替わったあと、結果のキャラが照らし出される
+  function playReveal(c) {
+    const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    const others = CHARS.filter(x => x.id !== c.id).sort(() => Math.random() - 0.5).slice(0, 14);
+    const el = document.createElement('div');
+    el.className = 'reveal';
+    el.innerHTML = `
+      <div class="spot a"></div><div class="spot b"></div>
+      <div class="reveal-stage">
+        <img class="reveal-img" src="img/chars/${others[0].id}.png" alt="" width="200" height="250">
+        <p class="reveal-text">あなたのキャラクターは<span class="dots"><i>.</i><i>.</i><i>.</i></span>？</p>
+        <p class="reveal-name"></p>
+      </div>
+      <button type="button" class="reveal-skip">スキップ</button>`;
+    document.body.appendChild(el);
+    document.body.classList.add('no-scroll');
+    const img = el.querySelector('.reveal-img');
+    const timers = [];
+    let done = false;
+    const finish = () => {
+      if (done) return; done = true;
+      timers.forEach(clearTimeout);
+      el.classList.add('out');
+      document.body.classList.remove('no-scroll');
+      setTimeout(() => el.remove(), 450);
+    };
+    // 0〜2.2秒: シルエットが入れ替わる(だんだんゆっくりに)
+    let t = 150, i = 1;
+    const step = () => {
+      img.src = `img/chars/${others[i % others.length].id}.png`;
+      i += 1; t = Math.min(t * 1.18, 420);
+      if (t < 420) timers.push(setTimeout(step, t));
+    };
+    timers.push(setTimeout(step, t));
+    // 2.4秒: 本人のシルエット → 3.0秒: 照らし出す → 4.4秒: 閉じる
+    timers.push(setTimeout(() => { img.src = `img/chars/${c.id}.png`; el.classList.add('lock'); }, 2400));
+    timers.push(setTimeout(() => {
+      el.classList.add('shine');
+      el.querySelector('.reveal-name').textContent = c.name;
+      el.querySelector('.reveal-text').textContent = 'あなたのキャラクターは';
+    }, 3000));
+    timers.push(setTimeout(finish, 4600));
+    el.querySelector('.reveal-skip').addEventListener('click', finish);
+  }
+
   // キャラのカード(結果・共有ページ・詳細で共通)
   function charHead(c, mbti, extra = '', big = false) {
     return `
@@ -145,7 +194,7 @@
   const shareUrl = id => `${SITE}s/${id}.html`;
   function shareText(c, mbti, sim, quick) {
     const t = L.TYPES[mbti];
-    return `東方キャラ性格診断の結果は「${c.name}」(${mbti}・${t.name})でした。一致度 ${sim}%${quick ? '(ドパガキモード・5問で無理やり判定)' : ''} ― ${c.catch}`;
+    return `東方キャラ性格診断の結果は「${c.name}」(${mbti}・${t.name})でした。一致度 ${sim}%${quick ? '(ドパガキモード・6問で無理やり判定)' : ''} ― ${c.catch}`;
   }
   // 画像の種類。'' = シンプル(1200x630)、'-full' = 説明文つきの詳細版(1200x900)
   const shareKind = () => app.dataset.shareKind || '';
@@ -179,7 +228,7 @@
   const stampCache = new Map(); // `${id}${kind}` → { blob, url }
   function drawStamp(ctx, W) {
     // 右カラムの下の空き(タグの下、URL の上)に、右端を軸に少し傾けて置く
-    const lines = [['ドパガキモード判定', 30], ['5問で無理やり決めた。絶対間違うぞ！', 17]];
+    const lines = [['ドパガキモード判定', 30], ['6問で無理やり決めた。絶対間違うぞ！', 17]];
     const pad = 14, gap = 6;
     const boxW = 420, boxH = pad * 2 + lines[0][1] + gap + lines[1][1];
     ctx.save();
@@ -294,10 +343,10 @@
         <div class="dopa">
           <div class="dopa-text">
             <b>ドパガキモード</b>
-            <span>36問は多い? ならランダムな5問で無理やり決める。足りない分はサイコロ。<strong>絶対間違うぞ！</strong></span>
+            <span>36問は多い? ならランダムな6問で無理やり決める。足りない分はサイコロ。<strong>絶対間違うぞ！</strong></span>
           </div>
           <div class="cta">
-            <button type="button" class="btn dopa-btn" data-act="start-quick">5問で決める</button>
+            <button type="button" class="btn dopa-btn" data-act="start-quick">6問で決める</button>
             ${hasQuick ? '<a class="btn ghost" href="#/result-quick">前回のドパガキ結果</a>' : ''}
           </div>
         </div>
@@ -335,7 +384,7 @@
     const quick = mode === 'quick';
     app.innerHTML = `
       <section class="quiz">
-        ${quick ? '<p class="dopa-banner"><b>ドパガキモード</b>ランダムな5問で無理やり決めます。絶対間違うぞ！</p>' : ''}
+        ${quick ? '<p class="dopa-banner"><b>ドパガキモード</b>ランダムな6問で無理やり決めます。絶対間違うぞ！</p>' : ''}
         <div class="progress">
           <span class="progress-num">Q <b>${qIndex + 1}</b> / ${total}</span>
           <span class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${total}" aria-valuenow="${done}" aria-label="回答済み"><span style="width:${(done / total * 100).toFixed(1)}%"></span></span>
@@ -360,7 +409,7 @@
     save();
     const total = M().count;
     if (qIndex < total - 1) { qIndex += 1; viewQuiz(); }
-    else if (isComplete(answers)) { location.hash = M().result; }
+    else if (isComplete(answers)) { pendingReveal = true; location.hash = M().result; }
     else { qIndex = answers.findIndex(v => typeof v !== 'number'); viewQuiz(); }
   }
 
@@ -385,7 +434,7 @@
     app.dataset.shareQuick = quick ? '1' : '';
     const diceLabels = dice.map(i => `${L.AXES[i].negLabel}/${L.AXES[i].posLabel}`);
     app.innerHTML = `
-      ${quick ? `<p class="dopa-banner"><b>ドパガキモード判定</b>ランダムな5問で無理やり決めました。絶対間違うぞ！${diceLabels.length ? `<small>サイコロで決めた軸: ${diceLabels.join('、')}</small>` : ''}</p>` : ''}
+      ${quick ? `<p class="dopa-banner"><b>ドパガキモード判定</b>ランダムな6問で無理やり決めました。絶対間違うぞ！${diceLabels.length ? `<small>サイコロで決めた軸: ${diceLabels.join('、')}</small>` : ''}</p>` : ''}
       <section class="result g-${t.group}">
         <p class="eyebrow">診断結果${quick ? '(雑)' : ''}</p>
         ${charHead(c, r.type, `
@@ -410,7 +459,7 @@
         <p class="legend"><span class="axis-dot user inline"></span>あなた <span class="axis-dot chara inline"></span>${esc(c.name)}</p>
         <div class="axes">${axisRows(user, c.v)}</div>
         <p class="subtype">あなたのサブタイプ ${subTags(user) || '<span class="tag">中庸</span>'}</p>
-        ${quick ? '<p class="note">ドパガキモードでは、5問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
+        ${quick ? '<p class="note">ドパガキモードでは、6問を毎回ランダムに選び、答えていない軸と「どちらでもない」と答えた軸をサイコロで決めています。</p>' : ''}
       </section>
 
       <section class="panel compat">
@@ -452,6 +501,7 @@
     app.dataset.shareId = c.id;
     app.dataset.shareKind = '';
     refreshShareImage();
+    if (pendingReveal) { pendingReveal = false; playReveal(c); }
   }
 
   // ---------- 共有されたキャラのページ(#/c/<id>) ----------
@@ -482,7 +532,7 @@
       </section>` : ''}
       <div class="cta center">
         <button type="button" class="btn primary" data-act="start">自分も診断してみる(36問)</button>
-        <button type="button" class="btn" data-act="start-quick">ドパガキモード(5問)</button>
+        <button type="button" class="btn" data-act="start-quick">ドパガキモード(6問)</button>
         <a class="btn ghost" href="#/zukan">キャラ図鑑を見る</a>
       </div>`;
   }

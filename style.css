@@ -410,3 +410,42 @@ main { flex: 1; width: 100%; max-width: 880px; margin: 0 auto; padding: 8px 16px
 }
 .result .acc { margin-top: 12px; background: var(--surface-2); border-color: transparent; }
 .result .acc-head:hover { background: var(--line); }
+
+/* ---- 結果発表の演出 ---- */
+body.no-scroll { overflow: hidden; }
+.reveal {
+  position: fixed; inset: 0; z-index: 60; background: #0b0d1a; color: #fff; overflow: hidden;
+  display: grid; place-items: center; isolation: isolate;
+}
+.reveal.out { animation: reveal-out .45s ease forwards; }
+@keyframes reveal-out { to { opacity: 0; } }
+.reveal .spot {
+  position: absolute; left: 50%; top: 50%; width: 70vmax; height: 70vmax; margin: -35vmax 0 0 -35vmax; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 236, 190, .42) 0%, rgba(255, 236, 190, .14) 32%, transparent 62%);
+  mix-blend-mode: screen; pointer-events: none;
+}
+.reveal .spot.a { animation: swirl 1.5s linear infinite; }
+.reveal .spot.b { animation: swirl 2.1s linear infinite reverse; opacity: .7; }
+@keyframes swirl {
+  from { transform: rotate(0deg) translateX(22vmax) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(22vmax) rotate(-360deg); }
+}
+.reveal.lock .spot.a, .reveal.lock .spot.b { animation-duration: .7s; }
+.reveal.shine .spot { animation: none; transform: none; opacity: 1; }
+.reveal.shine .spot.b { background: radial-gradient(circle, rgba(255, 255, 255, .55) 0%, rgba(255, 236, 190, .18) 30%, transparent 60%); }
+.reveal-stage { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; padding: 24px; }
+.reveal-img {
+  width: min(44vw, 260px); height: auto; filter: brightness(0) drop-shadow(0 0 12px rgba(0, 0, 0, .6));
+  transition: filter .45s ease, transform .45s cubic-bezier(.2, 1.4, .4, 1);
+}
+.reveal.shine .reveal-img { filter: brightness(1) drop-shadow(0 0 24px rgba(255, 240, 200, .9)); transform: scale(1.12); }
+.reveal-text { font-family: var(--font-display); font-weight: 900; font-size: clamp(20px, 5vw, 30px); letter-spacing: .04em; }
+.reveal-text .dots i { font-style: normal; animation: blink 1.2s infinite; }
+.reveal-text .dots i:nth-child(2) { animation-delay: .2s; }
+.reveal-text .dots i:nth-child(3) { animation-delay: .4s; }
+@keyframes blink { 0%, 60%, 100% { opacity: .2; } 30% { opacity: 1; } }
+.reveal-name { font-family: var(--font-display); font-weight: 900; font-size: clamp(28px, 7vw, 44px); min-height: 1.3em; opacity: 0; transform: translateY(10px); transition: opacity .4s ease .15s, transform .4s ease .15s; color: #ffe9b8; text-shadow: 0 0 18px rgba(255, 220, 150, .6); }
+.reveal.shine .reveal-name { opacity: 1; transform: none; }
+.reveal.shine::after { content: ""; position: absolute; inset: 0; background: #fff; animation: flash .5s ease-out forwards; pointer-events: none; }
+@keyframes flash { from { opacity: .9; } to { opacity: 0; } }
+.reveal-skip { position: absolute; right: 16px; bottom: 16px; z-index: 2; background: rgba(255, 255, 255, .12); color: #fff; border: 1px solid rgba(255, 255, 255, .35); border-radius: 999px; padding: 8px 16px; font-family: var(--font-display); font-weight: 700; cursor: pointer; }
