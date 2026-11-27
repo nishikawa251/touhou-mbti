@@ -8,7 +8,7 @@ const project = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 // 公開物は docs/、内部用ページ(/tools/...)はプロジェクト直下から配信する
 const rootFor = p => (p.startsWith('/tools/') ? project : path.join(project, 'docs'));
 const port = Number(process.argv[2]) || 4173;
-const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.jpg': 'image/jpeg', '.png': 'image/png', '.json': 'application/json' };
+const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.jpg': 'image/jpeg', '.png': 'image/png', '.json': 'application/json', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.woff2': 'font/woff2', '.xml': 'application/xml', '.txt': 'text/plain; charset=utf-8', '.ico': 'image/x-icon' };
 
 http.createServer((req, res) => {
   let p = decodeURIComponent(new URL(req.url, 'http://x').pathname);

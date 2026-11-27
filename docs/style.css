@@ -540,3 +540,4 @@ body.no-scroll { overflow: hidden; }
 .spell-card .hero-actions { grid-template-columns: 1fr; }
 .spell-card .acc-body .btn.garakuta { margin-top: 16px; border-radius: 10px; background: transparent; }
 .spell-card .btn.garakuta:hover { background: var(--g-soft); }
+.foot .tech { font-size: 11px; opacity: .85; }
