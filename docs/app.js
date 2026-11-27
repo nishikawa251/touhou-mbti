@@ -76,7 +76,7 @@
     ? `<a class="work link" href="${esc(WORK_URLS[w])}" target="_blank" rel="noopener" title="${workLinkTitle(WORK_URLS[w])}">${esc(w)}<small>${workStore(WORK_URLS[w])}</small></a>`
     : `<span class="work">${esc(w)}</span>`);
   const worksLine = c => (c.works && c.works.length
-    ? `<p class="works"><span class="works-label">主な登場原作</span>${c.works.map(workChip).join('')}${c.works.some(w => WORK_URLS[w]) ? '<small class="works-note">タップすると原作の販売ページへ。ゲームも本もたのしいよ</small>' : ''}</p>`
+    ? `<p class="works"><span class="works-label">主な登場原作</span>${c.works.map(workChip).join('')}</p>`
     : '');
 
   function save() {
