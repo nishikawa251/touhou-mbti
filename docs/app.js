@@ -181,7 +181,7 @@
     const full = Math.floor(sim / 10);
     const half = sim % 10 >= 5 ? 1 : 0;
     const dots = Array.from({ length: 10 }, (_, i) => `<i class="${i < full ? 'on' : (i === full && half ? 'half' : '')}"></i>`).join('');
-    return `<p class="match" aria-label="一致度 ${sim}%"><span class="bullets" aria-hidden="true">${dots}</span><b>${sim}%</b><span>一致${quick ? "(たぶん)" : ""}</span>${spreadN > 1 ? `<small class="spread">僅差の${spreadN}人から</small>` : ""}</p>`;
+    return `<p class="match" aria-label="一致度 ${sim}%"><span class="bullets" aria-hidden="true">${dots}</span><b>${sim}%</b><span>一致${quick ? "(たぶん)" : ""}</span>${spreadN > 1 ? `<small class="spread">同率の${spreadN}人から</small>` : ""}</p>`;
   }
 
   // 折りたたみ(見出しボタン + 開閉アニメーションする中身)
