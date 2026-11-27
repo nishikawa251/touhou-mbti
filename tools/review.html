@@ -227,7 +227,7 @@ function main() {
     return `
     <article class="card ${t.group}${isChanged(c.id) ? ' changed' : ''}" id="${c.id}">
       <ul class="issues">${issuesHtml(c0)}</ul>
-      <img src="../img/chars/${c.id}.png" alt="" loading="lazy">
+      <img src="../img/chars/${c.id}.webp" alt="" loading="lazy">
       <div class="head">
         <div class="name">${nameRuby(c)}<span class="id">${esc(c.id)}</span></div>
         <div class="type"><b>${c.mbti}</b>${esc(t.name)}<span class="sub">サブ ${esc(subs.join('・') || '中庸')}</span></div>

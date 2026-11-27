@@ -28,7 +28,7 @@ node tools/serve.mjs 4173
 2. `node tools/build-data.mjs` で `data.js` を作り直す
 3. `node tools/test.mjs` で全キャラが結果に出うることを確認する
 
-全キャラの表示テキスト(名前・読み・タイプ・サブタイプ・キャッチ・主属性・紹介文・登場原作・8軸の値・各リンク)は `tools/review.html` で一覧できます(`node tools/serve.mjs 4173` のあと http://localhost:4173/tools/review.html 。公開サイトでも /tools/review.html で開けます)。字数や読みの抜け、リンクのない登場原作などの気になる点には自動で印が付き、検索・タイプ別・「注意があるキャラだけ」で絞り込めます。チェックの目安はファイル内の `CHECKS` で変えられます。
+全キャラの表示テキスト(名前・読み・タイプ・サブタイプ・キャッチ・主属性・紹介文・登場原作・8軸の値・各リンク)は `tools/review.html` で一覧できます(`node tools/serve.mjs 4173` のあと http://localhost:4173/tools/review.html 。公開サイトには含まれません)。字数や読みの抜け、リンクのない登場原作などの気になる点には自動で印が付き、検索・タイプ別・「注意があるキャラだけ」で絞り込めます。チェックの目安はファイル内の `CHECKS` で変えられます。
 
 「編集モード」にすると、キャッチ・主属性・紹介文をその場で書き換えられます(字数や印もその場で更新)。直した内容はそのブラウザに一時保存され、「変更を書き出す」で `tools/overrides.json`(いまの中身＋直した分)をダウンロード・コピーできます。そのファイルで `tools/overrides.json` を置き換えて `node tools/build-data.mjs` を実行すると `data.js` に反映されます(中身をチャットに貼って頼んでもよい)。
 
