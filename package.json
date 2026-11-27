@@ -1,6 +1,6 @@
 {
   "name": "touhou-seikaku-shindan",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "東方キャラ性格診断のビルド用(sharp で WebP 変換)",
   "directories": {
     "doc": "docs"
@@ -25,6 +25,7 @@
     "data": "node tools/build-data.mjs",
     "share": "node tools/build-share.mjs",
     "webp": "node tools/webp.mjs",
+    "stats": "node tools/stats.mjs",
     "test": "node tools/test.mjs",
     "serve": "node tools/serve.mjs 4173"
   }

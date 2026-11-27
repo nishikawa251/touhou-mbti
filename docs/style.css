@@ -546,3 +546,9 @@ body.no-scroll { overflow: hidden; }
 .btn.bsky { background: #1185fe; border-color: #1185fe; color: #fff; }
 .btn.line { background: #06c755; border-color: #06c755; color: #fff; }
 .btn.bsky:hover, .btn.line:hover { filter: brightness(1.06); }
+
+/* 図鑑: 診断結果に出た割合 */
+.tile-pct { font-size: 11px; font-weight: 700; color: var(--g, var(--accent)); font-variant-numeric: tabular-nums; }
+.detail .stat { margin: 10px 0 0; font-size: 14px; color: var(--ink-2); }
+.detail .stat b { color: var(--ink); font-size: 16px; }
+.detail .stat small { font-size: 12px; }

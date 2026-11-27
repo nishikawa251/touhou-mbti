@@ -148,6 +148,28 @@
     </button>`;
   }
 
+  // ---------- 診断で選ばれた割合(docs/stats.json。tools/stats.mjs が GoatCounter から集計) ----------
+  let STATS = null;
+  const statsReady = fetch(`stats.json?t=${Math.floor(Date.now() / 3600000)}`)
+    .then(r => (r.ok ? r.json() : null))
+    .then(s => { STATS = s && s.total > 0 ? s : null; return STATS; })
+    .catch(() => null);
+  const pickRate = id => (STATS ? ((STATS.chars[id] || 0) / STATS.total) * 100 : null);
+  const fmtPct = p => (p >= 10 ? p.toFixed(0) : p >= 1 ? p.toFixed(1) : p > 0 ? p.toFixed(2) : '0');
+  const statsDate = () => (STATS ? STATS.updated.replace(/^\d{4}-(\d{2})-(\d{2})$/, (_, m, d) => `${+m}/${+d}`) : '');
+  const pickBadge = id => { const p = pickRate(id); return p === null ? '' : `<span class="tile-pct" title="診断結果に出た割合">${fmtPct(p)}%</span>`; };
+  const pickLine = id => { const p = pickRate(id); return p === null ? '' : `<p class="stat">診断で選ばれた割合: <b>${fmtPct(p)}%</b> <small>(${(STATS.chars[id] || 0).toLocaleString()}回 ／ 全${STATS.total.toLocaleString()}回、${statsDate()}時点)</small></p>`; };
+  // 図鑑を描いたあとに stats が届いたら、タイルに割合を足す
+  function fillPickRates() {
+    if (!STATS) return;
+    app.querySelectorAll('.tile[data-char]').forEach(tile => {
+      if (tile.querySelector('.tile-pct')) return;
+      tile.insertAdjacentHTML('beforeend', pickBadge(tile.dataset.char));
+    });
+    const note = app.querySelector('#zukan-stats-note');
+    if (note) note.textContent = ` 数字は診断結果に出た割合(全${STATS.total.toLocaleString()}回、${statsDate()}時点)。`;
+  }
+
   // スペルカード風のタイプ名。グループ名(知略の者たち → 知略)を冠にして 知略「型破りの仕掛け人」
   function spellName(mbti) {
     const t = L.TYPES[mbti];
@@ -650,7 +672,7 @@ ${text.detail}`)}`;
       <section class="zukan-head">
         <p class="eyebrow">キャラ図鑑</p>
         <h1>16タイプと${CHARS.length}人</h1>
-        <p class="lede">キャラをタップすると性格の紹介と8軸の位置が見られます。</p>
+        <p class="lede">キャラをタップすると性格の紹介と8軸の位置が見られます。<span id="zukan-stats-note"></span></p>
         <label class="search"><span class="sr">名前で探す</span><input type="search" id="zukan-q" placeholder="名前で探す(例: 霊夢)" autocomplete="off"></label>
       </section>
       ${groups.map(g => `
@@ -684,6 +706,7 @@ ${text.detail}`)}`;
       app.querySelectorAll('.zgroup').forEach(g => { g.hidden = !g.querySelector('.ztype:not([hidden])'); });
       document.getElementById('zukan-empty').hidden = any;
     });
+    statsReady.then(fillPickRates);
   }
 
   // ---------- 詳細ダイアログ ----------
@@ -700,6 +723,7 @@ ${text.detail}`)}`;
       ${traitTags(c)}
       ${worksLine(c)}
       <p class="desc">${esc(c.desc)}</p>
+      ${pickLine(c.id)}
       <div class="axes">${axisRows(null, c.v)}</div>
       <p class="more"><a href="${c.url}" target="_blank" rel="noopener">ピクシブ百科事典で読む</a> ／ <a href="#/c/${c.id}">このキャラのページ</a></p>
       ${garakutaLink(c)}`;
