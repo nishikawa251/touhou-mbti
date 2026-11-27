@@ -40,7 +40,7 @@ node tools/serve.mjs 4173
 
 - イラスト: 粗茶「やおよろづ」シリーズ
 - 性格の参考: ピクシブ百科事典の各キャラクター記事 https://dic.pixiv.net/
-- 東方Project © 上海アリス幻樂団
+- 東方Projectの二次創作ガイドライン(https://touhou-project.news/guideline/)の範囲内で作っています
 
 イラストの著作権は作者に帰属します。無断での転載・再配布はしないでください。
 
@@ -76,7 +76,7 @@ node tools/serve.mjs 4173
 
 - プログラム(HTML・CSS・JavaScript、tools/ のスクリプト)は MIT License(LICENSE を参照)。
 - キャラクターイラストの著作権は粗茶さんにあり、このリポジトリのライセンスには含まれません。無断での転載・再配布はしないでください。
-- キャラクターの紹介文・判定データは本サイト用に書き起こしたもので、東方Project の二次創作物です(東方Project © 上海アリス幻樂団)。
+- キャラクターの紹介文・判定データは本サイト用に書き起こしたもので、東方Projectの二次創作ガイドラインの範囲内で作った二次創作物です。
 - Zen Maru Gothic は SIL Open Font License 1.1 で配布されているフォントです(docs/fonts/)。
 
 作者: [@nishikawa_huton](https://x.com/nishikawa_huton)
