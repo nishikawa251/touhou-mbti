@@ -270,16 +270,24 @@
 
   // ---------- 共有 ----------
   const shareUrl = id => `${SITE}s/${id}.html`;
+  const HASHTAG = '#東方キャラ性格診断';
+  // 投稿本文(URL とハッシュタグは含まない)
   function shareText(c, mbti, sim, quick) {
     const t = L.TYPES[mbti];
-    return `東方キャラ性格診断の結果は「${c.name}」(${mbti}・${t.name})でした。一致度 ${sim}%${quick ? `(ドパガキモード・${L.QUICK_COUNT}問で無理やり判定)` : ''} ― ${c.catch}`;
+    return `東方キャラ性格診断の結果は
+「${c.name}」でした。
+一致度 ${sim}%${quick ? `(ドパガキモード・${L.QUICK_COUNT}問で無理やり判定)` : ''} ― ${c.catch}(${mbti}・${t.name})`;
   }
+  // 本文 + 空行 + URL + ハッシュタグ。X への投稿と「文章をコピー」はこの形
+  const postText = (text, id) => `${text}
+
+${shareUrl(id)}
+${HASHTAG}`;
   // 画像の種類。'' = シンプル(1200x630)、'-full' = 説明文つきの詳細版(1200x900)
   const shareKind = () => app.dataset.shareKind || '';
   const shareImageSrc = (id, kind) => `img/og/${id}${kind}.jpg`;
   function sharePanel(c, text) {
-    const url = shareUrl(c.id);
-    const x = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent('東方キャラ性格診断')}`;
+    const x = `https://twitter.com/intent/tweet?text=${encodeURIComponent(postText(text, c.id))}`;
     const canFiles = !!(navigator.canShare && navigator.share);
     return `
       <button type="button" class="btn primary share-toggle" data-toggle="share-body" aria-expanded="false" aria-controls="share-body">結果をシェア <span class="dd-arrow" aria-hidden="true">▾</span></button>
@@ -382,10 +390,12 @@
       const { blob } = await shareBlobAndUrl(id, kind);
       const file = new File([blob], shareFileName(id, kind), { type: 'image/jpeg' });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({ files: [file], text, url: shareUrl(id) });
+        await navigator.share({ files: [file], text: `${text}
+${HASHTAG}`, url: shareUrl(id) });
         return;
       }
-      await navigator.share({ text, url: shareUrl(id) });
+      await navigator.share({ text: `${text}
+${HASHTAG}`, url: shareUrl(id) });
     } catch (e) {
       if (e && e.name === 'AbortError') return;
       toast('この環境では共有できないので、画像を保存してください');
@@ -728,7 +738,7 @@
       case 'prev': if (qIndex > 0) { qIndex -= 1; viewQuiz(); } break;
       case 'next': if (qIndex < M().count - 1) { qIndex += 1; viewQuiz(); } break;
       case 'close': dialog.close(); break;
-      case 'copy': copy(app.dataset.copy || '', '文章をコピーしました'); break;
+      case 'copy': copy(postText(app.dataset.copy || '', app.dataset.shareId), '文章をコピーしました'); break;
       case 'copy-link': track('share/link', 'リンクをコピー', true); copy(shareUrl(app.dataset.shareId), 'リンクをコピーしました'); break;
       case 'share-image': track('share/image', '画像を共有', true); shareImage(); break;
     }
