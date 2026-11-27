@@ -10,6 +10,31 @@
   // 共有用の絶対 URL(ローカルで開いたときも公開サイトの URL を共有する)
   const SITE = 'https://nishikawa251.github.io/touhou-seikaku-shindan/';
 
+  // ---------- 解析(GoatCounter) ----------
+  // index.html の window.GOATCOUNTER_SITE にサイトコードがあるときだけ読み込む。cookie は使わない。
+  // ページ送り(ハッシュの変化)とイベント(結果キャラ・モード・シェア・外部リンク)を数える。
+  const GC_SITE = window.GOATCOUNTER_SITE || '';
+  if (GC_SITE) {
+    window.goatcounter = { no_onload: true, no_events: true };
+    const sc = document.createElement('script');
+    sc.async = true;
+    sc.src = 'https://gc.zgo.at/count.js';
+    sc.dataset.goatcounter = `https://${GC_SITE}.goatcounter.com/count`;
+    document.head.appendChild(sc);
+  }
+  function track(path, title, event) {
+    if (!GC_SITE) return;
+    const gc = window.goatcounter;
+    if (!gc || typeof gc.count !== 'function') { setTimeout(() => track(path, title, event), 800); return; }
+    try { gc.count({ path, title: title || document.title, event: !!event }); } catch (e) { /* 計測できなくても診断は続く */ }
+  }
+  // ハッシュ → 計測用のパス(/, /quiz, /quiz-quick, /result, /result-quick, /zukan, /c/<id>)
+  const pageOf = h => {
+    if (!h || h === '#/') return '/';
+    const p = h.replace(/^#\//, '');
+    return '/' + (p.startsWith('c/') ? p : p.split('/')[0]);
+  };
+
   // 診断モード。full = 36問、quick = ドパガキモード(5問)
   const MODES = {
     full: { key: 'toho-seikaku-answers-v1', count: L.QUESTIONS.length, quiz: '#/quiz', result: '#/result', label: '36問' },
@@ -484,6 +509,9 @@
     const good = L.compat(user, CHARS, c.id).slice(0, 4);
     const text = shareText(c, r.type, sim, quick);
     app.dataset.shareQuick = quick ? '1' : '';
+    track(`result-char/${c.id}`, `結果: ${c.name}`, true);
+    track(`result-type/${r.type}`, `結果タイプ: ${r.type}`, true);
+    track(`mode/${quick ? 'quick' : 'full'}`, quick ? 'ドパガキモード' : '36問', true);
     const diceLabels = dice.map(i => `${L.AXES[i].negLabel}/${L.AXES[i].posLabel}`);
     app.innerHTML = `
       ${quick ? `<p class="dopa-banner"><b>ドパガキモード判定</b>ランダムな${L.QUICK_COUNT}問で無理やり決めました。絶対間違ってるぞ！！${diceLabels.length ? `<small>サイコロで決めた軸: ${diceLabels.join('、')}</small>` : ''}</p>` : ''}
@@ -661,6 +689,7 @@
   function route() {
     const h = location.hash || '#/';
     if (dialog.open) dialog.close();
+    track(pageOf(h));
     if (h === '#/quiz' || h === '#/quiz-quick') {
       const m = h === '#/quiz' ? 'full' : 'quick';
       if (mode !== m) { mode = m; const saved = load(); answers = saved ? saved.a : new Array(M().count).fill(null); seed = saved ? saved.seed : newSeed(); const next = answers.findIndex(v => typeof v !== 'number'); qIndex = next === -1 ? 0 : next; }
@@ -681,20 +710,27 @@
     if (tile) { openDetail(tile.dataset.char); return; }
     const kind = e.target.closest('.share-kind .kind');
     if (kind) { setShareKind(kind.dataset.kind); return; }
+    const ext = e.target.closest('a.btn.garakuta, a.work.link, a.btn[download], .share-body a.primary');
+    if (ext) {
+      if (ext.matches('.btn.garakuta')) track(`garakuta/${app.dataset.shareId || ext.href.split('/').filter(Boolean).pop()}`, '週刊東方キャラクターへ', true);
+      else if (ext.matches('.work.link')) track(`work/${ext.textContent.trim()}`, '登場作品のリンク', true);
+      else if (ext.matches('[download]')) track('share/save', '画像を保存', true);
+      else track('share/x', 'Xに投稿', true);
+    }
     const tog = e.target.closest('[data-toggle]');
-    if (tog) { toggleCollapse(tog); return; }
+    if (tog) { toggleCollapse(tog); if (tog.dataset.toggle === 'share-body' && tog.classList.contains('is-open')) track('share/open', 'シェアを開く', true); return; }
     const act = e.target.closest('[data-act]');
     if (!act) { if (e.target === dialog) dialog.close(); return; }
     switch (act.dataset.act) {
-      case 'start': startQuiz(true, 'full'); break;
-      case 'start-quick': startQuiz(true, 'quick'); break;
+      case 'start': track('start/full', '36問をはじめる', true); startQuiz(true, 'full'); break;
+      case 'start-quick': track('start/quick', 'ドパガキモードをはじめる', true); startQuiz(true, 'quick'); break;
       case 'resume': startQuiz(false, 'full'); break;
       case 'prev': if (qIndex > 0) { qIndex -= 1; viewQuiz(); } break;
       case 'next': if (qIndex < M().count - 1) { qIndex += 1; viewQuiz(); } break;
       case 'close': dialog.close(); break;
       case 'copy': copy(app.dataset.copy || '', '文章をコピーしました'); break;
-      case 'copy-link': copy(shareUrl(app.dataset.shareId), 'リンクをコピーしました'); break;
-      case 'share-image': shareImage(); break;
+      case 'copy-link': track('share/link', 'リンクをコピー', true); copy(shareUrl(app.dataset.shareId), 'リンクをコピーしました'); break;
+      case 'share-image': track('share/image', '画像を共有', true); shareImage(); break;
     }
   });
 

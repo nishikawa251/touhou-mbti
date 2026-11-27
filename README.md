@@ -67,3 +67,7 @@ node tools/serve.mjs 4173
 姓と名で分けたふりがなは `tools/ruby.json` にあります(`[["博麗","はくれい"],["霊夢","れいむ"]]` の形。読みのない部分は `null`)。
 
 フォント(Zen Maru Gothic)は Google Fonts に接続せず `docs/fonts/` から配信しています。内部用のテキストチェックページは `node tools/serve.mjs 4173` のあと http://localhost:4173/tools/review.html で開けます(公開サイトには含まれません)。
+
+## 解析(GoatCounter)
+
+`docs/index.html` の `window.GOATCOUNTER_SITE` にサイトコード(`xxxx.goatcounter.com` の `xxxx`)を入れると計測が始まります(空のままなら何も送りません。cookie は使いません)。数えているもの: ページ(`/`, `/quiz`, `/quiz-quick`, `/result`, `/result-quick`, `/zukan`, `/c/<id>`)と、イベント(`start/full|quick`、`result-char/<id>`、`result-type/<MBTI>`、`mode/full|quick`、`share/open|x|image|save|link`、`garakuta/<id>`、`work/<作品名>`)。
