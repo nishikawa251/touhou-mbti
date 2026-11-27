@@ -121,9 +121,29 @@
     return Math.round(100 * (1 - Math.sqrt(d / 32)));
   }
 
+  // 人の回答は「ややそう思う」が多く、キャラの値より穏やかに出る(回答ベクトルの長さは 1.4 ほど、キャラは 1.8 ほど)。
+  // そのまま距離を取ると、同じタイプの中で値の穏やかなキャラが誰にとってもいちばん近くなってしまう
+  // (公開初日はマエリベリーが INFP の 65%、ルナチャイルドが INTP の 69% を取った)。
+  // そこで、回答ベクトルの向きは変えずに、長さだけキャラの平均まで伸ばしてから比べる。v1.1.0 から。
+  let meanLenCache = null;
+  function meanLen(chars) {
+    if (!meanLenCache || meanLenCache.n !== chars.length) {
+      const sum = chars.reduce((a, c) => a + Math.sqrt(c.v.reduce((x, y) => x + y * y, 0)), 0);
+      meanLenCache = { n: chars.length, len: sum / chars.length };
+    }
+    return meanLenCache.len;
+  }
+  function stretch(userVec, chars) {
+    const len = Math.sqrt(userVec.reduce((a, x) => a + x * x, 0));
+    if (!len) return userVec.slice();
+    const k = meanLen(chars) / len;
+    return userVec.map(x => x * k);
+  }
+
   // まず基本4軸の向きで 16タイプを決め(ちょうど 0 の軸はどちらも可)、
-  // そのタイプに属するキャラの中から、8軸の距離がいちばん近いキャラを選ぶ。
+  // そのタイプに属するキャラの中から、8軸の距離がいちばん近いキャラを選ぶ(距離は伸ばした回答ベクトルで取る)。
   function match(userVec, chars) {
+    const u = stretch(userVec, chars);
     const fits = c => {
       for (let i = 0; i < 4; i++) {
         if (userVec[i] === 0) continue;
@@ -135,18 +155,18 @@
     let relaxed = false;
     if (!pool.length) { pool = chars.slice(); relaxed = true; }
     const ranked = pool
-      .map(c => ({ c, d: distance(userVec, c.v) }))
+      .map(c => ({ c, d: distance(u, c.v) }))
       .sort((a, b) => a.d - b.d || (a.c.id < b.c.id ? -1 : 1));
     const best = ranked[0].c;
     const sameType = chars
       .filter(c => c.mbti === best.mbti && c.id !== best.id)
-      .map(c => ({ c, d: distance(userVec, c.v) }))
+      .map(c => ({ c, d: distance(u, c.v) }))
       .sort((a, b) => a.d - b.d);
     const others = chars
       .filter(c => c.mbti !== best.mbti)
-      .map(c => ({ c, d: distance(userVec, c.v) }))
+      .map(c => ({ c, d: distance(u, c.v) }))
       .sort((a, b) => a.d - b.d);
-    return { best, d: ranked[0].d, type: best.mbti, relaxed, sameType, others };
+    return { best, d: ranked[0].d, type: best.mbti, relaxed, sameType, others, u };
   }
 
   // ---------- ドパガキモード ----------
@@ -204,14 +224,14 @@
   function partnerVec(u) { return u.map((v, i) => (i === 1 ? v : -v)); }
   // 相性のいい順に並べたキャラ(exclude は結果に出たキャラなど外したい id)
   function compat(userVec, chars, exclude) {
-    const p = partnerVec(userVec);
+    const p = partnerVec(stretch(userVec, chars));
     return chars
       .filter(c => c.id !== exclude)
       .map(c => ({ c, d: distance(p, c.v) }))
       .sort((a, b) => a.d - b.d || (a.c.id < b.c.id ? -1 : 1));
   }
 
-  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK_COUNT, quickPick, plainText, score, quickScore, typeOf, distance, similarity, match, partnerVec, compat };
+  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK_COUNT, quickPick, plainText, score, quickScore, typeOf, distance, similarity, stretch, match, partnerVec, compat };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TohoLogic = api;
 })(typeof window !== 'undefined' ? window : globalThis);

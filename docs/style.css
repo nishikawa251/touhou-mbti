@@ -552,3 +552,5 @@ body.no-scroll { overflow: hidden; }
 .detail .stat { margin: 10px 0 0; font-size: 14px; color: var(--ink-2); }
 .detail .stat b { color: var(--ink); font-size: 16px; }
 .detail .stat small { font-size: 12px; }
+
+.home .note.update, .note.update { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
