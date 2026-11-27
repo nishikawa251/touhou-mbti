@@ -177,11 +177,11 @@
     return `${esc(g)}「${esc(t.name)}」`;
   }
   // 一致度を10発の弾で。満タン=100%
-  function matchBullets(sim, quick) {
+  function matchBullets(sim, quick, spreadN = 1) {
     const full = Math.floor(sim / 10);
     const half = sim % 10 >= 5 ? 1 : 0;
     const dots = Array.from({ length: 10 }, (_, i) => `<i class="${i < full ? 'on' : (i === full && half ? 'half' : '')}"></i>`).join('');
-    return `<p class="match" aria-label="一致度 ${sim}%"><span class="bullets" aria-hidden="true">${dots}</span><b>${sim}%</b><span>一致${quick ? '(たぶん)' : ''}</span></p>`;
+    return `<p class="match" aria-label="一致度 ${sim}%"><span class="bullets" aria-hidden="true">${dots}</span><b>${sim}%</b><span>一致${quick ? "(たぶん)" : ""}</span>${spreadN > 1 ? `<small class="spread">僅差の${spreadN}人から</small>` : ""}</p>`;
   }
 
   // 折りたたみ(見出しボタン + 開閉アニメーションする中身)
@@ -545,7 +545,7 @@ ${text.detail}`)}`;
     let user, dice = [];
     if (quick) { const qs = L.quickScore(answers, seed); user = qs.vec; dice = qs.dice; }
     else user = L.score(answers);
-    const r = L.match(user, CHARS);
+    const r = L.spread(L.match(user, CHARS), user);
     const c = r.best;
     const t = L.TYPES[r.type];
     const sim = L.similarity(r.d);
@@ -568,7 +568,7 @@ ${text.detail}`)}`;
             <p class="result-pre">あなたにいちばん近いのは</p>
             <h1>${nameRuby(c)}</h1>
             <p class="catch">${esc(c.catch)}</p>
-            ${matchBullets(sim, quick)}
+            ${matchBullets(sim, quick, r.spread)}
           </div>
         </div>
         <div class="tags">${c.traits.map(x => `<span class="tag strong">${esc(x)}</span>`).join('')}</div>

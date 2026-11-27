@@ -554,3 +554,5 @@ body.no-scroll { overflow: hidden; }
 .detail .stat small { font-size: 12px; }
 
 .home .note.update, .note.update { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+
+.match .spread { font-size: 11px; color: var(--ink-2); margin-left: 6px; font-weight: 500; }

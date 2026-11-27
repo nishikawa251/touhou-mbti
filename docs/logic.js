@@ -169,6 +169,24 @@
     return { best, d: ranked[0].d, type: best.mbti, relaxed, sameType, others, u };
   }
 
+
+  // 同じタイプの中で一致度(%)が僅差(SPREAD_MARGIN ポイント以内)の候補が複数いるときは、
+  // 回答内容から決まる固定の1人を選ぶ。同じ回答なら必ず同じキャラになる。
+  // 一致度の差が数ポイントなら「どちらも近い」と言える範囲なので、出るキャラを少しばらけさせる。v1.1.1 から。
+  const SPREAD_MARGIN = 5;
+  function answerHash(vec) {
+    let h = 2166136261;
+    for (const x of vec) { h ^= Math.round((x + 1) * 1000); h = Math.imul(h, 16777619) >>> 0; }
+    return h / 4294967296;
+  }
+  function spread(result, userVec, margin = SPREAD_MARGIN) {
+    const top = similarity(result.d);
+    const cands = [{ c: result.best, d: result.d }, ...result.sameType].filter(x => top - similarity(x.d) <= margin);
+    if (cands.length < 2) return { ...result, spread: 1 };
+    const pick = cands[Math.floor(answerHash(userVec) * cands.length)];
+    const sameType = [{ c: result.best, d: result.d }, ...result.sameType].filter(x => x.c.id !== pick.c.id);
+    return { ...result, best: pick.c, d: pick.d, sameType, spread: cands.length };
+  }
   // ---------- ドパガキモード ----------
   // 36問は多いという人向けに、5問だけで無理やり決める。基本4軸は1問ずつ、サブ軸は4つのうち1つを1問。
   // どの5問にするかは seed から毎回ランダムに選ぶ。答えなかった軸と「どちらでもない」だった軸は
@@ -231,7 +249,7 @@
       .sort((a, b) => a.d - b.d || (a.c.id < b.c.id ? -1 : 1));
   }
 
-  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK_COUNT, quickPick, plainText, score, quickScore, typeOf, distance, similarity, stretch, match, partnerVec, compat };
+  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK_COUNT, quickPick, plainText, score, quickScore, typeOf, distance, similarity, stretch, match, spread, SPREAD_MARGIN, partnerVec, compat };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TohoLogic = api;
 })(typeof window !== 'undefined' ? window : globalThis);
