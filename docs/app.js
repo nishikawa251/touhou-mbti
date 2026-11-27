@@ -454,7 +454,7 @@ ${text.detail}`)}`;
       <section class="hero">
         <h1>あなたは幻想郷の<br>誰に似てる？</h1>
         <p class="lede">${L.QUESTIONS.length}の質問に答えると、あなたの性格を16タイプ×4つのサブ軸に絞り込んで診断。<strong>${CHARS.length}人</strong>の東方キャラクターの中から一番近いのは誰かを導き出します。</p>
-        <p class="note update">11/28 更新(v1.1.0): 判定を調整しました。「ややそう思う」中心の回答でも、同じタイプの中で一部のキャラに偏りにくくなっています。前に出た結果と変わることがあります。</p>
+        <p class="note update">11/28 更新(v1.1.3): 判定を調整しました。「ややそう思う」中心の回答でも同じタイプの中で一部のキャラに偏りにくくし、一致度がいちばん高いキャラが出るようにしています。前に出た結果と変わることがあります。</p>
         <div class="cta">
           <button type="button" class="btn primary" data-act="start">${inProgress ? '最初からはじめる' : '診断をはじめる'}</button>
           ${inProgress ? '<button type="button" class="btn" data-act="resume">続きから</button>' : ''}
