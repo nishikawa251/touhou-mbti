@@ -6,7 +6,7 @@
 
 ## 遊び方
 
-`index.html` をブラウザで開くだけで動きます。ビルドは不要です。
+公開物は `docs/` にまとまっています(GitHub Pages はこのフォルダを配信)。`docs/index.html` をブラウザで開くだけで動きます。ビルドは不要です。`tools/` は内部用で、公開サイトからは見えません。
 
 ローカルサーバーで開く場合:
 
@@ -34,7 +34,7 @@ node tools/serve.mjs 4173
 
 結果と図鑑の詳細には、東方我楽多叢誌「週刊東方キャラクター」のキャラ記事へのボタンを出します(対応表は `tools/garakuta.json`。記事がない名無しの本読み妖怪と稗田阿求は連載の一覧へ)。
 
-キャラ画像は `tools/import-art.mjs` で素材フォルダから `img/chars/<id>.png` に取り込んでいます(対応表は `tools/art-map.json`)。
+キャラ画像は `tools/import-art.mjs` で素材フォルダから `tools/art-src/<id>.png`(原本)に取り込み、`node tools/webp.mjs` で `docs/img/chars/<id>.webp`(公開用、約1/3の容量)にしています(対応表は `tools/art-map.json`。`npm install` で sharp が入ります)。
 
 ## クレジット
 
@@ -58,10 +58,12 @@ node tools/serve.mjs 4173
 
 結果ページには「あなたと相性のいいキャラ」も出します。直観/感覚だけが同じで、ほかの7軸が反対のキャラほど上に来ます(`logic.js` の `compat`)。
 
-`index.html` が読み込む CSS/JS には `?v=日時` を付けています。GitHub Pages は10分キャッシュするので、見た目や動きを変えたときはこの値を更新してください(更新しないと、しばらく古い CSS/JS で表示されます)。
+`docs/index.html` が読み込む CSS/JS には `?v=日時` を付けています。GitHub Pages は10分キャッシュするので、見た目や動きを変えたときはこの値を更新してください(更新しないと、しばらく古い CSS/JS で表示されます)。
 
 キャラ名の読みと主な登場原作は `tools/meta.json` にあります(読みは漢字を含む名前だけ。作品は初登場を先頭に2〜4件。今は手に入らない旧作(靈異伝・封魔録・幻想郷・夢時空・怪綺談)は載せない)。直したら `node tools/build-data.mjs` で `data.js` に反映されます。
 
 登場原作のリンク先は `tools/works.json` にあります。ゲームと音楽CDは Steam(なければ東方やおよろず商店)、書籍・漫画は単行本1巻(シリーズ最初の巻)の KADOKAWA か BOOK☆WALKER の紹介ページ、どちらにもない一迅社の本(求聞史紀・求聞口授)は一迅社の書誌ページです。
 
 姓と名で分けたふりがなは `tools/ruby.json` にあります(`[["博麗","はくれい"],["霊夢","れいむ"]]` の形。読みのない部分は `null`)。
+
+フォント(Zen Maru Gothic)は Google Fonts に接続せず `docs/fonts/` から配信しています。内部用のテキストチェックページは `node tools/serve.mjs 4173` のあと http://localhost:4173/tools/review.html で開けます(公開サイトには含まれません)。

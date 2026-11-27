@@ -9,9 +9,9 @@ param([string]$Root = (Split-Path -Parent $PSScriptRoot))
 Add-Type -AssemblyName System.Drawing
 $ErrorActionPreference = 'Stop'
 
-$dataPath = Join-Path $Root 'img/og/og-data.json'
+$dataPath = Join-Path $Root 'docs/img/og/og-data.json'
 $json = Get-Content -LiteralPath $dataPath -Raw -Encoding UTF8 | ConvertFrom-Json
-$outDir = Join-Path $Root 'img/og'
+$outDir = Join-Path $Root 'docs/img/og'
 
 $W = 1200
 $fontName = 'Zen Maru Gothic'
@@ -81,7 +81,7 @@ function DrawCard([System.Drawing.Graphics]$g, $c, [int]$H, [bool]$withDesc) {
   $panel = RoundRect 56 50 440 530 28
   $g.FillPath((New-Object System.Drawing.SolidBrush($white)), $panel)
   $g.DrawPath((New-Object System.Drawing.Pen($main, 4)), $panel)
-  $img = [System.Drawing.Image]::FromFile((Join-Path $Root ("img/chars/" + $c.id + ".png")))
+  $img = [System.Drawing.Image]::FromFile((Join-Path $Root ("tools/art-src/" + $c.id + ".png")))
   $g.DrawImage($img, 76, 65, 400, 500)
   $img.Dispose()
 
@@ -167,7 +167,7 @@ for ($i = 0; $i -lt $ids.Count; $i++) {
   $card = RoundRect $px 290 $pw $ph 16
   $g.FillPath((New-Object System.Drawing.SolidBrush($white)), $card)
   $g.DrawPath((New-Object System.Drawing.Pen((Hex '#e4d9c6'), 2)), $card)
-  $img = [System.Drawing.Image]::FromFile((Join-Path $Root ('img/chars/' + $ids[$i] + '.png')))
+  $img = [System.Drawing.Image]::FromFile((Join-Path $Root ('tools/art-src/' + $ids[$i] + '.png')))
   $g.DrawImage($img, $px + 4, 295, 120, 150)
   $img.Dispose()
 }

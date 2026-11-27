@@ -1,4 +1,4 @@
-// 共有用の静的ページ(s/<id>.html)と、OGP 画像を描くための og-data.json を作る
+// 共有用の静的ページ(docs/s/<id>.html)と、OGP 画像を描くための og-data.json を作る
 // 使い方: node tools/build-share.mjs  →  そのあと powershell -File tools/og.ps1 で画像を描く
 import fs from 'node:fs';
 import path from 'node:path';
@@ -7,10 +7,10 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
-const L = require(path.join(root, 'logic.js'));
+const L = require(path.join(root, 'docs/logic.js'));
 const SITE = 'https://nishikawa251.github.io/touhou-seikaku-shindan/';
 
-const data = fs.readFileSync(path.join(root, 'data.js'), 'utf8');
+const data = fs.readFileSync(path.join(root, 'docs/data.js'), 'utf8');
 const chars = JSON.parse(data.match(/window\.TOHO_CHARS\s*=\s*(\[[\s\S]*?\]);/)[1]);
 
 // style.css のグループ色(ライトテーマ)
@@ -23,10 +23,10 @@ const COLORS = {
 
 const esc = s => String(s).replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
 
-const outDir = path.join(root, 's');
+const outDir = path.join(root, 'docs/s');
 fs.rmSync(outDir, { recursive: true, force: true });
 fs.mkdirSync(outDir, { recursive: true });
-fs.mkdirSync(path.join(root, 'img/og'), { recursive: true });
+fs.mkdirSync(path.join(root, 'docs/img/og'), { recursive: true });
 
 const og = [];
 for (const c of chars) {
@@ -75,5 +75,5 @@ const labels = {
   siteSub: `36問で16タイプ × ${chars.length}キャラ。東方キャラ性格診断`,
   credit: 'イラスト: 粗茶',
 };
-fs.writeFileSync(path.join(root, 'img/og/og-data.json'), JSON.stringify({ site: SITE, labels, chars: og }, null, 2) + '\n');
+fs.writeFileSync(path.join(root, 'docs/img/og/og-data.json'), JSON.stringify({ site: SITE, labels, chars: og }, null, 2) + '\n');
 console.log(`共有ページ ${og.length} 件を s/ に、og-data.json を img/og/ に書き出しました`);

@@ -6,9 +6,9 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
-const L = require(path.join(root, 'logic.js'));
+const L = require(path.join(root, 'docs/logic.js'));
 const win = {};
-new Function('window', fs.readFileSync(path.join(root, 'data.js'), 'utf8'))(win);
+new Function('window', fs.readFileSync(path.join(root, 'docs/data.js'), 'utf8'))(win);
 const chars = win.TOHO_CHARS;
 
 // 目標ベクトルにぴったり一致する回答を組み立てる

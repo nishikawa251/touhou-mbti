@@ -28,7 +28,7 @@ const parsed = files.map(f => {
   return { f, num: Number(m[1]), body: norm(body), variant };
 }).filter(Boolean);
 
-const out = path.join(root, 'img/chars');
+const out = path.join(root, 'tools/art-src');
 fs.mkdirSync(out, { recursive: true });
 const missing = [];
 const picked = {};

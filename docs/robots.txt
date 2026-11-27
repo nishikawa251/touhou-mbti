@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nishikawa251.github.io/touhou-seikaku-shindan/sitemap.xml

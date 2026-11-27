@@ -1,0 +1,31 @@
+{
+  "name": "touhou-seikaku-shindan",
+  "version": "1.0.0",
+  "description": "東方キャラ性格診断のビルド用(sharp で WebP 変換)",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nishikawa251/touhou-seikaku-shindan.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nishikawa251/touhou-seikaku-shindan/issues"
+  },
+  "homepage": "https://github.com/nishikawa251/touhou-seikaku-shindan#readme",
+  "dependencies": {
+    "sharp": "^0.35.5"
+  },
+  "private": true,
+  "scripts": {
+    "data": "node tools/build-data.mjs",
+    "share": "node tools/build-share.mjs",
+    "webp": "node tools/webp.mjs",
+    "test": "node tools/test.mjs",
+    "serve": "node tools/serve.mjs 4173"
+  }
+}

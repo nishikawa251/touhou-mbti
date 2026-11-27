@@ -1,4 +1,4 @@
-// tools/profiles/part*.json + tools/characters.json (+ tools/overrides.json) → data.js
+// tools/profiles/part*.json + tools/characters.json (+ tools/overrides.json) → docs/data.js
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -55,7 +55,7 @@ for (const c of out) {
   else seen.set(key, c.id);
 }
 
-fs.writeFileSync(path.join(root, 'data.js'),
+fs.writeFileSync(path.join(root, 'docs/data.js'),
   '// tools/build-data.mjs が生成。手で編集せず、tools/profiles か tools/overrides.json を直して再生成する。\n' +
   'window.TOHO_CHARS = ' + JSON.stringify(out, null, 1) + ';\n' +
   // 登場原作 → 販売・紹介ページ(Steam / 東方やおよろず商店 / KADOKAWA / BOOK☆WALKER / 一迅社)。tools/works.json
