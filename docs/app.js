@@ -271,17 +271,22 @@
   // ---------- 共有 ----------
   const shareUrl = id => `${SITE}s/${id}.html`;
   const HASHTAG = '#東方キャラ性格診断';
-  // 投稿本文(URL とハッシュタグは含まない)
+  // 投稿本文。1行目(結果)と2行目(一致度・キャッチ)の間に URL を挟む
   function shareText(c, mbti, sim, quick) {
     const t = L.TYPES[mbti];
-    return `東方キャラ性格診断の結果は
-「${c.name}」でした。
-一致度 ${sim}%${quick ? `(ドパガキモード・${L.QUICK_COUNT}問で無理やり判定)` : ''} ― ${c.catch}(${mbti}・${t.name})`;
+    const head = `東方キャラ性格診断の結果は「${c.name}」でした。`;
+    const detail = `一致度 ${sim}%${quick ? `(ドパガキモード・${L.QUICK_COUNT}問で無理やり判定)` : ''} ― ${c.catch}(${mbti}・${t.name})`;
+    return { head, detail };
   }
-  // 本文 + 空行 + URL + ハッシュタグ。X への投稿と「文章をコピー」はこの形
-  const postText = (text, id) => `${text}
-
+  // X への投稿と「文章をコピー」の形: 結果 / URL / 空行 / 一致度 / ハッシュタグ
+  const postText = (t, id) => `${t.head}
 ${shareUrl(id)}
+
+${t.detail}
+${HASHTAG}`;
+  // 共有シート用(URL は別に渡すので本文に含めない)
+  const shareSheetText = t => `${t.head}
+${t.detail}
 ${HASHTAG}`;
   // 画像の種類。'' = シンプル(1200x630)、'-full' = 説明文つきの詳細版(1200x900)
   const shareKind = () => app.dataset.shareKind || '';
@@ -385,17 +390,15 @@ ${HASHTAG}`;
   async function shareImage() {
     const id = app.dataset.shareId;
     const kind = shareKind();
-    const text = app.dataset.copy || '';
+    const text = JSON.parse(app.dataset.copy || '{"head":"","detail":""}');
     try {
       const { blob } = await shareBlobAndUrl(id, kind);
       const file = new File([blob], shareFileName(id, kind), { type: 'image/jpeg' });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({ files: [file], text: `${text}
-${HASHTAG}`, url: shareUrl(id) });
+        await navigator.share({ files: [file], text: shareSheetText(text), url: shareUrl(id) });
         return;
       }
-      await navigator.share({ text: `${text}
-${HASHTAG}`, url: shareUrl(id) });
+      await navigator.share({ text: shareSheetText(text), url: shareUrl(id) });
     } catch (e) {
       if (e && e.name === 'AbortError') return;
       toast('この環境では共有できないので、画像を保存してください');
@@ -591,7 +594,7 @@ ${HASHTAG}`, url: shareUrl(id) });
         ${quick ? '<button type="button" class="btn primary" data-act="start">ちゃんと診断する(36問)</button><button type="button" class="btn" data-act="start-quick">もう一回(質問も変わる)</button>' : '<button type="button" class="btn" data-act="start">もう一度診断する</button><button type="button" class="btn" data-act="start-quick">ドパガキモードで遊ぶ</button>'}
         <a class="btn ghost" href="#/zukan">キャラ図鑑を見る</a>
       </div>`;
-    app.dataset.copy = text;
+    app.dataset.copy = JSON.stringify(text);
     app.dataset.shareId = c.id;
     app.dataset.shareKind = '';
     refreshShareImage();
@@ -738,7 +741,7 @@ ${HASHTAG}`, url: shareUrl(id) });
       case 'prev': if (qIndex > 0) { qIndex -= 1; viewQuiz(); } break;
       case 'next': if (qIndex < M().count - 1) { qIndex += 1; viewQuiz(); } break;
       case 'close': dialog.close(); break;
-      case 'copy': copy(postText(app.dataset.copy || '', app.dataset.shareId), '文章をコピーしました'); break;
+      case 'copy': copy(postText(JSON.parse(app.dataset.copy || '{"head":"","detail":""}'), app.dataset.shareId), '文章をコピーしました'); break;
       case 'copy-link': track('share/link', 'リンクをコピー', true); copy(shareUrl(app.dataset.shareId), 'リンクをコピーしました'); break;
       case 'share-image': track('share/image', '画像を共有', true); shareImage(); break;
     }
