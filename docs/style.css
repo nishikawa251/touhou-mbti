@@ -557,10 +557,3 @@ body.no-scroll { overflow: hidden; }
 
 .match .spread { font-size: 11px; color: var(--ink-2); margin-left: 6px; font-weight: 500; }
 
-/* 共有ページ: 自分も診断する導線 */
-.try-box { margin: 4px 0 14px; padding: 14px 16px; border-radius: 14px; background: var(--g-soft); border: 1px dashed var(--g); display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
-.try-box p { flex: 1 1 100%; margin: 0 0 2px; font-size: 14px; color: var(--ink); }
-.try-box p b { color: var(--g); }
-/* 作品チップの販売元 */
-.work.link small { font-size: 10px; font-weight: 600; opacity: .75; margin-left: 5px; }
-.work.link::after { content: "↗"; margin-left: 2px; }

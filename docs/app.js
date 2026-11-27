@@ -71,9 +71,8 @@
     : /hakurei-sukeikai/.test(u) ? '東方やおよろず商店のページへ'
     : /ichijinsha\.co\.jp/.test(u) ? '一迅社の紹介ページへ'
     : '販売ページへ');
-  const workStore = u => (/steampowered/.test(u) ? 'Steam' : /kadokawa.co.jp/.test(u) ? 'KADOKAWA' : /bookwalker.jp/.test(u) ? 'BOOK☆WALKER' : /hakurei-sukeikai/.test(u) ? 'やおよろず商店' : /ichijinsha.co.jp/.test(u) ? '一迅社' : /amazon/.test(u) ? 'Amazon' : '販売ページ');
   const workChip = w => (WORK_URLS[w]
-    ? `<a class="work link" href="${esc(WORK_URLS[w])}" target="_blank" rel="noopener" title="${workLinkTitle(WORK_URLS[w])}">${esc(w)}<small>${workStore(WORK_URLS[w])}</small></a>`
+    ? `<a class="work link" href="${esc(WORK_URLS[w])}" target="_blank" rel="noopener" title="${workLinkTitle(WORK_URLS[w])}">${esc(w)}</a>`
     : `<span class="work">${esc(w)}</span>`);
   const worksLine = c => (c.works && c.works.length
     ? `<p class="works"><span class="works-label">主な登場原作</span>${c.works.map(workChip).join('')}</p>`
@@ -648,11 +647,6 @@ ${text.detail}`)}`;
             <h1>${nameRuby(c)}</h1>
             <p class="catch">${esc(c.catch)}</p>`, true)}
         ${traitTags(c)}
-        <div class="try-box">
-          <p>これは診断した人の結果です。<b>あなたは幻想郷の誰に似てる？</b></p>
-          <button type="button" class="btn primary" data-act="start" data-from="shared-top">自分も診断する(36問・3分)</button>
-          <button type="button" class="btn ghost" data-act="start-quick" data-from="shared-top">ドパガキモード(${L.QUICK_COUNT}問)</button>
-        </div>
         ${worksLine(c)}
         <p class="desc">${esc(c.desc)}</p>
         <p class="type-blurb"><b>${c.mbti}「${t.name}」</b> ${t.blurb}</p>
