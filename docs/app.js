@@ -71,11 +71,12 @@
     : /hakurei-sukeikai/.test(u) ? '東方やおよろず商店のページへ'
     : /ichijinsha\.co\.jp/.test(u) ? '一迅社の紹介ページへ'
     : '販売ページへ');
+  const workStore = u => (/steampowered/.test(u) ? 'Steam' : /kadokawa.co.jp/.test(u) ? 'KADOKAWA' : /bookwalker.jp/.test(u) ? 'BOOK☆WALKER' : /hakurei-sukeikai/.test(u) ? 'やおよろず商店' : /ichijinsha.co.jp/.test(u) ? '一迅社' : /amazon/.test(u) ? 'Amazon' : '販売ページ');
   const workChip = w => (WORK_URLS[w]
-    ? `<a class="work link" href="${esc(WORK_URLS[w])}" target="_blank" rel="noopener" title="${workLinkTitle(WORK_URLS[w])}">${esc(w)}</a>`
+    ? `<a class="work link" href="${esc(WORK_URLS[w])}" target="_blank" rel="noopener" title="${workLinkTitle(WORK_URLS[w])}">${esc(w)}<small>${workStore(WORK_URLS[w])}</small></a>`
     : `<span class="work">${esc(w)}</span>`);
   const worksLine = c => (c.works && c.works.length
-    ? `<p class="works"><span class="works-label">主な登場原作</span>${c.works.map(workChip).join('')}</p>`
+    ? `<p class="works"><span class="works-label">主な登場原作</span>${c.works.map(workChip).join('')}${c.works.some(w => WORK_URLS[w]) ? '<small class="works-note">タップすると原作の販売ページへ。ゲームも本もたのしいよ</small>' : ''}</p>`
     : '');
 
   function save() {
@@ -647,6 +648,11 @@ ${text.detail}`)}`;
             <h1>${nameRuby(c)}</h1>
             <p class="catch">${esc(c.catch)}</p>`, true)}
         ${traitTags(c)}
+        <div class="try-box">
+          <p>これは診断した人の結果です。<b>あなたは幻想郷の誰に似てる？</b></p>
+          <button type="button" class="btn primary" data-act="start" data-from="shared-top">自分も診断する(36問・3分)</button>
+          <button type="button" class="btn ghost" data-act="start-quick" data-from="shared-top">ドパガキモード(${L.QUICK_COUNT}問)</button>
+        </div>
         ${worksLine(c)}
         <p class="desc">${esc(c.desc)}</p>
         <p class="type-blurb"><b>${c.mbti}「${t.name}」</b> ${t.blurb}</p>
@@ -660,8 +666,8 @@ ${text.detail}`)}`;
         <div class="tiles">${mates.map(x => charTile(x)).join('')}</div>
       </section>` : ''}
       <div class="cta center">
-        <button type="button" class="btn primary" data-act="start">自分も診断してみる(36問)</button>
-        <button type="button" class="btn" data-act="start-quick">ドパガキモード(${L.QUICK_COUNT}問)</button>
+        <button type="button" class="btn primary" data-act="start" data-from="shared-bottom">自分も診断してみる(36問)</button>
+        <button type="button" class="btn" data-act="start-quick" data-from="shared-bottom">ドパガキモード(${L.QUICK_COUNT}問)</button>
         <a class="btn ghost" href="#/zukan">キャラ図鑑を見る</a>
       </div>`;
   }
@@ -768,9 +774,11 @@ ${text.detail}`)}`;
     if (tog) { toggleCollapse(tog); if (tog.dataset.toggle === 'share-body' && tog.classList.contains('is-open')) track('share/open', 'シェアを開く', true); return; }
     const act = e.target.closest('[data-act]');
     if (!act) { if (e.target === dialog) dialog.close(); return; }
+    // 診断を始めた場所(計測用): ボタンの data-from、なければ今の画面から
+    const startFrom = el => el.dataset.from || (location.hash.startsWith('#/result') ? 'result' : location.hash.startsWith('#/c/') ? 'shared' : location.hash.startsWith('#/zukan') ? 'zukan' : 'home');
     switch (act.dataset.act) {
-      case 'start': track('start/full', '36問をはじめる', true); startQuiz(true, 'full'); break;
-      case 'start-quick': track('start/quick', 'ドパガキモードをはじめる', true); startQuiz(true, 'quick'); break;
+      case 'start': track('start/full', '36問をはじめる', true); track(`start-from/${startFrom(act)}`, '診断を始めた場所', true); startQuiz(true, 'full'); break;
+      case 'start-quick': track('start/quick', 'ドパガキモードをはじめる', true); track(`start-from/${startFrom(act)}`, '診断を始めた場所', true); startQuiz(true, 'quick'); break;
       case 'resume': startQuiz(false, 'full'); break;
       case 'prev': if (qIndex > 0) { qIndex -= 1; viewQuiz(); } break;
       case 'next': if (qIndex < M().count - 1) { qIndex += 1; viewQuiz(); } break;
