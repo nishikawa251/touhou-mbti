@@ -541,3 +541,8 @@ body.no-scroll { overflow: hidden; }
 .spell-card .acc-body .btn.garakuta { margin-top: 16px; border-radius: 10px; background: transparent; }
 .spell-card .btn.garakuta:hover { background: var(--g-soft); }
 .foot .tech { font-size: 11px; opacity: .85; }
+
+/* SNS ごとの色(Bluesky・LINE) */
+.btn.bsky { background: #1185fe; border-color: #1185fe; color: #fff; }
+.btn.line { background: #06c755; border-color: #06c755; color: #fff; }
+.btn.bsky:hover, .btn.line:hover { filter: brightness(1.06); }

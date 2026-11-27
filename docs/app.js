@@ -294,6 +294,12 @@ ${HASHTAG}`;
   const shareImageSrc = (id, kind) => `img/og/${id}${kind}.jpg`;
   function sharePanel(c, text) {
     const x = `https://twitter.com/intent/tweet?text=${encodeURIComponent(postText(text, c.id))}`;
+    // Bluesky は本文だけ渡す(URL は本文中のものがリンクになる)。LINE は URL スキームで本文を渡す(ハッシュタグは付けない)
+    const bsky = `https://bsky.app/intent/compose?text=${encodeURIComponent(postText(text, c.id))}`;
+    const line = `https://line.me/R/share?text=${encodeURIComponent(`${text.head}
+${shareUrl(c.id)}
+
+${text.detail}`)}`;
     const canFiles = !!(navigator.canShare && navigator.share);
     return `
       <button type="button" class="btn primary share-toggle" data-toggle="share-body" aria-expanded="false" aria-controls="share-body">結果をシェア <span class="dd-arrow" aria-hidden="true">▾</span></button>
@@ -304,7 +310,9 @@ ${HASHTAG}`;
             <button type="button" class="kind" data-kind="-full" aria-pressed="false">詳細(説明文つき)</button>
           </div>
           <div class="share-row">
-            <a class="btn primary" href="${x}" target="_blank" rel="noopener">Xに投稿</a>
+            <a class="btn primary" data-sns="x" href="${x}" target="_blank" rel="noopener">Xに投稿</a>
+            <a class="btn bsky" data-sns="bluesky" href="${bsky}" target="_blank" rel="noopener">Blueskyに投稿</a>
+            <a class="btn line" data-sns="line" href="${line}" target="_blank" rel="noopener">LINEで送る</a>
             ${canFiles ? '<button type="button" class="btn" data-act="share-image">画像を共有</button>' : ''}
             <a class="btn" id="share-dl" href="${shareImageSrc(c.id, '')}" download="toho-${c.id}.jpg">画像を保存</a>
             <button type="button" class="btn" data-act="copy-link">リンクをコピー</button>
@@ -724,12 +732,12 @@ ${HASHTAG}`;
     if (tile) { openDetail(tile.dataset.char); return; }
     const kind = e.target.closest('.share-kind .kind');
     if (kind) { setShareKind(kind.dataset.kind); return; }
-    const ext = e.target.closest('a.btn.garakuta, a.work.link, a.btn[download], .share-body a.primary');
+    const ext = e.target.closest('a.btn.garakuta, a.work.link, a.btn[download], .share-body a[data-sns]');
     if (ext) {
       if (ext.matches('.btn.garakuta')) track(`garakuta/${app.dataset.shareId || ext.href.split('/').filter(Boolean).pop()}`, '週刊東方キャラクターへ', true);
       else if (ext.matches('.work.link')) track(`work/${ext.textContent.trim()}`, '登場作品のリンク', true);
       else if (ext.matches('[download]')) track('share/save', '画像を保存', true);
-      else track('share/x', 'Xに投稿', true);
+      else track(`share/${ext.dataset.sns}`, ext.textContent.trim(), true);
     }
     const tog = e.target.closest('[data-toggle]');
     if (tog) { toggleCollapse(tog); if (tog.dataset.toggle === 'share-body' && tog.classList.contains('is-open')) track('share/open', 'シェアを開く', true); return; }

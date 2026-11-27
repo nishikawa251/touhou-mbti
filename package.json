@@ -1,6 +1,6 @@
 {
   "name": "touhou-seikaku-shindan",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "東方キャラ性格診断のビルド用(sharp で WebP 変換)",
   "directories": {
     "doc": "docs"
