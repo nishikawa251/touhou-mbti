@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
 const L = require(path.join(root, 'logic.js'));
-const SITE = 'https://nishikawa251.github.io/touhou-mbti/';
+const SITE = 'https://nishikawa251.github.io/touhou-seikaku-shindan/';
 
 const data = fs.readFileSync(path.join(root, 'data.js'), 'utf8');
 const chars = JSON.parse(data.match(/window\.TOHO_CHARS\s*=\s*(\[[\s\S]*?\]);/)[1]);

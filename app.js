@@ -8,7 +8,7 @@
   const dialog = document.getElementById('detail');
   const toastEl = document.getElementById('toast');
   // 共有用の絶対 URL(ローカルで開いたときも公開サイトの URL を共有する)
-  const SITE = 'https://nishikawa251.github.io/touhou-mbti/';
+  const SITE = 'https://nishikawa251.github.io/touhou-seikaku-shindan/';
 
   // 診断モード。full = 36問、quick = ドパガキモード(5問)
   const MODES = {

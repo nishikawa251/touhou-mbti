@@ -24,7 +24,7 @@ node tools/serve.mjs 4173
 
 `data.js` は生成物なので直接編集しません。
 
-1. `research/profiles/part*.json`(各キャラの8軸スコアと紹介文)か `tools/overrides.json`(個別の上書き)を編集する
+1. `tools/profiles/part*.json`(各キャラの8軸スコアと紹介文)か `tools/overrides.json`(個別の上書き)を編集する
 2. `node tools/build-data.mjs` で `data.js` を作り直す
 3. `node tools/test.mjs` で全キャラが結果に出うることを確認する
 

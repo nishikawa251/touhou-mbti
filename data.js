@@ -1,4 +1,4 @@
-// tools/build-data.mjs が生成。手で編集せず、research/profiles か tools/overrides.json を直して再生成する。
+// tools/build-data.mjs が生成。手で編集せず、tools/profiles か tools/overrides.json を直して再生成する。
 window.TOHO_CHARS = [
  {
   "id": "reimu",

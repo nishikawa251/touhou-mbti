@@ -1,4 +1,4 @@
-// research/profiles/part*.json + tools/characters.json (+ tools/overrides.json) → data.js
+// tools/profiles/part*.json + tools/characters.json (+ tools/overrides.json) → data.js
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -8,8 +8,8 @@ const read = p => JSON.parse(fs.readFileSync(path.join(root, p), 'utf8').replace
 
 const chars = read('tools/characters.json');
 const profiles = new Map();
-for (const f of fs.readdirSync(path.join(root, 'research/profiles')).filter(f => /^part\d+\.json$/.test(f)).sort()) {
-  for (const p of read('research/profiles/' + f)) profiles.set(p.id, p);
+for (const f of fs.readdirSync(path.join(root, 'tools/profiles')).filter(f => /^part\d+\.json$/.test(f)).sort()) {
+  for (const p of read('tools/profiles/' + f)) profiles.set(p.id, p);
 }
 const garakuta = read('tools/garakuta.json');
 // 名前の読みと主な登場原作(tools/meta.json。なければ空)
@@ -56,7 +56,7 @@ for (const c of out) {
 }
 
 fs.writeFileSync(path.join(root, 'data.js'),
-  '// tools/build-data.mjs が生成。手で編集せず、research/profiles か tools/overrides.json を直して再生成する。\n' +
+  '// tools/build-data.mjs が生成。手で編集せず、tools/profiles か tools/overrides.json を直して再生成する。\n' +
   'window.TOHO_CHARS = ' + JSON.stringify(out, null, 1) + ';\n' +
   // 登場原作 → 販売・紹介ページ(Steam / 東方やおよろず商店 / KADOKAWA / BOOK☆WALKER / 一迅社)。tools/works.json
   'window.TOHO_WORK_URLS = ' + JSON.stringify(Object.fromEntries(Object.entries(read('tools/works.json')).filter(([k]) => !k.startsWith('_')))) + ';\n', 'utf8');

@@ -1,6 +1,3 @@
-# ピクシブ百科事典から取得した記事本文のキャッシュ(tools/fetch.mjs で再取得できる)
-research/pages/
-research/fetch-log.txt
 *.log
 
 .claude/

@@ -62,7 +62,7 @@ function SaveJpeg([System.Drawing.Bitmap]$bmp, [string]$path) {
 }
 
 $ink = Hex '#2a3050'; $ink2 = Hex '#5d6482'; $white = [System.Drawing.Color]::White
-$siteLabel = 'https://nishikawa251.github.io/touhou-mbti/'
+$siteLabel = 'https://nishikawa251.github.io/touhou-seikaku-shindan/'
 $fmtCenter = New-Object System.Drawing.StringFormat
 $fmtCenter.Alignment = [System.Drawing.StringAlignment]::Center
 $fmtCenter.LineAlignment = [System.Drawing.StringAlignment]::Center
