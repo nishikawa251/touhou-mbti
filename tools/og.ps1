@@ -148,33 +148,66 @@ foreach ($c in $json.chars) {
   $n++
 }
 
-# site image: title + a row of portraits
+# site image: spell-card style frame, big title, tilted portrait row
 $pair = NewCanvas $W 630; $bmp = $pair[0]; $g = $pair[1]
-$g.Clear((Hex '#fbf6ee'))
-$accent = Hex '#cf2f6b'
-$g.FillRectangle((New-Object System.Drawing.SolidBrush($accent)), 0, 0, $W, 14)
-$f = NewFont 30 $true
-$g.DrawString($json.labels.siteEyebrow, $f, (New-Object System.Drawing.SolidBrush($accent)), (New-Object System.Drawing.RectangleF(0, 48, $W, 40)), $fmtCenter); $f.Dispose()
-$f = NewFont 76 $true
-$g.DrawString($json.labels.siteTitle, $f, (New-Object System.Drawing.SolidBrush($ink)), (New-Object System.Drawing.RectangleF(0, 96, $W, 100)), $fmtCenter); $f.Dispose()
-$f = NewFont 30 $false
-$g.DrawString($json.labels.siteSub, $f, (New-Object System.Drawing.SolidBrush($ink2)), (New-Object System.Drawing.RectangleF(0, 206, $W, 44)), $fmtCenter); $f.Dispose()
-$ids = @('reimu', 'marisa', 'sakuya', 'youmu', 'sanae', 'koishi', 'nue', 'flandre')
-$pw = 128; $ph = 160; $gap = 10
-$startX = [int](($W - ($ids.Count * $pw + ($ids.Count - 1) * $gap)) / 2)
-for ($i = 0; $i -lt $ids.Count; $i++) {
-  $px = $startX + $i * ($pw + $gap)
-  $card = RoundRect $px 290 $pw $ph 16
-  $g.FillPath((New-Object System.Drawing.SolidBrush($white)), $card)
-  $g.DrawPath((New-Object System.Drawing.Pen((Hex '#e4d9c6'), 2)), $card)
-  $img = [System.Drawing.Image]::FromFile((Join-Path $Root ('tools/art-src/' + $ids[$i] + '.png')))
-  $g.DrawImage($img, $px + 4, 295, 120, 150)
-  $img.Dispose()
-}
+$accent = Hex '#cf2f6b'; $line = Hex '#e4d9c6'; $paper = Hex '#f3ebe0'
+$g.Clear($paper)
+# faint dot pattern on the paper
+$dot = New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(22, 42, 48, 80))
+for ($yy = 14; $yy -lt 630; $yy += 28) { for ($xx = 14; $xx -lt $W; $xx += 28) { $g.FillEllipse($dot, $xx, $yy, 3, 3) } }
+# card with shadow and a left accent band
+$shadow = RoundRect 36 44 1128 558 28
+$g.FillPath((New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(40, 42, 48, 80))), $shadow)
+$card = RoundRect 36 36 1128 558 28
+$g.FillPath((New-Object System.Drawing.SolidBrush($white)), $card)
+$g.SetClip($card)
+$g.FillRectangle((New-Object System.Drawing.SolidBrush($accent)), 36, 36, 18, 558)
+# outlined watermark in the top-right corner
+$wm = New-Object System.Drawing.Drawing2D.GraphicsPath
+$wm.AddString('137', (New-Object System.Drawing.FontFamily($fontName)), [int][System.Drawing.FontStyle]::Bold, 190, (New-Object System.Drawing.PointF(790, 56)), $fmtLeft)
+$g.DrawPath((New-Object System.Drawing.Pen((Hex '#f4d6e2'), 3)), $wm)
+$g.ResetClip()
+$g.DrawPath((New-Object System.Drawing.Pen($line, 2)), $card)
+# eyebrow: pill badge + meta
+$f = NewFont 22 $true
+$m = $g.MeasureString($json.labels.siteEyebrow, $f)
+$pill = RoundRect 92 70 ($m.Width + 36) 40 20
+$g.FillPath((New-Object System.Drawing.SolidBrush($accent)), $pill)
+$g.DrawString($json.labels.siteEyebrow, $f, (New-Object System.Drawing.SolidBrush($white)), (New-Object System.Drawing.RectangleF(92, 70, ($m.Width + 36), 40)), $fmtCenter); $f.Dispose()
 $f = NewFont 24 $false
-$g.DrawString($siteLabel, $f, (New-Object System.Drawing.SolidBrush($ink2)), (New-Object System.Drawing.RectangleF(0, 500, $W, 40)), $fmtCenter); $f.Dispose()
+$g.DrawString($json.labels.siteMeta, $f, (New-Object System.Drawing.SolidBrush($ink2)), (New-Object System.Drawing.RectangleF((92 + $m.Width + 52), 70, 600, 40)), $fmtLeft); $f.Dispose()
+# title and subtitle
+$f = NewFont 92 $true
+$g.DrawString($json.labels.siteTitle, $f, (New-Object System.Drawing.SolidBrush($ink)), (New-Object System.Drawing.RectangleF(84, 112, 1000, 120)), $fmtLeft); $f.Dispose()
+$f = NewFont 34 $true
+$g.DrawString($json.labels.siteSub, $f, (New-Object System.Drawing.SolidBrush($accent)), (New-Object System.Drawing.RectangleF(92, 232, 1000, 50)), $fmtLeft); $f.Dispose()
+# tilted portrait row
+$ids = @('reimu', 'marisa', 'sakuya', 'youmu', 'sanae', 'koishi', 'nue', 'flandre')
+$tilts = @(-6, 4, -3, 5, -5, 3, -4, 6)
+$pw = 124; $ph = 156; $step = 130
+$startX = [int](($W - (($ids.Count - 1) * $step + $pw)) / 2) + 8
+for ($i = 0; $i -lt $ids.Count; $i++) {
+  $cx = $startX + $i * $step + $pw / 2
+  $cy = 380 + (($i % 2) * 14)
+  $g.TranslateTransform($cx, $cy)
+  $g.RotateTransform($tilts[$i])
+  $cardP = RoundRect (-$pw / 2) (-$ph / 2) $pw $ph 16
+  $g.FillPath((New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(36, 42, 48, 80))), (RoundRect (-$pw / 2) (-$ph / 2 + 5) $pw $ph 16))
+  $g.FillPath((New-Object System.Drawing.SolidBrush($white)), $cardP)
+  $g.DrawPath((New-Object System.Drawing.Pen($line, 2)), $cardP)
+  $img = [System.Drawing.Image]::FromFile((Join-Path $Root ('tools/art-src/' + $ids[$i] + '.png')))
+  $g.DrawImage($img, (-$pw / 2 + 4), (-$ph / 2 + 4), ($pw - 8), ($ph - 8))
+  $img.Dispose()
+  $g.ResetTransform()
+}
+# footer: url left, credits right
+$f = NewFont 22 $false
+$g.DrawString($siteLabel, $f, (New-Object System.Drawing.SolidBrush($ink2)), (New-Object System.Drawing.RectangleF(92, 534, 700, 30)), $fmtLeft); $f.Dispose()
+$fmtRight = New-Object System.Drawing.StringFormat
+$fmtRight.Alignment = [System.Drawing.StringAlignment]::Far
 $f = NewFont 20 $false
-$g.DrawString($json.labels.credit, $f, (New-Object System.Drawing.SolidBrush($ink2)), (New-Object System.Drawing.RectangleF(0, 560, $W, 30)), $fmtCenter); $f.Dispose()
+$g.DrawString($json.labels.credit, $f, (New-Object System.Drawing.SolidBrush($ink2)), (New-Object System.Drawing.RectangleF(600, 520, 508, 28)), $fmtRight)
+$g.DrawString($json.labels.credit2, $f, (New-Object System.Drawing.SolidBrush($ink2)), (New-Object System.Drawing.RectangleF(600, 548, 508, 28)), $fmtRight); $f.Dispose()
 SaveJpeg $bmp (Join-Path $outDir 'site.jpg')
 $g.Dispose(); $bmp.Dispose()
 

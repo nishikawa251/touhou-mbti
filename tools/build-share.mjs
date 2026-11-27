@@ -71,9 +71,11 @@ const labels = {
   title: '東方キャラ性格診断',
   pre: 'あなたにいちばん近いのは',
   siteEyebrow: '非公式ファン診断',
-  siteTitle: 'あなたは幻想郷の誰に似てる？',
-  siteSub: `36問で16タイプ × ${chars.length}キャラ。東方キャラ性格診断`,
+  siteMeta: `36問 ／ 16タイプ ／ ${chars.length}キャラ`,
+  siteTitle: '東方キャラ性格診断',
+  siteSub: 'あなたは幻想郷の誰に似てる？',
   credit: 'イラスト: 粗茶',
+  credit2: '制作: @nishikawa_huton',
 };
 fs.writeFileSync(path.join(root, 'docs/img/og/og-data.json'), JSON.stringify({ site: SITE, labels, chars: og }, null, 2) + '\n');
 console.log(`共有ページ ${og.length} 件を s/ に、og-data.json を img/og/ に書き出しました`);

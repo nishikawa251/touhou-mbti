@@ -4,9 +4,11 @@
     "title": "東方キャラ性格診断",
     "pre": "あなたにいちばん近いのは",
     "siteEyebrow": "非公式ファン診断",
-    "siteTitle": "あなたは幻想郷の誰に似てる？",
-    "siteSub": "36問で16タイプ × 137キャラ。東方キャラ性格診断",
-    "credit": "イラスト: 粗茶"
+    "siteMeta": "36問 ／ 16タイプ ／ 137キャラ",
+    "siteTitle": "東方キャラ性格診断",
+    "siteSub": "あなたは幻想郷の誰に似てる？",
+    "credit": "イラスト: 粗茶",
+    "credit2": "制作: @nishikawa_huton"
   },
   "chars": [
     {
