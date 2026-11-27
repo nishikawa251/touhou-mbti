@@ -38,7 +38,7 @@ node tools/serve.mjs 4173
 
 ## クレジット
 
-- イラスト: 粗茶「やおよろづ」シリーズ
+- イラスト: 粗茶 https://x.com/socha1980
 - 性格の参考: ピクシブ百科事典の各キャラクター記事 https://dic.pixiv.net/
 - 東方Projectの二次創作ガイドライン(https://touhou-project.news/guideline/)の範囲内で作っています
 
