@@ -31,8 +31,13 @@ fs.mkdirSync(path.join(root, 'docs/img/og'), { recursive: true });
 const og = [];
 for (const c of chars) {
   const t = L.TYPES[c.mbti];
-  const title = `診断結果は「${c.name}」(${c.mbti}・${t.name})`;
-  const desc = `${c.catch}。東方キャラ性格診断 ― 36問で16タイプ × ${chars.length}キャラの中から、あなたにいちばん近い東方キャラを見つける非公式ファン診断。`;
+  // quick = ドパガキモードの結果用(s/<id>-q.html)。カード画像はスタンプ入りの <id>-q.jpg
+  for (const quick of [false, true]) {
+  const file = `${c.id}${quick ? '-q' : ''}`;
+  const title = quick ? `診断結果(ドパガキモード)は「${c.name}」(${c.mbti}・${t.name})` : `診断結果は「${c.name}」(${c.mbti}・${t.name})`;
+  const desc = quick
+    ? `${L.QUICK_COUNT}問で無理やり判定。絶対間違うぞ！ ${c.catch}。東方キャラ性格診断 ― 本気の36問なら16タイプ × ${chars.length}キャラの中から、あなたにいちばん近い東方キャラを見つける非公式ファン診断。`
+    : `${c.catch}。東方キャラ性格診断 ― 36問で16タイプ × ${chars.length}キャラの中から、あなたにいちばん近い東方キャラを見つける非公式ファン診断。`;
   const html = `<!doctype html>
 <html lang="ja">
 <head>
@@ -45,25 +50,26 @@ for (const c of chars) {
 <meta property="og:site_name" content="東方キャラ性格診断">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(desc)}">
-<meta property="og:image" content="${SITE}img/og/${c.id}.jpg">
+<meta property="og:image" content="${SITE}img/og/${file}.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:url" content="${SITE}s/${c.id}.html">
+<meta property="og:url" content="${SITE}s/${file}.html">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(desc)}">
-<meta name="twitter:image" content="${SITE}img/og/${c.id}.jpg">
+<meta name="twitter:image" content="${SITE}img/og/${file}.jpg">
 <link rel="canonical" href="${SITE}#/c/${c.id}">
 <script>location.replace('../#/c/${c.id}');</script>
 <style>body{font-family:sans-serif;padding:24px;text-align:center}img{max-width:100%;height:auto}</style>
 </head>
 <body>
 <p><a href="../#/c/${c.id}">診断結果「${esc(c.name)}」のページへ</a></p>
-<img src="../img/og/${c.id}.jpg" alt="${esc(title)}" width="1200" height="630">
+<img src="../img/og/${file}.jpg" alt="${esc(title)}" width="1200" height="630">
 </body>
 </html>
 `;
-  fs.writeFileSync(path.join(outDir, `${c.id}.html`), html);
+  fs.writeFileSync(path.join(outDir, `${file}.html`), html);
+  }
   og.push({ id: c.id, name: c.name, mbti: c.mbti, typeName: t.name, catch: c.catch, traits: c.traits, desc: c.desc, typeBlurb: t.blurb, color: COLORS[t.group].main, soft: COLORS[t.group].soft });
 }
 // og.ps1 は ASCII だけで書いてあるので、画像に描く日本語はここから渡す
@@ -76,6 +82,8 @@ const labels = {
   siteSub: 'あなたは幻想郷の誰に似てる？',
   credit: 'イラスト: 粗茶',
   credit2: '制作: @nishikawa_huton',
+  stampTitle: 'ドパガキモード判定',
+  stampSub: `${L.QUICK_COUNT}問で無理やり決めた。絶対間違ってるぞ！！`,
 };
 fs.writeFileSync(path.join(root, 'docs/img/og/og-data.json'), JSON.stringify({ site: SITE, labels, chars: og }, null, 2) + '\n');
-console.log(`共有ページ ${og.length} 件を s/ に、og-data.json を img/og/ に書き出しました`);
+console.log(`共有ページ ${og.length} 件 × 2(通常・ドパガキ)を s/ に、og-data.json を img/og/ に書き出しました`);

@@ -269,7 +269,8 @@
   }
 
   // ---------- 共有 ----------
-  const shareUrl = id => `${SITE}s/${id}.html`;
+  // ドパガキモードの結果は s/<id>-q.html(カード画像がスタンプ入り)を共有する
+  const shareUrl = id => `${SITE}s/${id}${isQuickShare() ? '-q' : ''}.html`;
   const HASHTAG = '#東方キャラ性格診断';
   // 投稿本文。1行目(結果)と2行目(一致度・キャッチ)の間に URL を挟む
   function shareText(c, mbti, sim, quick) {
@@ -310,7 +311,7 @@ ${HASHTAG}`;
             <button type="button" class="btn ghost" data-act="copy">文章をコピー</button>
           </div>
           <img class="share-preview" id="share-preview" src="${shareImageSrc(c.id, '')}" alt="共有用の画像" loading="lazy">
-          <p class="note">リンクを貼ると、X・Discord・LINE などではシンプル版の画像つきカードが表示されます。詳細版は「画像を共有」か「画像を保存」で投稿に添えてください。${isQuickShare() ? 'ドパガキモードの結果なので、共有・保存する画像には「ドパガキモード判定」のスタンプが入ります(リンクのカード画像には入りません)。' : ''}</p>
+          <p class="note">リンクを貼ると、X・Discord・LINE などではシンプル版の画像つきカードが表示されます。詳細版は「画像を共有」か「画像を保存」で投稿に添えてください。${isQuickShare() ? 'ドパガキモードの結果なので、リンクのカードも共有・保存する画像も「ドパガキモード判定」のスタンプ入りになります。' : ''}</p>
         </div>
       </div>`;
   }
@@ -323,7 +324,7 @@ ${HASHTAG}`;
     const pad = 14, gap = 6;
     const boxW = 420, boxH = pad * 2 + lines[0][1] + gap + lines[1][1];
     ctx.save();
-    ctx.translate(W - 56, 498);
+    ctx.translate(W - 56, 476);
     ctx.rotate(-4 * Math.PI / 180);
     ctx.shadowColor = 'rgba(0,0,0,.25)'; ctx.shadowBlur = 10; ctx.shadowOffsetY = 3;
     ctx.fillStyle = '#c1121f';

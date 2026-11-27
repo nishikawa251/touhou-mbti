@@ -134,11 +134,35 @@ function DrawCard([System.Drawing.Graphics]$g, $c, [int]$H, [bool]$withDesc) {
   $g.DrawString($json.labels.credit, $f, (New-Object System.Drawing.SolidBrush($ink2)), 56, ($H - 38)); $f.Dispose()
 }
 
+# "Dopagaki mode" stamp, same look as drawStamp() in app.js (red box, dashed gold inner line, tilted -4 deg)
+function DrawStamp([System.Drawing.Graphics]$g) {
+  $boxW = 420; $boxH = 81
+  $g.TranslateTransform($W - 56, 476)
+  $g.RotateTransform(-4)
+  $g.FillPath((New-Object System.Drawing.SolidBrush([System.Drawing.Color]::FromArgb(60, 0, 0, 0))), (RoundRect (-$boxW) 3 $boxW $boxH 14))
+  $g.FillPath((New-Object System.Drawing.SolidBrush((Hex '#c1121f'))), (RoundRect (-$boxW) 0 $boxW $boxH 14))
+  $pen = New-Object System.Drawing.Pen((Hex '#ffe08a'), 3)
+  $pen.DashPattern = [single[]]@(3.3, 2.3)
+  $g.DrawPath($pen, (RoundRect (-$boxW + 7) 7 ($boxW - 14) ($boxH - 14) 9)); $pen.Dispose()
+  $f = NewFont 30 $true
+  $g.DrawString($json.labels.stampTitle, $f, (New-Object System.Drawing.SolidBrush($white)), (New-Object System.Drawing.RectangleF(-$boxW, 11, $boxW, 36)), $fmtCenter); $f.Dispose()
+  $f = NewFont 17 $true
+  $g.DrawString($json.labels.stampSub, $f, (New-Object System.Drawing.SolidBrush($white)), (New-Object System.Drawing.RectangleF(-$boxW, 47, $boxW, 24)), $fmtCenter); $f.Dispose()
+  $g.ResetTransform()
+}
+
 $n = 0
 foreach ($c in $json.chars) {
   $pair = NewCanvas $W 630; $bmp = $pair[0]; $g = $pair[1]
   DrawCard $g $c 630 $false
   SaveJpeg $bmp (Join-Path $outDir ($c.id + '.jpg'))
+  $g.Dispose(); $bmp.Dispose()
+
+  # dopagaki-mode card: the simple card plus the stamp (used as the OGP image of s/<id>-q.html)
+  $pair = NewCanvas $W 630; $bmp = $pair[0]; $g = $pair[1]
+  DrawCard $g $c 630 $false
+  DrawStamp $g
+  SaveJpeg $bmp (Join-Path $outDir ($c.id + '-q.jpg'))
   $g.Dispose(); $bmp.Dispose()
 
   $pair = NewCanvas $W 900; $bmp = $pair[0]; $g = $pair[1]
@@ -211,4 +235,4 @@ $g.DrawString($json.labels.credit2, $f, (New-Object System.Drawing.SolidBrush($i
 SaveJpeg $bmp (Join-Path $outDir 'site.jpg')
 $g.Dispose(); $bmp.Dispose()
 
-Write-Output ("rendered " + $n + " characters (simple + full) and site.jpg into " + $outDir)
+Write-Output ("rendered " + $n + " characters (simple + dopagaki + full) and site.jpg into " + $outDir)
