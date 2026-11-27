@@ -70,7 +70,7 @@ for (const c of chars) {
 const labels = {
   title: '東方キャラ性格診断',
   pre: 'あなたにいちばん近いのは',
-  siteEyebrow: '非公式ファン診断',
+  siteEyebrow: '二次創作ファン診断',
   siteMeta: `36問 × 16タイプ × ${chars.length}キャラ`,
   siteTitle: '東方キャラ性格診断',
   siteSub: 'あなたは幻想郷の誰に似てる？',
