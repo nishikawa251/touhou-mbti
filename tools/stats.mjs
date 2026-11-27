@@ -13,25 +13,27 @@ const token = process.env.GOATCOUNTER_TOKEN || (fs.existsSync(tokenFile) ? fs.re
 if (!token) { console.error('GoatCounter の API トークンがありません(環境変数 GOATCOUNTER_TOKEN か tools/.goatcounter-token)'); process.exit(1); }
 
 const today = new Date().toISOString().slice(0, 10);
+// end は「その時刻まで」なので翌日の 0 時を渡す(当日分を含める)
+const endDay = new Date(Date.now() + 86400000).toISOString().slice(0, 10);
 const api = async (params) => {
-  const url = `https://${SITE}.goatcounter.com/api/v0/stats/hits?${new URLSearchParams(params)}`;
+  const url = `https://${SITE}.goatcounter.com/api/v0/stats/hits?${params}`;
   const res = await fetch(url, { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } });
   if (!res.ok) throw new Error(`${res.status} ${res.statusText}: ${await res.text()}`);
   return res.json();
 };
 
-// パスごとの合計を、ページング(after = 最後の path_id)で全部集める
+// キャラごとに 1 リクエスト(include_paths は名前指定で 1 件ずつしか効かない)。レート制限 4 req/s を守る
+const ids = JSON.parse(fs.readFileSync(path.join(root, 'tools/characters.json'), 'utf8')).map(c => c.id);
 const counts = new Map();
-let after = '';
-for (let page = 0; page < 50; page++) {
-  const data = await api({ start: SINCE, end: today, limit: '100', ...(after ? { after } : {}) });
-  const hits = data.hits || [];
-  for (const h of hits) {
-    const total = typeof h.count === 'number' ? h.count : (h.stats || []).reduce((n, d) => n + (d.daily || 0), 0);
-    counts.set(h.path, (counts.get(h.path) || 0) + total);
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+for (const id of ids) {
+  const p = new URLSearchParams({ start: SINCE, end: endDay, limit: '5', path_by_name: 'true', include_paths: `result-char/${id}` });
+  const data = await api(p);
+  for (const h of data.hits || []) {
+    const views = (h.stats || []).reduce((n, d) => n + (Array.isArray(d.hourly) ? d.hourly.reduce((a, b) => a + b, 0) : (d.daily || 0)), 0);
+    counts.set(h.path, (counts.get(h.path) || 0) + (views || h.count || 0));
   }
-  if (!data.more || !hits.length) break;
-  after = String(hits[hits.length - 1].path_id);
+  await sleep(300);
 }
 
 const chars = {};
