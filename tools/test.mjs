@@ -11,7 +11,7 @@ const win = {};
 new Function('window', fs.readFileSync(path.join(root, 'docs/data.js'), 'utf8'))(win);
 const chars = win.TOHO_CHARS;
 
-// 目標ベクトルにぴったり一致する回答を組み立てる
+// 目標ベクトルにぴったり一致する回答を組み立てる(判定は向きで比べるので、自分の値で答えれば自分に届くはず)
 function answersFor(vec) {
   const ans = new Array(L.QUESTIONS.length).fill(0);
   L.AXES.forEach((a, ai) => {
