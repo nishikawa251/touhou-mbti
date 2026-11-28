@@ -554,6 +554,17 @@ body.no-scroll { overflow: hidden; }
 .detail .stat small { font-size: 12px; }
 
 .home .note.update, .note.update { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+/* トップの更新のお知らせ。押すと更新履歴が開く(文字のまま、末尾の「更新履歴 ›」で押せると分かるように) */
+button.note.update { display: block; width: 100%; text-align: left; background: none; border: 0; padding: 0; font-family: inherit; line-height: 1.7; cursor: pointer; }
+button.note.update:hover .update-more { text-decoration: underline; }
+.update-more { color: var(--accent); font-weight: 700; margin-left: 6px; white-space: nowrap; }
+/* 更新履歴のポップアップ */
+.detail.updates { border-top-color: var(--accent); }
+.updates h2 { font-size: 18px; margin: 4px 0 8px; }
+.update-entry { padding: 10px 0; border-top: 1px solid var(--line); }
+.update-entry h3 { font-size: 14px; margin: 0 0 4px; color: var(--ink); }
+.update-entry .ver { display: inline-block; margin-left: 6px; padding: 0 8px; border-radius: 4px; background: var(--surface-2); color: var(--ink-2); font-size: 12px; font-weight: 700; }
+.update-entry ul { margin: 0; padding-left: 1.2em; font-size: 14px; color: var(--ink-2); line-height: 1.7; }
 
 .match .spread { font-size: 11px; color: var(--ink-2); margin-left: 6px; font-weight: 500; }
 
