@@ -139,11 +139,28 @@
     const k = meanLen(chars) / len;
     return userVec.map(x => x * k);
   }
+  // 比べる相手のキャラのベクトルも、向きは変えずに同じ平均の長さにそろえる。v1.1.4 から。
+  // 回答だけを伸ばすと、キャラ側の長さの違いがそのまま距離に残り、値の強いキャラ(長さ 2.4 以上)は
+  // 同じ向きのもっと穏やかなキャラに負け続けた(チルノと八意永琳はどう答えても結果に出なかった)。
+  // 両方の長さをそろえると距離は向きの違いだけで決まり、どのキャラも自分と同じ向きの回答で必ず出る。
+  const shapeCache = new WeakMap();
+  function shape(c, chars) {
+    const R = meanLen(chars);
+    let s = shapeCache.get(c);
+    if (!s || s.R !== R || s.src !== c.v) {
+      const len = Math.sqrt(c.v.reduce((a, x) => a + x * x, 0));
+      s = { R, src: c.v, v: len ? c.v.map(x => x * R / len) : c.v.slice() };
+      shapeCache.set(c, s);
+    }
+    return s.v;
+  }
 
   // まず基本4軸の向きで 16タイプを決め(ちょうど 0 の軸はどちらも可)、
-  // そのタイプに属するキャラの中から、8軸の距離がいちばん近いキャラを選ぶ(距離は伸ばした回答ベクトルで取る)。
+  // そのタイプに属するキャラの中から、8軸の距離がいちばん近いキャラを選ぶ
+  // (距離は、回答とキャラの両方を平均の長さにそろえてから取る)。
   function match(userVec, chars) {
     const u = stretch(userVec, chars);
+    const dist = c => distance(u, shape(c, chars));
     const fits = c => {
       for (let i = 0; i < 4; i++) {
         if (userVec[i] === 0) continue;
@@ -155,16 +172,16 @@
     let relaxed = false;
     if (!pool.length) { pool = chars.slice(); relaxed = true; }
     const ranked = pool
-      .map(c => ({ c, d: distance(u, c.v) }))
+      .map(c => ({ c, d: dist(c) }))
       .sort((a, b) => a.d - b.d || (a.c.id < b.c.id ? -1 : 1));
     const best = ranked[0].c;
     const sameType = chars
       .filter(c => c.mbti === best.mbti && c.id !== best.id)
-      .map(c => ({ c, d: distance(u, c.v) }))
+      .map(c => ({ c, d: dist(c) }))
       .sort((a, b) => a.d - b.d);
     const others = chars
       .filter(c => c.mbti !== best.mbti)
-      .map(c => ({ c, d: distance(u, c.v) }))
+      .map(c => ({ c, d: dist(c) }))
       .sort((a, b) => a.d - b.d);
     return { best, d: ranked[0].d, type: best.mbti, relaxed, sameType, others, u };
   }
@@ -241,16 +258,16 @@
   // ---------- 相性 ----------
   // 直観/感覚だけ同じで、ほかの7軸は反対の相手を「足りないところを補い合う相性」とみなす
   function partnerVec(u) { return u.map((v, i) => (i === 1 ? v : -v)); }
-  // 相性のいい順に並べたキャラ(exclude は結果に出たキャラなど外したい id)
+  // 相性のいい順に並べたキャラ(exclude は結果に出たキャラなど外したい id)。長さのそろえ方は match() と同じ
   function compat(userVec, chars, exclude) {
     const p = partnerVec(stretch(userVec, chars));
     return chars
       .filter(c => c.id !== exclude)
-      .map(c => ({ c, d: distance(p, c.v) }))
+      .map(c => ({ c, d: distance(p, shape(c, chars)) }))
       .sort((a, b) => a.d - b.d || (a.c.id < b.c.id ? -1 : 1));
   }
 
-  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK_COUNT, quickPick, plainText, score, quickScore, typeOf, distance, similarity, stretch, match, spread, SPREAD_MARGIN, partnerVec, compat };
+  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK_COUNT, quickPick, plainText, score, quickScore, typeOf, distance, similarity, stretch, shape, match, spread, SPREAD_MARGIN, partnerVec, compat };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TohoLogic = api;
 })(typeof window !== 'undefined' ? window : globalThis);
