@@ -124,26 +124,31 @@
   // 人の回答は「ややそう思う」が多く、キャラの値より穏やかに出る(回答ベクトルの長さは 1.4 ほど、キャラは 1.8 ほど)。
   // そのまま距離を取ると、同じタイプの中で値の穏やかなキャラが誰にとってもいちばん近くなってしまう
   // (公開初日はマエリベリーが INFP の 65%、ルナチャイルドが INTP の 69% を取った)。
-  // そこで、回答ベクトルの向きは変えずに、長さだけキャラの平均まで伸ばしてから比べる。v1.1.0 から。
-  let meanLenCache = null;
-  function meanLen(chars) {
-    if (!meanLenCache || meanLenCache.n !== chars.length) {
-      const sum = chars.reduce((a, c) => a + Math.sqrt(c.v.reduce((x, y) => x + y * y, 0)), 0);
-      meanLenCache = { n: chars.length, len: sum / chars.length };
+  // v1.1.0 では回答ベクトルだけをキャラの平均の長さまで伸ばしたが、それだと値の極端なキャラ
+  // (チルノ 2.56・八意永琳 2.47 など平均よりずっと遠いキャラ)には、どう答えても届かなかった。
+  // v1.2.0 からは、回答もキャラも同じ長さ(キャラの平均)にそろえ、性格の「向き」だけで比べる。
+  // 長さの差で有利不利が出ないので、穏やかなキャラにも極端なキャラにも偏らない。
+  const lenOf = v => Math.sqrt(v.reduce((a, x) => a + x * x, 0));
+  const toLen = (v, len) => { const l = lenOf(v); return l ? v.map(x => x * len / l) : v.slice(); };
+  let normCache = null; // { chars, len, vecs: Map(id → 長さをそろえたキャラのベクトル) }
+  function normOf(chars) {
+    if (!normCache || normCache.chars !== chars || normCache.n !== chars.length) {
+      const len = chars.reduce((a, c) => a + lenOf(c.v), 0) / chars.length;
+      normCache = { chars, n: chars.length, len, vecs: new Map(chars.map(c => [c.id, toLen(c.v, len)])) };
     }
-    return meanLenCache.len;
+    return normCache;
   }
-  function stretch(userVec, chars) {
-    const len = Math.sqrt(userVec.reduce((a, x) => a + x * x, 0));
-    if (!len) return userVec.slice();
-    const k = meanLen(chars) / len;
-    return userVec.map(x => x * k);
-  }
+  const meanLen = chars => normOf(chars).len;
+  // 回答ベクトルを、向きは変えずにキャラの平均の長さへ
+  function stretch(userVec, chars) { return toLen(userVec, meanLen(chars)); }
+  // キャラのベクトルも同じ長さに(比べるときはこちらを使う)
+  function charVec(c, chars) { return normOf(chars).vecs.get(c.id) || toLen(c.v, meanLen(chars)); }
 
   // まず基本4軸の向きで 16タイプを決め(ちょうど 0 の軸はどちらも可)、
-  // そのタイプに属するキャラの中から、8軸の距離がいちばん近いキャラを選ぶ(距離は伸ばした回答ベクトルで取る)。
+  // そのタイプに属するキャラの中から、8軸の距離がいちばん近いキャラを選ぶ(距離は回答もキャラも長さをそろえて取る)。
   function match(userVec, chars) {
     const u = stretch(userVec, chars);
+    const dist = c => distance(u, charVec(c, chars));
     const fits = c => {
       for (let i = 0; i < 4; i++) {
         if (userVec[i] === 0) continue;
@@ -155,16 +160,16 @@
     let relaxed = false;
     if (!pool.length) { pool = chars.slice(); relaxed = true; }
     const ranked = pool
-      .map(c => ({ c, d: distance(u, c.v) }))
+      .map(c => ({ c, d: dist(c) }))
       .sort((a, b) => a.d - b.d || (a.c.id < b.c.id ? -1 : 1));
     const best = ranked[0].c;
     const sameType = chars
       .filter(c => c.mbti === best.mbti && c.id !== best.id)
-      .map(c => ({ c, d: distance(u, c.v) }))
+      .map(c => ({ c, d: dist(c) }))
       .sort((a, b) => a.d - b.d);
     const others = chars
       .filter(c => c.mbti !== best.mbti)
-      .map(c => ({ c, d: distance(u, c.v) }))
+      .map(c => ({ c, d: dist(c) }))
       .sort((a, b) => a.d - b.d);
     return { best, d: ranked[0].d, type: best.mbti, relaxed, sameType, others, u };
   }
@@ -250,7 +255,7 @@
       .sort((a, b) => a.d - b.d || (a.c.id < b.c.id ? -1 : 1));
   }
 
-  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK_COUNT, quickPick, plainText, score, quickScore, typeOf, distance, similarity, stretch, match, spread, SPREAD_MARGIN, partnerVec, compat };
+  const api = { AXES, QUESTIONS, CHOICES, TYPES, TYPE_ORDER, GROUPS, QUICK_COUNT, quickPick, plainText, score, quickScore, typeOf, distance, similarity, stretch, charVec, match, spread, SPREAD_MARGIN, partnerVec, compat };
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.TohoLogic = api;
 })(typeof window !== 'undefined' ? window : globalThis);
