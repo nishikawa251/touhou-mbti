@@ -442,6 +442,39 @@ ${text.detail}`)}`;
     else ng();
   }
 
+  // ---------- 更新履歴 ----------
+  // トップに出す最新のお知らせと、押すと開く更新履歴(新しい順)。版を上げたらここに足す
+  const UPDATE_NOTE = '11/29 更新(v1.2.0): 判定を見直し、一部個性の強いキャラがほぼ出なくなっていたのを修正しました。合わせて一部キャラの「主な登場原作」も見直しています。判定調整の結果、前に出た結果と変わることがあります。';
+  const UPDATES = [
+    { date: '11/29', ver: 'v1.2.0', items: [
+      '判定を見直し、一部個性の強いキャラがほぼ出なくなっていたのを修正しました。',
+      '一部キャラの「主な登場原作」を見直しました。',
+      '判定調整の結果、前に出た結果と変わることがあります。',
+    ] },
+    { date: '11/28', ver: 'v1.1.3', items: [
+      '判定を調整しました。「ややそう思う」中心の回答でも同じタイプの中で一部のキャラに偏りにくくし、一致度がいちばん高いキャラが出るようにしています。',
+    ] },
+    { date: '11/27', ver: '', items: [
+      '結果を Bluesky・LINE でも送れるようにしました。',
+      'ドパガキモードの結果は、スタンプ入りの画像つきで共有できるようにしました。',
+      '図鑑に「診断で選ばれた割合」を出しました。',
+      '一部キャラのキャッチコピーを見直しました。',
+    ] },
+  ];
+  function openUpdates() {
+    dialog.className = 'detail updates';
+    dialog.innerHTML = `
+      <button type="button" class="close" data-act="close" aria-label="閉じる">×</button>
+      <h2>更新履歴</h2>
+      ${UPDATES.map(u => `
+        <section class="update-entry">
+          <h3>${esc(u.date)}${u.ver ? ` <span class="ver">${esc(u.ver)}</span>` : ''}</h3>
+          <ul>${u.items.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+        </section>`).join('')}`;
+    if (!dialog.open) dialog.showModal();
+    dialog.scrollTop = 0;
+  }
+
   // ---------- トップ ----------
   function viewHome() {
     const saved = load('full');
@@ -454,7 +487,7 @@ ${text.detail}`)}`;
       <section class="hero">
         <h1>あなたは幻想郷の<br>誰に似てる？</h1>
         <p class="lede">${L.QUESTIONS.length}の質問に答えると、あなたの性格を16タイプ×4つのサブ軸に絞り込んで診断。<strong>${CHARS.length}人</strong>の東方キャラクターの中から一番近いのは誰かを導き出します。</p>
-        <p class="note update">11/29 更新(v1.2.0): 判定を調整しました。回答もキャラも同じ長さにそろえて性格の向きだけで比べるようにし、チルノや八意永琳のように個性の強いキャラにも届くようにしました。同じタイプの中での偏りもさらに小さくしています。前に出た結果と変わることがあります。</p>
+        <button type="button" class="note update" data-act="updates" aria-haspopup="dialog">${esc(UPDATE_NOTE)}<span class="update-more">更新履歴 ›</span></button>
         <div class="cta">
           <button type="button" class="btn primary" data-act="start">${inProgress ? '最初からはじめる' : '診断をはじめる'}</button>
           ${inProgress ? '<button type="button" class="btn" data-act="resume">続きから</button>' : ''}
@@ -777,6 +810,7 @@ ${text.detail}`)}`;
       case 'prev': if (qIndex > 0) { qIndex -= 1; viewQuiz(); } break;
       case 'next': if (qIndex < M().count - 1) { qIndex += 1; viewQuiz(); } break;
       case 'close': dialog.close(); break;
+      case 'updates': track('updates/open', '更新履歴を開く', true); openUpdates(); break;
       case 'copy': copy(postText(JSON.parse(app.dataset.copy || '{"head":"","detail":""}'), app.dataset.shareId), '文章をコピーしました'); break;
       case 'copy-link': track('share/link', 'リンクをコピー', true); copy(shareUrl(app.dataset.shareId), 'リンクをコピーしました'); break;
       case 'share-image': track('share/image', '画像を共有', true); shareImage(); break;

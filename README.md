@@ -70,7 +70,7 @@ node tools/serve.mjs 4173
 
 ## 解析(GoatCounter)
 
-`docs/index.html` の `window.GOATCOUNTER_SITE` にサイトコード(`xxxx.goatcounter.com` の `xxxx`)を入れると計測が始まります(空のままなら何も送りません。cookie は使いません)。数えているもの: ページ(`/`, `/quiz`, `/quiz-quick`, `/result`, `/result-quick`, `/zukan`, `/c/<id>`)と、イベント(`start/full|quick`、`result-char/<id>`、`result-type/<MBTI>`、`mode/full|quick`、`share/open|x|image|save|link`、`garakuta/<id>`、`work/<作品名>`)。
+`docs/index.html` の `window.GOATCOUNTER_SITE` にサイトコード(`xxxx.goatcounter.com` の `xxxx`)を入れると計測が始まります(空のままなら何も送りません。cookie は使いません)。数えているもの: ページ(`/`, `/quiz`, `/quiz-quick`, `/result`, `/result-quick`, `/zukan`, `/c/<id>`)と、イベント(`start/full|quick`、`result-char/<id>`、`result-type/<MBTI>`、`mode/full|quick`、`share/open|x|image|save|link`、`garakuta/<id>`、`work/<作品名>`、`updates/open`)。
 
 ## ライセンス
 
